@@ -1,2 +1,2 @@
-# pica
+# Pica
 Proyecto final TouresBalon
