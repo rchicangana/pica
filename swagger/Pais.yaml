@@ -1,0 +1,9 @@
+components:
+  schemas:
+    Pais:
+      properties:
+        id: 
+          type: integer
+          format: int32
+        nombre:
+          type: string

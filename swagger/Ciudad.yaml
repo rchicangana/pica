@@ -1,0 +1,11 @@
+components:
+  schemas:
+    Ciudad:
+      properties:
+        id: 
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        pais:
+          $ref: ./Pais.yaml'
