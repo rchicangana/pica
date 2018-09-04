@@ -39,6 +39,12 @@ public class UsuarioServicio {
     }
     
     @PUT
+    @Path("actualizar")
+    public MensajeDTO actualizar(UsuarioDTO entrada){
+        return usuarioLogica.actualizarUsuario(entrada);
+    }
+        
+    @PUT
     @Path("cambiarPassword")
     public MensajeDTO cambiarPassword(CambiarPasswordDTO entrada){
         return usuarioLogica.actualizarClaveUsuario(entrada);

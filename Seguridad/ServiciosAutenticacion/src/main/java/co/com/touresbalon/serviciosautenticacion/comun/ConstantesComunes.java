@@ -22,6 +22,7 @@ public class ConstantesComunes {
      * Usuario ya existe
      */
     public static final String CODIGO_ERROR_USUARIO_EXISTE="El usuario que intenta crear ya existe";
+    public static final String CODIGO_ERROR_USUARIO_NO_EXISTE="El usuario que intenta actualizar no existe";
     public static final String CODIGO_ERROR_LOGIN="El usuario o contraseña no validas";
     public static final String CODIGO_ERROR_LOGIN_INACTIVO="El usuario se eneucntra inactivo o bloqueado";
     

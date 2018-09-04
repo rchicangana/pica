@@ -58,6 +58,34 @@ public class UsuarioLogica {
         
     }
     
+    public MensajeDTO actualizarUsuario(UsuarioDTO entrada){
+        
+        MensajeDTO salida = new MensajeDTO();
+        //verificamos si el usuario a crear ya existe
+        Usuario usuario = usuarioDAO.findByLogin(entrada.getLogin());
+        if(usuario==null){
+            salida.setCodigo(ConstantesComunes.Resultado.ERROR.name());
+            salida.setMensaje(ConstantesComunes.CODIGO_ERROR_USUARIO_NO_EXISTE);
+        } else {
+            try {
+                usuario.setEmail(entrada.getEmail());
+                usuario.setIdEstadoUser(TransformacionDozer.transformar(entrada.getIdEstadoUser(), EstadoUser.class));
+                usuario.setNombre(entrada.getNombre());
+                usuarioDAO.update(usuario);
+                //creamos el usuario en ldap
+                salida.setCodigo(ConstantesComunes.Resultado.OK.name());
+                
+            } catch (Exception e) {
+                salida.setCodigo(ConstantesComunes.Resultado.ERROR.name());
+                salida.setMensaje(e.getLocalizedMessage());
+            }
+            
+        }
+        
+        return salida;
+        
+    }
+    
     public MensajeDTO actualizarClaveUsuario(CambiarPasswordDTO entrada){
         MensajeDTO salida = new MensajeDTO();
         
