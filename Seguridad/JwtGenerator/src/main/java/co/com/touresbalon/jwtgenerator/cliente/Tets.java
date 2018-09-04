@@ -19,6 +19,7 @@ import java.util.UUID;
 public class Tets {
     
     public static void main(String[] args) {
+        System.out.println("UUID.randomUUID().toString() "+UUID.randomUUID().toString());
         ClienteJWTBuilder clienteBuilder = new ClienteJWTBuilder();
         TokenJwtDTO token = new TokenJwtDTO();
         token.setId(UUID.randomUUID().toString());
