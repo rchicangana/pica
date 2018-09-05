@@ -6,6 +6,7 @@ co\com\touresbalon\serviciosautenticacion\logica\LdapLogica.class
 co\com\touresbalon\serviciosautenticacion\comun\ConstantesComunes.class
 co\com\touresbalon\serviciosautenticacion\dto\LoginDTO.class
 co\com\touresbalon\serviciosautenticacion\dao\ConstantesDAO.class
+co\com\touresbalon\serviciosautenticacion\dto\ValidarTokenDTO.class
 co\com\touresbalon\serviciosautenticacion\entities\Role.class
 co\com\touresbalon\serviciosautenticacion\logica\AutenticacionLogica.class
 co\com\touresbalon\serviciosautenticacion\comun\ConstantesComunes$Resultado.class

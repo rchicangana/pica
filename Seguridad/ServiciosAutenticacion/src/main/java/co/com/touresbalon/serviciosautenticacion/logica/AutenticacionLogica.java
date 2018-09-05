@@ -16,6 +16,7 @@ import co.com.touresbalon.serviciosautenticacion.dto.LoginDTO;
 import co.com.touresbalon.serviciosautenticacion.dto.LoginOutDTO;
 import co.com.touresbalon.serviciosautenticacion.dto.MensajeDTO;
 import co.com.touresbalon.serviciosautenticacion.dto.UsuarioDTO;
+import co.com.touresbalon.serviciosautenticacion.dto.ValidarTokenDTO;
 import co.com.touresbalon.serviciosautenticacion.entities.Constantes;
 import co.com.touresbalon.serviciosautenticacion.entities.EstadoUser;
 import co.com.touresbalon.serviciosautenticacion.entities.Usuario;
@@ -73,7 +74,7 @@ public class AutenticacionLogica {
                         salida.setObject(loginOutDTO);
                     } catch (ErrorJWTException | NumberFormatException e) {
                         salida.setCodigo(ConstantesComunes.Resultado.ERROR.name());
-                        salida.setMensaje("Error al generar token jwt "+e.getLocalizedMessage());
+                        salida.setMensaje("Error al generar token jwt " + e.getLocalizedMessage());
 
                     }
 
@@ -87,6 +88,31 @@ public class AutenticacionLogica {
             }
         }
         return salida;
+    }
+
+    public MensajeDTO validarToken(ValidarTokenDTO entrada) {
+
+        MensajeDTO salida = new MensajeDTO();
+        try {
+
+            Constantes constanteKey = constantesDAO.findByCodigo(ConstantesComunes.CONSTANTE_LLAVE_SIMETRICA_TOKEN);
+
+            ClienteJWT clienteJWT = new ClienteJWTBuilder().setLlaveSimetrica(constanteKey.getValor()).build();
+            TokenJwtDTO tokenDTO = clienteJWT.validarToken(entrada.getToken(), constanteKey.getValor());
+            if (entrada.getLogin().equals(tokenDTO.getUsername())) {
+                salida.setCodigo(ConstantesComunes.Resultado.OK.name());
+            } else {
+                salida.setCodigo(ConstantesComunes.Resultado.ERROR.name());
+                salida.setMensaje(ConstantesComunes.CODIGO_ERROR_LOGIN_TOKEN);
+            }
+
+        } catch (ErrorJWTException e) {
+            salida.setCodigo(ConstantesComunes.Resultado.ERROR.name());
+            salida.setMensaje(ConstantesComunes.CODIGO_ERROR_LOGIN_TOKEN);
+        }
+
+        return salida;
+
     }
 
 }

@@ -7,6 +7,7 @@ package co.com.touresbalon.serviciosautenticacion.servicios;
 
 import co.com.touresbalon.serviciosautenticacion.dto.LoginDTO;
 import co.com.touresbalon.serviciosautenticacion.dto.MensajeDTO;
+import co.com.touresbalon.serviciosautenticacion.dto.ValidarTokenDTO;
 import co.com.touresbalon.serviciosautenticacion.logica.AutenticacionLogica;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -32,6 +33,12 @@ public class AutenticacionServicio {
     @POST
     public MensajeDTO login(LoginDTO entrada){
         return autenticacionLogica.autenticarUsuario(entrada);
+    }
+    
+    @POST
+    @Path("validar")
+    public MensajeDTO validarToken(ValidarTokenDTO entrada){
+        return autenticacionLogica.validarToken(entrada);
     }
     
     
