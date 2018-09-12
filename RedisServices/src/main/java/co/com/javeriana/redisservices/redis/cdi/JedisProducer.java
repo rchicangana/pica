@@ -14,8 +14,8 @@ public class JedisProducer {
     @Produces
     public Jedis get(InjectionPoint ip) {
         System.out.println("injecting Jedis into " + ip.getMember().getDeclaringClass().getSimpleName());
-        String redisHost = System.getenv().getOrDefault("REDIS_HOST", "192.168.99.100");
-        String redisPort = System.getenv().getOrDefault("REDIS_PORT", "6379");
+        String redisHost = "35.203.20.85";
+        String redisPort = "6379";
 
         Jedis jedis = new Jedis(redisHost, Integer.valueOf(redisPort), 10000);
         jedis.connect();
