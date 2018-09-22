@@ -38,13 +38,11 @@ public class Itinerario implements Serializable {
     @NotNull
     @Column(name = "ID_ITINERARIO")
     private Long idItinerario;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID_HOSPEDAJE")
-    private long idHospedaje;
-    @JoinColumn(name = "ID_PRODUCTO", referencedColumnName = "ID_PRODUCTO")
+    @JoinColumn(name = "ID_HOSPEDAJE", referencedColumnName = "ID_HOSPEDAJE")
     @ManyToOne(optional = false)
-    private Producto idProducto;
+    private Hospedaje idHospedaje;
+    @Column(name = "ID_PRODUCTO")
+    private Long idProducto;
     @JoinColumn(name = "ID_CIUDAD", referencedColumnName = "ID_CIUDAD")
     @ManyToOne(optional = false)
     private Ciudad idCiudad;
@@ -64,13 +62,15 @@ public class Itinerario implements Serializable {
         this.idItinerario = idItinerario;
     }
 
-    public long getIdHospedaje() {
+    public Hospedaje getIdHospedaje() {
         return idHospedaje;
     }
 
-    public void setIdHospedaje(long idHospedaje) {
+    public void setIdHospedaje(Hospedaje idHospedaje) {
         this.idHospedaje = idHospedaje;
     }
+
+    
 
     public Ciudad getIdCiudad() {
         return idCiudad;
@@ -80,14 +80,15 @@ public class Itinerario implements Serializable {
         this.idCiudad = idCiudad;
     }
 
-    public Producto getIdProducto() {
+    public Long getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Producto idProducto) {
+    public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 0;

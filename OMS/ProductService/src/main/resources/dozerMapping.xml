@@ -50,19 +50,7 @@
             <b>nombre</b>
         </field>
     </mapping>
-    <mapping>
-        <class-a>co.com.touresbalon.productservice.entidades.Pais</class-a>
-        <class-b>co.com.touresbalon.productservice.dto.PaisDTO</class-b>
-        <field>
-            <a>idPais</a>
-            <b>idPais</b>
-        </field>
-        <field>
-            <a>nombre</a>
-            <b>nombre</b>
-        </field>
-    </mapping>
-    
+       
     <mapping>
         <class-a>co.com.touresbalon.productservice.entidades.Ciudad</class-a>
         <class-b>co.com.touresbalon.productservice.dto.CiudadDTO</class-b>
@@ -143,7 +131,7 @@
             <b>idHabitacion</b>
         </field>
         <field>
-            <a>idHospedaje</a>
+            <a>idHospedaje.idHospedaje</a>
             <b>idHospedaje</b>
         </field>
         <field>
@@ -205,7 +193,7 @@
             <b>esprincipal</b>
         </field>
         <field>
-            <a>idProducto.idProducto</a>
+            <a>idProducto</a>
             <b>idProducto</b>
         </field>
     </mapping>
@@ -218,7 +206,7 @@
             <b>idItinerario</b>
         </field>
         <field>
-            <a>idProducto.idProducto</a>
+            <a>idProducto</a>
             <b>idProducto</b>
         </field>
         <field>
