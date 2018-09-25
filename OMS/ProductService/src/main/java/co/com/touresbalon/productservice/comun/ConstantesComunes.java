@@ -17,6 +17,7 @@ public class ConstantesComunes {
     }
     
     public final static String MSG_SIN_DATOS="No se encontraron datos";
+    public final static String FORMATO_FECHA="dd/MM/yyyy";
     
     
 }

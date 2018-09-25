@@ -45,8 +45,7 @@ export class RegisterComponent implements OnInit {
 
         this.loading = true;
         this.userService.register(this.registerForm.value)
-           // .pipe(first())
-           /* .subscribe(
+            .subscribe(
                 data => {
                     this.mensaje = <Mensaje> data; 
                     this.alertService.success('Registro Exitoso!', true);
@@ -55,6 +54,6 @@ export class RegisterComponent implements OnInit {
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
-                });*/
+                });
     }
 }

@@ -51,5 +51,33 @@ public class ProductoDAO {
                 .setMaxResults(fin)
                 .getResultList();
     }
+    
+    /**
+     * 
+     * @param entidad
+     * @return 
+     */
+    public Producto guardar(Producto entidad){
+        em.persist(entidad);
+        return entidad;
+    }
+    
+    /**
+     * 
+     * @param entidad 
+     */
+    public void actualizar(Producto entidad){
+        em.merge(entidad);
+        
+    }
+    
+    /**
+     * 
+     * @param entidad 
+     */
+    public void borrar(Producto entidad){
+        em.remove(entidad);
+        
+    }
 
 }
