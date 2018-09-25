@@ -6,6 +6,7 @@
 package co.com.touresbalon.productservice.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -46,6 +49,14 @@ public class Itinerario implements Serializable {
     @JoinColumn(name = "ID_CIUDAD", referencedColumnName = "ID_CIUDAD")
     @ManyToOne(optional = false)
     private Ciudad idCiudad;
+    @Column(name = "FECHA_INICIO")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaInicio;
+    @Column(name = "FECHA_SALIDA")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaSalida;
+    @Column(name = "DESCRIPCION")
+    private String descripcion;
 
     public Itinerario() {
     }
@@ -70,6 +81,14 @@ public class Itinerario implements Serializable {
         this.idHospedaje = idHospedaje;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     
 
     public Ciudad getIdCiudad() {
@@ -87,6 +106,24 @@ public class Itinerario implements Serializable {
     public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+    
+    
 
     
     @Override
