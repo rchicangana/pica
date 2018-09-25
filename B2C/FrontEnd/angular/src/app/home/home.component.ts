@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Usuario } from '../_models';
+import { Usuario, Mensaje } from '../_models';
 import { UserService } from '../_services';
 
 @Component({
@@ -10,6 +10,7 @@ import { UserService } from '../_services';
 
 export class HomeComponent implements OnInit {
     currentUser: Usuario;
+    mensaje : Mensaje;
     users: Usuario[] = [];
 
     constructor(private userService: UserService) {
@@ -25,6 +26,17 @@ export class HomeComponent implements OnInit {
     }
 
     private loadAllUsers() {
-        this.userService.getAll();//.subscribe(users => { this.users = users; });
+        this.userService.getAll()           
+        .subscribe(
+            data => {
+                this.mensaje = <Mensaje> data; 
+                this.users = <Usuario[]>this.mensaje.objeto;
+                //this.alertService.success('Registro Exitoso!', true);
+                //this.router.navigate(['/login']);
+            },
+            error => {
+               //this.alertService.error(error);
+               // this.loading = false;
+            });
     }
 }
