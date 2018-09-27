@@ -1,0 +1,16 @@
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\LoginWS.dll
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\LoginWS.pdb
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\EntityFramework.dll
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\EntityFramework.xml
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Debug\LoginWS.dll
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Debug\LoginWS.pdb
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\Newtonsoft.Json.Net20.dll
+d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Debug\LoginWS.csprojResolveAssemblyReference.cache
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\obj\Debug\LoginWS.csprojResolveAssemblyReference.cache
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\obj\Debug\LoginWS.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\bin\LoginWS.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\bin\LoginWS.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\bin\EntityFramework.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\bin\Newtonsoft.Json.Net20.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\bin\EntityFramework.xml
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\obj\Debug\LoginWS.pdb
