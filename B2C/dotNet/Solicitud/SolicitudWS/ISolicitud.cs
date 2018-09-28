@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Linq;
-using System.Linq;
 using System.Web;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -13,7 +12,7 @@ using System.Text;
 namespace SolicitudWS
 {
     [ServiceContract]
-    public class ISolicitud
+    public interface ISolicitud
     {
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -21,7 +20,7 @@ namespace SolicitudWS
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "solicitud/{idUsuario}")]
-        ResponseData listarSolicitudes(int idUsuario);
+        ResponseData ListarSolicitudes(int idUsuario);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -29,7 +28,7 @@ namespace SolicitudWS
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "solicitud/cancelar/{idSolicitud}")]
-        SOLICITUD cancelarSolicitud(int idSolicitud);
+        void CancelarSolicitud(int idSolicitud);
 
         [OperationContract]
         [WebInvoke(Method = "POST",
@@ -37,7 +36,7 @@ namespace SolicitudWS
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "solicitud/crear")]
-        ResponseData crearSolicitud(SOLICITUD solicitud);
+        ResponseData CrearSolicitud(SOLICITUD solicitud);
     }
 
     public class SampleContentTypeMapper : WebContentTypeMapper

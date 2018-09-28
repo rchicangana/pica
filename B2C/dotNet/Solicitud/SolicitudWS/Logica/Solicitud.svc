@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="LoginWS.Usuario" CodeBehind="Solicitud.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SolicitudWS.Usuario" CodeBehind="Solicitud.svc.cs" %>
