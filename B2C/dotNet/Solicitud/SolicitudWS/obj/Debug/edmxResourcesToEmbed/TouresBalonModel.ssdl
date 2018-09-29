@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="touresbalonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="touresbalonModelStoreContainer">
+    <EntitySet Name="DETALLE_SOLICITUD" EntityType="touresbalonModel.Store.DETALLE_SOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="DETALLE_SOLICITUD">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_SOLICITUD" />
+    </Key>
+    <Property Name="ID_DETALLE_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NO_SOLICITUD" Type="int" />
+    <Property Name="ID_PRODUCTO" Type="int" />
+    <Property Name="VALOR" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="SOLICITUD">
+    <Key>
+      <PropertyRef Name="NO_SOLICITUD" />
+    </Key>
+    <Property Name="NO_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="FECHA_VENCIMIENTO" Type="date" />
+    <Property Name="VALOR_TOTAL" Type="decimal" Scale="2" />
+    <Property Name="ID_ESTADO_SOLICITUD" Type="int" />
+    <Property Name="ID_USUARIO" Type="int" />
+  </EntityType>
+</Schema>

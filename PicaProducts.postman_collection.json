@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "d2e7e314-8b4a-400b-bc93-69ff3e557fc2",
+		"name": "PicaProducts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PicaBPM",
+			"item": [
+				{
+					"name": "Bonita Login Rest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "walter.bates",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "redirect",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/bonita/loginservice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bonita",
+								"loginservice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bonita Consulta de procesos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/bonita/API/bpm/process?p=0&c=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bonita",
+								"API",
+								"bpm",
+								"process"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "c",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bonita Consulta de contrato por proceso",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/bonita/API/bpm/process/7051154151321140737/contract",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bonita",
+								"API",
+								"bpm",
+								"process",
+								"7051154151321140737",
+								"contract"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bonita Instanciar proceso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Bonita-API-Token",
+								"value": "04b0b0ca-0a4f-4316-9949-6380381d0faa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n  \"solicitudInput\": {\r\n  \t\"id\":1,\r\n  \t\"nombre\":\"Ricardo Chicangana\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/bonita/API/bpm/process/5443924790056970281/instantiation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bonita",
+								"API",
+								"bpm",
+								"process",
+								"5443924790056970281",
+								"instantiation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prodcutos",
+			"item": [
+				{
+					"name": "Consulta de producto por codigo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/ProductService/services/producto/buscarProducto/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"producto",
+								"buscarProducto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticacion",
+			"item": [
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \n    \"nombre\": \"Ricardo Alonso Chicangana Vidal\",\n    \"email\": \"rchicangana@gmail.com\",\n    \"login\":  \"rchicangana\",\n    \"idEstadoUser\": {\n    \t\"idEstadoUser\": 1,\n    \t\"estado\":\"Activo\"\n    \t\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/Autenticacion/services/usuario/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Autenticacion",
+								"services",
+								"usuario",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\":\"rchicangana\",\n\t\"passwordAnterior\":\"rchicangana\",\n\t\"nuevoPassword\":\"admin123\"\n\t\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/Autenticacion/services/usuario/cambiarPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Autenticacion",
+								"services",
+								"usuario",
+								"cambiarPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \n    \"nombre\": \"Ricardo Alonso Chicangana Vidal\",\n    \"email\": \"rchicangana@gmail.com\",\n    \"login\":  \"rchicangana\",\n    \"idEstadoUser\": {\n    \t\"idEstadoUser\": 1,\n    \t\"estado\":\"Activo\"\n    \t\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/Autenticacion/services/usuario/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Autenticacion",
+								"services",
+								"usuario",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\":\"rchicangana\",\n\t\"password\":\"admin123\"\n}"
+						},
+						"url": {
+							"raw": "http://35.203.15.183:8080/Autenticacion/services/autenticacion",
+							"protocol": "http",
+							"host": [
+								"35",
+								"203",
+								"15",
+								"183"
+							],
+							"port": "8080",
+							"path": [
+								"Autenticacion",
+								"services",
+								"autenticacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
