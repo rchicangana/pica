@@ -36,6 +36,22 @@ namespace LoginWS
             BodyStyle = WebMessageBodyStyle.Bare, 
             UriTemplate = "crearusuario")]
         ResponseData crearUsuario(usuarios usuario);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "productos")]
+        List<Product> productos();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "productos/buscar/{id}")]
+        Product productoPorId(string id);
     }
 
     public class SampleContentTypeMapper : WebContentTypeMapper

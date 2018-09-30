@@ -32,7 +32,16 @@ namespace LoginWS
             //usuarios user = JsonConvert.DeserializeObject<usuarios>(usuario);
             usuario.fecha_creacion = DateTime.Today;
             usuario.activo = true;
-            return this.usuDAO.crearUsuario(usuario); ;
+            return this.usuDAO.crearUsuario(usuario);
+        }
+
+        public List<Product> productos()
+        {
+            return this.usuDAO.productos(); ;
+        }
+
+        public Product productoPorId(string id) {
+            return this.usuDAO.productoPorId(id);
         }
     }
 }

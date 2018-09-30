@@ -1,18 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="touresbalonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="touresbalonModelStoreContainer">
-    <EntitySet Name="usuarios" EntityType="touresbalonModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DETALLE_SOLICITUD" EntityType="touresbalonModel.Store.DETALLE_SOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
-  <EntityType Name="usuarios">
+  <EntityType Name="DETALLE_SOLICITUD">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="ID_DETALLE_SOLICITUD" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="nombres" Type="nchar" Nullable="false" MaxLength="30" />
-    <Property Name="apellidos" Type="nchar" Nullable="false" MaxLength="10" />
-    <Property Name="login" Type="nchar" Nullable="false" MaxLength="20" />
-    <Property Name="password" Type="nchar" Nullable="false" MaxLength="30" />
-    <Property Name="activo" Type="bit" Nullable="false" />
-    <Property Name="fecha_creacion" Type="date" Nullable="false" />
+    <Property Name="ID_DETALLE_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NO_SOLICITUD" Type="int" />
+    <Property Name="ID_PRODUCTO" Type="int" />
+    <Property Name="VALOR" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="SOLICITUD">
+    <Key>
+      <PropertyRef Name="NO_SOLICITUD" />
+    </Key>
+    <Property Name="NO_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="FECHA_VENCIMIENTO" Type="date" />
+    <Property Name="VALOR_TOTAL" Type="decimal" Scale="2" />
+    <Property Name="ID_ESTADO_SOLICITUD" Type="int" />
+    <Property Name="ID_USUARIO" Type="int" />
   </EntityType>
 </Schema>

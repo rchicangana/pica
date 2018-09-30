@@ -14,7 +14,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/28/2018 21:29:07</publishTime>
     </File>
     <File Include="bin/LoginWS.dll">
-      <publishTime>09/12/2018 23:39:37</publishTime>
+      <publishTime>09/29/2018 10:42:05</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.Net20.dll">
+      <publishTime>09/12/2018 23:54:54</publishTime>
     </File>
     <File Include="Entity/ModeloDatos.Context.tt">
       <publishTime>07/28/2018 21:29:06</publishTime>
@@ -25,8 +28,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Entity/ModeloDatos.tt">
       <publishTime>07/28/2018 21:29:17</publishTime>
     </File>
+    <File Include="Logica/Usuario.svc">
+      <publishTime>08/19/2018 20:23:15</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>07/28/2018 21:29:16</publishTime>
+      <publishTime>09/12/2018 23:54:56</publishTime>
     </File>
     <File Include="Touresbalon.Context.tt">
       <publishTime>08/19/2018 21:22:05</publishTime>
@@ -41,7 +47,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/12/2018 20:04:02</publishTime>
     </File>
     <File Include="TouresBalonModel.edmx.diagram">
-      <publishTime>09/12/2018 20:04:07</publishTime>
+      <publishTime>09/26/2018 23:19:22</publishTime>
     </File>
     <File Include="TouresBalonModel.tt">
       <publishTime>09/12/2018 20:04:02</publishTime>
@@ -50,7 +56,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/19/2018 20:23:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/12/2018 23:39:38</publishTime>
+      <publishTime>09/29/2018 10:47:05</publishTime>
     </File>
   </ItemGroup>
 </Project>
