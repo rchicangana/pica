@@ -60,7 +60,7 @@ public class Hospedaje implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHospedaje")
     private List<ImagenHospedaje> imagenHospedajeList;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHospedaje")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHabitacion")
     private List<Habitacion> habitacionList;
 
     public Hospedaje() {

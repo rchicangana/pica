@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
     , @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto")
-    , @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE p.nombreProducto like :nombreProducto")
+    , @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE upper(p.nombreProducto) like upper(:nombreProducto)")
     , @NamedQuery(name = "Producto.findByFechaSalida", query = "SELECT p FROM Producto p WHERE p.fechaSalida = :fechaSalida")
     , @NamedQuery(name = "Producto.findByFechaLlegada", query = "SELECT p FROM Producto p WHERE p.fechaLlegada = :fechaLlegada")})
 public class Producto implements Serializable {
@@ -50,6 +50,8 @@ public class Producto implements Serializable {
     @Size(max = 200)
     @Column(name = "NOMBRE_PRODUCTO")
     private String nombreProducto;
+    @Column(name = "DESCRIPCION")
+    private String descripcion;
     @Column(name = "FECHA_SALIDA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaSalida;
@@ -117,6 +119,15 @@ public class Producto implements Serializable {
     public void setItinerarioList(List<Itinerario> itinerarioList) {
         this.itinerarioList = itinerarioList;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
     
 
     @Override
