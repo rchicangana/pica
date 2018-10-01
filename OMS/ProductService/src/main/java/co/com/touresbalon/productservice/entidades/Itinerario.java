@@ -6,6 +6,7 @@
 package co.com.touresbalon.productservice.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -41,16 +44,22 @@ public class Itinerario implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID_ITINERARIO")
     private Long idItinerario;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID_HOSPEDAJE")
-    private long idHospedaje;
-    @JoinColumn(name = "ID_PRODUCTO", referencedColumnName = "ID_PRODUCTO")
+    @JoinColumn(name = "ID_HOSPEDAJE", referencedColumnName = "ID_HOSPEDAJE")
     @ManyToOne(optional = false)
-    private Producto idProducto;
+    private Hospedaje idHospedaje;
+    @Column(name = "ID_PRODUCTO")
+    private Long idProducto;
     @JoinColumn(name = "ID_CIUDAD", referencedColumnName = "ID_CIUDAD")
     @ManyToOne(optional = false)
     private Ciudad idCiudad;
+    @Column(name = "FECHA_INICIO")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaInicio;
+    @Column(name = "FECHA_SALIDA")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaSalida;
+    @Column(name = "DESCRIPCION")
+    private String descripcion;
 
     public Itinerario() {
     }
@@ -67,13 +76,23 @@ public class Itinerario implements Serializable {
         this.idItinerario = idItinerario;
     }
 
-    public long getIdHospedaje() {
+    public Hospedaje getIdHospedaje() {
         return idHospedaje;
     }
 
-    public void setIdHospedaje(long idHospedaje) {
+    public void setIdHospedaje(Hospedaje idHospedaje) {
         this.idHospedaje = idHospedaje;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    
 
     public Ciudad getIdCiudad() {
         return idCiudad;
@@ -83,14 +102,33 @@ public class Itinerario implements Serializable {
         this.idCiudad = idCiudad;
     }
 
-    public Producto getIdProducto() {
+    public Long getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Producto idProducto) {
+    public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
 
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+    
+    
+
+    
     @Override
     public int hashCode() {
         int hash = 0;

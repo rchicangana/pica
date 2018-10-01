@@ -1,0 +1,14 @@
+I also was getting the same problem but after brain storming with IIS and google for many hours. I found out the solution. This error is because some settings are disabled in IIS applicationHost.config.
+
+Below are the steps to solution:
+
+Go to C:\Windows\System32\inetsrv\config\applicationHost.config and open in notepad
+Change the following key value present in
+
+<section name="handlers" overrideModeDefault="Deny" /> change this value from "Deny" to "Allow"
+
+<section name="modules" allowDefinition="MachineToApplication" overrideModeDefault="Deny" /> change this value from "Deny" to "Allow"
+
+"%WINDIR%\Microsoft.Net\Framework\v3.0\Windows Communication Foundation\ServiceModelReg.exe" -r
+
+https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/configuring-iis-for-wcf

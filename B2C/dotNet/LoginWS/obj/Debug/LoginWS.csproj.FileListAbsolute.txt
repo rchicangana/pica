@@ -1,8 +1,0 @@
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\LoginWS.dll
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\LoginWS.pdb
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\EntityFramework.dll
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\EntityFramework.xml
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Debug\LoginWS.dll
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Debug\LoginWS.pdb
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Debug\LoginWS.csprojResolveAssemblyReference.cache
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\Newtonsoft.Json.Net20.dll

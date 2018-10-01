@@ -17,6 +17,7 @@ public class ProductoDTO {
     private String nombreProducto;
     private String fechaSalida;
     private String fechaLlegada;
+    private String descripcion;
     private TipoProductoDTO idTipoProducto;
     private List<ItinerarioDTO> itinerarioList;
 
@@ -67,6 +68,14 @@ public class ProductoDTO {
 
     public void setItinerarioList(List<ItinerarioDTO> itinerarioList) {
         this.itinerarioList = itinerarioList;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
     

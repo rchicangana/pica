@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="touresbalonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="touresbalonModelStoreContainer">
+          <EntitySet Name="DETALLE_SOLICITUD" EntityType="touresbalonModel.Store.DETALLE_SOLICITUD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="DETALLE_SOLICITUD">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_SOLICITUD" />
+          </Key>
+          <Property Name="ID_DETALLE_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NO_SOLICITUD" Type="int" />
+          <Property Name="ID_PRODUCTO" Type="int" />
+          <Property Name="VALOR" Type="decimal" Scale="2" />
+        </EntityType>
+        <EntityType Name="SOLICITUD">
+          <Key>
+            <PropertyRef Name="NO_SOLICITUD" />
+          </Key>
+          <Property Name="NO_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="FECHA_VENCIMIENTO" Type="date" />
+          <Property Name="VALOR_TOTAL" Type="decimal" Scale="2" />
+          <Property Name="ID_ESTADO_SOLICITUD" Type="int" />
+          <Property Name="ID_USUARIO" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="touresbalonModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="touresbalonEntities2" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.SOLICITUD" />
+          <EntitySet Name="DETALLE_SOLICITUD" EntityType="touresbalonModel.DETALLE_SOLICITUD" />
+        </EntityContainer>
+        <EntityType Name="SOLICITUD">
+          <Key>
+            <PropertyRef Name="NO_SOLICITUD" />
+          </Key>
+          <Property Type="Int32" Name="NO_SOLICITUD" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_CREACION" Precision="0" />
+          <Property Type="DateTime" Name="FECHA_VENCIMIENTO" Precision="0" />
+          <Property Type="Decimal" Name="VALOR_TOTAL" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="ID_ESTADO_SOLICITUD" />
+          <Property Type="Int32" Name="ID_USUARIO" />
+        </EntityType>
+        <EntityType Name="DETALLE_SOLICITUD">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_SOLICITUD" />
+          </Key>
+          <Property Type="Int32" Name="ID_DETALLE_SOLICITUD" Nullable="false" />
+          <Property Type="Int32" Name="NO_SOLICITUD" />
+          <Property Type="Int32" Name="ID_PRODUCTO" />
+          <Property Type="Decimal" Name="VALOR" Precision="18" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="touresbalonModelStoreContainer" CdmEntityContainer="touresbalonEntities2">
+          <EntitySetMapping Name="SOLICITUD">
+            <EntityTypeMapping TypeName="touresbalonModel.SOLICITUD">
+              <MappingFragment StoreEntitySet="SOLICITUD">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_ESTADO_SOLICITUD" ColumnName="ID_ESTADO_SOLICITUD" />
+                <ScalarProperty Name="VALOR_TOTAL" ColumnName="VALOR_TOTAL" />
+                <ScalarProperty Name="FECHA_VENCIMIENTO" ColumnName="FECHA_VENCIMIENTO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NO_SOLICITUD" ColumnName="NO_SOLICITUD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_SOLICITUD">
+            <EntityTypeMapping TypeName="touresbalonModel.DETALLE_SOLICITUD">
+              <MappingFragment StoreEntitySet="DETALLE_SOLICITUD">
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="NO_SOLICITUD" ColumnName="NO_SOLICITUD" />
+                <ScalarProperty Name="ID_DETALLE_SOLICITUD" ColumnName="ID_DETALLE_SOLICITUD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

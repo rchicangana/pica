@@ -1,0 +1,11 @@
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.csprojResolveAssemblyReference.cache
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.csproj.CoreCompileInputs.cache
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.dll.config
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.pdb
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\Newtonsoft.Json.Net20.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.xml
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.csproj.CopyComplete
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.pdb
