@@ -42,7 +42,7 @@ public class ItinerarioLogica {
             salida.setObject(TransformacionDozer.transformar(itinerario, ItinerarioDTO.class));            
         } catch (Exception e) {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
-            salida.setMensaje(e.getLocalizedMessage());
+            salida.setMensaje(e.getLocalizedMessage()); 
         }
         
         return salida;
