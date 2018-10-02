@@ -105,7 +105,7 @@ public class ProductoLogica {
             producto.setFechaSalida(FechaUtil.stringToDate(entrada.getFechaSalida(), ConstantesComunes.FORMATO_FECHA));
             producto.setIdTipoProducto(TransformacionDozer.transformar(entrada.getIdTipoProducto(), TipoProducto.class));
             producto.setNombreProducto(entrada.getNombreProducto());
-            //producto.setDescripcion(entrada.getDescripcion());
+            producto.setDescripcion(entrada.getDescripcion());
             productoDAO.actualizar(producto);
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
             salida.setObject(TransformacionDozer.transformar(producto, ProductoDTO.class));
