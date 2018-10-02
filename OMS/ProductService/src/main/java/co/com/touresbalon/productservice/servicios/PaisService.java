@@ -5,11 +5,12 @@
  */
 package co.com.touresbalon.productservice.servicios;
 
-import co.com.touresbalon.productservice.dto.HospedajeDTO;
 import co.com.touresbalon.productservice.dto.MensajeDTO;
-import co.com.touresbalon.productservice.logica.HospedajeLogica;
+import co.com.touresbalon.productservice.dto.PaisDTO;
+import co.com.touresbalon.productservice.logica.PaisLogica;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,35 +21,36 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author rchic
+ * @author rchicangana
  */
-@Path("hospedaje")
-@Produces(MediaType.APPLICATION_JSON)
+@Stateless
+@Path("pais")
 @Consumes(MediaType.APPLICATION_JSON)
-public class HospedajeService {
+@Produces(MediaType.APPLICATION_JSON)
+public class PaisService {
     
     @EJB
-    private HospedajeLogica hospedajeLogica;
+    private PaisLogica paisLogica;
     
+    /**
+     * 
+     * @return 
+     */
     @GET
     @Path("consultar")
-    public List<HospedajeDTO> consultar(){
-        return hospedajeLogica.consultar();
+    public List<PaisDTO> consultar(){
+        return paisLogica.consultar();
     }
     
     @POST
     @Path("guardar")
-    public MensajeDTO guardar(HospedajeDTO entrada){
-        return hospedajeLogica.guardar(entrada);
+    public MensajeDTO guardar(PaisDTO entrada){
+        return paisLogica.guardar(entrada);
     }
     
     @PUT
     @Path("editar")
-    public MensajeDTO editar(HospedajeDTO entrada){
-        return hospedajeLogica.editar(entrada);
+    public MensajeDTO editar(PaisDTO entrada){
+        return paisLogica.editar(entrada);
     }
-    
-    
-    
-    
 }
