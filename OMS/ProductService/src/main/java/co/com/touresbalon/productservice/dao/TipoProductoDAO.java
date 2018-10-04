@@ -7,6 +7,7 @@ package co.com.touresbalon.productservice.dao;
 
 import co.com.touresbalon.productservice.entidades.TipoProducto;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,6 +15,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author rchic
  */
+@Stateless
 public class TipoProductoDAO {
     
     @PersistenceContext()
