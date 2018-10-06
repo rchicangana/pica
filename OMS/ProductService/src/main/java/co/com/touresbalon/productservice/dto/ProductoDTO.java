@@ -19,6 +19,7 @@ public class ProductoDTO {
     private String fechaLlegada;
     private String descripcion;
     private TipoProductoDTO idTipoProducto;
+    private List<ImagenProductoDTO> imagenProductoList;
     private List<ItinerarioDTO> itinerarioList;
 
 
@@ -77,6 +78,16 @@ public class ProductoDTO {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public List<ImagenProductoDTO> getImagenProductoList() {
+        return imagenProductoList;
+    }
+
+    public void setImagenProductoList(List<ImagenProductoDTO> imagenProductoList) {
+        this.imagenProductoList = imagenProductoList;
+    }
+    
+    
     
     
     

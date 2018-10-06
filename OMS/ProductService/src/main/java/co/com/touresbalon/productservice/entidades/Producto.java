@@ -67,6 +67,9 @@ public class Producto implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private List<Itinerario> itinerarioList;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
+    private List<ImagenProducto> imagenProductoList;
 
     public Producto() {
     }
@@ -123,6 +126,17 @@ public class Producto implements Serializable {
         this.itinerarioList = itinerarioList;
     }
 
+    @XmlTransient
+    public List<ImagenProducto> getImagenProductoList() {
+        return imagenProductoList;
+    }
+
+    public void setImagenProductoList(List<ImagenProducto> imagenProductoList) {
+        this.imagenProductoList = imagenProductoList;
+    }
+    
+    
+    
     public String getDescripcion() {
         return descripcion;
     }

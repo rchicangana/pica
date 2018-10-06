@@ -262,6 +262,11 @@
             <a>descripcion</a>
             <b>descripcion</b>
         </field>
+        <field>
+            <a>imagenProductoList</a>
+            <b>imagenProductoList</b>
+        </field>
+        
     </mapping>
     
     
