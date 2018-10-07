@@ -10,8 +10,9 @@ import co.com.touresbalon.productservice.dao.ProductoDAO;
 import co.com.touresbalon.productservice.dto.MensajeDTO;
 import co.com.touresbalon.productservice.dto.ProductoDTO;
 import co.com.touresbalon.productservice.entidades.Producto;
+import co.com.touresbalon.productservice.entidades.TipoProducto;
+import co.com.touresbalon.productservice.util.FechaUtil;
 import co.com.touresbalon.productservice.util.TransformacionDozer;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -73,6 +74,71 @@ public class ProductoLogica {
         }
         return salida;
 
+    }
+    
+    
+    public MensajeDTO guardarProducto(ProductoDTO entrada){
+        MensajeDTO salida = new MensajeDTO();
+        
+        try {
+            Producto producto = TransformacionDozer.transformar(entrada, Producto.class);
+            producto.setItinerarioList(null);
+            productoDAO.guardar(producto);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+            salida.setObject(TransformacionDozer.transformar(producto, ProductoDTO.class));
+        } catch (Exception e) {
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        
+        return salida;
+                
+            
+    }
+    
+    public MensajeDTO actualizarProducto(ProductoDTO entrada){
+        MensajeDTO salida = new MensajeDTO();
+        
+        try {
+            Producto producto = productoDAO.findByCodigo(entrada.getIdProducto());
+            producto.setFechaLlegada(FechaUtil.stringToDate(entrada.getFechaLlegada(), ConstantesComunes.FORMATO_FECHA));
+            producto.setFechaSalida(FechaUtil.stringToDate(entrada.getFechaSalida(), ConstantesComunes.FORMATO_FECHA));
+            producto.setIdTipoProducto(TransformacionDozer.transformar(entrada.getIdTipoProducto(), TipoProducto.class));
+            producto.setNombreProducto(entrada.getNombreProducto());
+            producto.setDescripcion(entrada.getDescripcion());
+            productoDAO.actualizar(producto);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+            salida.setObject(TransformacionDozer.transformar(producto, ProductoDTO.class));
+        } catch (Exception e) {
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        
+        return salida;
+                
+            
+    }
+    
+    /**
+     * 
+     * @param entrada
+     * @return 
+     */
+     public MensajeDTO delete(ProductoDTO entrada){
+        MensajeDTO salida = new MensajeDTO();
+        
+        try {
+            Producto producto = productoDAO.findByCodigo(entrada.getIdProducto());
+            productoDAO.borrar(producto);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+        } catch (Exception e) {
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        
+        return salida;
+                
+            
     }
 
 }

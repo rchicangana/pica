@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ciudad.findAll", query = "SELECT c FROM Ciudad c")
+    , @NamedQuery(name = "Ciudad.findByIdPais", query = "SELECT c FROM Ciudad c WHERE c.idPais.idPais = :idPais")
     , @NamedQuery(name = "Ciudad.findByIdCiudad", query = "SELECT c FROM Ciudad c WHERE c.idCiudad = :idCiudad")
     , @NamedQuery(name = "Ciudad.findByNombre", query = "SELECT c FROM Ciudad c WHERE c.nombre = :nombre")})
 public class Ciudad implements Serializable {
@@ -40,6 +41,7 @@ public class Ciudad implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
+    
     @Column(name = "ID_CIUDAD")
     private Long idCiudad;
     @Size(max = 300)

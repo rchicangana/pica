@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -46,6 +48,7 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_PRODUCTO")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idProducto;
     @Size(max = 200)
     @Column(name = "NOMBRE_PRODUCTO")
@@ -64,6 +67,9 @@ public class Producto implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private List<Itinerario> itinerarioList;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
+    private List<ImagenProducto> imagenProductoList;
 
     public Producto() {
     }
@@ -120,6 +126,17 @@ public class Producto implements Serializable {
         this.itinerarioList = itinerarioList;
     }
 
+    @XmlTransient
+    public List<ImagenProducto> getImagenProductoList() {
+        return imagenProductoList;
+    }
+
+    public void setImagenProductoList(List<ImagenProducto> imagenProductoList) {
+        this.imagenProductoList = imagenProductoList;
+    }
+    
+    
+    
     public String getDescripcion() {
         return descripcion;
     }
