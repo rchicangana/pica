@@ -34,7 +34,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     .subscribe(
       data => {
           //this.product = <Product> data.productoPorIdResult;
-          this.product = <Product> data;
+          if(data.codigo=="OK"){
+            this.product = <Product> data.object;
+            this.product.precio = 100;
+          }
       },
       error => {
       });
@@ -42,5 +45,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  addToCart(product: Product) {
+    this.productService.addToCart(product);
   }
 }

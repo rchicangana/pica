@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthService {
   //user: Observable<firebase.User>;
   //userDetails: firebase.User = null;
-  apiUrl :string = "./Usuario.svc/Usuario";
+  apiUrl :string = "http://10.39.1.99/login/Usuario.svc/Usuario";
 
   constructor(private router: Router, private http: HttpClient) {
     //this.user = firebaseAuth.authState;

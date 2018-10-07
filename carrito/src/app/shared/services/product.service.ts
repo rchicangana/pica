@@ -8,7 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ProductService {
   products: Product[];
   product: Product;
-  apiUrl :string = "./Usuario.svc/Usuario";
+  //apiUrl :string = "./Usuario.svc/Usuario";
+  apiUrl :string = "http://10.39.1.140:8080/ProductService/services/producto";
   // favouriteProducts
   //favouriteProducts: AngularFireList<FavouriteProduct>;
   //cartProducts: AngularFireList<FavouriteProduct>;
@@ -38,7 +39,8 @@ export class ProductService {
 
   getProducts() {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.get(this.apiUrl+'/productos', { headers });
+    //return this.http.get(this.apiUrl+'/productos', { headers });
+    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/A', { headers });
   }
 
   createProduct(data: Product) {
@@ -49,7 +51,8 @@ export class ProductService {
     //this.product = this.db.object("product/" + key);
     //return this.product;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.get(this.apiUrl+'/productos/buscar/'+key, { headers });
+    //return this.http.get(this.apiUrl+'/productos/buscar/'+key, { headers });
+    return this.http.get(this.apiUrl+'/buscarProducto/'+key, { headers });
   }
 
   updateProduct(data: Product) {
@@ -77,8 +80,8 @@ export class ProductService {
   addFavouriteProduct(data: Product): void {
     // Toast Product Already exists
     const toastAlreadyExists: ToastOptions = {
-      title: "Product Already Added",
-      msg: "You have already added this product to favourite list",
+      title: "El paquete ya fue agregado antes",
+      msg: "Ya agregaste este paquete a tus favoritos",
       showClose: true,
       timeout: 5000,
       theme: "material"
@@ -86,8 +89,8 @@ export class ProductService {
 
     // Toaster Adding
     const toastAdd: ToastOptions = {
-      title: "Adding Product",
-      msg: "Adding Product as Favourite",
+      title: "Agrenado Paquete",
+      msg: "Agregando paquete a favoritos",
       showClose: true,
       timeout: 5000,
       theme: "material"
@@ -121,7 +124,7 @@ export class ProductService {
     const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
 
     for (let i = 0; i < products.length; i++) {
-      if (products[i].productId === product.productId) {
+      if (products[i].idProducto === product.idProducto) {
         products.splice(i, 1);
         break;
       }
@@ -168,8 +171,8 @@ export class ProductService {
     a.push(data);
 
     const toastOption: ToastOptions = {
-      title: "Adding Product to Cart",
-      msg: "Product Adding to the cart",
+      title: "Agregando el paquete al carrito",
+      msg: "Paquete agregado al carrito",
       showClose: true,
       timeout: 1000,
       theme: "material"
@@ -191,7 +194,7 @@ export class ProductService {
     const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
 
     for (let i = 0; i < products.length; i++) {
-      if (products[i].productId === product.productId) {
+      if (products[i].idProducto === product.idProducto) {
         products.splice(i, 1);
         break;
       }

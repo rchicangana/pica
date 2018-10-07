@@ -34,10 +34,12 @@ export class ProductListComponent implements OnInit {
     .subscribe(
       data => {
           this.productList = [];
-          let productos = <Product[]> data;
-          productos.forEach(elemento => {
-            this.productList.push(elemento);
-          });
+          if(data.codigo=="OK"){
+            let productos = <Product[]> data.object;
+            productos.forEach(elemento => {
+              this.productList.push(elemento);
+            });
+          }
       },
       error => {
       });

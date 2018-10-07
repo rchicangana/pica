@@ -34,14 +34,5 @@ namespace LoginWS
             usuario.activo = true;
             return this.usuDAO.crearUsuario(usuario);
         }
-
-        public List<Product> productos()
-        {
-            return this.usuDAO.productos(); ;
-        }
-
-        public Product productoPorId(string id) {
-            return this.usuDAO.productoPorId(id);
-        }
-    }
+     }
 }
