@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { Mensaje } from '../../shared/models/mensaje';
+import { Respuesta } from '../../shared/models/respuesta';
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
 import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
@@ -13,6 +14,7 @@ import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner
 export class ProductListComponent implements OnInit {
   productList: Product[];
   mensaje : Mensaje;
+  respuesta : Respuesta;
   brands = ["All", "Google", "Apple", "Samsung", "OnePlus", "Lenovo", "Nokia", "Motorolla"];
 
   selectedBrand: "All";
@@ -34,8 +36,8 @@ export class ProductListComponent implements OnInit {
     .subscribe(
       data => {
           this.productList = [];
-          if(data.codigo=="OK"){
-            let productos = <Product[]> data.object;
+          if((<Respuesta>data).codigo=="OK"){
+            let productos = <Product[]> (<Respuesta>data).object;
             productos.forEach(elemento => {
               this.productList.push(elemento);
             });

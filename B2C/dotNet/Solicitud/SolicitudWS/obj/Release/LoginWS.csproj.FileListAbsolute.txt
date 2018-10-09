@@ -1,7 +1,0 @@
-d:\users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\LoginWS.dll
-d:\users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\LoginWS.pdb
-d:\users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\EntityFramework.dll
-d:\users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\bin\EntityFramework.xml
-d:\users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Release\LoginWS.dll
-d:\users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Release\LoginWS.pdb
-d:\Users\ruizayala\documents\visual studio 2012\Projects\LoginWS\LoginWS\obj\Release\LoginWS.csprojResolveAssemblyReference.cache

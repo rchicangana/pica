@@ -13,7 +13,6 @@ namespace SolicitudWS.DAO
         public ResponseData crearSolicitud(SOLICITUD solicitud)
         {
             ResponseData respuesta = new ResponseData();
-            //ContextoUsuario context = new ContextoUsuario();
             if (solicitud != null)
             {
                 solicitud.FECHA_CREACION = DateTime.Now;
@@ -32,20 +31,20 @@ namespace SolicitudWS.DAO
             return respuesta;
         }
 
-        public ResponseData listarSolicitudes(int idUsuario)
+        public ResponseData listarSolicitudes(int idSolicitud)
         {
             ResponseData respuesta = new ResponseData();
-            List<SOLICITUD> listadoUsuarios = new List<SOLICITUD>();
+            List<SOLICITUD> listadoSolicitudes = new List<SOLICITUD>();
             try
             {
-                listadoUsuarios = (from sol in this.context.SOLICITUD
-                                where sol.ID_USUARIO == idUsuario
+                listadoSolicitudes = (from sol in this.context.SOLICITUD
+                                      where sol.NO_SOLICITUD == idSolicitud
                                 select sol).ToList();
 
-                listadoUsuarios = this.context.SOLICITUD.ToList();
+                listadoSolicitudes = this.context.SOLICITUD.ToList();
                 respuesta.mensaje = "Solicitudes consultadas";
                 respuesta.resultado = "OK";
-                respuesta.objeto = listadoUsuarios;
+                respuesta.objeto = listadoSolicitudes;
             }
             catch (Exception ex)
             {
