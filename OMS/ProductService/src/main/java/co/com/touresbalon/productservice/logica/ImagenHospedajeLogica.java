@@ -75,4 +75,22 @@ public class ImagenHospedajeLogica {
     }
     
     
+    public MensajeDTO eliminar(ImagenHospedajeDTO entrada){
+        MensajeDTO salida = new MensajeDTO();
+        
+        try {
+            ImagenHospedaje imagen = imagenHospedajeDAO.findbyID(entrada.getIdImagenHospedaje());
+            //eliminamos en disco el archivo imagen
+            fileManagerLogica.borrarArchivo(imagen.getImagen());
+            imagenHospedajeDAO.delete(imagen);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+            
+        } catch (Exception e) {
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        
+        return salida;
+    }
+    
 }
