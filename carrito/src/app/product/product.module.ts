@@ -12,7 +12,6 @@ import { CheckoutModule } from "./checkout/checkout.module";
 import { ProductComponent } from "./product.component";
 import { BestProductComponent } from "./best-product/best-product.component";
 import { ProductListComponent } from "./product-list/product-list.component";
-import { AddProductComponent } from "./add-product/add-product.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { SharedModule } from "../shared/shared.module";
 import { FavouriteProductsComponent } from "./favourite-products/favourite-products.component";
@@ -30,7 +29,6 @@ import { CartCalculatorComponent } from "./cart-calculator/cart-calculator.compo
     ProductComponent,
     BestProductComponent,
     ProductListComponent,
-    AddProductComponent,
     ProductDetailComponent,
     FavouriteProductsComponent,
     CartProductsComponent,

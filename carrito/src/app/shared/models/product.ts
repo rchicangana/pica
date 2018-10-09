@@ -20,7 +20,7 @@
 //}
 
 export class Product{
-
+  descripcion: String;
    fechaLlegada: Date;
    fechaSalida: Date;
    idProducto: number;
@@ -92,8 +92,8 @@ export class Product{
      };
      idItinerario: number;
      idProducto: number;
-     nombreProducto: string;
-     precio:number;
     }
   ];  
+  nombreProducto: string;
+  precio:number;
 }

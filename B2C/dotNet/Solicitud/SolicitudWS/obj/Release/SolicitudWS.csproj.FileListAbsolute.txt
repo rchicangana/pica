@@ -1,8 +1,0 @@
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.pdb
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\Newtonsoft.Json.Net20.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.xml
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Release\SolicitudWS.csprojResolveAssemblyReference.cache
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Release\SolicitudWS.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Release\SolicitudWS.pdb

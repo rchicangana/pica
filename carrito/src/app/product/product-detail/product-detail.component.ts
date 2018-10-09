@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from "../../shared/models/product";
+import { Respuesta } from "../../shared/models/respuesta";
 import { ProductService } from "../../shared/services/product.service";
 import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
 
@@ -34,8 +35,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     .subscribe(
       data => {
           //this.product = <Product> data.productoPorIdResult;
-          if(data.codigo=="OK"){
-            this.product = <Product> data.object;
+          if((<Respuesta>data).codigo=="OK"){
+            this.product = <Product> (<Respuesta>data).object;
             this.product.precio = 100;
           }
       },

@@ -19,8 +19,8 @@ namespace SolicitudWS
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "solicitud/{idUsuario}")]
-        ResponseData ListarSolicitudes(int idUsuario);
+            UriTemplate = "solicitud/{idSolicitud}")]
+        ResponseData ListarSolicitudes(int idSolicitud);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
