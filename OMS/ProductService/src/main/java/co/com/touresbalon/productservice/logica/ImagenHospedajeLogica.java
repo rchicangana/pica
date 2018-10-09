@@ -6,23 +6,17 @@
 package co.com.touresbalon.productservice.logica;
 
 import co.com.touresbalon.productservice.comun.ConstantesComunes;
-import co.com.touresbalon.productservice.dao.ConstantesDAO;
 import co.com.touresbalon.productservice.dao.HospedajeDAO;
 import co.com.touresbalon.productservice.dao.ImagenHospedajeDAO;
 import co.com.touresbalon.productservice.dto.ImagenHospedajeDTO;
 import co.com.touresbalon.productservice.dto.MensajeDTO;
-import co.com.touresbalon.productservice.entidades.Constantes;
 import co.com.touresbalon.productservice.entidades.Hospedaje;
 import co.com.touresbalon.productservice.entidades.ImagenHospedaje;
 import co.com.touresbalon.productservice.util.TransformacionDozer;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.imageio.ImageIO;
-import org.apache.commons.codec.binary.Base64;
 
 /**
  *
