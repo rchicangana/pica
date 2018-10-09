@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ImagenHospedaje.findAll", query = "SELECT i FROM ImagenHospedaje i")
-    , @NamedQuery(name = "ImagenHospedaje.findByIdImagenHospedaje", query = "SELECT i FROM ImagenHospedaje i WHERE i.idImagenHospedaje = :idImagenHospedaje")
+    , @NamedQuery(name = "ImagenHospedaje.findByAllbyHospedaje", query = "SELECT i FROM ImagenHospedaje i WHERE i.idHospedaje.idHospedaje = :idHospedaje")
+    , @NamedQuery(name = "ImagenHospedaje.findByIdImagenHospedaje", query = "SELECT i FROM ImagenHospedaje i WHERE i.idImagenHospedaje = :idImagenHospedaje")    
     , @NamedQuery(name = "ImagenHospedaje.findByImagen", query = "SELECT i FROM ImagenHospedaje i WHERE i.imagen = :imagen")
     , @NamedQuery(name = "ImagenHospedaje.findByEsprincipal", query = "SELECT i FROM ImagenHospedaje i WHERE i.esprincipal = :esprincipal")})
 public class ImagenHospedaje implements Serializable {
@@ -121,5 +122,5 @@ public class ImagenHospedaje implements Serializable {
     public String toString() {
         return "co.com.touresbalon.productservice.entidades.ImagenHospedaje[ idImagenHospedaje=" + idImagenHospedaje + " ]";
     }
-    
+
 }
