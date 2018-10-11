@@ -1,0 +1,13 @@
+se debe copiar la carpeta cwep en la ruta c:\windows\temp\ quedando asi: c:\windows\temp\cwebp
+
+Dentro del proyecto "webp-io" esta el codigo fuente y ahi hay un test de como usarlo pero basicamente es:
+
+    public static void main(String[] args) throws IOException {
+        PngToWebPTest programa = new PngToWebPTest();
+        String rutaOrigen="C:\\Users\\Jruiz\\Pictures\\webp\\prueba.png";
+        String rutaDestino="C:\\Users\\Jruiz\\Pictures\\webp\\prueba.webp";
+        programa.testConvertToWebp(rutaOrigen, rutaDestino);
+    }
+
+Nota: desde el código fuente está parametrizado apra convertir al formato de menor peso posible
+el cual por ejemplo comprime una imagen png de 7,79 Mb a 81,4 kb webp ó 624 Kb en formato jpg a 81,4kb webp
