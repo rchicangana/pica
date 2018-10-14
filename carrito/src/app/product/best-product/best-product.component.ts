@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
+import { Respuesta } from '../../shared/models/respuesta';
 declare var $: any;
 
 @Component({
@@ -31,19 +32,32 @@ export class BestProductComponent implements OnInit {
   }
 
   getAllProducts() {
-    const x = this.productService.getProducts();
-    /*x.snapshotChanges().subscribe(product => {
+    const x = this.productService.getProducts()
+    //x.snapshotChanges()
+    .subscribe(
+      data => {
+          this.bestProducts = [];
+          if((<Respuesta>data).codigo=="OK"){
+            let productos = <Product[]> (<Respuesta>data).object;
+            productos.forEach(elemento => {
+              this.bestProducts.push(elemento);
+            });
+          }
+      },
+      error => {
+      });
+    /*.subscribe(product => {
       this.bestProducts = [];
       for (let i = 0; i < 5; i++) {
         const y = product[i].payload.toJSON();
         y["$key"] = product[i].key;
         this.bestProducts.push(y as Product);
-      }
+      }*/
       // product.forEach(element => {
       //   const y = element.payload.toJSON();
       //   y["$key"] = element.key;
       //   this.bestProducts.push(y as Product);
       // });
-    });*/
+    //});
   }
 }

@@ -11,8 +11,8 @@ export class CartProductsComponent implements OnInit {
   showDataNotFound = true;
 
   // Not Found Message
-  messageTitle = "No Products Found in Cart";
-  messageDescription = "Please, Add Products to Cart";
+  messageTitle = "No se encontraron paquetes en el Carrito";
+  messageDescription = "Agregue paquetes a su carrito";
 
   constructor(private productService: ProductService) {}
 

@@ -1,14 +1,20 @@
 <form>
-  <div class="row">
-
-    <img [src]="loggedUser.avatar" [alt]="loggedUser.userName" style="width: 35%; height: 35%;">
-    <div class="col-md-8 mt-3">
-      <label for="userName">User Name</label>
-      <p style="font-size: 15px;">{{loggedUser.userName}}</p>
+    <div class="row">
+        <div class="col-md-8 mb-3">
+            <label for="emailId">Tus solicitudes</label>
+            <p style="font-size: 15px;">{{loggedUser.fecha_creacion}}</p>
+        </div>
+        <table>
+            <ng-container *ngFor="let solciitud of solciitudes">
+                <tr>
+                    <td>
+                        <h2>{{solciitud.nombre}}</h2>
+                    </td>
+                </tr>
+                <tr *ngFor="let item of solciitud.items">
+                    <td>{{item}}</td>
+                </tr>
+            </ng-container>
+        </table>
     </div>
-    <div class="col-md-8 mb-3">
-      <label for="emailId">Email Id</label>
-      <p style="font-size: 15px;">{{loggedUser.emailId}}</p>
-    </div>
-  </div>
 </form>

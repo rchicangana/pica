@@ -1,11 +1,12 @@
 {
-    "/Usuario.svc/*": {
-        "target": "http://localhost:7961",
+    "/login/Logica/Usuario.svc/Usuario/*": {
+        "target": "http://10.39.1.99",
         "secure": false,
-        "loglevel": "debug",
-        "pathRewrite": {
-            "^//Usuario.svc": ""
-        },
-        "changeOrigin": true
+        "loglevel": "debug"
+    },
+    "/ProductService/services/*": {
+        "target": "http://10.39.1.140:8080",
+        "secure": false,
+        "loglevel": "debug"
     }
 }

@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   productList: Product[];
   mensaje : Mensaje;
   respuesta : Respuesta;
-  brands = ["All", "Google", "Apple", "Samsung", "OnePlus", "Lenovo", "Nokia", "Motorolla"];
+  brands = ["Todos", "Futbol", "Ciclisto", "Olimpicos", "Boxeo", "Tenis"];
 
   selectedBrand: "All";
 

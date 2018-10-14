@@ -1,4 +1,4 @@
-import { UserDetail, User } from "./../../../shared/models/user";
+import { UserDetail, Usuario } from "./../../../shared/models/user";
 import { AuthService } from "./../../../shared/services/auth.service";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "../../../../../node_modules/@angular/forms";
@@ -9,7 +9,7 @@ import { NgForm } from "../../../../../node_modules/@angular/forms";
   styleUrls: ["./shipping-details.component.scss"]
 })
 export class ShippingDetailsComponent implements OnInit {
-  userDetails: User;
+  userDetails: Usuario;
 
   userDetail: UserDetail;
 
@@ -23,8 +23,8 @@ export class ShippingDetailsComponent implements OnInit {
   updateUserDetails(form: NgForm) {
     const data = form.value;
 
-    data["emailId"] = this.userDetails.emailId;
-    data["userName"] = this.userDetails.userName;
+    //data["emailId"] = this.userDetails.emailId;
+    data["userName"] = this.userDetails.login;
 
     console.log("Data: ", data);
   }

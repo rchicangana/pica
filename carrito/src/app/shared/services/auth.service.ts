@@ -1,15 +1,14 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { User, Usuario } from "../models/user";
-import { AngularFireAuth } from "angularfire2/auth";
+import { Usuario } from "../models/user";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
   //user: Observable<firebase.User>;
-  //userDetails: firebase.User = null;
-  apiUrl :string = "http://10.39.1.99/login/Logica/Usuario.svc/Usuario";
+  userDetails: Usuario = null;
+  apiUrl :string = "login/Logica/Usuario.svc/Usuario";
 
   constructor(private router: Router, private http: HttpClient) {
     //this.user = firebaseAuth.authState;
@@ -26,15 +25,16 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    //if (this.userDetails == null) {
+    let usuario = localStorage.getItem("usuarioLogeado");
+    if (usuario == null) {
       return false;
-    //} else {
-    //  return true;
-   // }
+    } else {
+      return true;
+    }
   }
 
   logout() {
-    //this.firebaseAuth.auth.signOut().then(res => this.router.navigate(["/"]));
+    localStorage.removeItem("usuarioLogeado");
     this.router.navigate(["/"]);
   }
 
@@ -44,32 +44,28 @@ export class AuthService {
     return this.http.post(this.apiUrl+'/crearusuario', usuarioJson, { headers });
   }
 
-  getLoggedInUser(): User {
-    const loggedUser: User = new User();
-    /*
-    const user = this.firebaseAuth.auth.currentUser;
+  getLoggedInUser(): Usuario {
+    let loggedUser: Usuario;
+    
+    let user = JSON.parse(localStorage.getItem("usuarioLogeado"));
 
     if (user) {
-      this.userDetails = user;
+      this.userDetails = <Usuario> user;
       if (user != null) {
-        loggedUser.$key = user.uid;
-        loggedUser.userName = user.displayName;
-        loggedUser.emailId = user.email;
-        loggedUser.phoneNumber = user.phoneNumber;
-        loggedUser.avatar = user.photoURL;
-        loggedUser.isAdmin = user.email === "admin@gmail.com" ? true : false;
+        loggedUser = this.userDetails;
       }
-    } else {
+    } 
+    else {
       this.userDetails = null;
     }
-*/
+
     return loggedUser;
   }
 
   isAdmin(): boolean {
     const user = this.getLoggedInUser();
     if (user != null) {
-      if (user.isAdmin === true) {
+      if (user.login === "johnefe84@gmail.com") {
         return true;
       }
     }

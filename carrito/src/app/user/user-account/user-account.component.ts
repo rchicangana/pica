@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { User } from "../../shared/models/user";
+import { Usuario } from "../../shared/models/user";
 import { AuthService } from "../../shared/services/auth.service";
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from "../../shared/services/auth.service";
   styleUrls: ["./user-account.component.scss"]
 })
 export class UserAccountComponent implements OnInit {
-  loggedUser: User;
+  loggedUser: Usuario;
   // Enable Update Button
 
   constructor(private authService: AuthService) {}

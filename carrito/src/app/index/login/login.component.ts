@@ -63,11 +63,14 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInRegular(userForm.value["emailId"], userForm.value["loginPassword"])
       .subscribe(res => {
-        console.log("Logged In: ", res);
+        console.log("Usuario logeado: ", res);
+        this.user.emailId = (<User>res).emailId;
+        this.user.loginPassword = (<User>res).password;
+        localStorage.setItem("usuarioLogeado", JSON.stringify(res));
 
         const toastOption: ToastOptions = {
-          title: "Authentication Success",
-          msg: "Logging in please wait",
+          title: "Authenticacion exitosa",
+          msg: "Autenticando, por favor espere",
           showClose: true,
           timeout: 5000,
           theme: "material"

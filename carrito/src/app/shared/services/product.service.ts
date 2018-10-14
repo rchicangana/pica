@@ -9,7 +9,7 @@ export class ProductService {
   products: Product[];
   product: Product;
   //apiUrl :string = "./Usuario.svc/Usuario";
-  apiUrl :string = "http://10.39.1.140:8080/ProductService/services/producto";
+  apiUrl :string = "ProductService/services/producto";
   // favouriteProducts
   //favouriteProducts: AngularFireList<FavouriteProduct>;
   //cartProducts: AngularFireList<FavouriteProduct>;
@@ -40,7 +40,7 @@ export class ProductService {
   getProducts() {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
     //return this.http.get(this.apiUrl+'/productos', { headers });
-    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/A', { headers });
+    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
   }
 
   createProduct(data: Product) {
@@ -162,7 +162,7 @@ export class ProductService {
     return this.cartProducts;*/
   }
 
-  // Adding new Product to cart db if logged in else localStorage
+  // Adding new Product to cart db if  else localStorage
   addToCart(data: Product): void {
     let a: Product[];
 
