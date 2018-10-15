@@ -46,7 +46,14 @@ public class ProductoDAO {
      */
     public List<Producto> finByDesProductos(String descripcion, Integer inicio, Integer fin) {
         return em.createNamedQuery("Producto.findByNombreProducto")
-                .setParameter("nombreProducto", "%" + descripcion + "%")
+                .setParameter("nombreProducto", descripcion)
+                .setFirstResult(inicio)
+                .setMaxResults(fin)
+                .getResultList();
+    }
+    
+    public List<Producto> finByProductos(Integer inicio, Integer fin) {
+        return em.createNamedQuery("Producto.findAll")
                 .setFirstResult(inicio)
                 .setMaxResults(fin)
                 .getResultList();

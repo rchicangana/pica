@@ -66,7 +66,24 @@ public class ProductoLogica {
         try {
 
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
-            salida.setObject(TransformacionDozer.transformar(productoDAO.finByDesProductos(nombre, inicio, fin), ProductoDTO.class));
+            salida.setObject(TransformacionDozer.transformar(productoDAO.finByDesProductos(nombre.replaceAll("\\*", "%"), inicio, fin), ProductoDTO.class));
+
+        } catch (Exception e) {
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        return salida;
+
+    }
+    
+    
+    public MensajeDTO buscarProdcuto(final Integer inicio, final Integer fin) {
+
+        MensajeDTO salida = new MensajeDTO();
+        try {
+
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+            salida.setObject(TransformacionDozer.transformar(productoDAO.finByProductos(inicio, fin), ProductoDTO.class));
 
         } catch (Exception e) {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());

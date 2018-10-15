@@ -53,5 +53,11 @@ public class ProductoServicio {
     public MensajeDTO buscarporDescripcion(@PathParam("inicio") Integer inicio, @PathParam("fin") Integer fin, @PathParam("descripcion") String descripcion) {
         return productoLogica.buscarProdcutoporDescripcion(descripcion, inicio, fin);
     }
+    
+    @GET
+    @Path("buscar/{inicio}/{fin}")
+    public MensajeDTO buscar(@PathParam("inicio") Integer inicio, @PathParam("fin") Integer fin) {
+        return productoLogica.buscarProdcuto(inicio, fin);
+    }
 
 }
