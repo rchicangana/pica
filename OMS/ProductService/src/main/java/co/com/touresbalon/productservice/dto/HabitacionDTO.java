@@ -18,6 +18,7 @@ public class HabitacionDTO {
     private Long numero;
     private List<ImagenHabitacionDTO> imagenHabitacionList;
     private TipoHabitacionDTO idTipoHabitacion;
+    private TarifaHospedajeDTO tarifaHospedajeDTO;
 
     public Long getIdHabitacion() {
         return idHabitacion;
@@ -57,6 +58,14 @@ public class HabitacionDTO {
 
     public void setIdTipoHabitacion(TipoHabitacionDTO idTipoHabitacion) {
         this.idTipoHabitacion = idTipoHabitacion;
+    }
+
+    public TarifaHospedajeDTO getTarifaHospedajeDTO() {
+        return tarifaHospedajeDTO;
+    }
+
+    public void setTarifaHospedajeDTO(TarifaHospedajeDTO tarifaHospedajeDTO) {
+        this.tarifaHospedajeDTO = tarifaHospedajeDTO;
     }
     
     

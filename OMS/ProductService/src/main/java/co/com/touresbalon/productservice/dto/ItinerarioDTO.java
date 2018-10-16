@@ -18,6 +18,7 @@ public class ItinerarioDTO {
     private String descripcion;
     private String fechaInicio;
     private String fechaSalida;
+    private RutaDTO rutaDTO;
 
     public Long getIdItinerario() {
         return idItinerario;
@@ -74,6 +75,14 @@ public class ItinerarioDTO {
 
     public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
+    }
+
+    public RutaDTO getRutaDTO() {
+        return rutaDTO;
+    }
+
+    public void setRutaDTO(RutaDTO rutaDTO) {
+        this.rutaDTO = rutaDTO;
     }
     
     

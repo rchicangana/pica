@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,7 +49,7 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_PRODUCTO")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;
     @Size(max = 200)
     @Column(name = "NOMBRE_PRODUCTO")
@@ -67,9 +68,10 @@ public class Producto implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private List<Itinerario> itinerarioList;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private List<ImagenProducto> imagenProductoList;
+
 
     public Producto() {
     }
@@ -117,6 +119,7 @@ public class Producto implements Serializable {
     public void setIdTipoProducto(TipoProducto idTipoProducto) {
         this.idTipoProducto = idTipoProducto;
     }
+
     @XmlTransient
     public List<Itinerario> getItinerarioList() {
         return itinerarioList;
@@ -134,9 +137,7 @@ public class Producto implements Serializable {
     public void setImagenProductoList(List<ImagenProducto> imagenProductoList) {
         this.imagenProductoList = imagenProductoList;
     }
-    
-    
-    
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -144,8 +145,6 @@ public class Producto implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
 
     @Override
     public int hashCode() {

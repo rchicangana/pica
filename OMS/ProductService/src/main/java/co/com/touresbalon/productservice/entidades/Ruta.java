@@ -6,7 +6,9 @@
 package co.com.touresbalon.productservice.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,10 +16,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,9 +32,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ruta.findAll", query = "SELECT r FROM Ruta r")
+    , @NamedQuery(name = "Ruta.findByItinerario", query = "SELECT r FROM Ruta r WHERE r.idItinerario.idItinerario = :idItinerario")
     , @NamedQuery(name = "Ruta.findByIdRuta", query = "SELECT r FROM Ruta r WHERE r.idRuta = :idRuta")
     , @NamedQuery(name = "Ruta.findByDescripcion", query = "SELECT r FROM Ruta r WHERE r.descripcion = :descripcion")})
 public class Ruta implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRuta")
+    private List<TarifaTransporte> tarifaTransporteList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,6 +55,9 @@ public class Ruta implements Serializable {
     @JoinColumn(name = "ID_CIUDAD_ORIGEN", referencedColumnName = "ID_CIUDAD")
     @ManyToOne(optional = false)
     private Ciudad idCiudadOrigen;
+    @JoinColumn(name = "ID_ITINERARIO", referencedColumnName = "ID_ITINERARIO")
+    @ManyToOne(optional = false)
+    private Itinerario idItinerario;
     @JoinColumn(name = "ID_EMPRESA", referencedColumnName = "ID_EMPRESA")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
@@ -98,6 +109,16 @@ public class Ruta implements Serializable {
         this.idEmpresa = idEmpresa;
     }
 
+    public Itinerario getIdItinerario() {
+        return idItinerario;
+    }
+
+    public void setIdItinerario(Itinerario idItinerario) {
+        this.idItinerario = idItinerario;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -121,6 +142,15 @@ public class Ruta implements Serializable {
     @Override
     public String toString() {
         return "co.com.touresbalon.productservice.entidades.Ruta[ idRuta=" + idRuta + " ]";
+    }
+
+    @XmlTransient
+    public List<TarifaTransporte> getTarifaTransporteList() {
+        return tarifaTransporteList;
+    }
+
+    public void setTarifaTransporteList(List<TarifaTransporte> tarifaTransporteList) {
+        this.tarifaTransporteList = tarifaTransporteList;
     }
     
 }

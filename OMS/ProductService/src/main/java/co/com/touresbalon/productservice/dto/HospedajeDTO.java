@@ -19,6 +19,7 @@ public class HospedajeDTO {
     private CiudadDTO idCiudad;
     private List<ImagenHospedajeDTO> imagenHospedajeList;
     private List<HabitacionDTO> habitacionList;
+    
 
     public Long getIdHospedaje() {
         return idHospedaje;

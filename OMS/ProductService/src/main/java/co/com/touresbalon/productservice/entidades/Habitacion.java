@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Habitacion implements Serializable {
 
     
+   
+
+    
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -58,6 +61,9 @@ public class Habitacion implements Serializable {
     @JoinColumn(name = "ID_TIPO_HABITACION", referencedColumnName = "ID_TIPO_HABITACION")
     @ManyToOne(optional = false)
     private TipoHabitacion idTipoHabitacion;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHabitacion")
+    private List<TarifaHospedaje> tarifaHospedajeList;
 
     public Habitacion() {
     }
@@ -131,6 +137,15 @@ public class Habitacion implements Serializable {
     @Override
     public String toString() {
         return "co.com.touresbalon.productservice.entidades.Habitacion[ idHabitacion=" + idHabitacion + " ]";
+    }
+
+    @XmlTransient
+    public List<TarifaHospedaje> getTarifaHospedajeList() {
+        return tarifaHospedajeList;
+    }
+
+    public void setTarifaHospedajeList(List<TarifaHospedaje> tarifaHospedajeList) {
+        this.tarifaHospedajeList = tarifaHospedajeList;
     }
 
    

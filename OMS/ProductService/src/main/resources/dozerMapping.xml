@@ -268,7 +268,89 @@
         </field>
         
     </mapping>
+    <mapping>
+        <class-a>co.com.touresbalon.productservice.entidades.Empresa</class-a>
+        <class-b>co.com.touresbalon.productservice.dto.EmpresaDTO</class-b>
+        <field>
+            <a>idEmpresa</a>
+            <b>idEmpresa</b>
+        </field>
+        <field>
+            <a>nombre</a>
+            <b>nombre</b>
+        </field>
+        <field>
+            <a>urlEndpoint</a>
+            <b>urlEndpoint</b>
+        </field>
+    </mapping>
     
+    <mapping>
+        <class-a>co.com.touresbalon.productservice.entidades.TarifaTransporte</class-a>
+        <class-b>co.com.touresbalon.productservice.dto.TarifaTransporteDTO</class-b>
+        <field>
+            <a>idTarifaTransporte</a>
+            <b>idTarifaTransporte</b>
+        </field>
+        <field>
+            <a>precio</a>
+            <b>precio</b>
+        </field>
+        <field>
+            <a>fechaVigencia</a>
+            <b>fechaVigencia</b>
+        </field>
+    </mapping>
+    
+    <mapping>
+        <class-a>co.com.touresbalon.productservice.entidades.TarifaHospedaje</class-a>
+        <class-b>co.com.touresbalon.productservice.dto.TarifaHospedajeDTO</class-b>
+        <field>
+            <a>idTarifaHospedaje</a>
+            <b>idTarifaHospedaje</b>
+        </field>
+        <field>
+            <a>precio</a>
+            <b>precio</b>
+        </field>
+        <field>
+            <a>fechaVigencia</a>
+            <b>fechaVigencia</b>
+        </field>
+    </mapping>
+    
+    <mapping>
+        <class-a>co.com.touresbalon.productservice.entidades.Boleteria</class-a>
+        <class-b>co.com.touresbalon.productservice.dto.BoleteriaDTO</class-b>
+        <field>
+            <a>id</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>productoId</a>
+            <b>productoId</b>
+        </field>
+        <field>
+            <a>tiquetes</a>
+            <b>tiquetes</b>
+        </field>
+        <field>
+            <a>localidad</a>
+            <b>localidad</b>
+        </field>
+        <field>
+            <a>fecha</a>
+            <b>fecha</b>
+        </field>
+        <field>
+            <a>valor</a>
+            <b>valor</b>
+        </field>
+        <field>
+            <a>moneda</a>
+            <b>moneda</b>
+        </field>
+    </mapping>
     
     
     

@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.touresbalon.productservice.servicios.ItinerarioService.class);
         resources.add(co.com.touresbalon.productservice.servicios.PaisService.class);
         resources.add(co.com.touresbalon.productservice.servicios.ProductoServicio.class);
+        resources.add(co.com.touresbalon.productservice.servicios.TarifaService.class);
         resources.add(co.com.touresbalon.productservice.servicios.TipoProductoService.class);
     }
     
