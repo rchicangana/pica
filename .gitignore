@@ -3,3 +3,10 @@
 /Seguridad/ServiciosAutenticacion/target/
 /ClienteRedisServices/target/
 /Seguridad/JwtGenerator/target/
+
+Seguridad/JwtGenerator/target/JwtGenerator-1.0.0.jar
+Seguridad/JwtGenerator/target/maven-archiver/pom.properties
+Seguridad/ServiciosAutenticacion/target/classes/co/com/touresbalon/serviciosautenticacion/logica/UsuarioLogica.class
+Seguridad/ServiciosAutenticacion/target/maven-archiver/pom.properties
+Seguridad/ServiciosAutenticacion/target/ServiciosAutenticacion-1.0.0.war
+Seguridad/ServiciosAutenticacion/target/ServiciosAutenticacion-1.0.0/WEB-INF/classes/co/com/touresbalon/serviciosautenticacion/logica/UsuarioLogica.class
