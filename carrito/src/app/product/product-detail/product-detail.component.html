@@ -2,30 +2,18 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
             <div class="product-image">
-                <div class="view hm-zoom z-depth-2" style="cursor: pointer">
-                    <img [src]="['http://10.39.1.140/imagenes/' + product.imagenProductoList[0].imagen]" [alt]="" width="100%" class="img-fluid rounded">
-                </div>
+
                 <div class="" style="margin-top:15px">
                     <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
-                                <h6 class="my-0">Paquete</h6>
+                                <h6 class="my-0">Costo total del paquete</h6>
                             </div>
-                            <span class="text-muted" style="color:crimson !important">100</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0">Categor&iacute;a</h6>
-                            </div>
-                            <span class="text-muted" style="color:crimson !important">{{product.idTipoProducto.nombre}}</span>
+                            <span class="text-muted" style="color:crimson !important">{{product.total | currency:'COP $':true:'1.0-2'}}</span>
                         </li>
                     </ul>
                     <button class="btn btn-primary fa fa-shopping-cart" container="body" (click)="addToCart(product)">  Agregar al carrito</button>
@@ -38,16 +26,66 @@
                 <table class="table" cellspacing="0" style="max-height: 28px">
                     <tbody>
                         <tr>
-                            <th scope="row">Nombre</th>
-                            <td>{{product.nombreProducto}}</td>
+                            <th></th>
+                            <td>
+                                <div>
+                                    <img src="http://10.39.1.140/imagenes/logo_avion.jpg" height="50%" width="50%">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Producto</th>
+                            <td>Transporte</td>
                         </tr>
                         <tr>
                             <th scope="row">Descripci&oacute;n</th>
-                            <td>{{product.descripcion}}</td>
+                            <td>{{['Localidad '+product.boleteriaDTO != undefined ? product.boleteriaDTO.localidad : '' ]}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Categor&iacute;a</th>
-                            <td>{{product.idTipoProducto.nombre}}</td>
+                            <th scope="row">Costo</th>
+                            <td>{{[product.boleteriaDTO.valor | currency:'COP $':true:'1.0-2']}}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <div>
+                                    <img [src]="['http://10.39.1.140/imagenes/'+imagenProducto]" height="50%" width="50%">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Producto</th>
+                            <td>Evento Deportivo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Descripci&oacute;n</th>
+                            <td>{{['Localidad '+product.boleteriaDTO.localidad]}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Costo</th>
+                            <td>{{[product.boleteriaDTO.valor | currency:'COP $']}}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <div style="width: 300px; height: 300px">
+                                    <slideshow [imageUrls]="imageSources"></slideshow>
+                                    <!-- <carousel [sources]="imageSources" [config]="config"></carousel>-->
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Producto</th>
+                            <td>Hospedaje</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Descripci&oacute;n</th>
+                            <td>{{['El hospedaje sera en la ciudad de '+product.itinerarioDTOlist[0].idHospedaje.idCiudad.nombre +' en un hotel '+product.itinerarioDTOlist[0].idHospedaje.estrellas+ ' estrellas, en una habitacion del tipo '+product.itinerarioDTOlist[0].idHospedaje.habitacionList[0].idTipoHabitacion.tipo+'.
+                                Mas especificamente la No. '+product.itinerarioDTOlist[0].idHospedaje.habitacionList[0].numero]}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Costo</th>
+                            <td>{{[product.itinerarioDTOlist[0].idHospedaje.habitacionList[0].tarifaHospedajeDTO.precio | currency:'COP $':true:'1.0-2']}}</td>
                         </tr>
                     </tbody>
                 </table>

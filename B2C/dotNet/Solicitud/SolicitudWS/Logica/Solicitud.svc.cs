@@ -8,12 +8,12 @@ namespace SolicitudWS
     {
         private SolicitudDAO solDAO = new SolicitudDAO();
 
-        public ResponseData ListarSolicitudes(int idSolicitud)
+        public ResponseData ListarSolicitudes(String idSolicitud)
         {
             return this.solDAO.listarSolicitudes(idSolicitud);
         }
 
-        public void CancelarSolicitud(int idSolicitud)
+        public void CancelarSolicitud(String idSolicitud)
         {
             this.solDAO.cancelarSolicitud(idSolicitud);
         }

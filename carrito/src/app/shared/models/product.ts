@@ -95,5 +95,4 @@ export class Product{
     }
   ];  
   nombreProducto: string;
-  precio:number;
 }

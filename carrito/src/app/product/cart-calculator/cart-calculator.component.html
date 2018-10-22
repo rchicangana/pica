@@ -5,14 +5,14 @@
 <ul class="list-group mb-3">
     <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of products">
         <div>
-            <h6 class="my-0">{{product.nombreProducto}}</h6>
+            <h6 class="my-0">{{product.nombre}}</h6>
         </div>
-        <span class="text-muted">${{product.precioe}}</span>
+        <span class="text-muted">${{[product.total | currency:'COP $':true:'1.0-2']}}</span>
     </li>
     <hr>
     <li class="list-group-item d-flex justify-content-between">
         <span>Total (COP)</span>
-        <strong>${{totalValue}}</strong>
+        <strong>${{[totalValue | currency:'COP $':true:'1.0-2']}}</strong>
     </li>
     <a class="btn btn-primary" [routerLink]="['/products/all-products']">Continuar Comprando</a>
     <a class="btn btn-default" [routerLink]="['/checkouts']">Realizar Pago</a>
