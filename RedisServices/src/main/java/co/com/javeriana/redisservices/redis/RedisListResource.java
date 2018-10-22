@@ -10,11 +10,14 @@ import co.com.javeriana.redisservices.redis.dto.ListDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -22,6 +25,8 @@ import redis.clients.jedis.Jedis;
  * @author rchicangana
  */
 @Path("listas")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class RedisListResource {
     
     @Inject

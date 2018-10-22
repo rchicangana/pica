@@ -44,8 +44,11 @@ public class UsuarioLogica {
                 usuario = TransformacionDozer.transformar(entrada, Usuario.class);
                 usuarioDAO.insert(usuario);
                 //creamos el usuario en ldap
-                ldapLogica.guardarUsuarioLdap(entrada);
-                salida.setCodigo(ConstantesComunes.Resultado.OK.name());
+                if(ldapLogica.guardarUsuarioLdap(entrada)){
+                    salida.setCodigo(ConstantesComunes.Resultado.OK.name());
+                } else {
+                    throw  new RuntimeException("Error al Crear usuario en ldap");
+                } 
                 
             } catch (Exception e) {
                 salida.setCodigo(ConstantesComunes.Resultado.ERROR.name());

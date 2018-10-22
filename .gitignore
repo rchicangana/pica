@@ -1,3 +1,5 @@
-/RedisServices/target/
-/OMS/ProductService/target/
-/Seguridad/ServiciosAutenticacion/target/
+RedisServices/target/
+OMS/ProductService/target/
+Seguridad/ServiciosAutenticacion/target/
+ClienteRedisServices/target/
+Seguridad/JwtGenerator/target/
