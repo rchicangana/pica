@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <th scope="row">Descripci&oacute;n</th>
-                            <td>{{['Localidad '+product.boleteriaDTO.localidad]}}</td>
+                            <td>{{['Localidad '+product.boleteriaDTO != undefined ? product.boleteriaDTO.localidad : '' ]}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Costo</th>

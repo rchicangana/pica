@@ -40,7 +40,7 @@
                                 <!--Card-->
                                 <div class="card card-cascade wider">
                                     <!--Card image-->
-                                    <a [routerLink]="['/products/product', product.idProducto, product.imagenProductoList[0].imagen]">
+                                    <a [routerLink]="['/products/product', product.idProducto, product.imagenProductoList[0].imagen, product.nombreProducto]">
                                         <div class="view overlay hm-white-slight">
                                             <img [src]="['http://10.39.1.140/imagenes/' + product.imagenProductoList[0].imagen]" class="img-fluid" alt="" width="360px" height="640px">
                                             <a>

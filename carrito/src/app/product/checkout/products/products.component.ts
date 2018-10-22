@@ -18,8 +18,8 @@ export class ProductsComponent implements OnInit {
     this.checkoutProducts = products;
 
     products.forEach(product => {
-      console.log("Checkout", product.boleteriaDTO.valor);
-      this.totalPrice += product.boleteriaDTO.valor.valueOf();
+      console.log("Checkout", product.total);
+      this.totalPrice += product.total.valueOf();
     });
   }
 

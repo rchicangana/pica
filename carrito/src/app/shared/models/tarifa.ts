@@ -98,4 +98,6 @@ export class Tarifa{
         }
     ];
     total:Number;
+    imagen:String;
+    nombre: String;
  }

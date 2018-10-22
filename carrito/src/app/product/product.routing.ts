@@ -31,7 +31,7 @@ export const ProductRoutes: Routes = [
         loadChildren: "./checkout/checkout.module#CheckoutModule"
       },
       {
-        path: "product/:id/:imagen",
+        path: "product/:id/:imagen/:nombre",
         component: ProductDetailComponent
       }
     ]

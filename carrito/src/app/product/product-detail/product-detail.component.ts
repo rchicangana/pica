@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   public imageSources: string[] = [];
   public imagenProducto: string;
+  public nombreProducto: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       const id = params["id"]; 
       const imagen = params["imagen"];
+      const nombre = params["nombre"];
       this.imagenProducto = imagen;
+      this.nombreProducto = nombre;
       this.getProductDetail(id);
     });
   }
@@ -46,7 +49,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
             for (let item of this.product.itinerarioDTOlist[0].idHospedaje.habitacionList[0].imagenHabitacionList){
               this.imageSources.push("http://10.39.1.140/imagenes/"+item.imagen);
             }
-            //this.product.precio = 100;
+            this.product.nombre = this.nombreProducto;
+            this.product.imagen = this.imagenProducto;
           }
       },
       error => {
