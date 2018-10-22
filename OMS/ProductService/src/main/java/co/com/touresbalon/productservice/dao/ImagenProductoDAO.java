@@ -28,6 +28,12 @@ public class ImagenProductoDAO {
                 .getResultList();
     }
     
+    public List<ImagenProducto> findAllPrincipal(Long idProducto){
+        return em.createNamedQuery("ImagenProducto.findByAllbyIdProductoPrincipal")
+                .setParameter("idProducto", idProducto)
+                .getResultList();
+    }
+    
     public ImagenProducto findByID(Long id){
         return em.find(ImagenProducto.class, id);
     }

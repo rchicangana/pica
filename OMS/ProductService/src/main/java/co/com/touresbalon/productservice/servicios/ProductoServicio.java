@@ -59,5 +59,17 @@ public class ProductoServicio {
     public MensajeDTO buscar(@PathParam("inicio") Integer inicio, @PathParam("fin") Integer fin) {
         return productoLogica.buscarProdcuto(inicio, fin);
     }
+    
+    @GET
+    @Path("topFive")
+    public MensajeDTO getTopFive(){
+        return productoLogica.getTopFive();
+    }
+    
+    @GET
+    @Path("topFiveProducto/{producto}")
+    public MensajeDTO getTopFiveProducto(@PathParam("producto") Long idProducto){
+        return productoLogica.getTopFiveProducto(idProducto);
+    }
 
 }
