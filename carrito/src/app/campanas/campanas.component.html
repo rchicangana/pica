@@ -1,0 +1,72 @@
+<!--
+<br>
+<div class="container">
+    <div class="row" *ngFor="let campana of campanas">
+        <div class="col-sm-8">
+          <div class="row">
+          <div class="product-image">
+              <div class="view hm-zoom z-depth-2" style="cursor: pointer">
+                  <img src="{{campana.producto.imagenProductos.imagen}}" alt="{{campana.producto.imagenProductos.imagen}}" width="100%" class="img-fluid rounded">
+              </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="product-detail">
+                <h5 class="product-head">Detalles del paquete</h5>
+                <table class="table" cellspacing="0" style="max-height: 28px">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Campaña</th>
+                            <td>{{campana.nombreCampanna}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Producto</th>
+                            <td>{{campana.producto.nombreProducto}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fecha</th>
+                            <td>{{campana.fechaCampanna}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<h1 class="animated fadeIn">CAMPAÑAS</h1>
+
+<hr>
+
+<div class="card-columns">
+    <div class="card animated fadeIn fast" *ngFor="let campana of campanas; let i = index">
+        <img class="card-img-top" src="http://e-oaxaca.com/sites/default/files/styles/large/public/copa_del_mundo.jpg?itok=Ke_taZUU" alt="{{campana.producto.imagenProductos.imagen}}">
+        <div class="card-body">
+            <h5 class="card-title">{{campana.nombreCampanna}}</h5>
+            <p class="card-text">{{campana.producto.nombreProducto}}</p>
+            <!-- <button (click) = "verHeroe(i)"
+            type="button" class="btn btn-outline-primary btn-block">
+          </button> -->
+            <a [routerLink]="['/products/product', campana.producto.idProducto]" routerLinkActive="router-link-active">Ver Mas...</a>
+
+
+
+
+
+<!-- <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary"> Ver Mas Link...</a> -->
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
