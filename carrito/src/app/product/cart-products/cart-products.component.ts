@@ -1,13 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../../shared/models/product";
+import { Tarifa } from "../../shared/models/tarifa";
 import { ProductService } from "../../shared/services/product.service";
+
 @Component({
   selector: "app-cart-products",
   templateUrl: "./cart-products.component.html",
   styleUrls: ["./cart-products.component.scss"]
 })
 export class CartProductsComponent implements OnInit {
-  cartProducts: Product[];
+  cartProducts: Tarifa[];
   showDataNotFound = true;
 
   // Not Found Message
@@ -20,8 +21,8 @@ export class CartProductsComponent implements OnInit {
     this.getCartProduct();
   }
 
-  removeCartProduct(product: Product) {
-    this.productService.removeLocalCartProduct(product);
+  removeCartProduct(tarifa: Tarifa) {
+    this.productService.removeLocalCartProduct(tarifa);
 
     // Recalling
     this.getCartProduct();

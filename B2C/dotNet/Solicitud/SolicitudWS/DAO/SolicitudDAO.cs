@@ -31,14 +31,14 @@ namespace SolicitudWS.DAO
             return respuesta;
         }
 
-        public ResponseData listarSolicitudes(int idSolicitud)
+        public ResponseData listarSolicitudes(string idSolicitud)
         {
             ResponseData respuesta = new ResponseData();
             List<SOLICITUD> listadoSolicitudes = new List<SOLICITUD>();
             try
             {
                 listadoSolicitudes = (from sol in this.context.SOLICITUD
-                                      where sol.NO_SOLICITUD == idSolicitud
+                                      where sol.NO_SOLICITUD == Int32.Parse(idSolicitud)
                                 select sol).ToList();
 
                 listadoSolicitudes = this.context.SOLICITUD.ToList();
@@ -52,10 +52,10 @@ namespace SolicitudWS.DAO
             return respuesta;
         }
 
-        public void cancelarSolicitud(int idSolicitud)
+        public void cancelarSolicitud(string idSolicitud)
         {
             var consulta = (from sol in this.context.SOLICITUD
-                            where sol.NO_SOLICITUD == idSolicitud
+                            where sol.NO_SOLICITUD == Int32.Parse(idSolicitud)
                             select sol).First();
             consulta.ID_ESTADO_SOLICITUD = 2;
             this.context.SaveChanges();

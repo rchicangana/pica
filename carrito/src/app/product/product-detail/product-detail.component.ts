@@ -4,6 +4,7 @@ import { Product } from "../../shared/models/product";
 import { Respuesta } from "../../shared/models/respuesta";
 import { ProductService } from "../../shared/services/product.service";
 import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
+import { Tarifa } from "../../shared/models/tarifa";
 
 @Component({
   selector: "app-product-detail",
@@ -12,19 +13,24 @@ import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   private sub: any;
-  product: Product;
+  product: Tarifa;
+
+  public imageSources: string[] = [];
+  public imagenProducto: string;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private spinnerService: LoaderSpinnerService
   ) {
-    this.product = new Product();
+    this.product = new Tarifa();
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params["id"]; // (+) converts string 'id' to a number
+      const id = params["id"]; 
+      const imagen = params["imagen"];
+      this.imagenProducto = imagen;
       this.getProductDetail(id);
     });
   }
@@ -36,12 +42,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       data => {
           //this.product = <Product> data.productoPorIdResult;
           if((<Respuesta>data).codigo=="OK"){
-            this.product = <Product> (<Respuesta>data).object;
-            this.product.precio = 100;
+            this.product = <Tarifa> (<Respuesta>data).object;
+            for (let item of this.product.itinerarioDTOlist[0].idHospedaje.habitacionList[0].imagenHabitacionList){
+              this.imageSources.push("http://10.39.1.140/imagenes/"+item.imagen);
+            }
+            //this.product.precio = 100;
           }
       },
       error => {
       });
+
+ 
   }
 
   ngOnDestroy() {

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ToastOptions, ToastyService, ToastyConfig } from "ng2-toasty";
 import { Product } from "../models/product";
+import { Tarifa } from "../models/tarifa";
 import { AuthService } from "./auth.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -10,6 +11,7 @@ export class ProductService {
   product: Product;
   //apiUrl :string = "./Usuario.svc/Usuario";
   apiUrl :string = "ProductService/services/producto";
+  apiUrl2 :string = "ProductService/services/tarifa";
   // favouriteProducts
   //favouriteProducts: AngularFireList<FavouriteProduct>;
   //cartProducts: AngularFireList<FavouriteProduct>;
@@ -52,7 +54,7 @@ export class ProductService {
     //return this.product;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
     //return this.http.get(this.apiUrl+'/productos/buscar/'+key, { headers });
-    return this.http.get(this.apiUrl+'/buscarProducto/'+key, { headers });
+    return this.http.get(this.apiUrl2+'/consultar/'+key, { headers });
   }
 
   updateProduct(data: Product) {
@@ -190,11 +192,11 @@ export class ProductService {
   }
 
   // Removing cart from local
-  removeLocalCartProduct(product: Product) {
-    const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
+  removeLocalCartProduct(product: Tarifa) {
+    const products: Tarifa[] = JSON.parse(localStorage.getItem("avct_item"));
 
     for (let i = 0; i < products.length; i++) {
-      if (products[i].idProducto === product.idProducto) {
+      if (products[i].boleteriaDTO.productoId === product.boleteriaDTO.productoId) {
         products.splice(i, 1);
         break;
       }
@@ -206,8 +208,8 @@ export class ProductService {
   }
 
   // Fetching Locat CartsProducts
-  getLocalCartProducts(): Product[] {
-    const products: Product[] =
+  getLocalCartProducts(): Tarifa[] {
+    const products: Tarifa[] =
       JSON.parse(localStorage.getItem("avct_item")) || [];
 
     return products;
