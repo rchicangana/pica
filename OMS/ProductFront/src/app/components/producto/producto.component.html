@@ -1,0 +1,35 @@
+<div class="contenido col-md-12 panelServicio">
+    <h3 id="tituloPaginaActual" class="titulo-linea">DEFINICION DE PRODUCTOS</h3>
+    <!--Fomulario para agregar una nueva empresa-->
+    <div class="region region-content">
+        <div id="block-system-main" class="block block-system">
+            <div class="panel-body">
+                <div class="panel panelPrincipal animated fadeIn fast" *ngIf="!panelEditar">
+                    <div class="btn-group col-sm-2 pull-right m-3">
+                        <a href="#" (click)="agregar()" class="btn btn-sm  btn-outline-primary">Agregar</a>
+                    </div>
+
+                    <table class="table table-md table-bordered table-hover small">
+                        <thead class="badge-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of elementos.object">
+                                <th scope="row">{{item.idProducto}}</th>
+                                <td>{{item.nombreProducto}}</td>
+                                <td>{{item.descripcion}}</td>
+                                <td><i class="fa fa-pencil-square-o"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
