@@ -59,6 +59,11 @@ public class ProductoDAO {
                 .getResultList();
     }
     
+    public Long countAll() {
+        return (Long)em.createNamedQuery("Producto.countAll")
+                .getSingleResult();
+    }
+    
     /**
      * 
      * @param entidad

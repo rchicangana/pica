@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { ProductoComponent } from './components/producto/producto.component';
@@ -17,8 +19,10 @@ import { ROUTES } from './app.routes';
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     RouterModule.forRoot( ROUTES, {useHash: true} )
   ],
   providers: [],

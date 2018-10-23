@@ -21,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
+    , @NamedQuery(name = "Producto.countAll", query = "SELECT count(p) FROM Producto p")
     , @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto")
     , @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE upper(p.nombreProducto) like upper(:nombreProducto)")
     , @NamedQuery(name = "Producto.findByFechaSalida", query = "SELECT p FROM Producto p WHERE p.fechaSalida = :fechaSalida")
@@ -49,7 +51,8 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_PRODUCTO")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="SEQ_PRODCUTO_ID_GET", sequenceName="SEQ_PRODUCTO_ID_PRODUCTO", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PRODCUTO_ID_GET")
     private Long idProducto;
     @Size(max = 200)
     @Column(name = "NOMBRE_PRODUCTO")

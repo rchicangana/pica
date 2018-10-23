@@ -15,6 +15,8 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripcion</th>
+                                <th scope="col">Fecha salida</th>
+                                <th scope="col">Fecha regreso</th>
                                 <th scope="col">Editar</th>
                             </tr>
                         </thead>
@@ -23,11 +25,75 @@
                                 <th scope="row">{{item.idProducto}}</th>
                                 <td>{{item.nombreProducto}}</td>
                                 <td>{{item.descripcion}}</td>
-                                <td><i class="fa fa-pencil-square-o"></i></td>
+                                <td>{{item.fechaSalida}}</td>
+                                <td>{{item.fechaLlegada}}</td>
+                                <td><i class="fa fa-pencil-square-o" (click)="editar(item)"></i></td>
                             </tr>
                         </tbody>
                     </table>
+                    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage($event)"></ngb-pagination>
 
+
+
+                </div>
+                <div class="panel panelPrincipal animated fadeIn fast" *ngIf="panelEditar">
+                    <form id="formreg" class="m-4" role="form" novalidate>
+                        <div class="form-group row small">
+
+                            <label for="idProducto" class="col-sm-4 col-form-label col-form-label-sm">Identificador</label>
+                            <div class="col-sm-8">
+                                <div [ngClass]="{'has-error': errores.idProducto }">
+                                    <input type="text" class="form-control form-control-sm" disabled id="idProducto" name="idProducto" [(ngModel)]="datosFormulario.idProducto" required>
+                                    <span class="control-label" ng-show="errores.idProducto">{{errores.idProducto}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
+                            <label for="nombreProducto" class="col-sm-4 col-form-label col-form-label-sm">Nombre</label>
+                            <div class="col-sm-8">
+                                <div [ngClass]="{'has-error': errores.nombreProducto }">
+                                    <input type="text" class="form-control form-control-sm" id="nombreProducto" name="nombreProducto" [(ngModel)]="datosFormulario.nombreProducto" required>
+                                    <span class="control-label" ng-show="errores.nombreProducto">{{errores.nombreProducto}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
+                            <label for="descripcion" class="col-sm-4 col-form-label col-form-label-sm">Descripcion</label>
+                            <div class="col-sm-8">
+                                <div [ngClass]="{'has-error': errores.descripcion }">
+                                    <textarea class="form-control form-control-sm" id="descripcion" name="descripcion" [(ngModel)]="datosFormulario.descripcion" required></textarea>
+                                    <span class="control-label" ng-show="errores.descripcion">{{errores.descripcion}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
+                            <label for="fechaSalida" class="col-sm-4 col-form-label col-form-label-sm">Fecha de Salida</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div [ngClass]="{'has-error': errores.fechaSalida }">
+                                            <input class="form-control" format="dd/MM/yyyy" placeholder="dd/mm/yyyy" name="dp" [(ngModel)]="datosFormulario.fechaSalida" ngbDatepicker #d="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="control-label" ng-show="errores.fechaSalida">{{errores.fechaSalida}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group float-lg-right m-5" role="group">
+                            <button class="btn btn-md btn btn-outline-success " type="button" (click)="guardar()">{{nuevoRegistro ? 'Guardar' : 'Editar' }}</button>
+                            <button class="btn btn-md btn btn-outline-danger " type="button" (click)="cancelar()">Cancelar</button>
+                        </div>
+
+
+
+                    </form>
                 </div>
             </div>
         </div>

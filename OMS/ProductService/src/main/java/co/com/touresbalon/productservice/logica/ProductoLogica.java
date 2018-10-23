@@ -98,6 +98,9 @@ public class ProductoLogica {
             
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
             salida.setObject(TransformacionDozer.transformar(productoDAO.finByProductos(inicio, fin), ProductoDTO.class));
+            if(inicio==0){
+                salida.setCantidad(productoDAO.countAll());
+            }
             
         } catch (Exception e) {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
