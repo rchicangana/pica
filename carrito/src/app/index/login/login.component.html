@@ -55,7 +55,7 @@
                         </div>
                         <div class="md-form form-sm">
                             <i class="fa fa-envelope prefix"></i>
-                            <input mdbActive type="email" id="emailId" class="form-control" name="emailId" [(ngModel)]="createUser.emailId" mdbInputValidate [email]="true" autocomplete="email">
+                            <input mdbActive type="email" id="emailId" class="form-control" name="emailId" [(ngModel)]="createUser.login" mdbInputValidate [email]="true" autocomplete="email">
                             <label for="emailId">Tu correo</label>
                         </div>
                         <div class="md-form form-sm">
@@ -64,13 +64,13 @@
                             <label for="password">Tu contrase&ntilde;a</label>
                         </div>
                         <div class="md-form form-sm">
-                            <i class="fa fa-envelope prefix"></i>
-                            <input mdbActive type="text" id="nombres" class="form-control" name="nombres" [(ngModel)]="createUser.nombres" mdbInputValidate [email]="true" autocomplete="email">
+                            <i class="fa fa-user prefix"></i>
+                            <input mdbActive type="text" id="nombres" class="form-control" name="nombres" [(ngModel)]="createUser.nombres">
                             <label for="nombres">Tu Nombre</label>
                         </div>
                         <div class="md-form form-sm">
-                            <i class="fa fa-envelope prefix"></i>
-                            <input mdbActive type="text" id="apellidos" class="form-control" name="apellidos" [(ngModel)]="createUser.apellidos" mdbInputValidate [email]="true" autocomplete="email">
+                            <i class="fa fa-user prefix"></i>
+                            <input mdbActive type="text" id="apellidos" class="form-control" name="apellidos" [(ngModel)]="createUser.apellidos">
                             <label for="apellidos">Tu Apellido</label>
                         </div>
                         <div class="text-center mt-2">

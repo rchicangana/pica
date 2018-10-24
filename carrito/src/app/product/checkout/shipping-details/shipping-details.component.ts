@@ -1,4 +1,4 @@
-import { UserDetail, Usuario } from "./../../../shared/models/user";
+import { Usuario } from "./../../../shared/models/user";
 import { AuthService } from "./../../../shared/services/auth.service";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "../../../../../node_modules/@angular/forms";
@@ -11,10 +11,7 @@ import { NgForm } from "../../../../../node_modules/@angular/forms";
 export class ShippingDetailsComponent implements OnInit {
   userDetails: Usuario;
 
-  userDetail: UserDetail;
-
   constructor(private authService: AuthService) {
-    this.userDetail = new UserDetail();
     this.userDetails = authService.getLoggedInUser();
   }
 
