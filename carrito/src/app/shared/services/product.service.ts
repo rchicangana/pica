@@ -9,12 +9,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ProductService {
   products: Product[];
   product: Product;
-  //apiUrl :string = "./Usuario.svc/Usuario";
-  apiUrl :string = "ProductService/services/producto";
-  apiUrl2 :string = "ProductService/services/tarifa";
-  // favouriteProducts
-  //favouriteProducts: AngularFireList<FavouriteProduct>;
-  //cartProducts: AngularFireList<FavouriteProduct>;
+  
+  //apiUrl :string = "ProductService/services/producto";
+  //apiUrl2 :string = "ProductService/services/tarifa";
+  apiUrl :string = "ServiciosESB/Productos";
+  apiUrl2 :string = "ServiciosESB/Tarifas";
+  //apiUrl :string = "http://10.39.1.140/ProductService/services/producto";
+  //apiUrl2 :string = "http://10.39.1.140/ProductService/services/tarifa";
 
   // NavbarCounts
   navbarCartCount = 0;
@@ -41,8 +42,8 @@ export class ProductService {
 
   getProducts() {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    //return this.http.get(this.apiUrl+'/productos', { headers });
-    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
+    //return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
+    return this.http.get(this.apiUrl+'/Buscar/0/10', { headers });
   }
 
   createProduct(data: Product) {
@@ -54,7 +55,7 @@ export class ProductService {
     //return this.product;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
     //return this.http.get(this.apiUrl+'/productos/buscar/'+key, { headers });
-    return this.http.get(this.apiUrl2+'/consultar/'+key, { headers });
+    return this.http.get(this.apiUrl2+'/Consultar/'+key, { headers });
   }
 
   updateProduct(data: Product) {
@@ -165,8 +166,8 @@ export class ProductService {
   }
 
   // Adding new Product to cart db if  else localStorage
-  addToCart(data: Product): void {
-    let a: Product[];
+  addToCart(data: Tarifa): void {
+    let a: Tarifa[];
 
     a = JSON.parse(localStorage.getItem("avct_item")) || [];
 

@@ -9,6 +9,7 @@ export class AuthService {
   //user: Observable<firebase.User>;
   userDetails: Usuario = null;
   apiUrl :string = "login/Logica/Usuario.svc/Usuario";
+  //apiUrl :string = "http://10.39.1.99/login/Logica/Usuario.svc/Usuario";
 
   constructor(private router: Router, private http: HttpClient) {
     //this.user = firebaseAuth.authState;
