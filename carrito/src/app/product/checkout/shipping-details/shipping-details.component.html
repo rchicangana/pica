@@ -5,14 +5,14 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Nombre</label>
-                    <input type="text" class="form-control" id="firstName" [(ngModel)]="userDetail.firstName" name="firstName" required>
+                    <input type="text" class="form-control" id="firstName" [(ngModel)]="userDetail.nombres" name="firstName" required>
                     <div class="invalid-feedback">
                         Se requiere poner el nombre.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Appelidos</label>
-                    <input type="text" class="form-control" id="lastName" [(ngModel)]="userDetail.lastName" name="lastName" required>
+                    <input type="text" class="form-control" id="lastName" [(ngModel)]="userDetail.apellidos" name="lastName" required>
                     <div class="invalid-feedback">
                         El apellido es requerido.
                     </div>
@@ -25,7 +25,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
                     </div>
-                    <input type="text" class="form-control" id="username" [(ngModel)]="userDetails.login" name="userName" [disabled]="true">
+                    <input type="text" class="form-control" id="username" [(ngModel)]="userDetail.login" name="userName" [disabled]="true">
                     <div class="invalid-feedback" style="width: 100%;">
                         El nombre de usuario es requerido.
                     </div>
@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="email">Correo
         </label>
-                <input type="email" class="form-control" id="email" [(ngModel)]="userDetails.login" name="email" [disabled]="true">
+                <input type="email" class="form-control" id="email" [(ngModel)]="userDetail.login" name="email" [disabled]="true">
                 <div class="invalid-feedback">
                     Por favor ingrese un correo v&aacute;lido.
                 </div>
@@ -43,7 +43,7 @@
 
             <div class="mb-3">
                 <label for="address">Direcci&oacute;n F&iacute;sica</label>
-                <input type="text" class="form-control" id="address" placeholder="1234 Main St" [(ngModel)]="userDetail.address1" name="address1" required>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" [(ngModel)]="userDetail.direccion" name="address1" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su direcci&oacute;n f&iacute;sica.
                 </div>
@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-md-5 mb-3">
                     <label for="country">Pa&iacute;s</label>
-                    <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country" name="country">
+                    <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.pais" name="country">
             <option value="">Seleccione...</option>
             <option>Colombia</option>
           </select>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="state">Departamento</label>
-                    <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.state" name="state" required>
+                    <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.departamento" name="state" required>
             <option value="">Seleccione...</option>
             <option>Cundinamarca</option>
           </select>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="state">Ciudad</label>
-                    <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.state" name="state" required>
+                    <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.ciudad" name="state" required>
             <option value="">Seleccione...</option>
             <option>Bogota</option>
           </select>

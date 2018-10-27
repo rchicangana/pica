@@ -9,10 +9,10 @@ import { NgForm } from "../../../../../node_modules/@angular/forms";
   styleUrls: ["./shipping-details.component.scss"]
 })
 export class ShippingDetailsComponent implements OnInit {
-  userDetails: Usuario;
+  userDetail: Usuario;
 
   constructor(private authService: AuthService) {
-    this.userDetails = authService.getLoggedInUser();
+    this.userDetail = authService.getLoggedInUser();
   }
 
   ngOnInit() {}
@@ -21,7 +21,7 @@ export class ShippingDetailsComponent implements OnInit {
     const data = form.value;
 
     //data["emailId"] = this.userDetails.emailId;
-    data["userName"] = this.userDetails.login;
+    data["userName"] = this.userDetail.login;
 
     console.log("Data: ", data);
   }

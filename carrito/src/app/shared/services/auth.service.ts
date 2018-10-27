@@ -36,12 +36,7 @@ export class AuthService {
   createUserWithEmailAndPassword(usuario: Usuario) {
     let usuarioJson = JSON.stringify(usuario);   
     const headers = new HttpHeaders({'Content-Type': 'application/json'}); 
-    
-    this.usuarioOMS.nombre = usuario.nombres+' '+usuario.apellidos;
-    this.usuarioOMS.login = usuario.login;
-    this.usuarioOMS.email = usuario.login;
-    this.usuarioOMS.idEstadoUser.estado="Activo";
-    this.usuarioOMS.idEstadoUser.idEstadoUser=1;
+    this.usuarioOMS = new UsuarioOMS(usuario.nombres+' '+usuario.apellidos,usuario.login,usuario.login );
     this.userService.createUser(this.usuarioOMS);
 
     return this.http.post(this.apiUrl+'/crearusuario', usuarioJson, { headers });

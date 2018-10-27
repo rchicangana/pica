@@ -14,11 +14,48 @@ namespace SolicitudWS
     
     public partial class SOLICITUD
     {
-        public int? NO_SOLICITUD { get; set; }
-        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
-        public Nullable<System.DateTime> FECHA_VENCIMIENTO { get; set; }
-        public Nullable<decimal> VALOR_TOTAL { get; set; }
-        public Nullable<int> ID_ESTADO_SOLICITUD { get; set; }
-        public Nullable<int> ID_USUARIO { get; set; }
+        public long noOrden { get; set; }
+        public EstadoOrdenCompra estadoOrdenCompra { get; set; }
+        public string fechaCreacion { get; set; }
+        public string fechaVencimiento { get; set; }
+        public int numeroSolicitud { get; set; }
+        public double valorTotal { get; set; }
+        public List<DetalleOrdenCompra> detalleOrdenCompras { get; set; }
+
+        public class EstadoOrdenCompra
+        {
+            public int idEstadoOrdenCompra { get; set; }
+            public string estado { get; set; }
+        }
+
+        public class TipoProducto
+        {
+            public int idTipoProducto { get; set; }
+            public string nombre { get; set; }
+        }
+
+        public class ImagenProducto
+        {
+            public int idImagenProducto { get; set; }
+            public string imagen { get; set; }
+            public int esprincipal { get; set; }
+        }
+
+        public class Producto
+        {
+            public int idProducto { get; set; }
+            public TipoProducto tipoProducto { get; set; }
+            public string nombreProducto { get; set; }
+            public string fechaSalida { get; set; }
+            public string fechaLlegada { get; set; }
+            public List<ImagenProducto> imagenProductos { get; set; }
+        }
+
+        public class DetalleOrdenCompra
+        {
+            public int idDetalleOrden { get; set; }
+            public Producto producto { get; set; }
+            public double valor { get; set; }
+        }        
     }
 }
