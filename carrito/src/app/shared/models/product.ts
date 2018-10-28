@@ -96,3 +96,10 @@ export class Product{
   ];  
   nombreProducto: string;
 }
+
+export class Top5{  
+  cantidad:Number;
+  idProducto:Number;
+  nombre:String;
+  imagen:String;
+}

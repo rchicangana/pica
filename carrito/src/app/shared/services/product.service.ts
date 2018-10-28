@@ -14,6 +14,7 @@ export class ProductService {
   //apiUrl2 :string = "ProductService/services/tarifa";
   apiUrl :string = "ServiciosESB/Productos";
   apiUrl2 :string = "ServiciosESB/Tarifas";
+  apiUrl3 :string = "ProductService/services/producto";
   //apiUrl :string = "http://10.39.1.140/ProductService/services/producto";
   //apiUrl2 :string = "http://10.39.1.140/ProductService/services/tarifa";
 
@@ -51,21 +52,14 @@ export class ProductService {
   }
 
   getProductById(key: string) {
-    //this.product = this.db.object("product/" + key);
-    //return this.product;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    //return this.http.get(this.apiUrl+'/productos/buscar/'+key, { headers });
     return this.http.get(this.apiUrl2+'/Consultar/'+key, { headers });
   }
 
-  updateProduct(data: Product) {
-    //this.products.update(data.$key, data);
+  getTopFive(){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    return this.http.get(this.apiUrl3+'/topFive', { headers });
   }
-
-  deleteProduct(key: string) {
-    //this.products.remove(key);
-  }
-
   /*
    ----------  Favourite Product Function  ----------
   */

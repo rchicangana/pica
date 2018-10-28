@@ -48,10 +48,6 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  removeProduct(key: string) {
-    this.productService.deleteProduct(key);
-  }
-
   addFavourite(product: Product) {
     this.productService.addFavouriteProduct(product);
   }

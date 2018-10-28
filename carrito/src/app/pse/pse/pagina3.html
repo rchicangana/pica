@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Bancolombia - Pagos PSE</title>
+    
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1099.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);</script><link rel="shortcut icon" href="/bancolombia/pse/images/favicon.ico">
+    <meta charset="ISO-8859-1">
+    <meta content="es" http-equiv="Content-Language">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Todo1 Services">
+    <meta name="Copyright" content="(c) 2016  Todo1 Services. All rights reserved.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="0">
+  	<meta http-equiv="Last-Modified" content="0">
+  	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  	<meta http-equiv="Pragma" content="no-cache">
+	
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<link href="/bancolombia/pse/css/styles.css?v=77172" media="all" rel="stylesheet" type="text/css">
+<!--[if IE]>
+<link href="/bancolombia/pse/css/stylesIE.css" media="all" rel="stylesheet" type="text/css">
+<![end if]-->
+<link href="/bancolombia/pse/css/bootstrap.css" media="all" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="/bancolombia/pse/js/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="/bancolombia/pse/js/jquery.validate-1.11.1.js"></script>
+<script type="text/javascript" src="/bancolombia/pse/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/bancolombia/pse/js/bootstrap.js"></script>
+<script type="text/javascript" src="/bancolombia/pse/js/jqbrowser.js"></script>
+<script src="/bancolombia/pse/js/pt.loadImages-min.js"      	type="text/javascript"></script>
+
+<script language="JavaScript1.2" src="/bancolombia/pse/js/printPage.js"></script>
+<script language="JavaScript1.2" src="/bancolombia/pse/js/validar.js"></script>
+<script language="JavaScript1.2" src="/bancolombia/pse/js/F5OFF.js"></script>
+
+	<!--[if lt IE 8]>
+    <link href="/mua/css/bootstrap-ie7.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+	<![endif]-->
+<script>
+	function deshabilitarBotones(value){
+  		elementosFormu = $('#'+value+' input:button, :submit');
+  		elementosFormu.each(function () {
+        $(this).attr("disabled",true);
+  		});
+		}
+
+	function habilitarBotones(value){
+  		elementosFormu = $('#'+value+' input:button, :submit');
+  		elementosFormu.each(function () {
+        $(this).attr("disabled",false);
+  		});
+		}
+
+
+		function setearTamanioInput(value, name1){
+			var currentWidest = 0;
+				selectFormu = $('#'+value+' select');  
+				selectFormu.each(function () {
+					var name = this.name;
+					if($(this).width() > currentWidest) { currentWidest = $(this).width(); }
+				});
+				currentWidest = currentWidest + 5;
+				selectFormu.each(function () {
+						$(this).css({'width': currentWidest});
+				});
+				inputFormu = $('#'+value+' input:not(:button, :submit)');  
+								inputFormu = $('#'+value+' input:not(:button, :submit, :hidden)');  
+				inputFormu.each(function () {
+					var title = this.title;
+					if (title != "false")
+						$(this).css({'width': currentWidest});
+				});
+				textAreaFormu = $('#'+value+' textarea');  
+				textAreaFormu.each(function () {
+					var modificar = this.modificar;
+					if (modificar != "false")
+						$(this).css({'width': currentWidest});
+				});
+			}	
+	
+		var regexExprPse = {
+			onlyNumbersNeg: /[^0-9]/g 		
+		};
+		
+		function replaceDataMaskNumeric(idInputSource, idInputTarget, lastLength, maxLen){
+			replaceDataMask(idInputSource, idInputTarget, lastLength, maxLen, 'ONLY_NUM');
+		}
+		
+		function replaceDataMask(idInputSource, idInputTarget, lastLength, maxLen , tipoVal){
+			
+			inputSrc = document.getElementById(idInputSource);
+			inputTrg = document.getElementById(idInputTarget);
+			var newLength = inputSrc.value.length;
+			
+			if(newLength == 0){
+				lastLength = 0;
+				inputTrg.value = '';
+				return;
+			}
+			
+			if(newLength == maxLen && lastLength == maxLen){
+				return;
+			}
+			
+			if(lastLength < newLength){
+			 var lastCharacter = inputSrc.value.slice(-1) ;
+			 
+			 inputSrc.value = inputSrc.value.slice(0,-1);
+			 
+			 if(tipoVal == 'ONLY_NUM'){
+				 lastCharacter = replaceAllByRegex(lastCharacter, regexExprPse.onlyNumbersNeg);
+			 }
+			 
+		     if(lastCharacter != ''){
+		    	 inputSrc.value += '\u2022';  
+		    	 inputTrg.value +=  lastCharacter;
+		     }else{
+		    	 lastLength--;
+		     }
+			}else {
+				 inputTrg.value = inputTrg.value.slice(0, -1);
+			}
+		}
+		
+		function replaceAllByRegex(strSource, regexExpr){
+			return strSource.replace(regexExpr,'');
+		}
+</script>
+
+
+
+<STYLE type="text/css">
+.espacioSimple{	height:13px;}
+.espacioDoble{  height:26px;}
+.espacioTriple{	height:39px; vertical-align:bottom;}
+.subTitulo{font-size: 10pt; font-weight: bold;}
+</STYLE>
+
+<script>
+$(document).ready(
+	function() {
+		setTimeout(
+				function(){
+					window.location.hash="no-back-button";
+					window.location.hash="Again-No-back-button";
+					window.onhashchange=function()
+					{
+						if(window.location.hash!='#no-back-button'){
+							window.location.hash="no-back-button";
+						}
+					}
+	},1000);
+});
+</script>
+ 
+    <script language="javascript" src="/bancolombia/pse/js/fp_AA.js" ></script>
+    <script language="JavaScript" src="/bancolombia/pse/js/swfRSACookieFunc.js"></script>
+    <script language="JavaScript" type="text/JavaScript">
+
+  var clickOnX = true;
+  var allowPrompt = true;
+  var mPrefix = "Olvidaste ingresar tu ";
+  var mSuffix = "\nPor favor ingresa tu n\u00FAmero de documento";
+  var msgTamUser = "Por favor digita el usuario o documento de identificaci\u00F3n que tienes registrado en Bancolombia para ingresar al Bot\u00F3n de Pagos PSE.";
+  var msgNoLeftZero = "Ingresa tu Documento de Identidad sin ceros a la izquierda.";
+
+  var sNoValid = "Caracter inv\u00e1lido en ";
+
+  var bSuffix = ".\nIngresa nuevamente el dato.";
+
+  var bPrefix = "M\u00e1ximo caracteres: ";
+  var msgServerError = '';
+
+  function changeUserType() {
+    clearTimeout(timeoutId);
+    if (document.authenticationForm.userType.value == "Enterprise") {
+      clickOnX = false;
+      document.changeToEnterpriseForm.submit();
+    }
+  }
+
+  function sendForgetUser() {
+	    clearTimeout(timeoutId);
+	      clickOnX = false;
+	      document.forgetUserForm.submit();
+	  }
+  
+  function problemasParaConectarse() {
+	    clearTimeout(timeoutId);
+	      clickOnX = false;
+	      document.problemsForm.submit();
+  }
+  
+  function faq() {
+	    clearTimeout(timeoutId);
+	      clickOnX = false;
+	      document.faqForm.submit();
+}
+   
+  function policy() {
+	    clearTimeout(timeoutId);
+	      clickOnX = false;
+	      document.policyForm.submit();
+}
+  
+  function site_secure(){
+	    clearTimeout(timeoutId);
+	      clickOnX = false;
+	      document.securityForm.submit();
+}
+  
+  function terms() {
+	    clearTimeout(timeoutId);
+	      clickOnX = false;
+	      document.termsForm.submit();
+}
+  
+  
+  function Ventana(link,name,option){
+    name=window.open(link,name,option);
+    name.focus();
+  }
+
+  function warnBig(theField, s, len)
+  {	theField.focus();
+    alert("La " + s + " debe ser de m\u00E1ximo " + len + " d\u00EDgitos. Por favor rectifique e intente nuevamente.");
+    return false;
+  }
+
+  function warnSmall(theField, s, len)
+  {	theField.focus();
+    alert("La " + s + " debe ser de al menos " + len + " d\u00EDgitos. Por favor rectifique e intente nuevamente.");
+    return false;
+  }
+
+function warnEmpty(theField, s) {
+  theField.focus();
+	alert(mPrefix + s + mSuffix);
+	return false
+}
+
+function isNumericoAltern(field,focusField) {
+	var num = "0123456789";
+	var ok = true;
+	var temp;
+
+	for (var i=0; i<field.value.length; i++) {
+		temp = "" + field.value.substring(i, i+1);
+		if (num.indexOf(temp) == "-1")
+			ok = false;
+	}
+	if (!ok) {
+		focusField.focus();
+		focusField.select();
+   }
+   return ok;
+}
+
+function checkNumericoAltern(theField, focusField, s, emptyOK, len)	{
+	if ((emptyOK == true) && (isEmpty(theField.value))) return true;
+	if ((emptyOK == false) && (isEmpty(theField.value))) return warnEmpty(focusField, s);
+	if (theField.value.length > len) return warnBig(focusField, s, len);
+	else return true;
+}
+
+
+function checkEnter(event) {
+		var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+		if (keyCode == 13) {			
+		    submitFormPersonal();
+			return false;
+		}
+		return true;
+}
+
+
+  function submitFormPersonal() {
+    clearTimeout(timeoutId);
+    forma = document.authenticationForm;
+	post_fingerprints(forma); 
+    forma.PERSONAL_USER_ID.value=forma.userId.value;
+    var isSubmit=true;
+
+   
+    if (isEmpty(forma.PERSONAL_USER_ID.value)) {
+      forma.userId.focus();
+      alert(msgTamUser);
+      isSubmit=false;
+    }    
+    else
+  	if (forma.PERSONAL_USER_ID.value.length < 6) {
+  		clearUser();
+  		alert(msgTamUser);
+	    isSubmit=false;
+	} 
+  	else
+	if (forma.PERSONAL_USER_ID.value.length > 20) {
+		clearUser();
+		alert(msgTamUser);
+      	isSubmit=false;
+	}
+  	else
+		if (isNumericoPSE(forma.PERSONAL_USER_ID) && forma.userId.value.charAt(0)=='0') {
+	  		clearUser();
+			document.getElementById('summary').innerHTML = "<div class='alert alert-error' role='alert' id='contentError'>"+		
+			"		<div class='icon-error'> </div>"+
+			"		<div id='summary' class='alert-text'>"+
+			"				<h4>Error</h4>"+
+			"				<p>"+
+			"					"+msgNoLeftZero+
+			"				</p>"+
+			"		</div>"+
+			"</div>";
+	 		isSubmit=false;
+	  	}
+ 	else
+  	if (!isAlfaNumericoNoSpace(forma.userId,false)) {
+  		clearUser();
+  		alert(msgTamUser);
+  		isSubmit=false;
+  	}
+  	
+		if(isSubmit){
+			forma.okPersonal.disabled = true;
+			forma.cancel.disabled = true;
+			$("input[type=submit]").attr("disabled", "disabled");
+			$("input[type=button]").attr("disabled", "disabled");
+	        clickOnX = false;					
+	        forma.submit();
+		}
+		else{		
+			return isSubmit;
+		}
+  }
+
+  function runUnload() {
+    if (clickOnX) {
+      document.cancelByXForm.submit();
+      alert("Se cancelar\u00e1 su pago.");
+    }
+  }
+  
+  function clickCancel() {
+    clickOnX = false;
+
+    document.authenticationForm.okPersonal.disabled = true;
+    document.authenticationForm.cancel.disabled = true;
+    
+    return document.cancelByButton.submit();
+  }
+
+
+
+function clearUser()
+{	
+	document.authenticationForm.userId.style.display='block';
+	document.authenticationForm.userIdtmp.style.display='none';
+	document.authenticationForm.userIdtmp.value="";
+	document.authenticationForm.userId.focus();
+}
+</script>
+<script language="JavaScript">
+
+$(document).ready(function() {
+	  
+   var validator = $("#authenticationForm").bind("invalid-form.validate", function() {		    
+	   $("#summary").html("<div class='alert alert-error' role='alert' id='contentError'>"+		
+				"		<div class='icon-error'> </div>"+
+				"		<div id='summary' class='alert-text'>"+
+				"				<h4>Error</h4>"+
+				"				<p>"+
+				"					"+EMPTY_ERROR_MSG+
+				"				</p>"+
+				"		</div>"+
+				"</div>");
+	}).validate({
+	rules: {
+	errorContainer: $("#summary")
+	},
+	messages: {
+	},
+	submitHandler: function(authenticationForm) {
+		submitFormPersonal();
+		return true;
+	} 			 	
+	});
+   
+    $(window).bind("beforeunload", function() { 
+			if (clickOnX) {
+		  		var e = e || window.event;
+				var firefox = $.browser.firefox();
+				console.log("navegador firefox?"+firefox);
+				if (e && firefox) {
+					document.cancelByXForm.submit();
+			    }else{
+			    	document.cancelByXForm.submit();
+			    }
+				
+				
+			}
+     });
+    
+    $('head').append('<link href="/bancolombia/pse/css/styles.css" media="all" rel="stylesheet" type="text/css">');
+   
+});
+
+</script>
+
+<script type="text/javascript">
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+</script>
+
+</head> 
+  
+<body onLoad="document.authenticationForm.userId.focus();" onkeypress="checkEnter(event);">
+	<div id="wrapper">
+		<form id = "authenticationForm" AUTOCOMPLETE="off" name="authenticationForm" method="post" action="AuthenticationPSE.personal">
+	       	<input type="hidden" value="null" name="ValidationTAB"/>
+			<div class="container">
+				<header>
+					<img alt="FFI" src="/bancolombia/images/logo.png" width="163" height="38">
+					<p>Pagos PSE - Sucursal Virtual Personas</p>
+				</header>
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7">
+						<div class="login-info headerSpace">
+							<div class="col col-1">
+								<p class="info">
+									Fecha y hora actual: 
+								</p>
+							</div>
+							<div class="col col-2">
+								<p class="info">
+
+
+
+
+<script language="javascript" src="/bancolombia/pse/js/jquery.jclock-min.js" type="text/JavaScript"></script>
+
+ <script type="text/javascript">
+     $(function($) {
+         var optionsEST = {
+         am_pm: true,
+         timeNotation: '12h',
+         h_hour: "07:24:35",
+         h_date: "2018/10/24",
+         h_format: "$nombreDia$ $dia$ de $nombreMes$ de $anio$ $hhmmss$ $ampm$",
+         h_language: "es"
+        }
+     $('#jclock1').jclock(optionsEST);
+     });
+ </script>
+<span id="jclock1"></span></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-md-5">
+						<div class="client-name">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="container-fluid">
+						<div class="panel-heading">
+							<h3>Tienda Virtual o Recaudador:&nbsp; <b>EMPRESA DE TELECOMUNICACIONES DE BOGOTA S. A. E.S.P </b></h3>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row panel-body">
+					<div class="container-fluid">
+					<script>
+									if (msgServerError!='')
+							        	  document.write("<div class='alert alert-error' role='alert' id='contentError'>"+		
+															"		<div class='icon-error'> </div>"+
+															"		<div id='summary' class='alert-text'>"+
+															"				<h4>Error</h4>"+
+															"				<p>"+
+															"						"+msgServerError+
+															"				</p>"+
+															"		</div>"+
+															"</div>");
+									else
+								        document.write("<div id='summary' align='left'></div>");
+					</script>
+						<div class="col-md-4 col-sm-5 login-col">
+							<div class="login-container">
+								<div class="login-inst">
+									<p>
+										Selecciona que Tipo de Cliente eres, luego ingresa los datos solicitados y haz clic en &quot;Continuar&quot;.
+									</p>
+								</div>
+                          		<input type="hidden" name="tempUserID" value="*"/>
+                          		<input type="hidden" name="PERSONAL_USER_ID" value="*"/>
+								<div class="form-group login">
+									<div class="icon-help" data-toggle="tooltip" data-placement="right" title="Seleccione Persona o Empresa para continuar con el proceso de pago."> </div>
+									<label class="control-label" for="userId">
+										Tipo de Cliente
+									</label>
+									<select class="select form-control" name="userType" onChange="changeUserType();">
+										<option  value="Personal">
+											Persona
+										</option>
+										<option  value="Enterprise">
+											Empresa
+										</option>
+									</select>
+								</div>
+								<div id="bank-people">
+									<div class="form-group login">
+										<span class="icon-help" data-toggle="tooltip" data-placement="right" title="Ingrese el usuario que tiene registrado en la Sucursal Virtual Personas. Si no tiene un usuario asignado ingrese con su Documento de Identidad."> </span>
+										<label class="control-label" for="userId">
+											Ingrese su Usuario
+										</label>
+										<input style="display:none" name="fakeUserID" type="password" size="16" maxlength="20" autocomplete="off" />
+										<input id="userId" name="userId" tabindex="1" class="form-control input-login" onkeypress="checkKey(event)" 
+											onchange="trim(document.loginUserForm.username)" type="text" value="" maxlength="20" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+											onfocus="this.value='';authenticationForm.PERSONAL_USER_ID.value=this.value" 
+											onblur="authenticationForm.PERSONAL_USER_ID.value=this.value;"/>
+											<input style="display:none" name="userIdtmp" type="password" size="16" maxlength="20" onclick='clearUser();' onfocus='clearUser();' autocomplete="off"/>
+										<span class="icon-user"> </span>
+									</div>
+									<div class="btn-center btn-container">
+										<input type="button" name="cancel" value="Cancelar" class="btn btn-secondary" onClick="clickCancel();" tabindex="4"/>
+										<input type="submit" name="okPersonal" value="Continuar" class="btn btn-main" tabindex="3"/>
+									</div>
+									<div class="error-login">
+											<p><a href="#" onclick="sendForgetUser(); return false;">
+											&iquest;Olvidaste tu usuario?
+											</a></p>
+											<p><a onclick="problemasParaConectarse();">
+											&iquest;Problemas para conectarte?
+											</a></p>
+									</div>
+								</div>
+	                        	<input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-7 banner">
+								<div class="embed-container-personal" id="banner-persona">
+									<iframe class="iframe-personal-responsive" src="/bancolombia/images/campaign-personal-pse.html" frameborder="0" scrolling="no" width="725" height="337"></iframe>
+								</div>
+						</div>
+					</div>
+				</div>
+				<footer>
+					<div class="container">
+						<a onclick="site_secure();" class="linkFooter label-info info">
+							Seguridad
+						</a>
+						<a onclick="policy();" class="linkFooter label-info info">
+							Pol&iacute;tica de Privacidad
+						</a>
+						<a onclick="terms();" class="linkFooter label-info info">
+							T&eacute;rminos y Condiciones
+						</a>
+						<a onclick="faq();" class="linkFooter label-info info">
+							Preguntas Frecuentes
+						</a>
+					</div>
+					<div class="container">
+						<p class=" info info-call">
+							Sucursal Telef&oacute;nica Bancolombia: Bogot&aacute; 343 0000 - Medell&iacute;n 510 9000 - Cali 554 0505 - Barranquilla 361 8888 - Cartagena 693 4400 - Bucaramanga 697 2525 - Pereira 340 1213 - El resto del pa&iacute;s 01 800 09 12345 Sucursales Telef&oacute;nicas en el exterior: Espa&ntilde;a 900 995 717 - Estados Unidos 1866 379 9714.
+						</p>
+					</div>
+					<script language="JavaScript" type="text/JavaScript">
+  var curDate = new Date();
+  var year = curDate.getYear();
+  if (year < 2000) {
+    year = year + 1900;
+  }
+</script>
+<div class="container small-width">
+	<span class="info info-ip ">Direcci&oacute;n IP:&nbsp; 190.66.24.250</span>
+	<span class="info info-copy">Copyright &copy; <span id="fecha"> <script type="text/JavaScript">document.write(year)</script></span> Bancolombia S.A.</span>
+</div>
+
+				</footer>
+				
+				 
+				
+				<input type="hidden" name="device_id" id="device_id" value="[[[INACCESSIBLE]]]" />
+				<input type="hidden" name="userlanguage" id="userlanguage" value="">
+				<div width="100%" style="display:none;">
+					<textarea name="deviceprint" cols="30" rows="3" READONLY Style="scrollbars:yes; background-color:#E7EAEB;" ></textarea>
+				</div>
+		    						    
+				<script language="JavaScript" >
+					document.authenticationForm.userlanguage.value = fingerprint_userlang ();
+				</script>
+				<script language="JavaScript" src="/bancolombia/pse/js/swfFlashVersEval.js"></script>
+				
+				<script language="VBScript">
+							on error resume next
+
+							If MSDetect = "true" Then
+    						For i = 2 to 10
+        						If Not( IsObject( CreateObject( "ShockwaveFlash.ShockwaveFlash." & i ) ) ) Then
+
+       							Else
+            					flashinstalled = 2
+            					flashversion = i
+        						End If
+    						Next
+							End If
+
+							If flashinstalled = 0 Then
+    							flashinstalled = 1
+							End If
+				</script>
+							
+				<script language="JavaScript" type="text/javascript">			
+				
+			    var out = "";
+			    
+				if ( flashinstalled == 2 ) {
+				    out += "<object type='application/x-shockwave-flash' data='/PseBancolombia/flash/rsa_fso.swf' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540001'" + "\n";
+				    out += "id='flash_id' width='1' height='1'>" + "\n";
+				    out += "<param name='movie' value='/PseBancolombia/flash/rsa_fso.swf'>" + "\n";
+				    out += "<param name='quality' value='high'>" + "\n";
+				    out += "<param name='bgcolor' value='#FFFFFF'>" + "\n";
+				    out += "<param name='FlashVars' value='rsa_flash_id=flash_id&field_name=device_id&ip_address=RfCVA1tQ4EQE0IzU7CzpegII' bufferLength='20'>" + "\n";
+				    out += "<embed name='flash_id' swliveconnect='true' src='/PseBancolombia/flash/rsa_fso.swf'" + "\n";
+				    out += "FlashVars='rsa_flash_id=flash_id&field_name=device_id&ip_address=RfCVA1tQ4EQE0IzU7CzpegII'" + "\n";
+				    out += "quality='high' bgcolor='#FFFFFF' width='1' height='1'" + "\n";
+				    out += "type='application/x-shockwave-flash'>" + "\n";
+				    out += "<noobject></noobject>" + "\n";
+				    out += "</embed>" + "\n";
+				    out += "<noobject></noobject>" + "\n";
+				    out += "</object>" + "\n";
+				
+					document.write(out);
+				}	
+				</script>
+			</div>
+      		</form>
+		</div>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"errorBeacon":"bam.nr-data.net","licenseKey":"017cf77fef","agent":"","beacon":"bam.nr-data.net","applicationTime":9,"applicationID":"44672311","transactionName":"YAFQY0VZWkFTAUcPX1lLeGRnF1ZTXAFcCl9aBltWGEhHVx0OXAFZWTsCBwJeRFdAEVwIUVtKWERH","queueTime":0}</script></body>
+<form name="cancelByXForm" action="AuthenticationPSEPersonal.cancelByX" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form name="cancelByButton" action="AuthenticationPSEPersonal.cancel" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form AUTOCOMPLETE="off" name="changeToEnterpriseForm" method="post" action="AuthenticationPSEPersonal.changeToEnterprise">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form AUTOCOMPLETE="off" name="forgetUserForm" method="post" action="AuthenticationPSEPersonal.changeToForgetUser">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form name="problemsForm" action="AuthenticationPSEPersonal.problems" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form name="faqForm" action="AuthenticationPSEPersonal.questions" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form name="policyForm" action="AuthenticationPSEPersonal.policy" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form name="securityForm" action="AuthenticationPSEPersonal.security" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+<form name="termsForm" action="AuthenticationPSEPersonal.terms" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+
+
+<script language="JavaScript">
+    var timeoutId = setTimeout("alert('Se cancelar\u00e1 su pago.');clickOnX=false;document.timeoutForm.submit();", 720000);  
+</script>
+
+<form name="timeoutForm" action="Timeout.timeout" method="POST">
+	<input type="hidden" value="null" name="ValidationTAB"/>
+  <input type="hidden" name="processInstanceId" value="066A608A36959788659A322C50494E">
+<input type="hidden" name="activityInstanceId" value="066A608A36A3A477028A322C41494E">
+
+</form>
+</html>
+
+

@@ -57,8 +57,8 @@
                                         </a>
                                         <p class="card-title">
                                             <strong>
-                        <a [routerLink]="['/products/product', product.idProducto]" routerLinkActive="router-link-active">{{ product.nombreProducto}}</a>
-                      </strong>
+                                                    <a [routerLink]="['/products/product', product.idProducto, product.imagenProductoList[0].imagen, product.nombreProducto]"></a>
+                                              </strong>
                                         </p>
                                         <!--Description-->
                                         <p class="card-text">{{ product.descripcion }}
