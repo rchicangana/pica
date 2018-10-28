@@ -1,5 +1,5 @@
 {
-    "/login/Logica/Usuario.svc/Usuario/*": {
+    "/login/Logica/Usuario.svc/*": {
         "target": "http://10.39.1.99:9090",
         "secure": false,
         "loglevel": "debug"

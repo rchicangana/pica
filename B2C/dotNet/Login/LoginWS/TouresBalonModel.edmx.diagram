@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="bc9c8ce1c0af492ba67f4ed8f785d8b0" Name="Diagrama1">
         <EntityTypeShape EntityType="touresbalonModel.usuarios" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

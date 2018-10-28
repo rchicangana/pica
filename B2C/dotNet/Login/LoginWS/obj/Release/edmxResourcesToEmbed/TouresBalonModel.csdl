@@ -8,11 +8,14 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="nombres" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
-    <Property Name="apellidos" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
-    <Property Name="login" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
-    <Property Name="password" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="activo" Type="Boolean" Nullable="false" />
     <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Type="String" Name="pais" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="departamento" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ciudad" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

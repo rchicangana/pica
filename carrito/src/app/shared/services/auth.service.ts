@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Usuario, UsuarioOMS } from "../models/user";
 import { Router } from "@angular/router";
-import { UserService } from "./user.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
@@ -10,13 +9,11 @@ export class AuthService {
   userDetails: Usuario = null;
   apiUrl :string = "login/Logica/Usuario.svc/Usuario";
   apiUrl2:string = "Autenticacion/services";
-  private usuarioOMS:UsuarioOMS;
   //apiUrl :string = "http://10.39.1.99/login/Logica/Usuario.svc/Usuario";
 
   constructor(
     private router: Router, 
-    private http: HttpClient,
-    private userService:UserService) {
+    private http: HttpClient) {
   }
 
   isLoggedIn() {
@@ -36,9 +33,6 @@ export class AuthService {
   createUserWithEmailAndPassword(usuario: Usuario) {
     let usuarioJson = JSON.stringify(usuario);   
     const headers = new HttpHeaders({'Content-Type': 'application/json'}); 
-    this.usuarioOMS = new UsuarioOMS(usuario.nombres+' '+usuario.apellidos,usuario.login,usuario.login );
-    this.userService.createUser(this.usuarioOMS);
-
     return this.http.post(this.apiUrl+'/crearusuario', usuarioJson, { headers });
   }
 
