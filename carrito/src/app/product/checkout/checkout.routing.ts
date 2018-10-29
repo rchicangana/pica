@@ -26,7 +26,11 @@ export const checkoutRoutes: Routes = [
         component: BillingDetailsComponent,
         outlet: "checkOutlet"
       },
-      { path: "result", component: ResultComponent, outlet: "checkOutlet" }
+      { 
+        path: "result", 
+        component: ResultComponent, 
+        outlet: "checkOutlet" 
+      }
     ]
   }
 ];

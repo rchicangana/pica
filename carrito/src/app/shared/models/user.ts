@@ -36,19 +36,3 @@ export class Usuario {
     this.ciudad = "";
   }
 }
-
-export class UsuarioOMS{
-  nombre: string;
-  email: string;
-  login:  string;
-  idEstadoUser: {
-    idEstadoUser: Number;
-    estado:string;
-  }
-  constructor(nombre: string, email: string, login: string) {
-    this.login = login;
-    this.email = email;
-    this.nombre = nombre;
-    this.idEstadoUser = {idEstadoUser:1, estado:"ACTIVO"};
-  }
-}

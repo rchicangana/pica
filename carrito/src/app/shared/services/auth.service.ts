@@ -1,15 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Usuario, UsuarioOMS } from "../models/user";
+import { Usuario } from "../models/user";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
   userDetails: Usuario = null;
-  apiUrl :string = "login/Logica/Usuario.svc/Usuario";
-  apiUrl2:string = "Autenticacion/services";
-  //apiUrl :string = "http://10.39.1.99/login/Logica/Usuario.svc/Usuario";
+  apiUrl:string = "login/Logica/Usuario.svc/Usuario";
 
   constructor(
     private router: Router, 
@@ -28,12 +26,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem("usuarioLogeado");
     this.router.navigate(["/"]);
-  }
-
-  createUserWithEmailAndPassword(usuario: Usuario) {
-    let usuarioJson = JSON.stringify(usuario);   
-    const headers = new HttpHeaders({'Content-Type': 'application/json'}); 
-    return this.http.post(this.apiUrl+'/crearusuario', usuarioJson, { headers });
   }
 
   getLoggedInUser(): Usuario {
@@ -66,11 +58,5 @@ export class AuthService {
   signInRegular(email, password) {  
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
     return this.http.get(this.apiUrl+'/consultausuario/'+email+'/'+password, { headers });
-  }
-
-  autenticarOMS(login, password) {  
-    let credenciales = "{\"login\":\""+login+"\",\"password\":\""+password+"\"}";
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.post(this.apiUrl2+'/autenticacion/',+credenciales, { headers });
   }
 }

@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from "moment";
-import { Usuario, UsuarioOMS } from "../models/user";
+import { Usuario } from "../models/user";
 
 @Injectable()
 export class UserService {
   selectedUser: Usuario;
   users: Usuario[];
-  apiUrl :string = "ServiciosESB/Autenticacion/services/usuario";
+  apiUrl :string = "login/Logica/Usuario.svc/Usuario";
 
   location = {
     lat: null,
@@ -24,16 +24,16 @@ export class UserService {
     return this.users;
   }
 
-  createUser(usuario: UsuarioOMS) {
+  createUser(usuario: Usuario) {
     let usuarioJson = JSON.stringify(usuario);   
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.post(this.apiUrl+'/registrar', usuarioJson, { headers });
+    return this.http.post(this.apiUrl+'/crearusuario', usuarioJson, { headers });
   }
 
-  updateUser(usuario: UsuarioOMS) {
+  updateUser(usuario: Usuario) {
     let usuarioJson = JSON.stringify(usuario);   
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.put(this.apiUrl+'/actualizar', usuarioJson, { headers });
+    return this.http.put(this.apiUrl+'/actualizarusuario', usuarioJson, { headers });
   }
 
   setLocation(lat, lon) {

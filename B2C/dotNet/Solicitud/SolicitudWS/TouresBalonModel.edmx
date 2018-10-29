@@ -6,88 +6,371 @@
     <edmx:StorageModels>
     <Schema Namespace="touresbalonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="touresbalonModelStoreContainer">
-          <EntitySet Name="DETALLE_SOLICITUD" EntityType="touresbalonModel.Store.DETALLE_SOLICITUD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DETALLEORDENCOMPRA" EntityType="touresbalonModel.Store.DETALLEORDENCOMPRA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ESTADOORDENCOMPRA" EntityType="touresbalonModel.Store.ESTADOORDENCOMPRA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IMAGENPRODUCTO" EntityType="touresbalonModel.Store.IMAGENPRODUCTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRODUCTO" EntityType="touresbalonModel.Store.PRODUCTO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TIPOPRODUCTO" EntityType="touresbalonModel.Store.TIPOPRODUCTO" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_detalle_producto" Association="touresbalonModel.Store.FK_detalle_producto">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLEORDENCOMPRA" EntitySet="DETALLEORDENCOMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_imagen" Association="touresbalonModel.Store.FK_producto_imagen">
+            <End Role="IMAGENPRODUCTO" EntitySet="IMAGENPRODUCTO" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_tipo" Association="touresbalonModel.Store.FK_producto_tipo">
+            <End Role="TIPOPRODUCTO" EntitySet="TIPOPRODUCTO" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solicitud_detalle" Association="touresbalonModel.Store.FK_solicitud_detalle">
+            <End Role="DETALLEORDENCOMPRA" EntitySet="DETALLEORDENCOMPRA" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solicitud_estado" Association="touresbalonModel.Store.FK_solicitud_estado">
+            <End Role="ESTADOORDENCOMPRA" EntitySet="ESTADOORDENCOMPRA" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="DETALLE_SOLICITUD">
+        <EntityType Name="DETALLEORDENCOMPRA">
           <Key>
-            <PropertyRef Name="ID_DETALLE_SOLICITUD" />
+            <PropertyRef Name="Iddetalleorden" />
           </Key>
-          <Property Name="ID_DETALLE_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="NO_SOLICITUD" Type="int" />
-          <Property Name="ID_PRODUCTO" Type="int" />
-          <Property Name="VALOR" Type="decimal" Scale="2" />
+          <Property Name="Iddetalleorden" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="productoid" Type="int" Nullable="false" />
+          <Property Name="valor" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADOORDENCOMPRA">
+          <Key>
+            <PropertyRef Name="Idestadoordencompra" />
+          </Key>
+          <Property Name="Idestadoordencompra" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGENPRODUCTO">
+          <Key>
+            <PropertyRef Name="Idimagenproducto" />
+          </Key>
+          <Property Name="Idimagenproducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="imagen" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="esprincipal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Idproducto" />
+          </Key>
+          <Property Name="Idproducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipoproductoid" Type="int" Nullable="false" />
+          <Property Name="nombreproducto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fechasalida" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fechallegada" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="imagenproductos" Type="int" />
         </EntityType>
         <EntityType Name="SOLICITUD">
           <Key>
-            <PropertyRef Name="NO_SOLICITUD" />
+            <PropertyRef Name="numerosolicitud" />
           </Key>
-          <Property Name="NO_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FECHA_CREACION" Type="date" />
-          <Property Name="FECHA_VENCIMIENTO" Type="date" />
-          <Property Name="VALOR_TOTAL" Type="decimal" Scale="2" />
-          <Property Name="ID_ESTADO_SOLICITUD" Type="int" />
-          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="numerosolicitud" Type="int" Nullable="false" />
+          <Property Name="fechacreacion" Type="datetime" />
+          <Property Name="fechavencimiento" Type="datetime" />
+          <Property Name="valortotal" Type="decimal" Scale="2" />
+          <Property Name="idusuario" Type="int" />
+          <Property Name="noorden" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="estadoordencompraid" Type="int" Nullable="false" />
+          <Property Name="detalleordencompras" Type="int" />
         </EntityType>
+        <EntityType Name="TIPOPRODUCTO">
+          <Key>
+            <PropertyRef Name="Idtipoproducto" />
+          </Key>
+          <Property Name="Idtipoproducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_detalle_producto">
+          <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="1" />
+          <End Role="DETALLEORDENCOMPRA" Type="touresbalonModel.Store.DETALLEORDENCOMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Idproducto" />
+            </Principal>
+            <Dependent Role="DETALLEORDENCOMPRA">
+              <PropertyRef Name="productoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_imagen">
+          <End Role="IMAGENPRODUCTO" Type="touresbalonModel.Store.IMAGENPRODUCTO" Multiplicity="0..1" />
+          <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGENPRODUCTO">
+              <PropertyRef Name="Idimagenproducto" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="imagenproductos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_tipo">
+          <End Role="TIPOPRODUCTO" Type="touresbalonModel.Store.TIPOPRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOPRODUCTO">
+              <PropertyRef Name="Idtipoproducto" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="tipoproductoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solicitud_detalle">
+          <End Role="DETALLEORDENCOMPRA" Type="touresbalonModel.Store.DETALLEORDENCOMPRA" Multiplicity="0..1" />
+          <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DETALLEORDENCOMPRA">
+              <PropertyRef Name="Iddetalleorden" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="detalleordencompras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solicitud_estado">
+          <End Role="ESTADOORDENCOMPRA" Type="touresbalonModel.Store.ESTADOORDENCOMPRA" Multiplicity="1" />
+          <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOORDENCOMPRA">
+              <PropertyRef Name="Idestadoordencompra" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="estadoordencompraid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="touresbalonModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="touresbalonEntities2" p1:LazyLoadingEnabled="true">
           <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.SOLICITUD" />
-          <EntitySet Name="DETALLE_SOLICITUD" EntityType="touresbalonModel.DETALLE_SOLICITUD" />
+          <EntitySet Name="DETALLEORDENCOMPRA" EntityType="touresbalonModel.DETALLEORDENCOMPRA" />
+          <EntitySet Name="ESTADOORDENCOMPRA" EntityType="touresbalonModel.ESTADOORDENCOMPRA" />
+          <EntitySet Name="IMAGENPRODUCTO" EntityType="touresbalonModel.IMAGENPRODUCTO" />
+          <EntitySet Name="PRODUCTO" EntityType="touresbalonModel.PRODUCTO" />
+          <EntitySet Name="TIPOPRODUCTO" EntityType="touresbalonModel.TIPOPRODUCTO" />
+          <AssociationSet Name="FK_detalle_producto" Association="touresbalonModel.FK_detalle_producto">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLEORDENCOMPRA" EntitySet="DETALLEORDENCOMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solicitud_detalle" Association="touresbalonModel.FK_solicitud_detalle">
+            <End Role="DETALLEORDENCOMPRA" EntitySet="DETALLEORDENCOMPRA" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solicitud_estado" Association="touresbalonModel.FK_solicitud_estado">
+            <End Role="ESTADOORDENCOMPRA" EntitySet="ESTADOORDENCOMPRA" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_imagen" Association="touresbalonModel.FK_producto_imagen">
+            <End Role="IMAGENPRODUCTO" EntitySet="IMAGENPRODUCTO" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_tipo" Association="touresbalonModel.FK_producto_tipo">
+            <End Role="TIPOPRODUCTO" EntitySet="TIPOPRODUCTO" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="SOLICITUD">
           <Key>
-            <PropertyRef Name="NO_SOLICITUD" />
+            <PropertyRef Name="numerosolicitud" />
           </Key>
-          <Property Type="Int32" Name="NO_SOLICITUD" Nullable="false" />
-          <Property Type="DateTime" Name="FECHA_CREACION" Precision="0" />
-          <Property Type="DateTime" Name="FECHA_VENCIMIENTO" Precision="0" />
-          <Property Type="Decimal" Name="VALOR_TOTAL" Precision="18" Scale="2" />
-          <Property Type="Int32" Name="ID_ESTADO_SOLICITUD" />
-          <Property Type="Int32" Name="ID_USUARIO" />
+          <Property Type="Int32" Name="numerosolicitud" Nullable="false" />
+          <Property Type="DateTime" Name="fechacreacion" Precision="3" />
+          <Property Type="DateTime" Name="fechavencimiento" Precision="3" />
+          <Property Type="Decimal" Name="valortotal" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="idusuario" />
+          <Property Type="String" Name="noorden" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="estadoordencompraid" Nullable="false" />
+          <Property Type="Int32" Name="detalleordencompras" />
+          <NavigationProperty Name="DETALLEORDENCOMPRA" Relationship="touresbalonModel.FK_solicitud_detalle" FromRole="SOLICITUD" ToRole="DETALLEORDENCOMPRA" />
+          <NavigationProperty Name="ESTADOORDENCOMPRA" Relationship="touresbalonModel.FK_solicitud_estado" FromRole="SOLICITUD" ToRole="ESTADOORDENCOMPRA" />
         </EntityType>
-        <EntityType Name="DETALLE_SOLICITUD">
+        <EntityType Name="DETALLEORDENCOMPRA">
           <Key>
-            <PropertyRef Name="ID_DETALLE_SOLICITUD" />
+            <PropertyRef Name="Iddetalleorden" />
           </Key>
-          <Property Type="Int32" Name="ID_DETALLE_SOLICITUD" Nullable="false" />
-          <Property Type="Int32" Name="NO_SOLICITUD" />
-          <Property Type="Int32" Name="ID_PRODUCTO" />
-          <Property Type="Decimal" Name="VALOR" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Iddetalleorden" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="productoid" Nullable="false" />
+          <Property Type="String" Name="valor" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTO" Relationship="touresbalonModel.FK_detalle_producto" FromRole="DETALLEORDENCOMPRA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="SOLICITUD" Relationship="touresbalonModel.FK_solicitud_detalle" FromRole="DETALLEORDENCOMPRA" ToRole="SOLICITUD" />
         </EntityType>
+        <EntityType Name="ESTADOORDENCOMPRA">
+          <Key>
+            <PropertyRef Name="Idestadoordencompra" />
+          </Key>
+          <Property Type="Int32" Name="Idestadoordencompra" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SOLICITUD" Relationship="touresbalonModel.FK_solicitud_estado" FromRole="ESTADOORDENCOMPRA" ToRole="SOLICITUD" />
+        </EntityType>
+        <EntityType Name="IMAGENPRODUCTO">
+          <Key>
+            <PropertyRef Name="Idimagenproducto" />
+          </Key>
+          <Property Type="Int32" Name="Idimagenproducto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="imagen" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="esprincipal" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="touresbalonModel.FK_producto_imagen" FromRole="IMAGENPRODUCTO" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Idproducto" />
+          </Key>
+          <Property Type="Int32" Name="Idproducto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="tipoproductoid" Nullable="false" />
+          <Property Type="String" Name="nombreproducto" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fechasalida" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fechallegada" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="imagenproductos" />
+          <NavigationProperty Name="DETALLEORDENCOMPRA" Relationship="touresbalonModel.FK_detalle_producto" FromRole="PRODUCTO" ToRole="DETALLEORDENCOMPRA" />
+          <NavigationProperty Name="IMAGENPRODUCTO" Relationship="touresbalonModel.FK_producto_imagen" FromRole="PRODUCTO" ToRole="IMAGENPRODUCTO" />
+          <NavigationProperty Name="TIPOPRODUCTO" Relationship="touresbalonModel.FK_producto_tipo" FromRole="PRODUCTO" ToRole="TIPOPRODUCTO" />
+        </EntityType>
+        <EntityType Name="TIPOPRODUCTO">
+          <Key>
+            <PropertyRef Name="Idtipoproducto" />
+          </Key>
+          <Property Type="Int32" Name="Idtipoproducto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTO" Relationship="touresbalonModel.FK_producto_tipo" FromRole="TIPOPRODUCTO" ToRole="PRODUCTO" />
+        </EntityType>
+        <Association Name="FK_detalle_producto">
+          <End Type="touresbalonModel.PRODUCTO" Role="PRODUCTO" Multiplicity="1" />
+          <End Type="touresbalonModel.DETALLEORDENCOMPRA" Role="DETALLEORDENCOMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Idproducto" />
+            </Principal>
+            <Dependent Role="DETALLEORDENCOMPRA">
+              <PropertyRef Name="productoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solicitud_detalle">
+          <End Type="touresbalonModel.DETALLEORDENCOMPRA" Role="DETALLEORDENCOMPRA" Multiplicity="0..1" />
+          <End Type="touresbalonModel.SOLICITUD" Role="SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DETALLEORDENCOMPRA">
+              <PropertyRef Name="Iddetalleorden" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="detalleordencompras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solicitud_estado">
+          <End Type="touresbalonModel.ESTADOORDENCOMPRA" Role="ESTADOORDENCOMPRA" Multiplicity="1" />
+          <End Type="touresbalonModel.SOLICITUD" Role="SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOORDENCOMPRA">
+              <PropertyRef Name="Idestadoordencompra" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="estadoordencompraid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_imagen">
+          <End Type="touresbalonModel.IMAGENPRODUCTO" Role="IMAGENPRODUCTO" Multiplicity="0..1" />
+          <End Type="touresbalonModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGENPRODUCTO">
+              <PropertyRef Name="Idimagenproducto" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="imagenproductos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_tipo">
+          <End Type="touresbalonModel.TIPOPRODUCTO" Role="TIPOPRODUCTO" Multiplicity="1" />
+          <End Type="touresbalonModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOPRODUCTO">
+              <PropertyRef Name="Idtipoproducto" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="tipoproductoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="touresbalonModelStoreContainer" CdmEntityContainer="touresbalonEntities2">
-          <EntitySetMapping Name="SOLICITUD">
-            <EntityTypeMapping TypeName="touresbalonModel.SOLICITUD">
-              <MappingFragment StoreEntitySet="SOLICITUD">
-                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
-                <ScalarProperty Name="ID_ESTADO_SOLICITUD" ColumnName="ID_ESTADO_SOLICITUD" />
-                <ScalarProperty Name="VALOR_TOTAL" ColumnName="VALOR_TOTAL" />
-                <ScalarProperty Name="FECHA_VENCIMIENTO" ColumnName="FECHA_VENCIMIENTO" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="NO_SOLICITUD" ColumnName="NO_SOLICITUD" />
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="touresbalonModelStoreContainer" CdmEntityContainer="touresbalonEntities2">
+    <EntitySetMapping Name="SOLICITUD">
+      <EntityTypeMapping TypeName="IsTypeOf(touresbalonModel.SOLICITUD)">
+        <MappingFragment StoreEntitySet="SOLICITUD">
+          <ScalarProperty Name="detalleordencompras" ColumnName="detalleordencompras" />
+                <ScalarProperty Name="numerosolicitud" ColumnName="numerosolicitud" />
+          <ScalarProperty Name="fechacreacion" ColumnName="fechacreacion" />
+          <ScalarProperty Name="fechavencimiento" ColumnName="fechavencimiento" />
+          <ScalarProperty Name="valortotal" ColumnName="valortotal" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="noorden" ColumnName="noorden" />
+          <ScalarProperty Name="estadoordencompraid" ColumnName="estadoordencompraid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="DETALLEORDENCOMPRA">
+            <EntityTypeMapping TypeName="touresbalonModel.DETALLEORDENCOMPRA">
+              <MappingFragment StoreEntitySet="DETALLEORDENCOMPRA">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="productoid" ColumnName="productoid" />
+                <ScalarProperty Name="Iddetalleorden" ColumnName="Iddetalleorden" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DETALLE_SOLICITUD">
-            <EntityTypeMapping TypeName="touresbalonModel.DETALLE_SOLICITUD">
-              <MappingFragment StoreEntitySet="DETALLE_SOLICITUD">
-                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
-                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
-                <ScalarProperty Name="NO_SOLICITUD" ColumnName="NO_SOLICITUD" />
-                <ScalarProperty Name="ID_DETALLE_SOLICITUD" ColumnName="ID_DETALLE_SOLICITUD" />
+          <EntitySetMapping Name="ESTADOORDENCOMPRA">
+            <EntityTypeMapping TypeName="touresbalonModel.ESTADOORDENCOMPRA">
+              <MappingFragment StoreEntitySet="ESTADOORDENCOMPRA">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Idestadoordencompra" ColumnName="Idestadoordencompra" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+          <EntitySetMapping Name="IMAGENPRODUCTO">
+            <EntityTypeMapping TypeName="touresbalonModel.IMAGENPRODUCTO">
+              <MappingFragment StoreEntitySet="IMAGENPRODUCTO">
+                <ScalarProperty Name="esprincipal" ColumnName="esprincipal" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="Idimagenproducto" ColumnName="Idimagenproducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="touresbalonModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="imagenproductos" ColumnName="imagenproductos" />
+                <ScalarProperty Name="fechallegada" ColumnName="fechallegada" />
+                <ScalarProperty Name="fechasalida" ColumnName="fechasalida" />
+                <ScalarProperty Name="nombreproducto" ColumnName="nombreproducto" />
+                <ScalarProperty Name="tipoproductoid" ColumnName="tipoproductoid" />
+                <ScalarProperty Name="Idproducto" ColumnName="Idproducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOPRODUCTO">
+            <EntityTypeMapping TypeName="touresbalonModel.TIPOPRODUCTO">
+              <MappingFragment StoreEntitySet="TIPOPRODUCTO">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Idtipoproducto" ColumnName="Idtipoproducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">

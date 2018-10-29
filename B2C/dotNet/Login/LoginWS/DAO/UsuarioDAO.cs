@@ -29,7 +29,6 @@ namespace LoginWS.DAO
         public ResponseData crearUsuario(usuarios usuario)
         {
             ResponseData respuesta = new ResponseData();
-            //ContextoUsuario context = new ContextoUsuario();
             try
             {
                 if (usuario != null)
@@ -79,8 +78,9 @@ namespace LoginWS.DAO
             this.context.SaveChanges();
         }
 
-        public usuarios buscarUsuario(String loginUsuario, string password)
+        public ResponseData buscarUsuario(String loginUsuario, string password)
         {
+            ResponseData respuesta = new ResponseData();
             usuarios usuario = new usuarios();
             try
             {
@@ -88,10 +88,14 @@ namespace LoginWS.DAO
                                 where usu.login == loginUsuario && usu.password == password 
                                 select usu).First();
                 usuario = consulta;
+                respuesta.objeto = usuario;
+                respuesta.mensaje = "Usuario encontrado con exito";
+                respuesta.resultado = "OK";
             }catch(Exception ex){
-            
+                respuesta.mensaje = "Ocurrio un error interno";
+                respuesta.resultado = "Fallo";
             }
-            return usuario;
+            return respuesta;
         }
 
         public void borrarUsuario(int id){

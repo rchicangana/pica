@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logica\Solicitud.svc" />
+    <Content Include="TouresBalonModel.edmx.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -82,15 +83,9 @@
   <ItemGroup>
     <Compile Include="DAO\DetalleSolicitudDAO.cs" />
     <Compile Include="DAO\SolicitudDAO.cs" />
-    <Compile Include="DETALLE_SOLICITUD.cs">
-      <DependentUpon>TouresBalonModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DTO\ResponseData.cs" />
     <Compile Include="DTO\RequestData.cs" />
     <Compile Include="ISolicitud.cs" />
-    <Compile Include="SOLICITUD.cs">
-      <DependentUpon>TouresBalonModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TouresBalonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

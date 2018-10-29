@@ -33,17 +33,14 @@ export class ProductService {
     this.toastyConfig.theme = "material";
 
     if (this.authService.isLoggedIn()) {
-      this.calculateFavProductCounts();
       this.calculateCartProductCounts();
     } else {
-      this.calculateLocalFavProdCounts();
       this.calculateLocalCartProdCounts();
     }
   }
 
   getProducts() {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    //return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
     return this.http.get(this.apiUrl+'/Buscar/0/10', { headers });
   }
 
@@ -99,7 +96,7 @@ export class ProductService {
     this.toastyService.wait(toastAdd);
     setTimeout(() => {
       localStorage.setItem("avf_item", JSON.stringify(a));
-      this.calculateLocalFavProdCounts();
+      //this.calculateLocalFavProdCounts();
     }, 1500);
   }
 
@@ -129,23 +126,8 @@ export class ProductService {
     // ReAdding the products after remove
     localStorage.setItem("avf_item", JSON.stringify(products));
 
-    this.calculateLocalFavProdCounts();
+    //this.calculateLocalFavProdCounts();
   }
-
-  // Returning Local Products Count
-  calculateLocalFavProdCounts() {
-    this.navbarFavProdCount = this.getLocalFavouriteProducts().length;
-  }
-
-  // Calculating FavProductsCount and storing it in variable
-  calculateFavProductCounts() {
-    const x = this.getUsersFavouriteProduct()
-      /*.snapshotChanges()
-      .subscribe(data => {
-        this.navbarFavProdCount = data.length;
-      });*/
-  }
-
   /*
    ----------  Cart Product Function  ----------
   */
@@ -153,10 +135,10 @@ export class ProductService {
   // Fetching Cart Products based on userId
   getUsersCartProducts() {
     const user = this.authService.getLoggedInUser();
-    /*this.cartProducts = this.db.list("cartProducts", ref =>
-      ref.orderByChild("userId").equalTo(user.$key)
-    );
-    return this.cartProducts;*/
+    //this.cartProducts = this.db.list("cartProducts", ref =>
+    //  ref.orderByChild("userId").equalTo(user.$key)
+    //)
+    //return this.cartProducts;
   }
 
   // Adding new Product to cart db if  else localStorage
@@ -206,7 +188,6 @@ export class ProductService {
   getLocalCartProducts(): Tarifa[] {
     const products: Tarifa[] =
       JSON.parse(localStorage.getItem("avct_item")) || [];
-
     return products;
   }
 
@@ -217,11 +198,10 @@ export class ProductService {
 
   // Calculating Cart products count and assigning to variable
   calculateCartProductCounts() {
-    const x = this.getUsersCartProducts()
-     /*.snapshotChanges()
-      .subscribe(data => {
-        this.navbarCartCount = data.length;
-      });*/
+    //const x = this.getUsersCartProducts()
+    //  .subscribe(data => {
+    //    this.navbarCartCount = data.length;
+    //  });
   }
 }
 
