@@ -1,4 +1,4 @@
-import { UserDetail, Usuario } from "./../../../shared/models/user";
+import { Usuario } from "./../../../shared/models/user";
 import { AuthService } from "./../../../shared/services/auth.service";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "../../../../../node_modules/@angular/forms";
@@ -9,13 +9,10 @@ import { NgForm } from "../../../../../node_modules/@angular/forms";
   styleUrls: ["./shipping-details.component.scss"]
 })
 export class ShippingDetailsComponent implements OnInit {
-  userDetails: Usuario;
-
-  userDetail: UserDetail;
+  userDetail: Usuario;
 
   constructor(private authService: AuthService) {
-    this.userDetail = new UserDetail();
-    this.userDetails = authService.getLoggedInUser();
+    this.userDetail = authService.getLoggedInUser();
   }
 
   ngOnInit() {}
@@ -24,7 +21,7 @@ export class ShippingDetailsComponent implements OnInit {
     const data = form.value;
 
     //data["emailId"] = this.userDetails.emailId;
-    data["userName"] = this.userDetails.login;
+    data["userName"] = this.userDetail.login;
 
     console.log("Data: ", data);
   }

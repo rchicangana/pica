@@ -8,9 +8,10 @@ import { UserModule } from "./user/user.module";
 import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { AppRoutes } from "./app.routing";
+import { PSEComponent } from './pse/pse.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PSEComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

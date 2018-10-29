@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace LoginWS.DAO
 {
@@ -29,17 +30,39 @@ namespace LoginWS.DAO
         {
             ResponseData respuesta = new ResponseData();
             //ContextoUsuario context = new ContextoUsuario();
-            if(usuario != null){
-                usuario.fecha_creacion = DateTime.Now;
-                usuario.activo = true;
-                usuario.id = null;
-                this.context.usuarios.Add(usuario);
-                this.context.SaveChanges();
-                respuesta.mensaje = "Usuario creado con exito";
-                respuesta.resultado = "OK";
+            try
+            {
+                if (usuario != null)
+                {
+                    usuario.fecha_creacion = DateTime.Now;
+                    usuario.activo = true;
+                    usuario.id = null;
+
+                    if (usuario.pais == null)
+                    {
+                        usuario.pais = "";
+                    }
+                    if (usuario.departamento == null)
+                    {
+                        usuario.departamento = "";
+                    }
+                    if (usuario.ciudad == null)
+                    {
+                        usuario.ciudad = "";
+                    }
+                    this.context.usuarios.Add(usuario);
+                    this.context.SaveChanges();
+                    respuesta.mensaje = "Usuario creado con exito";
+                    respuesta.resultado = "OK";
+                }
+                else
+                {
+                    respuesta.mensaje = "Llegaron datos nulos";
+                    respuesta.resultado = "Fallo";
+                }
             }
-            else{
-                respuesta.mensaje = "Llegaron datos nulos";
+            catch (Exception ex) { 
+                respuesta.mensaje="Ocurrio un error interno";
                 respuesta.resultado = "Fallo";
             }
             return respuesta;

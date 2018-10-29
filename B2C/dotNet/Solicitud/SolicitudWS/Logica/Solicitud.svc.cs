@@ -20,8 +20,11 @@ namespace SolicitudWS
 
         public ResponseData CrearSolicitud(SOLICITUD solicitud)
         {
-            solicitud.FECHA_CREACION = DateTime.Today;
-            solicitud.ID_ESTADO_SOLICITUD = 1;
+            solicitud.fechaCreacion = DateTime.Today.ToString();
+            SOLICITUD.EstadoOrdenCompra estadoOrden = new SOLICITUD.EstadoOrdenCompra();
+            estadoOrden.idEstadoOrdenCompra = 0;
+            estadoOrden.estado = "ABIERTA";
+            solicitud.estadoOrdenCompra = estadoOrden;
             return this.solDAO.crearSolicitud(solicitud); ;
         }
     }

@@ -1,31 +1,3 @@
-export class User {
-  $key: string;
-  userName: string;
-  emailId: string;
-  password: string;
-  location: {
-    lat: number;
-    lon: number;
-  };
-  phoneNumber: string;
-  createdOn: string;
-  isAdmin: boolean;
-  avatar: string;
-}
-
-export class UserDetail {
-  $key: string;
-  firstName: string;
-  lastName: string;
-  userName: string;
-  emailId: string;
-  address1: string;
-  address2: string;
-  country: string;
-  state: string;
-  zip: number;
-}
-
 export class Cliente{
   $key: number;
   tipo_documento: string;
@@ -49,10 +21,34 @@ export class Usuario {
   password: string;
   activo: boolean;
   fecha_creacion: Date;
+  direccion: String;
+  pais: String;
+  departamento: String;
+  ciudad: String;
   constructor(login: string, password: string, nombres: string, apellidos: string) {
     this.login = login;
     this.password = password;
     this.nombres = nombres;
     this.apellidos = apellidos;
+    this.direccion = "";
+    this.pais = "";
+    this.departamento = "";
+    this.ciudad = "";
+  }
+}
+
+export class UsuarioOMS{
+  nombre: string;
+  email: string;
+  login:  string;
+  idEstadoUser: {
+    idEstadoUser: Number;
+    estado:string;
+  }
+  constructor(nombre: string, email: string, login: string) {
+    this.login = login;
+    this.email = email;
+    this.nombre = nombre;
+    this.idEstadoUser = {idEstadoUser:1, estado:"ACTIVO"};
   }
 }

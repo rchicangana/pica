@@ -15,9 +15,9 @@ namespace SolicitudWS.DAO
             ResponseData respuesta = new ResponseData();
             if (solicitud != null)
             {
-                solicitud.FECHA_CREACION = DateTime.Now;
-                solicitud.ID_ESTADO_SOLICITUD = 1;
-                solicitud.NO_SOLICITUD = null;
+                solicitud.fechaCreacion = DateTime.Now.ToString();
+                solicitud.noOrden = 1;
+                solicitud.numeroSolicitud = 0;
                 this.context.SOLICITUD.Add(solicitud);
                 this.context.SaveChanges();
                 respuesta.mensaje = "Solicitud creada con exito";
@@ -38,7 +38,7 @@ namespace SolicitudWS.DAO
             try
             {
                 listadoSolicitudes = (from sol in this.context.SOLICITUD
-                                      where sol.NO_SOLICITUD == Int32.Parse(idSolicitud)
+                                      where sol.numeroSolicitud == Int32.Parse(idSolicitud)
                                 select sol).ToList();
 
                 listadoSolicitudes = this.context.SOLICITUD.ToList();
@@ -55,9 +55,8 @@ namespace SolicitudWS.DAO
         public void cancelarSolicitud(string idSolicitud)
         {
             var consulta = (from sol in this.context.SOLICITUD
-                            where sol.NO_SOLICITUD == Int32.Parse(idSolicitud)
+                            where sol.numeroSolicitud == Int32.Parse(idSolicitud)
                             select sol).First();
-            consulta.ID_ESTADO_SOLICITUD = 2;
             this.context.SaveChanges();
         }
     }
