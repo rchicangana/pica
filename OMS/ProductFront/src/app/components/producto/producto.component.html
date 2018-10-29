@@ -21,7 +21,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of elementos.object">
+                            <tr *ngFor="let item of elementos">
                                 <th scope="row">{{item.idProducto}}</th>
                                 <td>{{item.nombreProducto}}</td>
                                 <td>{{item.descripcion}}</td>
@@ -50,6 +50,20 @@
                         </div>
                         <div class="form-group row small">
 
+                            <label for="idTipoProducto" class="col-sm-4 col-form-label col-form-label-sm">Tipo de Producto</label>
+                            <div class="col-sm-8">
+                                <div [ngClass]="{'has-error': errores.idTipoProducto }">
+                                    <select class="form-control" id="idTipoProducto" name="idTipoProducto" [(ngModel)]="datosFormulario.idTipoProducto" required>
+                                        <option [ngValue]="item" *ngFor="let item of tiposProducto"> 
+                                                {{item.nombre}}</option>
+                                        
+                                      </select>
+                                    <span class="control-label" ng-show="errores.idTipoProducto">{{errores.idTipoProducto}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
                             <label for="nombreProducto" class="col-sm-4 col-form-label col-form-label-sm">Nombre</label>
                             <div class="col-sm-8">
                                 <div [ngClass]="{'has-error': errores.nombreProducto }">
@@ -70,30 +84,87 @@
                         </div>
                         <div class="form-group row small">
 
-                            <label for="fechaSalida" class="col-sm-4 col-form-label col-form-label-sm">Fecha de Salida</label>
+                            <label for="fechas" class="col-sm-4 col-form-label col-form-label-sm">Fechas de viaje</label>
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div [ngClass]="{'has-error': errores.fechaSalida }">
-                                            <input class="form-control" format="dd/MM/yyyy" placeholder="dd/mm/yyyy" name="dp" [(ngModel)]="datosFormulario.fechaSalida" ngbDatepicker #d="ngbDatepicker">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-                                            </div>
+                                        <div [ngClass]="{'has-error': errores.fechas }">
+                                            <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+                                            </ngb-datepicker>
+                                            <span class="control-label" ng-show="errores.fechas">{{errores.fechas}}</span>
+                                            <ng-template #t let-date let-focused="focused">
+                                                <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                                                {{ date.day }}
+                                              </span>
+                                            </ng-template>
+
                                         </div>
                                     </div>
-                                    <span class="control-label" ng-show="errores.fechaSalida">{{errores.fechaSalida}}</span>
+
                                 </div>
+                            </div>
+                            <div class="btn-group float-lg-right m-1" role="group">
+                                <button class="btn btn-md btn btn-outline-success " type="button" (click)="guardar()">{{nuevoRegistro ? 'Guardar' : 'Editar' }}</button>
+                                <button class="btn btn-md btn btn-outline-danger " type="button" (click)="cancelar()">Cancelar</button>
                             </div>
                         </div>
 
-                        <div class="btn-group float-lg-right m-5" role="group">
-                            <button class="btn btn-md btn btn-outline-success " type="button" (click)="guardar()">{{nuevoRegistro ? 'Guardar' : 'Editar' }}</button>
-                            <button class="btn btn-md btn btn-outline-danger " type="button" (click)="cancelar()">Cancelar</button>
-                        </div>
-
-
 
                     </form>
+
+                    <div class="panel panelPrincipal animated fadeIn fast" *ngIf="panelAdicional">
+                        <div id="accordion">
+                            <div class="card bg-light mb-3">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            Imagenes
+                                          </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                                        craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3 ">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                          Itineraro
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                                        craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                          Boleteria
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                                        craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
