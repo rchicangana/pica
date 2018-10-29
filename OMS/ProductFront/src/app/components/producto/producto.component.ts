@@ -32,6 +32,7 @@ export class ProductoComponent implements OnInit {
   fromDate: NgbDate;
   toDate: NgbDate;
   elementos: any[] = [];
+  imagenes: any[] = [];
   panelEditar = false;
   panelAdicional = false;
   registro: any = {};
