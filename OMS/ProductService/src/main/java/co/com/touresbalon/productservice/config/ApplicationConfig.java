@@ -29,7 +29,6 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(co.com.touresbalon.clienteredisservices.util.JsonBodyManager.class);
         resources.add(co.com.touresbalon.productservice.servicios.CiudadService.class);
         resources.add(co.com.touresbalon.productservice.servicios.HabitacionService.class);
         resources.add(co.com.touresbalon.productservice.servicios.HospedajeService.class);
