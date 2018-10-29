@@ -38,10 +38,51 @@ export class ProductService {
   }
 
   getProducts() {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
     //return this.http.get(this.apiUrl+'/productos', { headers });
     return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
   }
+
+  getProductsS( tipo?:String, termino?:String ) {
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  //return this.http.get(this.apiUrl+'/productos', { headers });
+console.log ('captura del tipo:'+tipo+' y termino'+termino)
+if (tipo == 'D'){
+if ( termino == '*'){
+    console.log (this.apiUrl+'/buscarDescripcion/0/10/*');
+  return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
+  }
+  else {
+    console.log (this.apiUrl+'/buscarDescripcion/0/10/'+termino);
+  return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/'+termino, { headers });
+  }
+}
+else if (tipo == 'C'){
+  if ( termino == '0'){
+console.log (this.apiUrl+'/buscarProducto/0');
+      return this.http.get(this.apiUrl+'/buscarProducto/1', { headers });
+      }
+      else {
+        console.log (this.apiUrl+'/buscarProducto/'+termino);
+      return this.http.get(this.apiUrl+'/buscarProducto/'+termino, { headers });
+
+
+      }
+}
+if (tipo == 'P'){
+if ( termino == '*'){
+      console.log (this.apiUrl+'/buscarDescripcion/0/10/*');
+    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
+    }
+    else {
+      console.log (this.apiUrl+'/buscarDescripcion/0/10/'+termino);
+    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/'+termino, { headers });
+    }
+  }
+
+
+else {console.log("Busqueda sin parametro valido")}
+}
 
   createProduct(data: Product) {
     this.products.push(data);
@@ -50,7 +91,7 @@ export class ProductService {
   getProductById(key: string) {
     //this.product = this.db.object("product/" + key);
     //return this.product;
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
     //return this.http.get(this.apiUrl+'/productos/buscar/'+key, { headers });
     return this.http.get(this.apiUrl+'/buscarProducto/'+key, { headers });
   }
