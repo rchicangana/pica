@@ -33,7 +33,8 @@ public class FileManagerLogica {
         FileOutputStream osf = null;
         try {
             Constantes path = constantesDAO.findById(ConstantesComunes.CONSTANTE_PATH_IMAGES);
-            File file = new File(path+nombreArchivo);
+            Logger.getLogger(FileManagerLogica.class.getName()).info(path.getValor());
+            File file = new File(path.getValor()+nombreArchivo);
             byte[] imgBytes = Base64.decodeBase64(b64File);
             osf = new FileOutputStream(file);
             osf.write(imgBytes);
@@ -44,7 +45,9 @@ public class FileManagerLogica {
             Logger.getLogger(FileManagerLogica.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                osf.close();
+                if(osf!=null){
+                    osf.close();
+                }
             } catch (IOException ex) {
                 Logger.getLogger(FileManagerLogica.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -55,7 +58,7 @@ public class FileManagerLogica {
         
         FileOutputStream osf = null;
         Constantes path = constantesDAO.findById(ConstantesComunes.CONSTANTE_PATH_IMAGES);
-        File file = new File(path+nombreArchivo);
+        File file = new File(path.getValor()+nombreArchivo);
         file.delete();
         
     }
