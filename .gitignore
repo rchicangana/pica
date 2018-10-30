@@ -1,9 +1,8 @@
-RedisServices/target/
-OMS/ProductService/target/
+/RedisServices/target/
+/OMS/ProductService/target/
 /OMS/ProductFront/node_modules/
-Seguridad/ServiciosAutenticacion/target/
-Seguridad/JwtGenerator/target/
-ClienteRedisServices/target/
-Seguridad/JwtGenerator/target/
+/Seguridad/ServiciosAutenticacion/target/
+/Seguridad/JwtGenerator/target/
+/ClienteRedisServices/target/
 /OMS/TareasProgramadas/target/
-carrito/src/app/product/product-list-s/product-list-s.component.ts
+/carrito/src/app/product/product-list-s/product-list-s.component.ts
