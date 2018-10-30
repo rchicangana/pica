@@ -29,14 +29,23 @@
         "secure": false,
         "loglevel": "debug"
     },
-    "/ServiciosESB/Autenticacion/services/usuario/*": {
-        "target": "http://10.39.1.140:8080",
+    "/ServiciosESB/Clientes/*": {
+        "target": "http://10.39.1.140:8081",
         "secure": false,
         "loglevel": "debug"
     },
-    "/Autenticacion/services/*": {
+    "/ServiciosESB/Util/*": {
+        "target": "http://10.39.1.144:8081",
+        "secure": false,
+        "loglevel": "debug"
+    }
+    ,
+    "/WsOmsREST1/rest/WsCampannas/*": {
         "target": "http://10.39.1.140:8080",
         "secure": false,
         "loglevel": "debug"
     }
+
+
+
 }

@@ -21,4 +21,27 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(["/"]);
   }
+
+buscarProductoN(termino:string){
+console.log(termino);
+let tipo : string;
+tipo = "P";
+this.router.navigate(['products/all-products-s',tipo,termino]);
+}
+
+buscarProductoD(termino:string){
+console.log(termino);
+let tipo : string;
+tipo = "D";
+this.router.navigate(['products/all-products-s',tipo,termino]);
+}
+
+buscarProductoC(termino:string){
+console.log(termino);
+let tipo : string;
+tipo = "C";
+this.router.navigate(['products/all-products-s',tipo,termino]);
+}
+
+
 }

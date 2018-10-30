@@ -12,6 +12,7 @@ import { CheckoutModule } from "./checkout/checkout.module";
 import { ProductComponent } from "./product.component";
 import { BestProductComponent } from "./best-product/best-product.component";
 import { ProductListComponent } from "./product-list/product-list.component";
+import { ProductListComponentS } from "./product-list-s/product-list-s.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { SharedModule } from "../shared/shared.module";
 import { FavouriteProductsComponent } from "./favourite-products/favourite-products.component";
@@ -31,6 +32,7 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     ProductComponent,
     BestProductComponent,
     ProductListComponent,
+    ProductListComponentS,
     ProductDetailComponent,
     FavouriteProductsComponent,
     CartProductsComponent,

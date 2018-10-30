@@ -4,30 +4,17 @@
         <form class="needs-validation" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="firstName">Nombre</label>
+                    <label for="firstName">Nombres</label>
                     <input type="text" class="form-control" id="firstName" [(ngModel)]="userDetail.nombres" name="firstName" required>
                     <div class="invalid-feedback">
                         Se requiere poner el nombre.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="lastName">Appelidos</label>
+                    <label for="lastName">Apellido 1</label>
                     <input type="text" class="form-control" id="lastName" [(ngModel)]="userDetail.apellidos" name="lastName" required>
                     <div class="invalid-feedback">
-                        El apellido es requerido.
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="username">Nombre de usuario</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
-                    </div>
-                    <input type="text" class="form-control" id="username" [(ngModel)]="userDetail.login" name="userName" [disabled]="true">
-                    <div class="invalid-feedback" style="width: 100%;">
-                        El nombre de usuario es requerido.
+                        El apellido 1 es requerido.
                     </div>
                 </div>
             </div>
@@ -60,16 +47,6 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="state">Departamento</label>
-                    <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.departamento" name="state" required>
-            <option value="">Seleccione...</option>
-            <option>Cundinamarca</option>
-          </select>
-                    <div class="invalid-feedback">
-                        Por favor seleccione un departamento v&acute;lido.
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
                     <label for="state">Ciudad</label>
                     <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.ciudad" name="state" required>
             <option value="">Seleccione...</option>
@@ -81,6 +58,6 @@
                 </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue al pago</button>
+            <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['result']}}]" routerLinkActive="active">Continuar al pago</a>
         </form>
     </div>

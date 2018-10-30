@@ -3,8 +3,9 @@ import { Component, OnInit } from "@angular/core";
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../shared/services/auth.service";
-import { Usuario,UsuarioOMS } from "../../shared/models/user";
+import { Usuario } from "../../shared/models/user";
 import { UserService } from "../../shared/services/user.service";
+import { Respuesta } from '../../shared/models/respuesta';
 
 declare var $: any;
 @Component({
@@ -20,9 +21,10 @@ export class LoginComponent implements OnInit {
   };
 
   errorInUserCreate = false;
+  errorInLoginUser = false;
   errorMessage: any;
   createUser;
-  private usuarioOMS:UsuarioOMS;
+  usuario: Usuario;
 
   constructor(
     private authService: AuthService,
@@ -34,17 +36,18 @@ export class LoginComponent implements OnInit {
   ) {
     this.toastyConfig.position = "top-right";
     this.toastyConfig.theme = "material";
-
     this.createUser = new Usuario("","","","");
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.usuario = new Usuario("","","","");
+  }
 
   addUser(userForm: NgForm) {
     userForm.value["isAdmin"] = false;
     var usuario = new Usuario(userForm.value["emailId"], userForm.value["password"], userForm.value["nombres"],userForm.value["apellidos"] );
-    this.authService
-      .createUserWithEmailAndPassword(usuario)
+    this.userService
+      .createUser(usuario)
       .subscribe(res => {
         console.log("Usuario creado", res);
         const toastOption: ToastOptions = {
@@ -60,8 +63,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/"]);
         }, 1500);
       });
-    this.usuarioOMS = new UsuarioOMS(usuario.nombres+' '+usuario.apellidos,usuario.login,usuario.login );
-    this.userService.createUser(this.usuarioOMS);
   }
 
   signInWithEmail(userForm: NgForm) {
@@ -69,27 +70,38 @@ export class LoginComponent implements OnInit {
       .signInRegular(userForm.value["emailId"], userForm.value["loginPassword"])
       .subscribe(res => {
         console.log("Usuario logeado: ", res);
-        this.user.emailId = (<Usuario>res).login;
-        this.user.loginPassword = (<Usuario>res).password;
-        localStorage.setItem("usuarioLogeado", JSON.stringify(res));
+        this.usuario = <Usuario>(<Respuesta>res).object;
 
-        const toastOption: ToastOptions = {
-          title: "Authenticacion exitosa",
-          msg: "Autenticando, por favor espere",
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
-        this.toastyService.wait(toastOption);
-        const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
-
-        setTimeout((router: Router) => {
-          this.router.navigate([returnUrl || "/"]);
-        }, 1500);
-
-        this.router.navigate(["/"]);
+        if(this.usuario.login !== undefined){
+          this.user.emailId = this.usuario.login;
+          this.user.loginPassword = this.usuario.password;
+          localStorage.setItem("usuarioLogeado", JSON.stringify(this.usuario));
+          const toastOption: ToastOptions = {
+            title: "Authenticacion exitosa",
+            msg: "Autenticando, por favor espere",
+            showClose: true,
+            timeout: 5000,
+            theme: "material"
+          };
+          this.toastyService.wait(toastOption);
+          const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
+  
+          setTimeout((router: Router) => {
+            this.router.navigate([returnUrl || "/"]);
+          }, 1500);
+          this.errorInLoginUser = false;
+          this.router.navigate(["/"]);
+        }
+        else{
+          this.errorInLoginUser = true;
+          this.errorMessage = "Credenciales incorrectas";
+          //this.router.navigate(["/"]); 
+        }
       },
       error => {
+        this.errorInLoginUser = true;
+        this.errorMessage = "Credenciales incorrectas";
+        //this.router.navigate(["/"]);
       });
   }
 }

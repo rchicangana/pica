@@ -22,24 +22,21 @@
             </a>
         </li>
 
-        <!-- circular home icon -->
-        <li>
-            <a [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['billing-details']}}]" routerLinkActive="active" data-toggle="tab" title="Confirmacion">
-                <span class="round-tabs three">
-          <i class="fa fa-check-circle" aria-hidden="true"></i>
-        </span>
-            </a>
-        </li>
-
         <!-- circular ok icon -->
         <li>
             <a [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['result']}}]" routerLinkActive="active" data-toggle="tab" title="Pago">
-                <span class="round-tabs four">
-          <i class="fa fa-credit-card" aria-hidden="true"></i>
-        </span>
+                <span class="round-tabs three">
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                </span>
             </a>
         </li>
-
+        <li>
+            <a [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['billing-details']}}]" routerLinkActive="active" data-toggle="tab" title="Resumen">
+                <span class="round-tabs four">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+            </a>
+        </li>
     </ul>
     <div class="clearfix"></div>
 </div>
