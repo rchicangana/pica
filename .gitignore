@@ -2,6 +2,7 @@ RedisServices/target/
 OMS/ProductService/target/
 /OMS/ProductFront/node_modules/
 Seguridad/ServiciosAutenticacion/target/
+Seguridad/JwtGenerator/target/
 ClienteRedisServices/target/
 Seguridad/JwtGenerator/target/
 /OMS/TareasProgramadas/target/
