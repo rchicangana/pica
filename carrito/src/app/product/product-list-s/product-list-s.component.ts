@@ -110,9 +110,6 @@ export class ProductListComponentS implements OnInit {
       });
     });*/
   }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> eae65a3fc42aead01b57314f5fbeb00e771fb2ae
 }

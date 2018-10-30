@@ -20,8 +20,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="email">Correo
-        </label>
+                <label for="email">Correo</label>
                 <input type="email" class="form-control" id="email" [(ngModel)]="userDetail.login" name="email" [disabled]="true">
                 <div class="invalid-feedback">
                     Por favor ingrese un correo v&aacute;lido.
@@ -38,26 +37,29 @@
             <div class="row">
                 <div class="col-md-5 mb-3">
                     <label for="country">Pa&iacute;s</label>
-                    <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.pais" name="country">
-            <option value="">Seleccione...</option>
-            <option>Colombia</option>
-          </select>
-                    <div class="invalid-feedback">
-                        Por favor seleccione el pa&iacute;s.
+                    <div class="col-sm-4 mb-2" *ngFor="let pais of paises">
+                        <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.pais" name="country">
+                            <option value="">Seleccione...</option>
+                            <option>{{pais.nombre}}</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label for="state">Ciudad</label>
-                    <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.ciudad" name="state" required>
-            <option value="">Seleccione...</option>
-            <option>Bogota</option>
-          </select>
-                    <div class="invalid-feedback">
-                        Por favor seleccione una ciudad v&acute;lido.
-                    </div>
+            </div>
+            <div class="invalid-feedback">
+                Por favor seleccione el pa&iacute;s.
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="state">Ciudad</label>
+                <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.ciudad" name="state" required>
+                        <option value="">Seleccione...</option>
+                        <option>Bogota</option>
+                    </select>
+                <div class="invalid-feedback">
+                    Por favor seleccione una ciudad v&acute;lido.
                 </div>
             </div>
             <hr class="mb-4">
             <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['result']}}]" routerLinkActive="active">Continuar al pago</a>
         </form>
     </div>
+</div>

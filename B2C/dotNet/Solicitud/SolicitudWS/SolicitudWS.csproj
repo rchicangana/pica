@@ -83,9 +83,30 @@
   <ItemGroup>
     <Compile Include="DAO\DetalleSolicitudDAO.cs" />
     <Compile Include="DAO\SolicitudDAO.cs" />
+    <Compile Include="DETALLEORDENCOMPRA.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DTO\ResponseData.cs" />
     <Compile Include="DTO\RequestData.cs" />
+    <Compile Include="ESTADOORDENCOMPRA.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMAGENPRODUCTO.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ISolicitud.cs" />
+    <Compile Include="PRODUCTO.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SOLICITUD.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPOPRODUCTO.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TouresBalonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,6 +126,9 @@
       <DependentUpon>Solicitud.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="usuarios.cs">
+      <DependentUpon>TouresBalonModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

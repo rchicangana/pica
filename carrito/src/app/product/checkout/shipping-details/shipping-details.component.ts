@@ -14,7 +14,7 @@ import { UtilService } from "../../../shared/services/util.service";
 export class ShippingDetailsComponent implements OnInit {
   userDetail: Usuario;
   ciudades: Ciudad[];
-  paises: Pais[];
+  public paises: Pais[];
 
   constructor(
     private authService: AuthService,
