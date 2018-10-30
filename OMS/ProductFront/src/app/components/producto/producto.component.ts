@@ -3,6 +3,7 @@ import { ProductosService } from '../../services/productos.service';
 import { NgbDate, NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { TipoproductoService } from '../../services/tipoproducto.service';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { ImagenesService } from '../../services/imagenes.service';
 
 @Component({
   selector: 'app-producto',
@@ -29,10 +30,12 @@ import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upl
 })
 export class ProductoComponent implements OnInit {
   hoveredDate: NgbDate;
+  inputFile: any;
   fromDate: NgbDate;
   toDate: NgbDate;
   elementos: any[] = [];
   imagenes: any[] = [];
+  datosImagenProducto: any = {};
   panelEditar = false;
   panelAdicional = false;
   registro: any = {};
@@ -61,10 +64,12 @@ export class ProductoComponent implements OnInit {
   _handleReaderLoaded(e) {
     const reader = e.target;
     this.imageSrc = reader.result;
-    console.log(this.imageSrc)
   }
 
-  constructor(private productosService: ProductosService, private calendar: NgbCalendar, private tipoproductoService: TipoproductoService) {
+  constructor(private productosService: ProductosService,
+    private calendar: NgbCalendar,
+    private tipoproductoService: TipoproductoService,
+    private imagenesService: ImagenesService) {
     this.fromDate = calendar.getToday();
   }
 
@@ -146,10 +151,52 @@ export class ProductoComponent implements OnInit {
                                       +item.fechaLlegada.substring(0, 2));
     this.fromDate = fecSalida;
     this.toDate = fecRegreso;
-    console.log(this.fromDate);
+    this.consultarImagenes(item.idProducto);
   }
 
-  
+  consultarImagenes(idProducto: number) {
+    this.imagenesService.getImagenes(idProducto).subscribe((data: any) => { this.imagenes = data; });
+  }
+
+  borrarImagen(imagen: any) {
+    this.imagenesService.borrarImagenProducto(imagen.idImagenProducto).subscribe(
+      (response: any) => {
+        if (response.codigo === 'OK') {
+          const indice = this.imagenes.indexOf(imagen);
+          this.imagenes.splice(indice, 1);
+          bootbox.alert('Transacción realizada correctamente');
+        } else {
+          bootbox.alert(response.mensaje);
+        }
+      });
+  }
+
+  cargarImagen(){
+    let error = false;
+    if (!this.imageSrc) {
+      this.errores.imagenProducto =
+        'Debe seleccionar una imagen para realizar la carga';
+      error = true;
+    }
+    if (error) {
+      return;
+    }
+    this.datosImagenProducto.imagen = this.imageSrc.replace('data:image/jpeg;base64,', '');
+    this.datosImagenProducto.esprincipal = 1;
+    this.datosImagenProducto.idProducto = this.datosFormulario.idProducto;
+    this.imagenesService.guardarImagenProducto(this.datosImagenProducto).subscribe(
+      (response: any) => {
+        if (response.codigo === 'OK') {
+          this.imagenes.push(response.object);
+          bootbox.alert('Transacción realizada correctamente');
+          this.imageSrc = '';
+          this.inputFile = '';
+        } else {
+          bootbox.alert(response.mensaje);
+        }
+      });
+
+  }
 
   guardar() {
     let error = false;
@@ -196,6 +243,7 @@ export class ProductoComponent implements OnInit {
                 this.elementos.push(response.object);
                 bootbox.alert('Transacción realizada correctamente');
                 this.panelAdicional = true;
+                this.consultarImagenes(response.object.idProducto);
               } else {
                 bootbox.alert(response.mensaje);
               }

@@ -125,24 +125,34 @@
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
-                                        <table>
+                                        <table class="table table-md table-bordered table-hover small">
+                                            <thead>
+                                                <tr>
+                                                    <th>Agregar Imagen</th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <div class="image-upload">
-                                                            <img [src]="imageSrc" style="max-width:300px;max-height:300px" />
-                                                            <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+                                                        <div [ngClass]="{'has-error': errores.imagenProducto }">
+                                                            <div class="image-upload">
+
+                                                                <img [src]="imageSrc" style="max-width:100px;max-height:100px" />
+                                                                <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" /> &nbsp;&nbsp;&nbsp;
+                                                                <button class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>
+                                                            </div>
                                                         </div>
+                                                        <span class="control-label" ng-show="errores.imagenProducto">{{errores.imagenProducto}}</span>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-
+                                        <br><br>
                                         <div class="card-columns">
                                             <div class="card" *ngFor="let item of imagenes">
                                                 <img class="card-img-top" src="http://10.39.1.140/Imagenes/{{item.imagen}}" alt="">
                                                 <div class="card-footer">
-                                                    <small class="text-muted"><button class="btn btn-danger btn-sm">Borrar</button></small>
+                                                    <small class="text-muted"><button class="btn btn-danger btn-sm" (click)="borrarImagen(item)">Borrar</button></small>
                                                 </div>
                                             </div>
                                         </div>
