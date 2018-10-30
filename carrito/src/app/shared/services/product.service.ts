@@ -50,12 +50,12 @@ export class ProductService {
  console.log ('captura del tipo:'+tipo+' y termino'+termino)
  if (tipo == 'D'){
  if ( termino == '*'){
-     console.log (this.apiUrl+'/buscarDescripcion/0/10/*');
-   return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
+     console.log (this.apiUrl+'/ConsultarDesc/0/10/*');
+   return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/*', { headers });
    }
    else {
-     console.log (this.apiUrl+'/buscarDescripcion/0/10/'+termino);
-   return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/'+termino, { headers });
+     console.log (this.apiUrl+'/ConsultarDesc/0/10/'+termino);
+   return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/'+termino, { headers });
    }
  }
  else if (tipo == 'C'){
@@ -72,12 +72,12 @@ export class ProductService {
  }
  if (tipo == 'P'){
  if ( termino == '*'){
-       console.log (this.apiUrl+'/buscarDescripcion/0/10/*');
-     return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
+       console.log (this.apiUrl+'/ConsultarDesc/0/10/*');
+     return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/*', { headers });
      }
      else {
-       console.log (this.apiUrl+'/buscarDescripcion/0/10/'+termino);
-     return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/'+termino, { headers });
+       console.log (this.apiUrl+'/ConsultarDesc/0/10/'+termino);
+     return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/'+termino, { headers });
      }
    }
 
