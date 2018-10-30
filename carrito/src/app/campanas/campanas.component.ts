@@ -18,7 +18,7 @@ campanas:any;
 
   ) {
 
-    this.http.get('http://felec.computec.com/WsOmsREST/rest/WsCampannas/obtenerCampanna/1/10').subscribe(campanas1=>{
+    this.http.get('/WsOmsREST1/rest/WsCampannas/obtenerCampanna/1/10').subscribe(campanas1=>{
 
         //this.campanas = _campanaService.getCampanas();
         this.campanas=campanas1;

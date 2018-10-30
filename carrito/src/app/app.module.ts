@@ -9,9 +9,12 @@ import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { AppRoutes } from "./app.routing";
 import { PSEComponent } from './pse/pse.component';
+import {ConsultarcampanaComponent} from './campanas/campanas.component';
+
+
 
 @NgModule({
-  declarations: [AppComponent, PSEComponent],
+  declarations: [AppComponent, PSEComponent, ConsultarcampanaComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
