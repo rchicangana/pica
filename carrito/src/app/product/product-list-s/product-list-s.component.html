@@ -33,6 +33,9 @@
 
             <div class="container">
                 <div class="row">
+
+
+                    
                     <!-- List of Products -->
                     <div class="col-sm-4 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
                         <div class="item">
