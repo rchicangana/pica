@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Usuario } from "../../shared/models/user";
+import { Solicitud } from "../../shared/models/solicitud";
 import { AuthService } from "../../shared/services/auth.service";
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from "../../shared/services/auth.service";
 })
 export class UserAccountComponent implements OnInit {
   loggedUser: Usuario;
+  solicitudes: Solicitud[];
   // Enable Update Button
 
   constructor(private authService: AuthService) {}

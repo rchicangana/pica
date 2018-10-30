@@ -71,3 +71,94 @@ export class Orden
     inicio:Number;
     cuantos:Number;
  }
+
+ export class Orden2 {
+    fechaCreacion: Date;
+    noOrden: Number;
+    valorTotal: Number;
+    fechaVencimiento: Date;
+    detalleOrdenCompras: [{
+        valor: Number;
+        producto: {
+            tipoProducto: {
+                nombre: String;
+                idTipoProducto: Number;
+            };
+            idProducto: Number;
+            fechaLlegada: Date;
+            nombreProducto: String;
+            imagenProductos: [{
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }, {
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }, {
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }];
+            fechaSalida: Date;
+        };
+        idDetalleOrden: Number;
+    }, {
+        valor: Number;
+        producto: {
+            tipoProducto: {
+                nombre: String;
+                idTipoProducto: Number;
+            };
+            idProducto: Number;
+            fechaLlegada: Date;
+            nombreProducto: String;
+            imagenProductos: [{
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }, {
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }, {
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }];
+            fechaSalida: Date
+        };
+        idDetalleOrden: Number;
+    }, {
+        valor: Number;
+        producto: {
+            tipoProducto: {
+                nombre: String;
+                idTipoProducto: Number;
+            };
+            idProducto: Number;
+            fechaLlegada: Date;
+            nombreProducto: String;
+            imagenProductos: [{
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }, {
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }, {
+                imagen: String;
+                esprincipal: Number;
+                idImagenProducto: Number;
+            }];
+            fechaSalida: Date;
+        };
+        idDetalleOrden: Number;
+    }];
+    estadoOrdenCompra: {
+        idEstadoOrdenCompra: Number;
+        estado: String;
+    };
+    numeroSolicitud: Number;
+}

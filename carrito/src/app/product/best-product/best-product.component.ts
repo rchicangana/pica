@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../../shared/models/product";
+import { Product, Top5 } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
 import { Respuesta } from '../../shared/models/respuesta';
 declare var $: any;
@@ -10,7 +10,7 @@ declare var $: any;
   styleUrls: ["./best-product.component.scss"]
 })
 export class BestProductComponent implements OnInit {
-  bestProducts: Product[] = [];
+  bestProducts: Top5[] = [];
   options: any;
   constructor(private productService: ProductService) {}
 
@@ -32,13 +32,13 @@ export class BestProductComponent implements OnInit {
   }
 
   getAllProducts() {
-    const x = this.productService.getProducts()
+    const x = this.productService.getTopFive()
     //x.snapshotChanges()
     .subscribe(
       data => {
           this.bestProducts = [];
           if((<Respuesta>data).codigo=="OK"){
-            let productos = <Product[]> (<Respuesta>data).object;
+            let productos = <Top5[]> (<Respuesta>data).object;
             productos.forEach(elemento => {
               this.bestProducts.push(elemento);
             });
@@ -46,18 +46,5 @@ export class BestProductComponent implements OnInit {
       },
       error => {
       });
-    /*.subscribe(product => {
-      this.bestProducts = [];
-      for (let i = 0; i < 5; i++) {
-        const y = product[i].payload.toJSON();
-        y["$key"] = product[i].key;
-        this.bestProducts.push(y as Product);
-      }*/
-      // product.forEach(element => {
-      //   const y = element.payload.toJSON();
-      //   y["$key"] = element.key;
-      //   this.bestProducts.push(y as Product);
-      // });
-    //});
   }
 }

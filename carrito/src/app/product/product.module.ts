@@ -18,13 +18,15 @@ import { SharedModule } from "../shared/shared.module";
 import { FavouriteProductsComponent } from "./favourite-products/favourite-products.component";
 import { CartProductsComponent } from "./cart-products/cart-products.component";
 import { CartCalculatorComponent } from "./cart-calculator/cart-calculator.component";
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(ProductRoutes),
     SharedModule,
-    CheckoutModule
+    CheckoutModule,
+    SlideshowModule
   ],
   declarations: [
     ProductComponent,

@@ -20,6 +20,8 @@ export class ProductListComponentS implements OnInit {
   brands = ["Todos", "Futbol", "Ciclisto", "Olimpicos", "Boxeo", "Tenis"];
 
   selectedBrand: "All";
+  tipo:string;
+
 
   page = 1;
   constructor(
@@ -42,7 +44,8 @@ export class ProductListComponentS implements OnInit {
 
 
         this.activatedRoute.params.subscribe( params => {
-
+        this.tipo= params['tipo'];
+        console.log('este es el tipo del tipo'+this.tipo);
     if ( params['tipo'] == 'D' )
     {
               if (typeof params['termino'] === 'undefined' )

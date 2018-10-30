@@ -21,5 +21,8 @@ namespace LoginWS
         public string password { get; set; }
         public bool activo { get; set; }
         public System.DateTime fecha_creacion { get; set; }
+        public string pais { get; set; }
+        public string departamento { get; set; }
+        public string ciudad { get; set; }
     }
 }

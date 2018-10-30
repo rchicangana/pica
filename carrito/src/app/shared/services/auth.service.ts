@@ -6,22 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
-  //user: Observable<firebase.User>;
   userDetails: Usuario = null;
-  apiUrl :string = "login/Logica/Usuario.svc/Usuario";
+  apiUrl:string = "login/Logica/Usuario.svc/Usuario";
 
-  constructor(private router: Router, private http: HttpClient) {
-    //this.user = firebaseAuth.authState;
-    /*
-    this.user.subscribe(user => {
-      if (user) {
-        this.userDetails = user;
-        console.log(this.userDetails);
-      } else {
-        this.userDetails = null;
-      }
-    });
-    */
+  constructor(
+    private router: Router, 
+    private http: HttpClient) {
   }
 
   isLoggedIn() {
@@ -36,12 +26,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem("usuarioLogeado");
     this.router.navigate(["/"]);
-  }
-
-  createUserWithEmailAndPassword(usuario: Usuario) {
-    let usuarioJson = JSON.stringify(usuario);   
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.post(this.apiUrl+'/crearusuario', usuarioJson, { headers });
   }
 
   getLoggedInUser(): Usuario {

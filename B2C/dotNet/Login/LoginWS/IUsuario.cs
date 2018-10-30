@@ -27,7 +27,7 @@ namespace LoginWS
             ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "consultausuario/{login}/{password}")]
-        usuarios buscarUsuarioPorLogin(string login, string password);
+        ResponseData buscarUsuarioPorLogin(string login, string password);
         
         [OperationContract]
         [WebInvoke(Method = "POST",
@@ -36,6 +36,14 @@ namespace LoginWS
             BodyStyle = WebMessageBodyStyle.Bare, 
             UriTemplate = "crearusuario")]
         ResponseData crearUsuario(usuarios usuario);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "actualizarusuario")]
+        void actualizarUsuario(usuarios usuario);
     }
 
     public class SampleContentTypeMapper : WebContentTypeMapper

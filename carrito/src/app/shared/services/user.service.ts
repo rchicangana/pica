@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from "moment";
 import { Usuario } from "../models/user";
 
@@ -7,14 +7,16 @@ import { Usuario } from "../models/user";
 export class UserService {
   selectedUser: Usuario;
   users: Usuario[];
+  apiUrl :string = "login/Logica/Usuario.svc/Usuario";
 
   location = {
     lat: null,
     lon: null
   };
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.getUsers();
+
   }
 
   getUsers() {
@@ -22,14 +24,16 @@ export class UserService {
     return this.users;
   }
 
-  createUser(data: Usuario) {
-    /*data.location = this.location;
-    data.createdOn = moment(new Date()).format("X");
-    this.users.push(data);*/
+  createUser(usuario: Usuario) {
+    let usuarioJson = JSON.stringify(usuario);   
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    return this.http.post(this.apiUrl+'/crearusuario', usuarioJson, { headers });
   }
 
-  updateUser(user: Usuario) {
-    //this.users.update(user.$key, user);
+  updateUser(usuario: Usuario) {
+    let usuarioJson = JSON.stringify(usuario);   
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    return this.http.put(this.apiUrl+'/actualizarusuario', usuarioJson, { headers });
   }
 
   setLocation(lat, lon) {

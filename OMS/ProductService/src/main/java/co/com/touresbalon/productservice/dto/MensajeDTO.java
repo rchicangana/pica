@@ -14,6 +14,7 @@ public class MensajeDTO {
     private String codigo;
     private Object object;
     private String mensaje;
+    private Long cantidad;
 
     public String getCodigo() {
         return codigo;
@@ -37,6 +38,14 @@ public class MensajeDTO {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public Long getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Long cantidad) {
+        this.cantidad = cantidad;
     }
     
     

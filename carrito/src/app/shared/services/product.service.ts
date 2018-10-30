@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ToastOptions, ToastyService, ToastyConfig } from "ng2-toasty";
 import { Product } from "../models/product";
+import { Tarifa } from "../models/tarifa";
 import { AuthService } from "./auth.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -8,11 +9,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ProductService {
   products: Product[];
   product: Product;
-  //apiUrl :string = "./Usuario.svc/Usuario";
-  apiUrl :string = "ProductService/services/producto";
-  // favouriteProducts
-  //favouriteProducts: AngularFireList<FavouriteProduct>;
-  //cartProducts: AngularFireList<FavouriteProduct>;
+  
+  //apiUrl :string = "ProductService/services/producto";
+  //apiUrl2 :string = "ProductService/services/tarifa";
+  apiUrl :string = "ServiciosESB/Productos";
+  apiUrl2 :string = "ServiciosESB/Tarifas";
+  apiUrl3 :string = "ProductService/services/producto";
+  //apiUrl :string = "http://10.39.1.140/ProductService/services/producto";
+  //apiUrl2 :string = "http://10.39.1.140/ProductService/services/tarifa";
 
   // NavbarCounts
   navbarCartCount = 0;
@@ -29,81 +33,30 @@ export class ProductService {
     this.toastyConfig.theme = "material";
 
     if (this.authService.isLoggedIn()) {
-      this.calculateFavProductCounts();
       this.calculateCartProductCounts();
     } else {
-      this.calculateLocalFavProdCounts();
       this.calculateLocalCartProdCounts();
     }
   }
 
   getProducts() {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    //return this.http.get(this.apiUrl+'/productos', { headers });
-    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    return this.http.get(this.apiUrl+'/Buscar/0/10', { headers });
   }
-
-  getProductsS( tipo?:String, termino?:String ) {
-  const headers = new HttpHeaders({'Content-Type': 'application/json'});
-  //return this.http.get(this.apiUrl+'/productos', { headers });
-console.log ('captura del tipo:'+tipo+' y termino'+termino)
-if (tipo == 'D'){
-if ( termino == '*'){
-    console.log (this.apiUrl+'/buscarDescripcion/0/10/*');
-  return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
-  }
-  else {
-    console.log (this.apiUrl+'/buscarDescripcion/0/10/'+termino);
-  return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/'+termino, { headers });
-  }
-}
-else if (tipo == 'C'){
-  if ( termino == '0'){
-console.log (this.apiUrl+'/buscarProducto/0');
-      return this.http.get(this.apiUrl+'/buscarProducto/1', { headers });
-      }
-      else {
-        console.log (this.apiUrl+'/buscarProducto/'+termino);
-      return this.http.get(this.apiUrl+'/buscarProducto/'+termino, { headers });
-
-
-      }
-}
-if (tipo == 'P'){
-if ( termino == '*'){
-      console.log (this.apiUrl+'/buscarDescripcion/0/10/*');
-    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/*', { headers });
-    }
-    else {
-      console.log (this.apiUrl+'/buscarDescripcion/0/10/'+termino);
-    return this.http.get(this.apiUrl+'/buscarDescripcion/0/10/'+termino, { headers });
-    }
-  }
-
-
-else {console.log("Busqueda sin parametro valido")}
-}
 
   createProduct(data: Product) {
     this.products.push(data);
   }
 
   getProductById(key: string) {
-    //this.product = this.db.object("product/" + key);
-    //return this.product;
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    //return this.http.get(this.apiUrl+'/productos/buscar/'+key, { headers });
-    return this.http.get(this.apiUrl+'/buscarProducto/'+key, { headers });
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    return this.http.get(this.apiUrl2+'/Consultar/'+key, { headers });
   }
 
-  updateProduct(data: Product) {
-    //this.products.update(data.$key, data);
+  getTopFive(){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    return this.http.get(this.apiUrl3+'/topFive', { headers });
   }
-
-  deleteProduct(key: string) {
-    //this.products.remove(key);
-  }
-
   /*
    ----------  Favourite Product Function  ----------
   */
@@ -143,7 +96,7 @@ else {console.log("Busqueda sin parametro valido")}
     this.toastyService.wait(toastAdd);
     setTimeout(() => {
       localStorage.setItem("avf_item", JSON.stringify(a));
-      this.calculateLocalFavProdCounts();
+      //this.calculateLocalFavProdCounts();
     }, 1500);
   }
 
@@ -173,23 +126,8 @@ else {console.log("Busqueda sin parametro valido")}
     // ReAdding the products after remove
     localStorage.setItem("avf_item", JSON.stringify(products));
 
-    this.calculateLocalFavProdCounts();
+    //this.calculateLocalFavProdCounts();
   }
-
-  // Returning Local Products Count
-  calculateLocalFavProdCounts() {
-    this.navbarFavProdCount = this.getLocalFavouriteProducts().length;
-  }
-
-  // Calculating FavProductsCount and storing it in variable
-  calculateFavProductCounts() {
-    const x = this.getUsersFavouriteProduct()
-      /*.snapshotChanges()
-      .subscribe(data => {
-        this.navbarFavProdCount = data.length;
-      });*/
-  }
-
   /*
    ----------  Cart Product Function  ----------
   */
@@ -197,15 +135,15 @@ else {console.log("Busqueda sin parametro valido")}
   // Fetching Cart Products based on userId
   getUsersCartProducts() {
     const user = this.authService.getLoggedInUser();
-    /*this.cartProducts = this.db.list("cartProducts", ref =>
-      ref.orderByChild("userId").equalTo(user.$key)
-    );
-    return this.cartProducts;*/
+    //this.cartProducts = this.db.list("cartProducts", ref =>
+    //  ref.orderByChild("userId").equalTo(user.$key)
+    //)
+    //return this.cartProducts;
   }
 
   // Adding new Product to cart db if  else localStorage
-  addToCart(data: Product): void {
-    let a: Product[];
+  addToCart(data: Tarifa): void {
+    let a: Tarifa[];
 
     a = JSON.parse(localStorage.getItem("avct_item")) || [];
 
@@ -231,11 +169,11 @@ else {console.log("Busqueda sin parametro valido")}
   }
 
   // Removing cart from local
-  removeLocalCartProduct(product: Product) {
-    const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
+  removeLocalCartProduct(product: Tarifa) {
+    const products: Tarifa[] = JSON.parse(localStorage.getItem("avct_item"));
 
     for (let i = 0; i < products.length; i++) {
-      if (products[i].idProducto === product.idProducto) {
+      if (products[i].boleteriaDTO.productoId === product.boleteriaDTO.productoId) {
         products.splice(i, 1);
         break;
       }
@@ -247,10 +185,9 @@ else {console.log("Busqueda sin parametro valido")}
   }
 
   // Fetching Locat CartsProducts
-  getLocalCartProducts(): Product[] {
-    const products: Product[] =
+  getLocalCartProducts(): Tarifa[] {
+    const products: Tarifa[] =
       JSON.parse(localStorage.getItem("avct_item")) || [];
-
     return products;
   }
 
@@ -261,11 +198,10 @@ else {console.log("Busqueda sin parametro valido")}
 
   // Calculating Cart products count and assigning to variable
   calculateCartProductCounts() {
-    const x = this.getUsersCartProducts()
-     /*.snapshotChanges()
-      .subscribe(data => {
-        this.navbarCartCount = data.length;
-      });*/
+    //const x = this.getUsersCartProducts()
+    //  .subscribe(data => {
+    //    this.navbarCartCount = data.length;
+    //  });
   }
 }
 

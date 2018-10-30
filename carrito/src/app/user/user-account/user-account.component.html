@@ -5,13 +5,13 @@
             <p style="font-size: 15px;">{{loggedUser.fecha_creacion}}</p>
         </div>
         <table>
-            <ng-container *ngFor="let solciitud of solciitudes">
+            <ng-container *ngFor="let solicitud of solicitudes">
                 <tr>
                     <td>
-                        <h2>{{solciitud.nombre}}</h2>
+                        <h2>{{solicitud.nombre}}</h2>
                     </td>
                 </tr>
-                <tr *ngFor="let item of solciitud.items">
+                <tr *ngFor="let item of solicitud.items">
                     <td>{{item}}</td>
                 </tr>
             </ng-container>

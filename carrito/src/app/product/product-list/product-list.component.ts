@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../shared/models/product";
+import { Tarifa } from "../../shared/models/tarifa";
 import { Mensaje } from '../../shared/models/mensaje';
 import { Respuesta } from '../../shared/models/respuesta';
 import { AuthService } from "../../shared/services/auth.service";
@@ -45,27 +46,13 @@ export class ProductListComponent implements OnInit {
       },
       error => {
       });
-    /*x.snapshotChanges()
-    .subscribe(product => {
-      this.spinnerService.hide();
-      this.productList = [];
-      product.forEach(element => {
-        const y = element.payload.toJSON();
-        y["$key"] = element.key;
-        this.productList.push(y as Product);
-      });
-    });*/
-  }
-
-  removeProduct(key: string) {
-    this.productService.deleteProduct(key);
   }
 
   addFavourite(product: Product) {
     this.productService.addFavouriteProduct(product);
   }
 
-  addToCart(product: Product) {
+  addToCart(product: Tarifa) {
     this.productService.addToCart(product);
   }
 }

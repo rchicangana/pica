@@ -4,6 +4,9 @@
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="touresbalonModel.usuarios">
         <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombres" ColumnName="nombres" />
           <ScalarProperty Name="apellidos" ColumnName="apellidos" />

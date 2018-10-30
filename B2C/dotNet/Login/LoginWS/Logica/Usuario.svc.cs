@@ -21,7 +21,7 @@ namespace LoginWS
            return this.usuDAO.listarUsuarios();
         }
 
-        public usuarios buscarUsuarioPorLogin(string login, string password)
+        public ResponseData buscarUsuarioPorLogin(string login, string password)
         {
             return this.usuDAO.buscarUsuario(login, password);
         }
@@ -33,6 +33,11 @@ namespace LoginWS
             usuario.fecha_creacion = DateTime.Today;
             usuario.activo = true;
             return this.usuDAO.crearUsuario(usuario);
+        }
+
+        public void actualizarUsuario(usuarios usuario)
+        {
+            this.usuDAO.actualizarUsuario(usuario);
         }
      }
 }

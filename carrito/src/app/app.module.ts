@@ -8,10 +8,10 @@ import { UserModule } from "./user/user.module";
 import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { AppRoutes } from "./app.routing";
-import {ConsultarcampanaComponent} from './campanas/campanas.component';
+import { PSEComponent } from './pse/pse.component';
 
 @NgModule({
-  declarations: [AppComponent, ConsultarcampanaComponent],
+  declarations: [AppComponent, PSEComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -13,12 +13,15 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombres" Type="nchar" Nullable="false" MaxLength="30" />
-          <Property Name="apellidos" Type="nchar" Nullable="false" MaxLength="10" />
-          <Property Name="login" Type="nchar" Nullable="false" MaxLength="20" />
-          <Property Name="password" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="nombres" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="apellidos" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="activo" Type="bit" Nullable="false" />
           <Property Name="fecha_creacion" Type="date" Nullable="false" />
+          <Property Name="pais" Type="varchar" MaxLength="50" />
+          <Property Name="departamento" Type="varchar" MaxLength="50" />
+          <Property Name="ciudad" Type="varchar" MaxLength="50" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -26,20 +29,23 @@
       <Schema Namespace="touresbalonModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="touresbalonEntities2" p1:LazyLoadingEnabled="true">
           <EntitySet Name="usuarios" EntityType="touresbalonModel.usuarios" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombres" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
-          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
           <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Type="String" Name="pais" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="departamento" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ciudad" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -48,6 +54,9 @@
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="touresbalonModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombres" ColumnName="nombres" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
@@ -58,7 +67,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

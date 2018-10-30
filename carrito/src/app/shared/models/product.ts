@@ -95,5 +95,11 @@ export class Product{
     }
   ];  
   nombreProducto: string;
-  precio:number;
+}
+
+export class Top5{  
+  cantidad:Number;
+  idProducto:Number;
+  nombre:String;
+  imagen:String;
 }

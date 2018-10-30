@@ -6,11 +6,14 @@
 package co.com.touresbalon.productservice.servicios;
 
 import co.com.touresbalon.productservice.dto.MensajeDTO;
+import co.com.touresbalon.productservice.dto.ProductoDTO;
 import co.com.touresbalon.productservice.logica.ProductoLogica;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -59,5 +62,30 @@ public class ProductoServicio {
     public MensajeDTO buscar(@PathParam("inicio") Integer inicio, @PathParam("fin") Integer fin) {
         return productoLogica.buscarProdcuto(inicio, fin);
     }
+    
+    @GET
+    @Path("topFive")
+    public MensajeDTO getTopFive(){
+        return productoLogica.getTopFive();
+    }
+    
+    @GET
+    @Path("topFiveProducto/{producto}")
+    public MensajeDTO getTopFiveProducto(@PathParam("producto") Long idProducto){
+        return productoLogica.getTopFiveProducto(idProducto);
+    }
+    
+    @POST
+    @Path("guardar")
+    public MensajeDTO guardar(ProductoDTO entrada){
+        return productoLogica.guardarProducto(entrada);
+    }
+    
+    @PUT
+    @Path("editar")
+    public MensajeDTO editar(ProductoDTO entrada){
+        return productoLogica.actualizarProducto(entrada);
+    }
+    
 
 }
