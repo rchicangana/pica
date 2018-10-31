@@ -1,6 +1,6 @@
 {
     "/ProductService/*": {
-        "target": "http://10.39.1.140:8080/",
+        "target": "http://localhost:8080/",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
