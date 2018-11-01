@@ -27,10 +27,7 @@ import { CargarimagenesComponent } from '../cargarimagenes/cargarimagenes.compon
     }
   `]
 })
-export class ProductoComponent implements OnInit, AfterViewChecked {
-
-  @ViewChild(CargarimagenesComponent) cargarImages: CargarimagenesComponent;
-
+export class ProductoComponent implements OnInit {
 
   hoveredDate: NgbDate;
   inputFile: any;
@@ -102,9 +99,7 @@ export class ProductoComponent implements OnInit, AfterViewChecked {
     });
   }
 
-  consultarImagenes(idProducto: number) {
-    this.cargarImages.consultarImagenes(idProducto);
-  }
+ 
 
   cancelar() {
     this.registro = {};
@@ -138,7 +133,6 @@ export class ProductoComponent implements OnInit, AfterViewChecked {
                                       +item.fechaLlegada.substring(0, 2));
     this.fromDate = fecSalida;
     this.toDate = fecRegreso;
-    this.consultarImagenes(item.idProducto);
   }
 
 
@@ -187,7 +181,6 @@ export class ProductoComponent implements OnInit, AfterViewChecked {
                 this.elementos.push(response.object);
                 bootbox.alert('Transacción realizada correctamente');
                 this.panelAdicional = true;
-                this.consultarImagenes(response.object.idProducto);
               } else {
                 bootbox.alert(response.mensaje);
               }
@@ -211,11 +204,6 @@ export class ProductoComponent implements OnInit, AfterViewChecked {
         }
       );
     }
-  }
-
-  ngAfterViewChecked(): void {
-    // Called after every check of the component's view. Applies to components only.
-    // Add 'implements AfterViewChecked' to the class.
   }
 }
 

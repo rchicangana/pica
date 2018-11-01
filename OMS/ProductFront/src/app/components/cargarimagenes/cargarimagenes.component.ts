@@ -20,6 +20,7 @@ export class CargarimagenesComponent implements OnInit {
   constructor(private imagenesService: ImagenesService) { }
 
   ngOnInit() {
+    this.imagenesService.getImagenes(this.datosFormulario.idProducto).subscribe((data: any) => { this.imagenes = data; });
   }
 
   handleInputChange(e) {
@@ -36,10 +37,6 @@ export class CargarimagenesComponent implements OnInit {
   _handleReaderLoaded(e) {
     const reader = e.target;
     this.imageSrc = reader.result;
-  }
-
-  consultarImagenes(idProducto: number) {
-    this.imagenesService.getImagenes(idProducto).subscribe((data: any) => { this.imagenes = data; });
   }
 
   borrarImagen(imagen: any) {
