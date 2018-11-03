@@ -12,16 +12,18 @@ namespace SolicitudWS
     using System;
     using System.Collections.Generic;
     
-    public partial class ESTADOORDENCOMPRA
+    public partial class DETALLESOLICITUD
     {
-        public ESTADOORDENCOMPRA()
+        public DETALLESOLICITUD()
         {
             this.SOLICITUD = new HashSet<SOLICITUD>();
         }
     
-        public int Idestadoordencompra { get; set; }
-        public string estado { get; set; }
+        public int Iddetalleorden { get; set; }
+        public int productoid { get; set; }
+        public string valor { get; set; }
     
+        public virtual PRODUCTO PRODUCTO { get; set; }
         public virtual ICollection<SOLICITUD> SOLICITUD { get; set; }
     }
 }

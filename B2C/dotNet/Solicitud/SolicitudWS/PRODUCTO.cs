@@ -16,7 +16,7 @@ namespace SolicitudWS
     {
         public PRODUCTO()
         {
-            this.DETALLEORDENCOMPRA = new HashSet<DETALLEORDENCOMPRA>();
+            this.DETALLESOLICITUD = new HashSet<DETALLESOLICITUD>();
         }
     
         public int Idproducto { get; set; }
@@ -26,8 +26,8 @@ namespace SolicitudWS
         public string fechallegada { get; set; }
         public Nullable<int> imagenproductos { get; set; }
     
-        public virtual ICollection<DETALLEORDENCOMPRA> DETALLEORDENCOMPRA { get; set; }
         public virtual IMAGENPRODUCTO IMAGENPRODUCTO { get; set; }
         public virtual TIPOPRODUCTO TIPOPRODUCTO { get; set; }
+        public virtual ICollection<DETALLESOLICITUD> DETALLESOLICITUD { get; set; }
     }
 }
