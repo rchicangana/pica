@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewChecked } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { NgbDate, NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { TipoproductoService } from '../../services/tipoproducto.service';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
-import { ImagenesService } from '../../services/imagenes.service';
+import { CargarimagenesComponent } from '../cargarimagenes/cargarimagenes.component';
 
 @Component({
   selector: 'app-producto',
@@ -29,13 +28,12 @@ import { ImagenesService } from '../../services/imagenes.service';
   `]
 })
 export class ProductoComponent implements OnInit {
+
   hoveredDate: NgbDate;
   inputFile: any;
   fromDate: NgbDate;
   toDate: NgbDate;
   elementos: any[] = [];
-  imagenes: any[] = [];
-  datosImagenProducto: any = {};
   panelEditar = false;
   panelAdicional = false;
   registro: any = {};
@@ -48,28 +46,10 @@ export class ProductoComponent implements OnInit {
   previousPage: any;
   tiposProducto: any[];
 
-  private imageSrc = '';
-
-  handleInputChange(e) {
-    const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    const pattern = /image-*/;
-    const reader = new FileReader();
-    if (!file.type.match(pattern)) {
-      alert('invalid format');
-      return;
-    }
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
-  _handleReaderLoaded(e) {
-    const reader = e.target;
-    this.imageSrc = reader.result;
-  }
 
   constructor(private productosService: ProductosService,
     private calendar: NgbCalendar,
-    private tipoproductoService: TipoproductoService,
-    private imagenesService: ImagenesService) {
+    private tipoproductoService: TipoproductoService) {
     this.fromDate = calendar.getToday();
   }
 
@@ -119,6 +99,8 @@ export class ProductoComponent implements OnInit {
     });
   }
 
+ 
+
   cancelar() {
     this.registro = {};
     this.panelEditar = false;
@@ -151,52 +133,8 @@ export class ProductoComponent implements OnInit {
                                       +item.fechaLlegada.substring(0, 2));
     this.fromDate = fecSalida;
     this.toDate = fecRegreso;
-    this.consultarImagenes(item.idProducto);
   }
 
-  consultarImagenes(idProducto: number) {
-    this.imagenesService.getImagenes(idProducto).subscribe((data: any) => { this.imagenes = data; });
-  }
-
-  borrarImagen(imagen: any) {
-    this.imagenesService.borrarImagenProducto(imagen.idImagenProducto).subscribe(
-      (response: any) => {
-        if (response.codigo === 'OK') {
-          const indice = this.imagenes.indexOf(imagen);
-          this.imagenes.splice(indice, 1);
-          bootbox.alert('Transacción realizada correctamente');
-        } else {
-          bootbox.alert(response.mensaje);
-        }
-      });
-  }
-
-  cargarImagen(){
-    let error = false;
-    if (!this.imageSrc) {
-      this.errores.imagenProducto =
-        'Debe seleccionar una imagen para realizar la carga';
-      error = true;
-    }
-    if (error) {
-      return;
-    }
-    this.datosImagenProducto.imagen = this.imageSrc.replace('data:image/jpeg;base64,', '');
-    this.datosImagenProducto.esprincipal = 1;
-    this.datosImagenProducto.idProducto = this.datosFormulario.idProducto;
-    this.imagenesService.guardarImagenProducto(this.datosImagenProducto).subscribe(
-      (response: any) => {
-        if (response.codigo === 'OK') {
-          this.imagenes.push(response.object);
-          bootbox.alert('Transacción realizada correctamente');
-          this.imageSrc = '';
-          this.inputFile = '';
-        } else {
-          bootbox.alert(response.mensaje);
-        }
-      });
-
-  }
 
   guardar() {
     let error = false;
@@ -243,7 +181,6 @@ export class ProductoComponent implements OnInit {
                 this.elementos.push(response.object);
                 bootbox.alert('Transacción realizada correctamente');
                 this.panelAdicional = true;
-                this.consultarImagenes(response.object.idProducto);
               } else {
                 bootbox.alert(response.mensaje);
               }
@@ -269,4 +206,6 @@ export class ProductoComponent implements OnInit {
     }
   }
 }
+
+
 
