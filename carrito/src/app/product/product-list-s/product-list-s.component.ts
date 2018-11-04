@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponentS implements OnInit {
   productList: Product[];
+  producto: Product;
   mensaje : Mensaje;
   respuesta : Respuesta;
   brands = ["Todos", "Futbol", "Ciclisto", "Olimpicos", "Boxeo", "Tenis"];
@@ -60,10 +61,10 @@ export class ProductListComponentS implements OnInit {
 
       if (typeof params['termino'] === 'undefined' )
       {
-        this.getAllProductsS("C","*");
+        this.getAProductsS("C","*");
         }
         else{
-          this.getAllProductsS( params['tipo'], params['termino']);
+          this.getAProductsS( params['tipo'], params['termino']);
         }
 
 
@@ -89,6 +90,7 @@ export class ProductListComponentS implements OnInit {
     const x = this.productService.getProductsS(t1 ,t2)
     .subscribe(
       data => {
+
           this.productList = [];
           if((<Respuesta>data).codigo=="OK"){
             let productos = <Product[]> (<Respuesta>data).object;
@@ -110,9 +112,34 @@ export class ProductListComponentS implements OnInit {
       });
     });*/
   }
-<<<<<<< HEAD
+
+  getAProductsS(t1:String, t2:String) {
+    this.spinnerService.show();
+    const x = this.productService.getProductsS(t1 ,t2)
+    .subscribe(
+      data => {
+
+          this.productList = [];
+          if((<Respuesta>data).codigo=="OK"){
+            let productos = <Product> (<Respuesta>data).object;
+            this.producto = productos;
+            console.log(this.producto);
+          }
+      },
+      error => {
+      });
+    /*x.snapshotChanges()
+    .subscribe(product => {
+      this.spinnerService.hide();
+      this.productList = [];
+      product.forEach(element => {
+        const y = element.payload.toJSON();
+        y["$key"] = element.key;
+        this.productList.push(y as Product);
+      });
+    });*/
+  }
 
 
-=======
->>>>>>> eae65a3fc42aead01b57314f5fbeb00e771fb2ae
+
 }

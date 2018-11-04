@@ -60,12 +60,12 @@ export class ProductService {
  }
  else if (tipo == 'C'){
    if ( termino == '0'){
- console.log (this.apiUrl+'/buscarProducto/0');
-       return this.http.get(this.apiUrl+'/buscarProducto/1', { headers });
+ console.log (this.apiUrl+'/Consultar/0');
+       return this.http.get(this.apiUrl+'/Consultar/1', { headers });
        }
        else {
-         console.log (this.apiUrl+'/buscarProducto/'+termino);
-       return this.http.get(this.apiUrl+'/buscarProducto/'+termino, { headers });
+         console.log (this.apiUrl+'/Consultar/'+termino);
+       return this.http.get(this.apiUrl+'/Consultar/'+termino, { headers });
 
 
        }
