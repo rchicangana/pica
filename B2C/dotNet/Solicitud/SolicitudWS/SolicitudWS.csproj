@@ -101,9 +101,6 @@
     <Compile Include="SOLICITUD.cs">
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>TouresBalonModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TIPOPRODUCTO.cs">
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>

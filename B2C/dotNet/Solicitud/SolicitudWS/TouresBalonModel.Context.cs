@@ -25,7 +25,6 @@ namespace SolicitudWS
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<IMAGENPRODUCTO> IMAGENPRODUCTO { get; set; }
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
         public DbSet<SOLICITUD> SOLICITUD { get; set; }

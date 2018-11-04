@@ -69,33 +69,39 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInRegular(userForm.value["emailId"], userForm.value["loginPassword"])
       .subscribe(res => {
-        console.log("Usuario logeado: ", res);
-        this.usuario = <Usuario>(<Respuesta>res).object;
-
-        if(this.usuario.login !== undefined){
-          this.user.emailId = this.usuario.login;
-          this.user.loginPassword = this.usuario.password;
-          localStorage.setItem("usuarioLogeado", JSON.stringify(this.usuario));
-          const toastOption: ToastOptions = {
-            title: "Authenticacion exitosa",
-            msg: "Autenticando, por favor espere",
-            showClose: true,
-            timeout: 5000,
-            theme: "material"
-          };
-          this.toastyService.wait(toastOption);
-          const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
-  
-          setTimeout((router: Router) => {
-            this.router.navigate([returnUrl || "/"]);
-          }, 1500);
-          this.errorInLoginUser = false;
-          this.router.navigate(["/"]);
+        if ((<Respuesta>res).resultado == "Fallo"){
+          console.log("Usuario NO logeado: ", (<Respuesta>res).mensaje);
         }
         else{
-          this.errorInLoginUser = true;
-          this.errorMessage = "Credenciales incorrectas";
-          //this.router.navigate(["/"]); 
+          let respuesta: Respuesta = <Respuesta>res;
+          this.usuario = <Usuario>respuesta.objeto[0];
+          console.log("Usuario logeado: ", this.usuario.nombres);
+
+          if(this.usuario.login !== undefined){
+            this.user.emailId = this.usuario.login;
+            this.user.loginPassword = this.usuario.password;
+            localStorage.setItem("usuarioLogeado", JSON.stringify(this.usuario));
+            const toastOption: ToastOptions = {
+              title: "Authenticacion exitosa",
+              msg: "Autenticando, por favor espere",
+              showClose: true,
+              timeout: 5000,
+              theme: "material"
+            };
+            this.toastyService.wait(toastOption);
+            const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
+    
+            setTimeout((router: Router) => {
+              this.router.navigate([returnUrl || "/"]);
+            }, 1500);
+            this.errorInLoginUser = false;
+            this.router.navigate(["/"]);
+          }
+          else{
+            this.errorInLoginUser = true;
+            this.errorMessage = "Credenciales incorrectas";
+            //this.router.navigate(["/"]); 
+          }
         }
       },
       error => {

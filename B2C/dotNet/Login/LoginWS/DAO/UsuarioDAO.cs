@@ -11,17 +11,22 @@ namespace LoginWS.DAO
     {
         private touresbalonEntities2 context = new touresbalonEntities2();
 
-        public ResponseData listarUsuarios()
+        public ResponseData listarUsuarios(string desde, string hasta)
         {
             ResponseData respuesta = new ResponseData();
             List<usuarios> listadoUsuarios = new List<usuarios>();
-            try {
-                listadoUsuarios = this.context.usuarios.ToList();
+            try {             
+                string consulta= "SELECT * FROM ( SELECT    ROW_NUMBER() OVER ( ORDER BY id ) AS RowNum, * "+
+                "from usuarios where activo=1) AS tabla "+
+                "WHERE   RowNum >=" + desde+" AND RowNum < " + hasta+ " ORDER BY RowNum";
+                listadoUsuarios = this.context.usuarios.SqlQuery(consulta).ToList();
                 respuesta.mensaje = "Usuarios consultados";
                 respuesta.resultado = "OK";
                 respuesta.objeto = listadoUsuarios;
             }
             catch(Exception ex){
+                respuesta.mensaje = ex.ToString();
+                respuesta.resultado = "Fallido";
             }
             return respuesta;
         }
@@ -78,20 +83,44 @@ namespace LoginWS.DAO
             this.context.SaveChanges();
         }
 
-        public ResponseData buscarUsuario(String loginUsuario, string password)
+        public ResponseData buscarUsuario(string loginUsuario, string password)
         {
             ResponseData respuesta = new ResponseData();
-            usuarios usuario = new usuarios();
+            List<usuarios> usuario = new List<usuarios>();
             try
             {
                 var consulta = (from usu in this.context.usuarios
                                 where usu.login == loginUsuario && usu.password == password 
                                 select usu).First();
-                usuario = consulta;
+                //usuario = consulta;
+                usuario.Add((usuarios)consulta);
                 respuesta.objeto = usuario;
                 respuesta.mensaje = "Usuario encontrado con exito";
                 respuesta.resultado = "OK";
             }catch(Exception ex){
+                respuesta.mensaje = "Ocurrio un error interno";
+                respuesta.resultado = "Fallo";
+            }
+            return respuesta;
+        }
+
+        public ResponseData consulta(string loginUsuario, string password)
+        {
+            ResponseData respuesta = new ResponseData();
+            List<usuarios> usuario = new List<usuarios>();
+            try
+            {
+                var consulta = (from usu in this.context.usuarios
+                                where usu.login == loginUsuario && usu.password == password
+                                select usu).First();
+                //usuario = consulta;
+                usuario.Add((usuarios)consulta);
+                respuesta.objeto = usuario;
+                respuesta.mensaje = "Usuario encontrado con exito";
+                respuesta.resultado = "OK";
+            }
+            catch (Exception ex)
+            {
                 respuesta.mensaje = "Ocurrio un error interno";
                 respuesta.resultado = "Fallo";
             }

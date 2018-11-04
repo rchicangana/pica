@@ -92,8 +92,8 @@ export class ProductListComponentS implements OnInit {
       data => {
 
           this.productList = [];
-          if((<Respuesta>data).codigo=="OK"){
-            let productos = <Product[]> (<Respuesta>data).object;
+          if((<Respuesta>data).resultado=="OK"){
+            let productos = <Product[]> (<Respuesta>data).objeto;
             productos.forEach(elemento => {
               this.productList.push(elemento);
             });
@@ -120,8 +120,8 @@ export class ProductListComponentS implements OnInit {
       data => {
 
           this.productList = [];
-          if((<Respuesta>data).codigo=="OK"){
-            let productos = <Product> (<Respuesta>data).object;
+          if((<Respuesta>data).resultado=="OK"){
+            let productos = <Product> (<Respuesta>data).objeto;
             this.producto = productos;
             console.log(this.producto);
           }
