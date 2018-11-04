@@ -5,17 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bc9c8ce1c0af492ba67f4ed8f785d8b0" Name="Diagrama1">
-        <EntityTypeShape EntityType="touresbalonModel.SOLICITUD" Width="2.75" PointX="1.125" PointY="0.875" />
-        <EntityTypeShape EntityType="touresbalonModel.DETALLEORDENCOMPRA" Width="1.5" PointX="0.5" PointY="4.875" />
-        <EntityTypeShape EntityType="touresbalonModel.ESTADOORDENCOMPRA" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="touresbalonModel.IMAGENPRODUCTO" Width="1.5" PointX="5.75" PointY="4.375" />
-        <EntityTypeShape EntityType="touresbalonModel.PRODUCTO" Width="1.5" PointX="3" PointY="4.75" />
-        <EntityTypeShape EntityType="touresbalonModel.TIPOPRODUCTO" Width="1.5" PointX="5.75" PointY="6.5" />
+        <EntityTypeShape EntityType="touresbalonModel.sysdiagrams" Width="1.5" PointX="1" PointY="3.75" />
+        <EntityTypeShape EntityType="touresbalonModel.IMAGENPRODUCTO" Width="1.5" PointX="5.2990266593634274" PointY="3.396946044357934" />
+        <EntityTypeShape EntityType="touresbalonModel.PRODUCTO" Width="1.5" PointX="3.0660985331358845" PointY="1.1829673653389174" />
+        <EntityTypeShape EntityType="touresbalonModel.SOLICITUD" Width="1.5" PointX="10.00609166641072" PointY="8.5650511423894446" />
+        <EntityTypeShape EntityType="touresbalonModel.TIPOPRODUCTO" Width="1.5" PointX="6.37284702173101" PointY="11.153406625219345" />
+        <EntityTypeShape EntityType="touresbalonModel.usuarios" Width="1.5" PointX="8.5509043990405758" PointY="15.206342450904819" />
+        <AssociationConnector Association="touresbalonModel.FK_producto_imagen" />
+        <AssociationConnector Association="touresbalonModel.FK_producto_tipo" />
+        <AssociationConnector Association="touresbalonModel.FK_solicitud_usuario" />
+        <EntityTypeShape EntityType="touresbalonModel.DETALLESOLICITUD" Width="1.5" PointX="4.55303094003025" PointY="17.856322222322376" />
+        <EntityTypeShape EntityType="touresbalonModel.ESTADOSOLICITUD" Width="1.5" PointX="4.2326547970216044" PointY="0.37925833481329418" />
         <AssociationConnector Association="touresbalonModel.FK_detalle_producto" />
         <AssociationConnector Association="touresbalonModel.FK_solicitud_detalle" />
         <AssociationConnector Association="touresbalonModel.FK_solicitud_estado" />
-        <AssociationConnector Association="touresbalonModel.FK_producto_imagen" />
-        <AssociationConnector Association="touresbalonModel.FK_producto_tipo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

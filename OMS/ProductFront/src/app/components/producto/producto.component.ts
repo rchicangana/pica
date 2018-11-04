@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewChecked } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { NgbDate, NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { TipoproductoService } from '../../services/tipoproducto.service';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { CargarimagenesComponent } from '../cargarimagenes/cargarimagenes.component';
 
 @Component({
   selector: 'app-producto',
@@ -28,11 +28,12 @@ import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upl
   `]
 })
 export class ProductoComponent implements OnInit {
+
   hoveredDate: NgbDate;
+  inputFile: any;
   fromDate: NgbDate;
   toDate: NgbDate;
   elementos: any[] = [];
-  imagenes: any[] = [];
   panelEditar = false;
   panelAdicional = false;
   registro: any = {};
@@ -45,26 +46,10 @@ export class ProductoComponent implements OnInit {
   previousPage: any;
   tiposProducto: any[];
 
-  private imageSrc = '';
 
-  handleInputChange(e) {
-    const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    const pattern = /image-*/;
-    const reader = new FileReader();
-    if (!file.type.match(pattern)) {
-      alert('invalid format');
-      return;
-    }
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
-  _handleReaderLoaded(e) {
-    const reader = e.target;
-    this.imageSrc = reader.result;
-    console.log(this.imageSrc)
-  }
-
-  constructor(private productosService: ProductosService, private calendar: NgbCalendar, private tipoproductoService: TipoproductoService) {
+  constructor(private productosService: ProductosService,
+    private calendar: NgbCalendar,
+    private tipoproductoService: TipoproductoService) {
     this.fromDate = calendar.getToday();
   }
 
@@ -114,6 +99,8 @@ export class ProductoComponent implements OnInit {
     });
   }
 
+ 
+
   cancelar() {
     this.registro = {};
     this.panelEditar = false;
@@ -146,10 +133,8 @@ export class ProductoComponent implements OnInit {
                                       +item.fechaLlegada.substring(0, 2));
     this.fromDate = fecSalida;
     this.toDate = fecRegreso;
-    console.log(this.fromDate);
   }
 
-  
 
   guardar() {
     let error = false;
@@ -221,4 +206,6 @@ export class ProductoComponent implements OnInit {
     }
   }
 }
+
+
 

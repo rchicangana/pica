@@ -7,24 +7,24 @@ namespace SolicitudWS
     public class Solicitud : ISolicitud
     {
         private SolicitudDAO solDAO = new SolicitudDAO();
-
-        public ResponseData ListarSolicitudes(String idSolicitud)
+        
+        public ResponseData ListarSolicitudesPorUsuario(String idUsuario)
         {
-            return this.solDAO.listarSolicitudes(idSolicitud);
+            return this.solDAO.listarSolicitudesPorUsuario(idUsuario);
         }
 
         public void CancelarSolicitud(String idSolicitud)
         {
             this.solDAO.cancelarSolicitud(idSolicitud);
         }
-
+        
         public ResponseData CrearSolicitud(SOLICITUD solicitud)
         {
-            solicitud.fechaCreacion = DateTime.Today.ToString();
-            SOLICITUD.EstadoOrdenCompra estadoOrden = new SOLICITUD.EstadoOrdenCompra();
-            estadoOrden.idEstadoOrdenCompra = 0;
+            solicitud.fechacreacion = DateTime.Now;
+            ESTADOORDENCOMPRA estadoOrden = new ESTADOORDENCOMPRA();
+            estadoOrden.Idestadoordencompra = 0;
             estadoOrden.estado = "ABIERTA";
-            solicitud.estadoOrdenCompra = estadoOrden;
+            solicitud.estadoordencompraid = estadoOrden.Idestadoordencompra;
             return this.solDAO.crearSolicitud(solicitud); ;
         }
     }

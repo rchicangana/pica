@@ -10,7 +10,7 @@ namespace SolicitudWS.DAO
     {
         private touresbalonEntities2 context = new touresbalonEntities2();
 
-        public ResponseData crearDetalleSolicitud(DETALLE_SOLICITUD dsolicitud)
+       /* public ResponseData crearDetalleSolicitud(DETALLE_SOLICITUD dsolicitud)
         {
             ResponseData respuesta = new ResponseData();
             if (dsolicitud != null)
@@ -27,8 +27,8 @@ namespace SolicitudWS.DAO
                 respuesta.resultado = "Fallo";
             }
             return respuesta;
-        }
-
+        }*/
+        /*
         public ResponseData listarDetalleSolicitud(int idSolicitud)
         {
             ResponseData respuesta = new ResponseData();
@@ -48,6 +48,6 @@ namespace SolicitudWS.DAO
             {
             }
             return respuesta;
-        }
+        }*/
     }
 }

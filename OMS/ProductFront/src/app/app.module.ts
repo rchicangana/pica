@@ -13,12 +13,16 @@ import { ProductoComponent } from './components/producto/producto.component';
 
 // Importar Rutas
 import { ROUTES } from './app.routes';
+import { CargarimagenesComponent } from './components/cargarimagenes/cargarimagenes.component';
+import { ItinerarioComponent } from './components/itinerario/itinerario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductoComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    CargarimagenesComponent,
+    ItinerarioComponent
   ],
   imports: [
     BrowserModule,

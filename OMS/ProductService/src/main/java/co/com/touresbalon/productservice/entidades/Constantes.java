@@ -6,11 +6,17 @@
 package co.com.touresbalon.productservice.entidades;
 
 import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -22,57 +28,90 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Constantes.findAll", query = "SELECT c FROM Constantes c")
-    , @NamedQuery(name = "Constantes.findByNombre", query = "SELECT c FROM Constantes c WHERE c.constantesPK.nombre = :nombre")
-    , @NamedQuery(name = "Constantes.findByValor", query = "SELECT c FROM Constantes c WHERE c.constantesPK.valor = :valor")
-    , @NamedQuery(name = "Constantes.findByEstado", query = "SELECT c FROM Constantes c WHERE c.constantesPK.estado = :estado")})
+    , @NamedQuery(name = "Constantes.findByNombre", query = "SELECT c FROM Constantes c WHERE c.nombre = :nombre")
+    , @NamedQuery(name = "Constantes.findByValor", query = "SELECT c FROM Constantes c WHERE c.valor = :valor")
+    , @NamedQuery(name = "Constantes.findByEstado", query = "SELECT c FROM Constantes c WHERE c.estado = :estado")})
 public class Constantes implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected ConstantesPK constantesPK;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "NOMBRE")
+    private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "VALOR")
+    private String valor;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ESTADO")
+    private long estado;
 
     public Constantes() {
     }
 
-    public Constantes(ConstantesPK constantesPK) {
-        this.constantesPK = constantesPK;
+    public String getNombre() {
+        return nombre;
     }
 
-    public Constantes(String nombre, String valor, long estado) {
-        this.constantesPK = new ConstantesPK(nombre, valor, estado);
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public ConstantesPK getConstantesPK() {
-        return constantesPK;
+    public String getValor() {
+        return valor;
     }
 
-    public void setConstantesPK(ConstantesPK constantesPK) {
-        this.constantesPK = constantesPK;
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public long getEstado() {
+        return estado;
+    }
+
+    public void setEstado(long estado) {
+        this.estado = estado;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (constantesPK != null ? constantesPK.hashCode() : 0);
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.nombre);
+        hash = 83 * hash + Objects.hashCode(this.valor);
+        hash = 83 * hash + (int) (this.estado ^ (this.estado >>> 32));
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Constantes)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Constantes other = (Constantes) object;
-        if ((this.constantesPK == null && other.constantesPK != null) || (this.constantesPK != null && !this.constantesPK.equals(other.constantesPK))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Constantes other = (Constantes) obj;
+        if (this.estado != other.estado) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.valor, other.valor)) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "co.com.touresbalon.productservice.entidades.Constantes[ constantesPK=" + constantesPK + " ]";
-    }
+    
+
+    
     
 }

@@ -14,11 +14,6 @@
         "secure": false,
         "loglevel": "debug"
     },
-    "/ProductService/services/tarifa/*": {
-        "target": "http://10.39.1.140:8080",
-        "secure": false,
-        "loglevel": "debug"
-    },
     "/ServiciosESB/Productos/*": {
         "target": "http://10.39.1.144:8081",
         "secure": false,
@@ -38,8 +33,7 @@
         "target": "http://10.39.1.144:8081",
         "secure": false,
         "loglevel": "debug"
-    }
-    ,
+    },
     "/WsOmsREST1/rest/WsCampannas/*": {
         "target": "http://10.39.1.140:8080",
         "secure": false,

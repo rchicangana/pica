@@ -27,9 +27,7 @@ public class ImagenProductoLogica {
     @EJB
     private ImagenProductoDAO imagenProductoDAO;
     
-    @EJB
-    private ProductoDAO productoDAO;
-    
+       
     @EJB
     private FileManagerLogica fileManagerLogica;
     
@@ -43,7 +41,7 @@ public class ImagenProductoLogica {
         
         MensajeDTO salida = new MensajeDTO();
         try {
-            String nombreImagen = UUID.randomUUID().toString()+"jpg";
+            String nombreImagen = UUID.randomUUID().toString()+".jpg";
             ImagenProducto imagen = new ImagenProducto();
             imagen.setEsprincipal(entrada.getEsprincipal());
             imagen.setIdProducto(entrada.getIdProducto());
@@ -62,14 +60,14 @@ public class ImagenProductoLogica {
         
     }
     
-    public MensajeDTO eliminar(ImagenProductoDTO entrada){
+    public MensajeDTO eliminar(Long idImagenProducto){
         
         MensajeDTO salida = new MensajeDTO();
         try {
             
-            ImagenProducto imagen = imagenProductoDAO.findByID(entrada.getIdImagenProducto());
+            ImagenProducto imagen = imagenProductoDAO.findByID(idImagenProducto);
             //guardamos la Imagen
-            fileManagerLogica.borrarArchivo(entrada.getImagen());
+            fileManagerLogica.borrarArchivo(imagen.getImagen());
             imagenProductoDAO.eliminar(imagen);
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
             
