@@ -37,8 +37,8 @@ export class ProductListComponent implements OnInit {
     .subscribe(
       data => {
           this.productList = [];
-          if((<Respuesta>data).codigo=="OK"){
-            let productos = <Product[]> (<Respuesta>data).object;
+          if((<Respuesta>data).resultado=="OK"){
+            let productos = <Product[]> (<Respuesta>data).objeto;
             productos.forEach(elemento => {
               this.productList.push(elemento);
             });

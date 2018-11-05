@@ -16,9 +16,9 @@ namespace LoginWS
     {
         UsuarioDAO usuDAO = new UsuarioDAO();
 
-        public ResponseData listarUsuarios()
+        public ResponseData listarUsuarios(string desde, string hasta)
         {   
-           return this.usuDAO.listarUsuarios();
+           return this.usuDAO.listarUsuarios(desde, hasta);
         }
 
         public ResponseData buscarUsuarioPorLogin(string login, string password)
@@ -26,6 +26,16 @@ namespace LoginWS
             return this.usuDAO.buscarUsuario(login, password);
         }
 
+        public ResponseData consulta(string login, string password)
+        {
+            byte[] data = Convert.FromBase64String(login);
+            string loginDecode = Encoding.UTF8.GetString(data);
+
+            data = Convert.FromBase64String(password);
+            string passwordDecode = Encoding.UTF8.GetString(data);
+
+            return this.usuDAO.consulta(loginDecode, passwordDecode);
+        }
         public ResponseData crearUsuario(usuarios usuario)
         {
             //JObject json = JObject.Parse(usuario);

@@ -83,12 +83,12 @@
   <ItemGroup>
     <Compile Include="DAO\DetalleSolicitudDAO.cs" />
     <Compile Include="DAO\SolicitudDAO.cs" />
-    <Compile Include="DETALLEORDENCOMPRA.cs">
+    <Compile Include="DETALLESOLICITUD.cs">
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\ResponseData.cs" />
     <Compile Include="DTO\RequestData.cs" />
-    <Compile Include="ESTADOORDENCOMPRA.cs">
+    <Compile Include="ESTADOSOLICITUD.cs">
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="IMAGENPRODUCTO.cs">
@@ -99,9 +99,6 @@
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SOLICITUD.cs">
-      <DependentUpon>TouresBalonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TIPOPRODUCTO.cs">

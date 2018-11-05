@@ -23,8 +23,8 @@ namespace SolicitudWS
         public int estadoordencompraid { get; set; }
         public Nullable<int> detalleordencompras { get; set; }
     
-        public virtual DETALLEORDENCOMPRA DETALLEORDENCOMPRA { get; set; }
-        public virtual ESTADOORDENCOMPRA ESTADOORDENCOMPRA { get; set; }
         public virtual usuarios usuarios { get; set; }
+        public virtual DETALLESOLICITUD DETALLESOLICITUD { get; set; }
+        public virtual ESTADOSOLICITUD ESTADOSOLICITUD { get; set; }
     }
 }

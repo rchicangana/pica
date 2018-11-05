@@ -1,4 +1,5 @@
 export class Respuesta{
-    codigo: string;
-    object: object;
+    mensaje: string;
+    objeto: object;
+    resultado: string;
   }

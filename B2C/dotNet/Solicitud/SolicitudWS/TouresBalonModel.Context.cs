@@ -25,13 +25,12 @@ namespace SolicitudWS
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public DbSet<DETALLEORDENCOMPRA> DETALLEORDENCOMPRA { get; set; }
-        public DbSet<ESTADOORDENCOMPRA> ESTADOORDENCOMPRA { get; set; }
         public DbSet<IMAGENPRODUCTO> IMAGENPRODUCTO { get; set; }
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
         public DbSet<SOLICITUD> SOLICITUD { get; set; }
         public DbSet<TIPOPRODUCTO> TIPOPRODUCTO { get; set; }
         public DbSet<usuarios> usuarios { get; set; }
+        public DbSet<DETALLESOLICITUD> DETALLESOLICITUD { get; set; }
+        public DbSet<ESTADOSOLICITUD> ESTADOSOLICITUD { get; set; }
     }
 }

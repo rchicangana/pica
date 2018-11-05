@@ -37,8 +37,8 @@ export class BestProductComponent implements OnInit {
     .subscribe(
       data => {
           this.bestProducts = [];
-          if((<Respuesta>data).codigo=="OK"){
-            let productos = <Top5[]> (<Respuesta>data).object;
+          if((<Respuesta>data).resultado=="OK"){
+            let productos = <Top5[]> (<Respuesta>data).objeto;
             productos.forEach(elemento => {
               this.bestProducts.push(elemento);
             });

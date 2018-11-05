@@ -57,6 +57,6 @@ export class AuthService {
 
   signInRegular(email, password) {  
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.get(this.apiUrl+'/consultausuario/'+email+'/'+password, { headers });
+    return this.http.get(this.apiUrl+'/consulta/'+btoa(email)+'/'+btoa(password), { headers });
   }
 }

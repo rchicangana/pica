@@ -17,17 +17,16 @@ namespace LoginWS
         [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, 
-            BodyStyle = WebMessageBodyStyle.Wrapped, 
-            UriTemplate = "usuarios")]
-        ResponseData listarUsuarios();
+            UriTemplate = "usuarios/{desde}/{hasta}")]
+        ResponseData listarUsuarios(string desde, string hasta);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json, 
-            BodyStyle = WebMessageBodyStyle.Wrapped, 
-            UriTemplate = "consultausuario/{login}/{password}")]
-        ResponseData buscarUsuarioPorLogin(string login, string password);
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            UriTemplate = "consulta/{login}/{password}")]
+        ResponseData consulta(string login, string password);
         
         [OperationContract]
         [WebInvoke(Method = "POST",

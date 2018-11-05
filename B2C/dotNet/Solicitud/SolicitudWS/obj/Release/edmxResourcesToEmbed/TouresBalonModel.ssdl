@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="touresbalonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="touresbalonModelStoreContainer">
-    <EntitySet Name="DETALLEORDENCOMPRA" EntityType="touresbalonModel.Store.DETALLEORDENCOMPRA" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ESTADOORDENCOMPRA" EntityType="touresbalonModel.Store.ESTADOORDENCOMPRA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DETALLESOLICITUD" EntityType="touresbalonModel.Store.DETALLESOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ESTADOSOLICITUD" EntityType="touresbalonModel.Store.ESTADOSOLICITUD" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IMAGENPRODUCTO" EntityType="touresbalonModel.Store.IMAGENPRODUCTO" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PRODUCTO" EntityType="touresbalonModel.Store.PRODUCTO" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="touresbalonModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TIPOPRODUCTO" EntityType="touresbalonModel.Store.TIPOPRODUCTO" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="usuarios" EntityType="touresbalonModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_detalle_producto" Association="touresbalonModel.Store.FK_detalle_producto">
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-      <End Role="DETALLEORDENCOMPRA" EntitySet="DETALLEORDENCOMPRA" />
+      <End Role="DETALLESOLICITUD" EntitySet="DETALLESOLICITUD" />
     </AssociationSet>
     <AssociationSet Name="FK_producto_imagen" Association="touresbalonModel.Store.FK_producto_imagen">
       <End Role="IMAGENPRODUCTO" EntitySet="IMAGENPRODUCTO" />
@@ -22,11 +21,11 @@
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
     <AssociationSet Name="FK_solicitud_detalle" Association="touresbalonModel.Store.FK_solicitud_detalle">
-      <End Role="DETALLEORDENCOMPRA" EntitySet="DETALLEORDENCOMPRA" />
+      <End Role="DETALLESOLICITUD" EntitySet="DETALLESOLICITUD" />
       <End Role="SOLICITUD" EntitySet="SOLICITUD" />
     </AssociationSet>
     <AssociationSet Name="FK_solicitud_estado" Association="touresbalonModel.Store.FK_solicitud_estado">
-      <End Role="ESTADOORDENCOMPRA" EntitySet="ESTADOORDENCOMPRA" />
+      <End Role="ESTADOSOLICITUD" EntitySet="ESTADOSOLICITUD" />
       <End Role="SOLICITUD" EntitySet="SOLICITUD" />
     </AssociationSet>
     <AssociationSet Name="FK_solicitud_usuario" Association="touresbalonModel.Store.FK_solicitud_usuario">
@@ -34,7 +33,7 @@
       <End Role="SOLICITUD" EntitySet="SOLICITUD" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="DETALLEORDENCOMPRA">
+  <EntityType Name="DETALLESOLICITUD">
     <Key>
       <PropertyRef Name="Iddetalleorden" />
     </Key>
@@ -42,7 +41,7 @@
     <Property Name="productoid" Type="int" Nullable="false" />
     <Property Name="valor" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="ESTADOORDENCOMPRA">
+  <EntityType Name="ESTADOSOLICITUD">
     <Key>
       <PropertyRef Name="Idestadoordencompra" />
     </Key>
@@ -81,16 +80,6 @@
     <Property Name="estadoordencompraid" Type="int" Nullable="false" />
     <Property Name="detalleordencompras" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TIPOPRODUCTO">
     <Key>
       <PropertyRef Name="Idtipoproducto" />
@@ -115,12 +104,12 @@
   </EntityType>
   <Association Name="FK_detalle_producto">
     <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="1" />
-    <End Role="DETALLEORDENCOMPRA" Type="touresbalonModel.Store.DETALLEORDENCOMPRA" Multiplicity="*" />
+    <End Role="DETALLESOLICITUD" Type="touresbalonModel.Store.DETALLESOLICITUD" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PRODUCTO">
         <PropertyRef Name="Idproducto" />
       </Principal>
-      <Dependent Role="DETALLEORDENCOMPRA">
+      <Dependent Role="DETALLESOLICITUD">
         <PropertyRef Name="productoid" />
       </Dependent>
     </ReferentialConstraint>
@@ -150,10 +139,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_solicitud_detalle">
-    <End Role="DETALLEORDENCOMPRA" Type="touresbalonModel.Store.DETALLEORDENCOMPRA" Multiplicity="0..1" />
+    <End Role="DETALLESOLICITUD" Type="touresbalonModel.Store.DETALLESOLICITUD" Multiplicity="0..1" />
     <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DETALLEORDENCOMPRA">
+      <Principal Role="DETALLESOLICITUD">
         <PropertyRef Name="Iddetalleorden" />
       </Principal>
       <Dependent Role="SOLICITUD">
@@ -162,10 +151,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_solicitud_estado">
-    <End Role="ESTADOORDENCOMPRA" Type="touresbalonModel.Store.ESTADOORDENCOMPRA" Multiplicity="1" />
+    <End Role="ESTADOSOLICITUD" Type="touresbalonModel.Store.ESTADOSOLICITUD" Multiplicity="1" />
     <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ESTADOORDENCOMPRA">
+      <Principal Role="ESTADOSOLICITUD">
         <PropertyRef Name="Idestadoordencompra" />
       </Principal>
       <Dependent Role="SOLICITUD">

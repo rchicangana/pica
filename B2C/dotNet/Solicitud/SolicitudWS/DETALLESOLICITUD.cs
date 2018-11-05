@@ -12,9 +12,9 @@ namespace SolicitudWS
     using System;
     using System.Collections.Generic;
     
-    public partial class DETALLEORDENCOMPRA
+    public partial class DETALLESOLICITUD
     {
-        public DETALLEORDENCOMPRA()
+        public DETALLESOLICITUD()
         {
             this.SOLICITUD = new HashSet<SOLICITUD>();
         }

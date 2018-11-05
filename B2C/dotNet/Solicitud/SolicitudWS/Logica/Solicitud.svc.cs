@@ -21,7 +21,7 @@ namespace SolicitudWS
         public ResponseData CrearSolicitud(SOLICITUD solicitud)
         {
             solicitud.fechacreacion = DateTime.Now;
-            ESTADOORDENCOMPRA estadoOrden = new ESTADOORDENCOMPRA();
+            ESTADOSOLICITUD estadoOrden = new ESTADOSOLICITUD();
             estadoOrden.Idestadoordencompra = 0;
             estadoOrden.estado = "ABIERTA";
             solicitud.estadoordencompraid = estadoOrden.Idestadoordencompra;
