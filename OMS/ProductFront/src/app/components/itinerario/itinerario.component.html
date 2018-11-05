@@ -1,3 +1,18 @@
-<p>
-  itinerario works!
-</p>
+<table class="table table-md table-bordered table-hover small">
+    <thead class="badge-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Hospedaje</th>
+            <th scope="col">Destino</th>
+            <th scope="col">Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of itinerarios">
+            <th scope="row">{{item.idItinerario}}</th>
+            <td>{{item.idHospedaje.nombre}}</td>
+            <td>{{item.idHospedaje.idCiudad.nombre}} / {{item.idHospedaje.idCiudad.idPais.nombre}}</td>
+            <td><i class="fa fa-pencil-square-o" (click)="editar(item)"></i></td>
+        </tr>
+    </tbody>
+</table>

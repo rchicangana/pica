@@ -11,6 +11,7 @@ import co.com.touresbalon.productservice.dto.ItinerarioDTO;
 import co.com.touresbalon.productservice.dto.MensajeDTO;
 import co.com.touresbalon.productservice.entidades.Itinerario;
 import co.com.touresbalon.productservice.util.TransformacionDozer;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -25,7 +26,9 @@ public class ItinerarioLogica {
     private ItinerarioDAO itinerarioDAO;
     
     
-    
+    public List<ItinerarioDTO> consultar(Long idProdcuto){
+        return TransformacionDozer.transformar(itinerarioDAO.findByProducto(idProdcuto), ItinerarioDTO.class);
+    }
     
     /**
      * 

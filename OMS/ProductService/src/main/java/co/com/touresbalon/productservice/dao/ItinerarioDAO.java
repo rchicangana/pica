@@ -6,6 +6,7 @@
 package co.com.touresbalon.productservice.dao;
 
 import co.com.touresbalon.productservice.entidades.Itinerario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +21,17 @@ public class ItinerarioDAO {
     @PersistenceContext
     private EntityManager em;
     
+    
+    /**
+     * 
+     * @param idProducto
+     * @return 
+     */
+    public List<Itinerario> findByProducto(Long idProducto){
+        return em.createNamedQuery("Itinerario.findByIdProducto")
+                .setParameter("idProducto", idProducto)
+                .getResultList();
+    }
     
     /**
      * 

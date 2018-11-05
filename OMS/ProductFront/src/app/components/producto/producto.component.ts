@@ -99,7 +99,6 @@ export class ProductoComponent implements OnInit {
     });
   }
 
- 
 
   cancelar() {
     this.registro = {};
