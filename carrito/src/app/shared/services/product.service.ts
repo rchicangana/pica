@@ -175,11 +175,9 @@ export class ProductService {
 
   // Fetching Cart Products based on userId
   getUsersCartProducts() {
-    const user = this.authService.getLoggedInUser();
-    //this.cartProducts = this.db.list("cartProducts", ref =>
-    //  ref.orderByChild("userId").equalTo(user.$key)
-    //)
-    //return this.cartProducts;
+    //const user = this.authService.getLoggedInUser();
+    const products: Tarifa[] = JSON.parse(localStorage.getItem("avct_item")) || [];
+    return products;
   }
 
   // Adding new Product to cart db if  else localStorage

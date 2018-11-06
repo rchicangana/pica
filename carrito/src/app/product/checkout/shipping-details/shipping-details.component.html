@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-5 mb-3">
                     <label for="country">Pa&iacute;s</label>
-                    <select [(ngModel)]="idPais" (ngModelChange)="listarciudades($event)">
+                    <select [(ngModel)]="idPais" (ngModelChange)="listarciudades($event)" [ngModelOptions]="{standalone: true}">
                         <option *ngFor="let pais of paises" [value]="pais.idPais">{{pais.nombre}}</option>
                       </select>
                 </div>

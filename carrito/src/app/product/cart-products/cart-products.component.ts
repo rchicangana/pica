@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Tarifa } from "../../shared/models/tarifa";
 import { ProductService } from "../../shared/services/product.service";
+import { AuthService } from "../../shared/services/auth.service";
 
 @Component({
   selector: "app-cart-products",
@@ -10,12 +11,15 @@ import { ProductService } from "../../shared/services/product.service";
 export class CartProductsComponent implements OnInit {
   cartProducts: Tarifa[];
   showDataNotFound = true;
-
-  // Not Found Message
   messageTitle = "No se encontraron paquetes en el Carrito";
   messageDescription = "Agregue paquetes a su carrito";
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+    ) {
+     
+    }
 
   ngOnInit() {
     this.getCartProduct();
@@ -23,12 +27,15 @@ export class CartProductsComponent implements OnInit {
 
   removeCartProduct(tarifa: Tarifa) {
     this.productService.removeLocalCartProduct(tarifa);
-
-    // Recalling
     this.getCartProduct();
   }
 
   getCartProduct() {
-    this.cartProducts = this.productService.getLocalCartProducts();
+    //if(this.authService.isLoggedIn()){
+    //  this.cartProducts = this.productService.getUsersCartProducts();
+   // }
+   // else{
+      this.cartProducts = this.productService.getLocalCartProducts();
+   // }
   }
 }

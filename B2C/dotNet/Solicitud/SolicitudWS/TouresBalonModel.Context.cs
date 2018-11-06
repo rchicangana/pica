@@ -26,11 +26,11 @@ namespace SolicitudWS
         }
     
         public DbSet<IMAGENPRODUCTO> IMAGENPRODUCTO { get; set; }
-        public DbSet<PRODUCTO> PRODUCTO { get; set; }
         public DbSet<SOLICITUD> SOLICITUD { get; set; }
         public DbSet<TIPOPRODUCTO> TIPOPRODUCTO { get; set; }
         public DbSet<usuarios> usuarios { get; set; }
         public DbSet<DETALLESOLICITUD> DETALLESOLICITUD { get; set; }
         public DbSet<ESTADOSOLICITUD> ESTADOSOLICITUD { get; set; }
+        public DbSet<PRODUCTO> PRODUCTO { get; set; }
     }
 }

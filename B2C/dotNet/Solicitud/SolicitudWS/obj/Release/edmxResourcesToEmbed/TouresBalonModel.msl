@@ -10,23 +10,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PRODUCTO">
-      <EntityTypeMapping TypeName="touresbalonModel.PRODUCTO">
-        <MappingFragment StoreEntitySet="PRODUCTO">
-          <ScalarProperty Name="imagenproductos" ColumnName="imagenproductos" />
-          <ScalarProperty Name="fechallegada" ColumnName="fechallegada" />
-          <ScalarProperty Name="fechasalida" ColumnName="fechasalida" />
-          <ScalarProperty Name="nombreproducto" ColumnName="nombreproducto" />
-          <ScalarProperty Name="tipoproductoid" ColumnName="tipoproductoid" />
-          <ScalarProperty Name="Idproducto" ColumnName="Idproducto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SOLICITUD">
       <EntityTypeMapping TypeName="touresbalonModel.SOLICITUD">
         <MappingFragment StoreEntitySet="SOLICITUD">
           <ScalarProperty Name="detalleordencompras" ColumnName="detalleordencompras" />
-          <ScalarProperty Name="estadoordencompraid" ColumnName="estadoordencompraid" />
+          <ScalarProperty Name="borrar" ColumnName="estadoordencompraid" />
           <ScalarProperty Name="noorden" ColumnName="noorden" />
           <ScalarProperty Name="idusuario" ColumnName="idusuario" />
           <ScalarProperty Name="valortotal" ColumnName="valortotal" />
@@ -65,7 +53,7 @@
         <MappingFragment StoreEntitySet="DETALLESOLICITUD">
           <ScalarProperty Name="valor" ColumnName="valor" />
           <ScalarProperty Name="productoid" ColumnName="productoid" />
-          <ScalarProperty Name="Iddetalleorden" ColumnName="Iddetalleorden" />
+          <ScalarProperty Name="Iddetallesolicitd" ColumnName="Iddetallesolicitd" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -73,7 +61,19 @@
       <EntityTypeMapping TypeName="touresbalonModel.ESTADOSOLICITUD">
         <MappingFragment StoreEntitySet="ESTADOSOLICITUD">
           <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="Idestadoordencompra" ColumnName="Idestadoordencompra" />
+          <ScalarProperty Name="Idestadosolicitud" ColumnName="Idestadosolicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="touresbalonModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="imagenproductos" ColumnName="imagenproductos" />
+          <ScalarProperty Name="fechallegada" ColumnName="fechallegada" />
+          <ScalarProperty Name="fechasalida" ColumnName="fechasalida" />
+          <ScalarProperty Name="nombreproducto" ColumnName="nombreproducto" />
+          <ScalarProperty Name="tipoproductoid" ColumnName="tipoproductoid" />
+          <ScalarProperty Name="Idproducto" ColumnName="Idproducto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

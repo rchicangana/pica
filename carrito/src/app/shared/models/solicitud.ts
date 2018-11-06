@@ -5,11 +5,11 @@ export class Solicitud{
    idProducto: number;
    idTipoProducto:{  
       idEstadoTipoProducto:{  
-         estado: string;
+         estado: String;
          idEstadoTipoProducto:number
       };
       idTipoProducto:number;
-      nombre:string;
+      nombre:String;
    };
    imagenProductoList:[  
     {  
@@ -25,9 +25,9 @@ export class Solicitud{
         idCiudad: number;
         idPais:{  
            idPais: number;
-           nombre: string
+           nombre: String
         };
-        nombre: string;
+        nombre: String;
      };
      idHospedaje:{  
         estrellas: number;
@@ -37,14 +37,14 @@ export class Solicitud{
               idHospedaje: number;
               idTipoHabitacion:{  
                  idTipoHabitacion: number;
-                 tipo:string;
+                 tipo:String;
               };
               imagenHabitacionList:[  
                  {  
                     esprincipal: number;
                     idHabitacion: number;
                     idImagenHabitacion: number;
-                    imagen: string;
+                    imagen: String;
                  }
               ];
               numero: number;
@@ -54,9 +54,9 @@ export class Solicitud{
            idCiudad: number;
            idPais:{  
               idPais: number;
-              nombre: string;
+              nombre: String;
            };
-           nombre: string;
+           nombre: String;
         };
         idHospedaje: number;
         imagenHospedajeList:[  
@@ -64,14 +64,14 @@ export class Solicitud{
               esprincipal: number;
               idHospedaje: number;
               idImagenHospedaje: number;
-              imagen: string;
+              imagen: String;
            }
         ];
-        nombre: string;
+        nombre: String;
      };
      idItinerario: number;
      idProducto: number;
     }
   ];  
-  nombreProducto: string;
+  nombreProducto: String;
 }

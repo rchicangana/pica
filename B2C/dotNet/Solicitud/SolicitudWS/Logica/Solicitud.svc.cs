@@ -22,9 +22,8 @@ namespace SolicitudWS
         {
             solicitud.fechacreacion = DateTime.Now;
             ESTADOSOLICITUD estadoOrden = new ESTADOSOLICITUD();
-            estadoOrden.Idestadoordencompra = 0;
             estadoOrden.estado = "ABIERTA";
-            solicitud.estadoordencompraid = estadoOrden.Idestadoordencompra;
+            solicitud.ESTADOSOLICITUD = estadoOrden;
             return this.solDAO.crearSolicitud(solicitud); ;
         }
     }

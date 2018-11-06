@@ -19,7 +19,7 @@ namespace SolicitudWS
             this.SOLICITUD = new HashSet<SOLICITUD>();
         }
     
-        public int Idestadoordencompra { get; set; }
+        public int Idestadosolicitud { get; set; }
         public string estado { get; set; }
     
         public virtual ICollection<SOLICITUD> SOLICITUD { get; set; }

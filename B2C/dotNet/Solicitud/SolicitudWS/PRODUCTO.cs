@@ -22,12 +22,12 @@ namespace SolicitudWS
         public int Idproducto { get; set; }
         public int tipoproductoid { get; set; }
         public string nombreproducto { get; set; }
-        public string fechasalida { get; set; }
-        public string fechallegada { get; set; }
+        public System.DateTime fechasalida { get; set; }
+        public System.DateTime fechallegada { get; set; }
         public Nullable<int> imagenproductos { get; set; }
     
+        public virtual ICollection<DETALLESOLICITUD> DETALLESOLICITUD { get; set; }
         public virtual IMAGENPRODUCTO IMAGENPRODUCTO { get; set; }
         public virtual TIPOPRODUCTO TIPOPRODUCTO { get; set; }
-        public virtual ICollection<DETALLESOLICITUD> DETALLESOLICITUD { get; set; }
     }
 }

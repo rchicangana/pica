@@ -37,8 +37,7 @@ CREATE TABLE [dbo].[SOLICITUD] (
     [fechavencimiento] datetime  NULL,
     [valortotal] decimal(18,2)  NULL,
     [idusuario] int  NULL,
-    [noorden] nvarchar(max)  NOT NULL,
-    [estadoordencompraid] nvarchar(max)  NOT NULL
+    [noorden] nvarchar(max)  NOT NULL
 );
 GO
 

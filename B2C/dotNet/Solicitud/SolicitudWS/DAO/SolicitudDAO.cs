@@ -16,7 +16,6 @@ namespace SolicitudWS.DAO
             if (solicitud != null)
             {
                 solicitud.fechacreacion = DateTime.Now;
-                solicitud.noorden = "";
                 solicitud.numerosolicitud = 0;
                 this.context.SOLICITUD.Add(solicitud);
                 this.context.SaveChanges();

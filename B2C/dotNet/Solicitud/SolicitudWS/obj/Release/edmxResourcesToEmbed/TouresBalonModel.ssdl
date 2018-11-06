@@ -35,17 +35,17 @@
   </EntityContainer>
   <EntityType Name="DETALLESOLICITUD">
     <Key>
-      <PropertyRef Name="Iddetalleorden" />
+      <PropertyRef Name="Iddetallesolicitd" />
     </Key>
-    <Property Name="Iddetalleorden" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Iddetallesolicitd" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="productoid" Type="int" Nullable="false" />
     <Property Name="valor" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ESTADOSOLICITUD">
     <Key>
-      <PropertyRef Name="Idestadoordencompra" />
+      <PropertyRef Name="Idestadosolicitud" />
     </Key>
-    <Property Name="Idestadoordencompra" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Idestadosolicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="IMAGENPRODUCTO">
@@ -62,16 +62,16 @@
     </Key>
     <Property Name="Idproducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="tipoproductoid" Type="int" Nullable="false" />
-    <Property Name="nombreproducto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fechasalida" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fechallegada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombreproducto" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="fechasalida" Type="date" Nullable="false" />
+    <Property Name="fechallegada" Type="date" Nullable="false" />
     <Property Name="imagenproductos" Type="int" />
   </EntityType>
   <EntityType Name="SOLICITUD">
     <Key>
       <PropertyRef Name="numerosolicitud" />
     </Key>
-    <Property Name="numerosolicitud" Type="int" Nullable="false" />
+    <Property Name="numerosolicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="fechacreacion" Type="datetime" />
     <Property Name="fechavencimiento" Type="datetime" />
     <Property Name="valortotal" Type="decimal" Scale="2" />
@@ -143,7 +143,7 @@
     <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DETALLESOLICITUD">
-        <PropertyRef Name="Iddetalleorden" />
+        <PropertyRef Name="Iddetallesolicitd" />
       </Principal>
       <Dependent Role="SOLICITUD">
         <PropertyRef Name="detalleordencompras" />
@@ -155,7 +155,7 @@
     <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ESTADOSOLICITUD">
-        <PropertyRef Name="Idestadoordencompra" />
+        <PropertyRef Name="Idestadosolicitud" />
       </Principal>
       <Dependent Role="SOLICITUD">
         <PropertyRef Name="estadoordencompraid" />

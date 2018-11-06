@@ -19,11 +19,11 @@ namespace SolicitudWS
             this.SOLICITUD = new HashSet<SOLICITUD>();
         }
     
-        public int Iddetalleorden { get; set; }
+        public int Iddetallesolicitd { get; set; }
         public int productoid { get; set; }
         public string valor { get; set; }
     
-        public virtual PRODUCTO PRODUCTO { get; set; }
         public virtual ICollection<SOLICITUD> SOLICITUD { get; set; }
+        public virtual PRODUCTO PRODUCTO { get; set; }
     }
 }

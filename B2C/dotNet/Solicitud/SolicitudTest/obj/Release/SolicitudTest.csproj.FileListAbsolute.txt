@@ -1,0 +1,10 @@
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\SolicitudTest.dll.config
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\SolicitudTest.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\SolicitudTest.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\SolicitudWS.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\EntityFramework.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\SolicitudWS.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\EntityFramework.xml
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Release\SolicitudTest.csprojResolveAssemblyReference.cache
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Release\SolicitudTest.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Release\SolicitudTest.pdb

@@ -19,7 +19,7 @@ namespace SolicitudWS
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "solicitud/{idSolicitud}")]
+            UriTemplate = "buscar/{idUsuario}")]
         ResponseData ListarSolicitudesPorUsuario(string idUsuario);
 
         [OperationContract]
@@ -27,14 +27,14 @@ namespace SolicitudWS
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "solicitud/cancelar/{idSolicitud}")]
+            UriTemplate = "cancelar/{idSolicitud}")]
         void CancelarSolicitud(string idSolicitud);    
         [OperationContract]
         [WebInvoke(Method = "POST",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "solicitud/crear")]
+            UriTemplate = "crear")]
         ResponseData CrearSolicitud(SOLICITUD solicitud);
     }
 

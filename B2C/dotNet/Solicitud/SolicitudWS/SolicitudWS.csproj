@@ -81,13 +81,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\DetalleSolicitudDAO.cs" />
     <Compile Include="DAO\SolicitudDAO.cs" />
     <Compile Include="DETALLESOLICITUD.cs">
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\ResponseData.cs" />
-    <Compile Include="DTO\RequestData.cs" />
     <Compile Include="ESTADOSOLICITUD.cs">
       <DependentUpon>TouresBalonModel.tt</DependentUpon>
     </Compile>
