@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc9c8ce1c0af492ba67f4ed8f785d8b0" Name="Diagrama1" ZoomLevel="85">
+        <EntityTypeShape EntityType="touresbalonModel.IMAGENPRODUCTO" Width="2.25" PointX="7.25" PointY="14.875" />
+        <EntityTypeShape EntityType="touresbalonModel.SOLICITUD" Width="2.5" PointX="7.125" PointY="11.25" />
+        <EntityTypeShape EntityType="touresbalonModel.TIPOPRODUCTO" Width="2.125" PointX="4.625" PointY="10.75" />
+        <EntityTypeShape EntityType="touresbalonModel.usuarios" Width="2.5" PointX="10.125" PointY="11.25" />
+        <AssociationConnector Association="touresbalonModel.FK_solicitud_usuario" />
+        <EntityTypeShape EntityType="touresbalonModel.DETALLESOLICITUD" Width="1.5" PointX="2.875" PointY="9.75" />
+        <EntityTypeShape EntityType="touresbalonModel.ESTADOSOLICITUD" Width="1.5" PointX="4.5" PointY="13" />
+        <AssociationConnector Association="touresbalonModel.FK_solicitud_detalle" />
+        <AssociationConnector Association="touresbalonModel.FK_solicitud_estado" />
+        <EntityTypeShape EntityType="touresbalonModel.PRODUCTO" Width="1.5" PointX="2.25" PointY="13.625" />
+        <AssociationConnector Association="touresbalonModel.FK_detalle_producto" />
+        <AssociationConnector Association="touresbalonModel.FK_producto_imagen" />
+        <AssociationConnector Association="touresbalonModel.FK_producto_tipo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

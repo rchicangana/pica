@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SolicitudWS.Solicitud" CodeBehind="Solicitud.svc.cs" %>
