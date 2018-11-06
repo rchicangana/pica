@@ -14,7 +14,7 @@ export class CargarimagenesComponent implements OnInit {
   inputFile: any;
   imagenes: any[] = [];
   datosImagenProducto: any = {};
-  private imageSrc = '';
+  imageSrc = '';
   errores: any = {};
 
   constructor(private imagenesService: ImagenesService) { }

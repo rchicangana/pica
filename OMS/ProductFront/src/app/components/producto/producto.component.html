@@ -4,8 +4,13 @@
     <div class="region region-content">
         <div id="block-system-main" class="block block-system">
             <div class="panel-body">
+
                 <div class="panel panelPrincipal animated fadeIn fast" *ngIf="!panelEditar">
-                    <div class="btn-group col-sm-2 pull-right m-3">
+                    <div class="btn-group col-sm-10  m-3">
+                        <input type="text" placeholder="Buscar" class="form-control form-control-sm" id="comodin" name="comodin" [(ngModel)]="comodin" required>
+                        <a href="#" (click)="loadData()" class="btn btn-sm  btn-outline-primary">Buscar</a>
+                    </div>
+                    <div class="btn-group col-sm-2 pull-right m-2">
                         <a href="#" (click)="agregar()" class="btn btn-sm  btn-outline-primary">Agregar</a>
                     </div>
 
@@ -31,7 +36,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="100" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage($event)" [boundaryLinks]="true"></ngb-pagination>
+                    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage($event)" [boundaryLinks]="true"></ngb-pagination>
 
 
 

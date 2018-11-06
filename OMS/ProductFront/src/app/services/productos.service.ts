@@ -8,8 +8,11 @@ export class ProductosService {
 
   constructor(private http: HttpClient) { }
 
-  public getProductos(paginas: number) {
-    return this.http.get('ProductService/services/producto/buscar/' + (paginas) + '/5');
+  public getProductos(paginas: number, comodin: string) {
+    if (comodin == null || comodin === '') {
+      comodin = '*';
+    }
+    return this.http.get('ProductService/services/producto/buscarDescripcion/' + (paginas) + '/5/' + comodin);
   }
 
   public guardarProducto(datos: any) {

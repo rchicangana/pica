@@ -45,6 +45,7 @@ export class ProductoComponent implements OnInit {
   totalItems: any;
   previousPage: any;
   tiposProducto: any[];
+  comodin: string;
 
 
   constructor(private productosService: ProductosService,
@@ -77,13 +78,27 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productosService.getProductos(0).subscribe((data: any) => {
+    this.productosService.getProductos(0, this.comodin).subscribe((data: any) => {
       console.log(data);
       this.elementos = data.object;
       this.page = 1;
+      if (data.cantidad > 100 || data.cantidad == null) {
+        data.cantidad = 100;
+      }
       this.totalItems = Math.round(data.cantidad);
     });
     this.tipoproductoService.getTiposProducto().subscribe((data: any) => { this.tiposProducto = data; });
+  }
+  buscarComodin() {
+    this.productosService.getProductos(0, this.comodin).subscribe((data: any) => {
+      console.log(data);
+      this.elementos = data.object;
+      this.page = 1;
+      if (data.cantidad == null) {
+        data.cantidad = 50;
+      }
+      this.totalItems = Math.round(data.cantidad);
+    });
   }
 
   loadPage(page: number) {
@@ -94,7 +109,7 @@ export class ProductoComponent implements OnInit {
   }
 
   loadData() {
-    this.productosService.getProductos((this.page - 1) * this.itemsPerPage).subscribe((data: any) => {
+    this.productosService.getProductos((this.page - 1) * this.itemsPerPage, this.comodin).subscribe((data: any) => {
       this.elementos = data.object;
     });
   }
