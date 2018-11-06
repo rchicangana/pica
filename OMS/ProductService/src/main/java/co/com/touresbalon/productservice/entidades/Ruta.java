@@ -11,12 +11,15 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -45,6 +48,8 @@ public class Ruta implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_RUTA")
+    @SequenceGenerator(name="SEQ_RUTA_ID_GET", sequenceName="SEQ_RUTA_ID", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_RUTA_ID_GET")
     private Long idRuta;
     @Size(max = 200)
     @Column(name = "DESCRIPCION")

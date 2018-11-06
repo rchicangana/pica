@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,7 +42,8 @@ public class Itinerario implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @SequenceGenerator(name="SEQ_ITINERARIO_ID_GET", sequenceName="SEQ_ITINERARIO_ID_ITINERARIO", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ITINERARIO_ID_GET")
     @Column(name = "ID_ITINERARIO")
     private Long idItinerario;
     @JoinColumn(name = "ID_HOSPEDAJE", referencedColumnName = "ID_HOSPEDAJE")

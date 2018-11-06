@@ -6,6 +6,7 @@
 package co.com.touresbalon.productservice.servicios;
 
 import co.com.touresbalon.productservice.dto.ItinerarioDTO;
+import co.com.touresbalon.productservice.dto.ItinerarioFrontDTO;
 import co.com.touresbalon.productservice.dto.MensajeDTO;
 import co.com.touresbalon.productservice.logica.ItinerarioLogica;
 import java.util.List;
@@ -35,13 +36,13 @@ public class ItinerarioService {
     
     @GET
     @Path("consultar/{idProducto}")
-    public List<ItinerarioDTO> consultar(@PathParam("idProducto") Long idProducto){
+    public List<ItinerarioFrontDTO> consultar(@PathParam("idProducto") Long idProducto){
         return itinerarioLogica.consultar(idProducto);
     }
     
     @POST
     @Path("guardar")
-    public MensajeDTO guardar(ItinerarioDTO itinerarioDTO){
+    public MensajeDTO guardar(ItinerarioFrontDTO itinerarioDTO){
         return itinerarioLogica.guardarItinerario(itinerarioDTO);
     }
     

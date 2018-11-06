@@ -15,6 +15,7 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { ROUTES } from './app.routes';
 import { CargarimagenesComponent } from './components/cargarimagenes/cargarimagenes.component';
 import { ItinerarioComponent } from './components/itinerario/itinerario.component';
+import { BoleteriaComponent } from './components/boleteria/boleteria.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ItinerarioComponent } from './components/itinerario/itinerario.componen
     ProductoComponent,
     FileSelectDirective,
     CargarimagenesComponent,
-    ItinerarioComponent
+    ItinerarioComponent,
+    BoleteriaComponent
   ],
   imports: [
     BrowserModule,
