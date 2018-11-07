@@ -11,7 +11,8 @@ import { ProductService } from "../../shared/services/product.service";
 export class SolicitudService {
   solicitud: Solicitud;
   respuesta : Respuesta; 
-  apiUrl :string = "solicitud/Logica/Solicitud.svc/Solicitud";
+  apiUrl :string = "http://10.39.1.99:9090/solicitud/Logica/Solicitud.svc/Solicitud";
+  //apiUrl :string = "solicitud/Logica/Solicitud.svc/Solicitud";
   userDetail: Usuario;
   cartProducts: Tarifa[];
 
