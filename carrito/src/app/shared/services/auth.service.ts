@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class AuthService {
   userDetails: Usuario = null;
-  apiUrl:string = "login/Logica/Usuario.svc/Usuario";
+  apiUrl:string = "htpp://10.39.1.99:9090/login/Logica/Usuario.svc/Usuario";
 
   constructor(
     private router: Router, 
