@@ -8,3 +8,4 @@ D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\
 D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Release\SolicitudTest.csprojResolveAssemblyReference.cache
 D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Release\SolicitudTest.dll
 D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Release\SolicitudTest.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Release\WebTest1.webtest

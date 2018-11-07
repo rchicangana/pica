@@ -26,10 +26,10 @@ export class SolicitudService {
     let solicitud: Solicitud;
     this.cartProducts = this.productService.getLocalCartProducts();
 
-    for(let i :number = 10; i < this.cartProducts.length; i++){
-        solicitud.nombreProducto  = this.cartProducts[i].nombre;
-        solicitud.itinerarioList = this.cartProducts[i].itinerarioDTOlist;
-    }
+    //for(let i :number = 10; i < this.cartProducts.length; i++){
+    //    solicitud.nombreProducto  = this.cartProducts[i].nombre;
+    //    solicitud.itinerarioList = this.cartProducts[i].itinerarioDTOlist;
+    //}
 
 
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
