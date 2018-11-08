@@ -1,0 +1,109 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Servicios de Autenticacion.",
+    "version" : "1.0.0",
+    "title" : "Autenticacion",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "autenticacion",
+    "description" : "Servicios para autenticacion y validacion"
+  } ],
+  "paths" : {
+    "/" : {
+      "post" : {
+        "tags" : [ "autenticacion" ],
+        "summary" : "Permite autenticarse con usuario y clave",
+        "operationId" : "login",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objecto login",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/LoginDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/validar" : {
+      "post" : {
+        "tags" : [ "autenticacion" ],
+        "summary" : "Permite validar un token",
+        "operationId" : "validarToken",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objeto validar",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ValidarTokenDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ValidarTokenDTO" : {
+      "type" : "object",
+      "required" : [ "login", "token" ],
+      "properties" : {
+        "login" : {
+          "type" : "string"
+        },
+        "token" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "login"
+      }
+    },
+    "LoginDTO" : {
+      "type" : "object",
+      "required" : [ "login", "password" ],
+      "properties" : {
+        "login" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "login"
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Mas Info",
+    "url" : "https://github.com/rchicangana/pica"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/PublicPaid/Seguridad/1.0.0",
+  "schemes" : [ "https", "http" ]
+}

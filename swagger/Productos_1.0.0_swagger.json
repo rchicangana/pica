@@ -1,0 +1,176 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Servicio de Productos TouresBalon\n",
+    "version" : "1.0.0",
+    "title" : "ProductService",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "producto",
+    "description" : "Permite acceder a las conusltas de los productos de touresbalon"
+  } ],
+  "paths" : {
+    "/buscarProducto/{codigo}" : {
+      "get" : {
+        "tags" : [ "producto" ],
+        "summary" : "permite buscar productos por codigo",
+        "description" : "retorna un objeto Mensaje",
+        "operationId" : "buscarporCodigo",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "codigo",
+          "in" : "path",
+          "description" : "codigo del producto",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MensajeDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      }
+    },
+    "/buscarDescripcion/{inicio}/{fin}/{descripcion}" : {
+      "get" : {
+        "tags" : [ "producto" ],
+        "summary" : "permite buscar productos por nombre o descripcion usando comodines",
+        "description" : "permite buscar productos por nombre o descripcion usando comodines *",
+        "operationId" : "buscarporDescripcion",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "fin",
+          "in" : "path",
+          "description" : "tamaño de la pagina",
+          "required" : true,
+          "type" : "number"
+        }, {
+          "name" : "inicio",
+          "in" : "path",
+          "description" : "numero de pagina",
+          "required" : true,
+          "type" : "number"
+        }, {
+          "name" : "descripcion",
+          "in" : "path",
+          "description" : "datos a buscar  se pueden usar comodines *",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MensajeDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      }
+    },
+    "/buscar/{inicio}/{fin}" : {
+      "get" : {
+        "tags" : [ "producto" ],
+        "summary" : "buscar todos los productos entregando resultados paginados",
+        "description" : "buscar todos los productos entregando resultados paginados.",
+        "operationId" : "buscar",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "inicio",
+          "in" : "path",
+          "description" : "numero de pagina",
+          "required" : true,
+          "type" : "number"
+        }, {
+          "name" : "fin",
+          "in" : "path",
+          "description" : "tamaño de la pagina",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MensajeDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "error"
+          }
+        }
+      }
+    },
+    "/topFiveProducto" : {
+      "get" : {
+        "tags" : [ "producto" ],
+        "summary" : "Consulta el top five de productos asociados a otro producto en una orden de compra",
+        "description" : "retorna una lista de productos",
+        "operationId" : "getTopFiveProducto",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MensajeDTO"
+            }
+          },
+          "400" : {
+            "description" : "Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "MensajeDTO" : {
+      "type" : "object",
+      "required" : [ "codigo" ],
+      "properties" : {
+        "codigo" : {
+          "type" : "string"
+        },
+        "object" : {
+          "type" : "string"
+        },
+        "mensaje" : {
+          "type" : "string"
+        },
+        "cantidad" : {
+          "type" : "numberº"
+        }
+      },
+      "xml" : {
+        "name" : "MensajeDTO"
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Find out more about toures balon",
+    "url" : "https://github.com/rchicangana/pica"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/PublicPaid/Productos/1.0.0",
+  "schemes" : [ "https", "http" ]
+}

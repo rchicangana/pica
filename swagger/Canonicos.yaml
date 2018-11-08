@@ -1,6 +1,6 @@
 swagger: "3.0"
 info:
-  description: "Evento: Objetos Canonicos TouresBalon"
+  description: "Objetos Canonicos TouresBalon"
   version: "1.0.0"
   title: "Evento"
   termsOfService: "http://swagger.io/terms/"
@@ -33,33 +33,14 @@ definitions:
         $ref: '#/definitions/Pais'
     xml:
       name: "Ciudad"
-  TipoEvento:
+  EmpresaDTO:
     type: "object"
     properties:
-      id:
-        type: "integer"
-        format: "int32"
+      idEmpresa:
+        type: "string"
       nombre:
         type: "string"
-    xml:
-      name: "TipoEvento"
-  Evento:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      tipoEvento:
-        $ref: '#/definitions/TipoEvento'
-      ciudad:
-        $ref: '#/definitions/Ciudad'
-      fechaInicio:
-        type: "string"
-        format: "date-time"
-      fechaFin:
-        type: "string"
-        format: "date-time"
-      descripcion:
+      urlEndpoint:
         type: "string"
     xml:
-      name: "Evento"
+      name: "EmpresaDTO"
