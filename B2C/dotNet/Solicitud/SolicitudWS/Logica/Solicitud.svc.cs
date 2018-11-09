@@ -13,6 +13,10 @@ namespace SolicitudWS
             return this.solDAO.listarSolicitudesPorUsuario(idUsuario);
         }
 
+        public ResponseData consultarSolicitudPorId(String idSolicitud) {
+            return this.solDAO.lconsultarSolicitudPorId(idSolicitud);
+        }
+
         public void CancelarSolicitud(String idSolicitud)
         {
             this.solDAO.cancelarSolicitud(idSolicitud);
