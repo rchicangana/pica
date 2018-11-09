@@ -51,6 +51,28 @@ namespace SolicitudWS.DAO
             return respuesta;
         }
 
+        
+        public ResponseData lconsultarSolicitudPorId(string idSolicitud)
+        {
+            ResponseData respuesta = new ResponseData();
+            List<SOLICITUD> listadoSolicitudes = new List<SOLICITUD>();
+            try
+            {
+                listadoSolicitudes = (from sol in this.context.SOLICITUD
+                                      where sol.numerosolicitud == Int32.Parse(idSolicitud)
+                                      select sol).ToList();
+
+                listadoSolicitudes = this.context.SOLICITUD.ToList();
+                respuesta.mensaje = "Solicitudes consultada con exito";
+                respuesta.resultado = "OK";
+                respuesta.objeto = listadoSolicitudes;
+            }
+            catch (Exception ex)
+            {
+            }
+            return respuesta;
+        }
+
         public void cancelarSolicitud(string idSolicitud)
         {
             var consulta = (from sol in this.context.SOLICITUD
