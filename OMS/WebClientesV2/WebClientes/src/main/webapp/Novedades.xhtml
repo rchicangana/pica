@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Modulo Clientes - TouresBalon</title>
+            </f:facet>
+            <style>
+                .header{
+                   background-color:#A9D0F5;
+                   width:100%;
+                }
+            </style>
+        </h:head>
+
+        <h:body>
+        <h:form id ="form" prependId="false">           
+            <p:panel id="busq" header="Consultar Novedades" style="font-size:12px;">
+                <h:panelGrid id="campos" columns="6"  cellpadding="5" >
+                    <p:outputLabel for="entidad" value="Entidad:"  />
+                    <p:selectOneMenu id="entidad" value="#{novedadBean.entidad}"  style="width:200px" >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="Clientes" itemValue="Clientes" />
+                        <f:selectItem itemLabel="Contactos" itemValue="Contactos" />
+                        <f:selectItem itemLabel="Categorias" itemValue="Categoria" />
+                    </p:selectOneMenu>
+                    <h:outputLabel for="fechaIni" value="Fecha Inicial:"  />
+                    <p:calendar id="fechaIni" value="#{novedadBean.fechaIni}" locale="de" navigator="true" pattern="dd-MM-yyyy" />    
+                    <h:outputLabel for="fechaFin" value="Fecha Fin:"  />
+                    <p:calendar id="fechaFin" value="#{novedadBean.fechaFin}" locale="de" navigator="true" pattern="dd-MM-yyyy" />  
+                    
+                    <p:commandButton value="Consultar" actionListener="#{novedadBean.consultar()}" update="@form"/>                               
+                </h:panelGrid>
+            </p:panel>
+            <p:panel id="contactos" header="Novedades" style="font-size:12px;">
+                <p:growl id="messages" showDetail="true"/>
+                <p:dataTable id="datos" value="#{novedadBean.novs}" rows="10" var="idx" rowKey="#{idx.idNovedad}" selection="#{novedadBean.row}" selectionMode="single"
+                             paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                    <p:column headerText="Fecha Novedad" style="width:110px">
+                            <h:outputText value="#{idx.fechaNovedad}"/>      
+                    </p:column>
+                    <p:column headerText="Entidad" style="width:60px">
+                        <h:outputText value="#{idx.entidad}"/>      
+                    </p:column>
+                    <p:column headerText="Estado Inicial">
+                        <h:outputText value="#{idx.estadoInicial}"/>      
+                    </p:column>                    
+                    <p:column headerText="Estado Final">
+                        <h:outputText value="#{idx.estadoFinal}"/>      
+                    </p:column>                                      
+                    <f:facet name="footer">
+                        <p:commandButton value="Regresar"  action="index"/>
+                    </f:facet>
+                </p:dataTable>          
+            </p:panel>         
+        </h:form>
+       </h:body>
+
+</html>
