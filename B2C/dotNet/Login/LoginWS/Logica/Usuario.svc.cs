@@ -23,18 +23,18 @@ namespace LoginWS
 
         public ResponseData buscarUsuarioPorLogin(string login, string password)
         {
-            return this.usuDAO.buscarUsuario(login, password);
+            return this.usuDAO.consulta2(login, password);
         }
 
         public ResponseData consulta(string login, string password)
         {
-            byte[] data = Convert.FromBase64String(login);
-            string loginDecode = Encoding.UTF8.GetString(data);
-
-            data = Convert.FromBase64String(password);
-            string passwordDecode = Encoding.UTF8.GetString(data);
-
-            return this.usuDAO.consulta(loginDecode, passwordDecode);
+            //byte[] data = Convert.FromBase64String(login);
+            //string loginDecode = Encoding.UTF8.GetString(data);
+            string loginDecode = login;
+            //data = Convert.FromBase64String(password);
+            //string passwordDecode = Encoding.UTF8.GetString(data);
+            string passwordDecode = password;
+            return this.usuDAO.consulta2(loginDecode, passwordDecode);
         }
         public ResponseData crearUsuario(usuarios usuario)
         {
