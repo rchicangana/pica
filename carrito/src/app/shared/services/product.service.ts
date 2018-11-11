@@ -21,6 +21,9 @@ export class ProductService {
   // NavbarCounts
   navbarCartCount = 0;
   navbarFavProdCount = 0;
+  //paginate
+  pagina=0;
+  cantidad=0;
 
   constructor(
     private authService: AuthService,
@@ -39,9 +42,17 @@ export class ProductService {
     }
   }
 
+
+ CountProducts(){
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  return this.http.get(this.apiUrl+'/Buscar/0/0', { headers });
+}
+
+
+
   getProducts() {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.get(this.apiUrl+'/Buscar/0/10', { headers });
+    return this.http.get(this.apiUrl+'/Buscar/0/100', { headers });
   }
 
   getProductsS( tipo?:String, termino?:String ) {
@@ -50,12 +61,12 @@ export class ProductService {
  console.log ('captura del tipo:'+tipo+' y termino'+termino)
  if (tipo == 'D'){
  if ( termino == '*'){
-     console.log (this.apiUrl+'/ConsultarDesc/0/10/*');
+     console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
    return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/*', { headers });
    }
    else {
-     console.log (this.apiUrl+'/ConsultarDesc/0/10/'+termino);
-   return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/'+termino, { headers });
+     console.log (this.apiUrl+'/ConsultarDesc/0/100/'+termino);
+   return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
    }
  }
  else if (tipo == 'C'){
@@ -72,12 +83,12 @@ export class ProductService {
  }
  if (tipo == 'P'){
  if ( termino == '*'){
-       console.log (this.apiUrl+'/ConsultarDesc/0/10/*');
-     return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/*', { headers });
+       console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
+     return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/*', { headers });
      }
      else {
-       console.log (this.apiUrl+'/ConsultarDesc/0/10/'+termino);
-     return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/'+termino, { headers });
+       console.log (this.apiUrl+'/ConsultarDesc/0/100/'+termino);
+     return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
      }
    }
 

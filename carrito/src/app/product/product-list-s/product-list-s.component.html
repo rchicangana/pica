@@ -36,6 +36,7 @@
 
 
                     <!-- List of Products -->
+                                        <!-- <div class="col-sm-4 mb-2"  *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }"> -->
                     <div class="col-sm-4 mb-2"  *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
                         <div class="item">
                             <div class=" mb-r">
@@ -202,6 +203,9 @@
                 <!-- Pagination -->
                 <div class="text-center mt-3">
                     <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                    <!-- <p>Restricted size, no rotation:</p>
+                    <ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination> -->
+
                 </div>
             </div>
             <!--/.Card-->

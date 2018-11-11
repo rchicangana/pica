@@ -22,6 +22,7 @@ export class ProductListComponentS implements OnInit {
 
   selectedBrand: "All";
   tipo:string;
+  numeroProductos:number;
 
 
   page = 1;
@@ -47,6 +48,12 @@ export class ProductListComponentS implements OnInit {
         this.activatedRoute.params.subscribe( params => {
         this.tipo= params['tipo'];
         console.log('este es el tipo del tipo'+this.tipo);
+        let cantidad = this.CountProductsS();
+        console.log(cantidad);
+
+
+
+
     if ( params['tipo'] == 'D' )
     {
               if (typeof params['termino'] === 'undefined' )
@@ -112,6 +119,25 @@ export class ProductListComponentS implements OnInit {
       });
     });*/
   }
+
+
+CountProductsS() {
+
+  const x = this.productService.CountProducts()
+  .subscribe(
+    data => {
+
+        this.numeroProductos = 0;
+        if((<Respuesta>data).codigo=="OK"){
+          let cantidad  =   <number> (<Respuesta>data).cantidad;
+          this.numeroProductos = cantidad;
+          console.log(this.numeroProductos );
+        }
+    },
+    error => {
+    });
+
+}
 
   getAProductsS(t1:String, t2:String) {
     this.spinnerService.show();

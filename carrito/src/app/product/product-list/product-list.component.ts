@@ -55,4 +55,6 @@ export class ProductListComponent implements OnInit {
   addToCart(product: Tarifa) {
     this.productService.addToCart(product);
   }
+
+  
 }

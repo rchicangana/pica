@@ -10,6 +10,7 @@ import { RouterModule } from "@angular/router";
 import { AppRoutes } from "./app.routing";
 import { PSEComponent } from './pse/pse.component';
 import {ConsultarcampanaComponent} from './campanas/campanas.component';
+// import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
