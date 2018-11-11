@@ -10,12 +10,12 @@ export class ProductService {
   products: Product[];
   product: Product;
 
-  //apiUrl :string = "ServiciosESB/Productos";
-  //apiUrl2 :string = "ServiciosESB/Tarifas";
-  //apiUrl3 :string = "ProductService/services/producto";
-  apiUrl :string = "http://10.39.1.140:8081/ServiciosESB/Productos";
-  apiUrl2 :string = "http://10.39.1.140:8081/ServiciosESB/Tarifas";
-  apiUrl3 :string = "http://10.39.1.140:8080/ProductService/services/producto";
+  apiUrl :string = "ServiciosESB/Productos";
+  apiUrl2 :string = "ServiciosESB/Tarifas";
+  apiUrl3 :string = "ProductService/services/producto";
+  //apiUrl :string = "http://10.39.1.144:8081/ServiciosESB/Productos";
+  //apiUrl2 :string = "http://10.39.1.144:8081/ServiciosESB/Tarifas";
+  //apiUrl3 :string = "http://10.39.1.140:8080/ProductService/services/producto";
 
   // NavbarCounts
   navbarCartCount = 0;

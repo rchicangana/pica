@@ -27,6 +27,14 @@ namespace SolicitudWS
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "buscar/{idSolicitud}")]
+        ResponseData consultarSolicitudPorId(string idSolicitud);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "cancelar/{idSolicitud}")]
         void CancelarSolicitud(string idSolicitud);    
         [OperationContract]

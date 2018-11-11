@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Modulo Clientes - TouresBalon</title>
+            </f:facet>
+            <style>
+                .header{
+                   background-color:#A9D0F5;
+                   width:100%;
+                }
+            </style>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="110" style="background-color:#A9D0F5 "   resizable="true" closable="true" collapsible="true">
+                    <table class="header">
+                        <tr>
+                          <th><p>Modulo de Clientes</p></th>
+                          <th>    </th>
+                          <th><h:graphicImage value="/resources/logo.png"/></th>
+                        </tr>
+                    </table>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Menú" style="font-size:12px;"  collapsible="true">
+                    <p:panelMenu >
+                        <p:submenu label="Clientes">
+                            <p:menuitem value="Crear" actionListener="#{clienteBean.init}" outcome="CrearCliente_1"/>
+                            <p:menuitem value="Consultar" actionListener="#{clienteBean.init}" outcome="ConsultarCliente_1" />
+                        </p:submenu>
+                        <p:submenu label="Contactos">
+                            <p:menuitem value="Crear" actionListener="#{contactoBean.init}" outcome="CrearContacto_1"/>
+                            <p:menuitem value="Consultar" actionListener="#{contactoBean.init}" outcome="ManejarContactos_1" />
+                        </p:submenu>
+                        <p:submenu label="Categorias">
+                            <p:menuitem value="Crear" actionListener="#{ categoriaBean.init()}" outcome="CrearCategoria_1"/>
+                            <p:menuitem value="Consultar" actionListener="#{ categoriaBean.init()}" outcome="ManejarCategorias_1" />
+                        </p:submenu>
+                        <p:submenu label="Novedades">
+                            <p:menuitem value="Consultar" outcome="Novedades" />
+                        </p:submenu>                        
+                    </p:panelMenu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <ui:insert name="content">Content</ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>

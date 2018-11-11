@@ -1,27 +1,177 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="touresbalonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="touresbalonModelStoreContainer">
-    <EntitySet Name="DETALLE_SOLICITUD" EntityType="touresbalonModel.Store.DETALLE_SOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DETALLESOLICITUD" EntityType="touresbalonModel.Store.DETALLESOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ESTADOSOLICITUD" EntityType="touresbalonModel.Store.ESTADOSOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IMAGENPRODUCTO" EntityType="touresbalonModel.Store.IMAGENPRODUCTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCTO" EntityType="touresbalonModel.Store.PRODUCTO" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TIPOPRODUCTO" EntityType="touresbalonModel.Store.TIPOPRODUCTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="usuarios" EntityType="touresbalonModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_detalle_producto" Association="touresbalonModel.Store.FK_detalle_producto">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="DETALLESOLICITUD" EntitySet="DETALLESOLICITUD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producto_imagen" Association="touresbalonModel.Store.FK_producto_imagen">
+      <End Role="IMAGENPRODUCTO" EntitySet="IMAGENPRODUCTO" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producto_tipo" Association="touresbalonModel.Store.FK_producto_tipo">
+      <End Role="TIPOPRODUCTO" EntitySet="TIPOPRODUCTO" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_solicitud_detalle" Association="touresbalonModel.Store.FK_solicitud_detalle">
+      <End Role="DETALLESOLICITUD" EntitySet="DETALLESOLICITUD" />
+      <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_solicitud_estado" Association="touresbalonModel.Store.FK_solicitud_estado">
+      <End Role="ESTADOSOLICITUD" EntitySet="ESTADOSOLICITUD" />
+      <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_solicitud_usuario" Association="touresbalonModel.Store.FK_solicitud_usuario">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="DETALLE_SOLICITUD">
+  <EntityType Name="DETALLESOLICITUD">
     <Key>
-      <PropertyRef Name="ID_DETALLE_SOLICITUD" />
+      <PropertyRef Name="Iddetallesolicitd" />
     </Key>
-    <Property Name="ID_DETALLE_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="NO_SOLICITUD" Type="int" />
-    <Property Name="ID_PRODUCTO" Type="int" />
-    <Property Name="VALOR" Type="decimal" Scale="2" />
+    <Property Name="Iddetallesolicitd" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="productoid" Type="int" Nullable="false" />
+    <Property Name="valor" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ESTADOSOLICITUD">
+    <Key>
+      <PropertyRef Name="Idestadosolicitud" />
+    </Key>
+    <Property Name="Idestadosolicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IMAGENPRODUCTO">
+    <Key>
+      <PropertyRef Name="Idimagenproducto" />
+    </Key>
+    <Property Name="Idimagenproducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="imagen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="esprincipal" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="Idproducto" />
+    </Key>
+    <Property Name="Idproducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipoproductoid" Type="int" Nullable="false" />
+    <Property Name="nombreproducto" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="fechasalida" Type="date" Nullable="false" />
+    <Property Name="fechallegada" Type="date" Nullable="false" />
+    <Property Name="imagenproductos" Type="int" />
   </EntityType>
   <EntityType Name="SOLICITUD">
     <Key>
-      <PropertyRef Name="NO_SOLICITUD" />
+      <PropertyRef Name="numerosolicitud" />
     </Key>
-    <Property Name="NO_SOLICITUD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="FECHA_CREACION" Type="date" />
-    <Property Name="FECHA_VENCIMIENTO" Type="date" />
-    <Property Name="VALOR_TOTAL" Type="decimal" Scale="2" />
-    <Property Name="ID_ESTADO_SOLICITUD" Type="int" />
-    <Property Name="ID_USUARIO" Type="int" />
+    <Property Name="numerosolicitud" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="fechacreacion" Type="datetime" />
+    <Property Name="fechavencimiento" Type="datetime" />
+    <Property Name="valortotal" Type="decimal" Scale="2" />
+    <Property Name="idusuario" Type="int" />
+    <Property Name="noorden" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="estadoordencompraid" Type="int" Nullable="false" />
+    <Property Name="detalleordencompras" Type="int" />
   </EntityType>
+  <EntityType Name="TIPOPRODUCTO">
+    <Key>
+      <PropertyRef Name="Idtipoproducto" />
+    </Key>
+    <Property Name="Idtipoproducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombres" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="apellidos" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+    <Property Name="fecha_creacion" Type="date" Nullable="false" />
+    <Property Name="pais" Type="varchar" MaxLength="50" />
+    <Property Name="departamento" Type="varchar" MaxLength="50" />
+    <Property Name="ciudad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_detalle_producto">
+    <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="1" />
+    <End Role="DETALLESOLICITUD" Type="touresbalonModel.Store.DETALLESOLICITUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="Idproducto" />
+      </Principal>
+      <Dependent Role="DETALLESOLICITUD">
+        <PropertyRef Name="productoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producto_imagen">
+    <End Role="IMAGENPRODUCTO" Type="touresbalonModel.Store.IMAGENPRODUCTO" Multiplicity="0..1" />
+    <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMAGENPRODUCTO">
+        <PropertyRef Name="Idimagenproducto" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="imagenproductos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producto_tipo">
+    <End Role="TIPOPRODUCTO" Type="touresbalonModel.Store.TIPOPRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOPRODUCTO">
+        <PropertyRef Name="Idtipoproducto" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="tipoproductoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_solicitud_detalle">
+    <End Role="DETALLESOLICITUD" Type="touresbalonModel.Store.DETALLESOLICITUD" Multiplicity="0..1" />
+    <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DETALLESOLICITUD">
+        <PropertyRef Name="Iddetallesolicitd" />
+      </Principal>
+      <Dependent Role="SOLICITUD">
+        <PropertyRef Name="detalleordencompras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_solicitud_estado">
+    <End Role="ESTADOSOLICITUD" Type="touresbalonModel.Store.ESTADOSOLICITUD" Multiplicity="1" />
+    <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADOSOLICITUD">
+        <PropertyRef Name="Idestadosolicitud" />
+      </Principal>
+      <Dependent Role="SOLICITUD">
+        <PropertyRef Name="estadoordencompraid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_solicitud_usuario">
+    <End Role="usuarios" Type="touresbalonModel.Store.usuarios" Multiplicity="0..1" />
+    <End Role="SOLICITUD" Type="touresbalonModel.Store.SOLICITUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SOLICITUD">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

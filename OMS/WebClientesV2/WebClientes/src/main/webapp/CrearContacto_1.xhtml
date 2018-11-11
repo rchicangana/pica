@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/WEB-INF/MainFrame.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui"
+>
+
+    <ui:define name="content">
+        <h:form id ="form2">
+            <p:panel id="busq" header="Consultar Cliente" style="margin-bottom:10px;font-size:12px;">
+                <h:panelGrid id="campos" columns="5" cellpadding="5" >
+                    <p:outputLabel for="ConsTipoID" value="Tipo Documento:"  />
+                    <p:selectOneMenu id="ConsTipoID" value="#{contactoBean.tipoID}"  style="width:200px" required="true" >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="Cedula de Ciudadania" itemValue="CC" />
+                        <f:selectItem itemLabel="Cedula de Extrangeria" itemValue="CE" />
+                        <f:selectItem itemLabel="NIT" itemValue="NIT" />
+                        <f:selectItem itemLabel="Pasaporte" itemValue="PA"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel for="ConsNoDocumento" value="No. Documento:"  />
+                    <p:inputNumber id="ConsNoDocumento" value="#{contactoBean.noID}" decimalPlaces="0"/>
+                    
+                    <p:commandButton value="Consultar" actionListener="#{contactoBean.consultarHead()}" update="busq"/>
+                    
+                    <h:outputLabel for="ConNombres" value="Nombres o Razon Social:"  />
+                    <p:inputText id="ConNombres" value="#{contactoBean.nombreCompleto}" style="width:350px" disabled="true"/>                
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+        <h:form id ="form">
+            <p:panel id="contacto" header="Crear Contacto" style="font-size:12px;">
+                <h:panelGrid id="base" columns="4" cellpadding="5" >
+                    <p:outputLabel for="destinatario" value="Destinatario:"  />
+                    <p:inputText id="destinatario"  value="#{contactoBean.cont.destinatario}" required="true"/>
+                    <p:outputLabel for="tipoDir" value="Tipo Direccion:"  />
+                    <p:selectOneMenu id="tipoDir" value="#{contactoBean.cont.tipoDireccion}" required="true"  style="width:150px"  >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="Residencial" itemValue="R" />
+                        <f:selectItem itemLabel="Oficina" itemValue="L" />
+                    </p:selectOneMenu>
+                    <p:outputLabel for="ciudad" value="Ciudad:"  />
+                    <p:selectOneMenu id="ciudad" value="#{contactoBean.cont.idCiudad}" required="true"  style="width:120px"  >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="Bogotá" itemValue="1" />
+                        <f:selectItem itemLabel="Medellín" itemValue="2" />
+                        <f:selectItem itemLabel="Cali" itemValue="3" />
+                        <f:selectItem itemLabel="Barranquilla" itemValue="4" />
+                        <f:selectItem itemLabel="Santa Marta" itemValue="5" />
+                        <f:selectItem itemLabel="Pasto" itemValue="6" />
+                        <f:selectItem itemLabel="Ibagué" itemValue="7" />
+                        <f:selectItem itemLabel="B/tura" itemValue="8" />
+                        <f:selectItem itemLabel="Neiva" itemValue="9" />
+                        <f:selectItem itemLabel="Florencia" itemValue="10" />
+                        <f:selectItem itemLabel="Leticia" itemValue="11" />
+                    </p:selectOneMenu>
+                    <p:outputLabel for="direccion" value="Direccion:" style="width:250px" />
+                    <p:inputText id="direccion"  value="#{contactoBean.cont.direccion}" required="true"/>
+                    <h:outputLabel for="telefono" value="Telefono Fijo:"  />
+                    <p:inputNumber id="telefono" value="#{contactoBean.cont.telefono}"  padControl="false" decimalPlaces="0"/>
+                    <h:outputLabel for="celular" value="Celular:"  />
+                    <p:inputNumber id="celular" value="#{contactoBean.cont.celular}"  required="true" padControl="false" decimalPlaces="0"/>
+                </h:panelGrid>
+             </p:panel>
+            <p:commandButton value="Crear" actionListener="#{contactoBean.crearContacto}" update="contacto"/>            
+        </h:form>
+    </ui:define>
+
+</ui:composition>

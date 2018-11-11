@@ -71,6 +71,8 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         if ((<Respuesta>res).resultado == "Fallo"){
           console.log("Usuario NO logeado: ", (<Respuesta>res).mensaje);
+          this.errorInLoginUser = true;
+          this.errorMessage = "Credenciales incorectas";
         }
         else{
           let respuesta: Respuesta = <Respuesta>res;

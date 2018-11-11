@@ -83,17 +83,18 @@ namespace LoginWS.DAO
             this.context.SaveChanges();
         }
 
-        public ResponseData buscarUsuario(string loginUsuario, string password)
+        public ResponseData consulta(string loginUsuario, string password)
         {
             ResponseData respuesta = new ResponseData();
             List<usuarios> usuario = new List<usuarios>();
             try
             {
-                var consulta = (from usu in this.context.usuarios
-                                where usu.login == loginUsuario && usu.password == password 
-                                select usu).First();
+                string consulta = "SELECT * " +
+                "from usuarios where login = '" +loginUsuario+
+                "' and password = '"+password+"'";
+                usuario = this.context.usuarios.SqlQuery(consulta).ToList();
+ 
                 //usuario = consulta;
-                usuario.Add((usuarios)consulta);
                 respuesta.objeto = usuario;
                 respuesta.mensaje = "Usuario encontrado con exito";
                 respuesta.resultado = "OK";
@@ -104,7 +105,7 @@ namespace LoginWS.DAO
             return respuesta;
         }
 
-        public ResponseData consulta(string loginUsuario, string password)
+        public ResponseData consulta2(string loginUsuario, string password)
         {
             ResponseData respuesta = new ResponseData();
             List<usuarios> usuario = new List<usuarios>();

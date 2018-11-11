@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/WEB-INF/MainFrame.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui"
+>
+
+    
+    <ui:define name="content">
+        <h:form id ="form">
+            <p:panel id="panel" header="Crear Cliente" style="font-size:12px;">
+                <p:messages id="messages" />
+                <h:panelGrid id="base" columns="4" cellpadding="5" >
+                    <p:outputLabel for="tipoID" value="Tipo Documento:"  />
+                    <p:selectOneMenu id="tipoID" value="#{clienteBean.cli.tipoDocumento}"  style="width:200px" required="true" >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="Cedula de Ciudadania" itemValue="CC" />
+                        <f:selectItem itemLabel="Cedula de Extrangeria" itemValue="CE" />
+                        <f:selectItem itemLabel="NIT" itemValue="NIT" />
+                        <f:selectItem itemLabel="Pasaporte" itemValue="PA"/>
+                        <p:ajax  process="@this" update="tipoCliente" />
+                    </p:selectOneMenu>                 
+                    <h:outputLabel for="noDocumento" value="Numero Documento:"  />
+                    <p:inputNumber id="noDocumento" value="#{clienteBean.cli.noDocumento}" required="true" decimalPlaces="0"/>
+                </h:panelGrid>
+                <p:panel id="tipoCliente" style="font-size:12px;" >
+                    <h:panelGrid columns="4" cellpadding="5" style="display:#{clienteBean.cli.tipoDocumento ne 'NIT'?'block':'none' }" >
+                        <p:outputLabel for="nombres" value="Nombres:" />
+                        <p:inputText id="nombres"  value="#{clienteBean.cli.nombres}" />
+                        <p:outputLabel for="apellido1" value="Primer Apellido:" />
+                        <p:inputText id="apellido1"  value="#{clienteBean.cli.apellido1}"  />
+                        <p:outputLabel for="apellido2" value="Segundo Apellido:" />
+                        <p:inputText id="apellido2"  value="#{clienteBean.cli.apellido2}"  />
+                     </h:panelGrid>
+                    <h:panelGrid columns="2" cellpadding="5"  style="display:#{clienteBean.cli.tipoDocumento ne 'NIT' ?'none':'block'}">
+                        <p:outputLabel for="razon" value="Razon Social:"  />
+                        <p:inputText id="razon" style="width:450px"  value="#{clienteBean.cli.razonSocial}"  />
+                    </h:panelGrid>
+                </p:panel>
+                 <h:panelGrid id="adicional" columns="4" cellpadding="5" style="font-size:12px;">
+                    <p:outputLabel for="categoria" value="Categoria:"/>
+                    <p:selectOneMenu id="categoria" value="#{clienteBean.cli.idCategoria}"  style="width:125px">
+                        <f:selectItem itemLabel="Seleccione " itemValue=""/>    
+                        <f:selectItems value="#{categoriaBean.catgoriaList}"/> 
+                    </p:selectOneMenu>                    
+                    <p:outputLabel for="estado" value="Estado:" />
+                    <p:selectOneMenu id="estado" value="#{clienteBean.cli.estado}"  style="width:125px">
+                        <f:selectItem itemLabel="Activo" itemValue="ACTIVO" />
+                        <f:selectItem itemLabel="Inactivo" itemValue="INACTIVO" />
+                        <f:selectItem itemLabel="Bloqueado" itemValue="BLOQUEADO" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+            </p:panel>
+
+            <p:commandButton value="Crear" actionListener="#{clienteBean.CrearCliente}" style="font-size:12px;" update="panel"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
