@@ -1,15 +1,20 @@
 <br>
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
             <ul class="list-group">
                 <li class="list-group-item hoverable">
-                    <a [routerLink]="['/users']">Tu Perfil</a>
+                    <a [routerLink]="['/users', {outlets: {'profileOutlet': ['/']}}]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" data-toggle="tab" title="Tu Perfil"></a>
                 </li>
                 <li class="list-group-item hoverable">
-                    <a [routerLink]="['/users', {outlets: {'profileOutlet': ['cart-items']}}]">Tu Carrito de Compra</a>
+                    <a [routerLink]="['/users', {outlets: {'profileOutlet': ['']}}]">Tu Carrito de Compra</a>
                 </li>
             </ul>
         </div>
