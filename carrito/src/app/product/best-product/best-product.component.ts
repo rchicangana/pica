@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Product, Top5 } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
-import { Respuesta } from '../../shared/models/respuesta';
+import { Respuesta, Respuesta2 } from '../../shared/models/respuesta';
 declare var $: any;
 
 @Component({
@@ -37,8 +37,8 @@ export class BestProductComponent implements OnInit {
     .subscribe(
       data => {
           this.bestProducts = [];
-          if((<Respuesta>data).codigo=="OK"){
-            let productos = <Top5[]> (<Respuesta>data).object;
+          if((<Respuesta2>data).codigo=="OK"){
+            let productos = <Top5[]> (<Respuesta2>data).object;
             productos.forEach(elemento => {
               this.bestProducts.push(elemento);
             });

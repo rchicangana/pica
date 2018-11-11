@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class AuthService {
   userDetails: Usuario = null;
+  //apiUrl:string = "http://10.39.1.99:9090/login/Logica/Usuario.svc/Usuario";
   apiUrl:string = "login/Logica/Usuario.svc/Usuario";
-
   constructor(
     private router: Router, 
     private http: HttpClient) {
@@ -57,6 +57,6 @@ export class AuthService {
 
   signInRegular(email, password) {  
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.get(this.apiUrl+'/consultausuario/'+email+'/'+password, { headers });
+    return this.http.get(this.apiUrl+'/consulta/'+btoa(email)+'/'+btoa(password), { headers });
   }
 }

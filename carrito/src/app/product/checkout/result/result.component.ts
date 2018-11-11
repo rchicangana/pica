@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Usuario } from "./../../../shared/models/user";
+import { Router } from "@angular/router";
 import { AuthService } from "./../../../shared/services/auth.service";
 
 @Component({
@@ -9,9 +10,13 @@ import { AuthService } from "./../../../shared/services/auth.service";
 })
 export class ResultComponent implements OnInit {
   userDetail: Usuario;
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
     this.userDetail = authService.getLoggedInUser();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 }

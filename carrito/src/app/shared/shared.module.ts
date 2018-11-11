@@ -18,6 +18,7 @@ import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
+import { UtilService } from "./services/util.service";
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
     ProductService,
     UserService,
     FormBuilder,
-    LoaderSpinnerService
+    LoaderSpinnerService,
+    UtilService
   ]
 })
 export class SharedModule {}

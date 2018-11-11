@@ -28,7 +28,7 @@ public class BoleteriaDAO {
                     .setMaxResults(1)
                     .getSingleResult();
         } catch (Exception e) {
-            return null;
+            return new Boleteria();
         }
         
     }

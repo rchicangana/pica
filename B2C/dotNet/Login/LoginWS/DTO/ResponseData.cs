@@ -15,6 +15,6 @@ namespace LoginWS.DTO
         [DataMember]
         public String mensaje { get; set; }
         [DataMember]
-        public Object objeto { get; set; }
+        public List<usuarios> objeto { get; set; }
     }
 }

@@ -30,7 +30,9 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(co.com.touresbalon.clienteredisservices.util.JsonBodyManager.class);
+        resources.add(co.com.touresbalon.productservice.servicios.BoleteriaService.class);
         resources.add(co.com.touresbalon.productservice.servicios.CiudadService.class);
+        resources.add(co.com.touresbalon.productservice.servicios.EmpresaService.class);
         resources.add(co.com.touresbalon.productservice.servicios.HabitacionService.class);
         resources.add(co.com.touresbalon.productservice.servicios.HospedajeService.class);
         resources.add(co.com.touresbalon.productservice.servicios.ImagenProductoService.class);

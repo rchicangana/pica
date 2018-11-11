@@ -44,8 +44,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     .subscribe(
       data => {
           //this.product = <Product> data.productoPorIdResult;
-          if((<Respuesta>data).codigo=="OK"){
-            this.product = <Tarifa> (<Respuesta>data).object;
+          if((<Respuesta>data).resultado=="OK"){
+            this.product = <Tarifa> (<Respuesta>data).objeto;
             for (let item of this.product.itinerarioDTOlist[0].idHospedaje.habitacionList[0].imagenHabitacionList){
               this.imageSources.push("http://10.39.1.140/imagenes/"+item.imagen);
             }

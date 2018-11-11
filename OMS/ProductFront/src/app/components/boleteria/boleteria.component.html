@@ -1,0 +1,67 @@
+<div class="panel panelPrincipal animated fadeIn fast">
+    <form id="formreg" class="m-4" role="form" novalidate>
+        <div class="form-group row small">
+
+            <label for="id" class="col-sm-4 col-form-label col-form-label-sm">Identificador</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.id }">
+                    <input type="text" class="form-control form-control-sm" disabled id="id" name="id" [(ngModel)]="datosBoleta.id" required>
+                    <span class="control-label" ng-show="errores.idProducto">{{errores.id}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="tiquetes" class="col-sm-4 col-form-label col-form-label-sm">Cantidad de tiquetes</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.tiquetes }">
+                    <input type="text" class="form-control form-control-sm" id="id" name="tiquetes" [(ngModel)]="datosBoleta.tiquetes" required>
+                    <span class="control-label" ng-show="errores.idTipoPrtiquetesoducto">{{errores.tiquetes}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="localidad" class="col-sm-4 col-form-label col-form-label-sm">Localidad</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.localidad }">
+                    <input type="text" class="form-control form-control-sm" id="localidad" name="localidad" [(ngModel)]="datosBoleta.localidad" required>
+                    <span class="control-label" ng-show="errores.localidad">{{errores.localidad}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row small">
+
+            <label for="fecha" class="col-sm-4 col-form-label col-form-label-sm">Fecha</label>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div [ngClass]="{'has-error': errores.fecha }">
+                            <input class="form-control" name="d2" (click)="d2.toggle()" #c2="ngModel" [(ngModel)]="fechaCal" ngbDatepicker #d2="ngbDatepicker">
+                            <span class="control-label" ng-show="errores.fecha">{{errores.fecha}}</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group row small">
+
+            <label for="valor" class="col-sm-4 col-form-label col-form-label-sm">Valor</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.valor }">
+                    <input type="text" class="form-control form-control-sm" id="valor" name="valor" [(ngModel)]="datosBoleta.valor" required>
+                    <span class="control-label" ng-show="errores.valor">{{errores.valor}}</span>
+                </div>
+            </div>
+            <div class="btn-group float-lg-right m-1" role="group">
+                <button class="btn btn-md btn btn-outline-success " type="button" (click)="guardar()">{{nuevoRegistro ? 'Guardar' : 'Editar' }}</button>
+
+            </div>
+        </div>
+
+
+    </form>
+</div>

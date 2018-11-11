@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Modulo Clientes - TouresBalon</title>
+            </f:facet>
+            <style>
+                .header{
+                   background-color:#A9D0F5;
+                   width:100%;
+                }
+            </style>
+        </h:head>
+
+        <h:body>
+        <h:form id ="form">
+            <p:panel id="panel" header="Crear Categoria" style="font-size:12px;">
+                <p:messages id="messages" />
+                <h:panelGrid id="base" columns="4" cellpadding="5" >                 
+                    <h:outputLabel for="nombre" value="Nombre:"  />
+                    <p:inputText id="nombre" value="#{categoriaBean.categ.nombre}" required="true" />
+                    <p:outputLabel for="estado" value="Estado:" />
+                    <p:selectOneMenu id="estado" value="#{categoriaBean.categ.estado}"  style="width:125px">
+                        <f:selectItem itemLabel="Activo" itemValue="ACTIVO" />
+                        <f:selectItem itemLabel="Inactivo" itemValue="INACTIVO" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+
+            </p:panel>
+
+            <p:commandButton value="Crear" actionListener="#{categoriaBean.crearCategoria()}" style="font-size:12px;" update="panel"/>
+        </h:form>
+       </h:body>
+
+</html>

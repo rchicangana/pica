@@ -1,0 +1,15 @@
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudWS.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\EntityFramework.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudWS.pdb
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudWS.dll.config
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\EntityFramework.xml
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.csprojAssemblyReference.cache
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.csproj.CoreCompileInputs.cache
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.csproj.CopyComplete
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.pdb
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.dll.config
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.dll
+C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.pdb

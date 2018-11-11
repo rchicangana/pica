@@ -1,25 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="touresbalonModelStoreContainer" CdmEntityContainer="touresbalonEntities2">
-    <EntitySetMapping Name="SOLICITUD">
-      <EntityTypeMapping TypeName="touresbalonModel.SOLICITUD">
-        <MappingFragment StoreEntitySet="SOLICITUD">
-          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
-          <ScalarProperty Name="ID_ESTADO_SOLICITUD" ColumnName="ID_ESTADO_SOLICITUD" />
-          <ScalarProperty Name="VALOR_TOTAL" ColumnName="VALOR_TOTAL" />
-          <ScalarProperty Name="FECHA_VENCIMIENTO" ColumnName="FECHA_VENCIMIENTO" />
-          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-          <ScalarProperty Name="NO_SOLICITUD" ColumnName="NO_SOLICITUD" />
+    <EntitySetMapping Name="IMAGENPRODUCTO">
+      <EntityTypeMapping TypeName="touresbalonModel.IMAGENPRODUCTO">
+        <MappingFragment StoreEntitySet="IMAGENPRODUCTO">
+          <ScalarProperty Name="esprincipal" ColumnName="esprincipal" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="Idimagenproducto" ColumnName="Idimagenproducto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DETALLE_SOLICITUD">
-      <EntityTypeMapping TypeName="touresbalonModel.DETALLE_SOLICITUD">
-        <MappingFragment StoreEntitySet="DETALLE_SOLICITUD">
-          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
-          <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
-          <ScalarProperty Name="NO_SOLICITUD" ColumnName="NO_SOLICITUD" />
-          <ScalarProperty Name="ID_DETALLE_SOLICITUD" ColumnName="ID_DETALLE_SOLICITUD" />
+    <EntitySetMapping Name="SOLICITUD">
+      <EntityTypeMapping TypeName="touresbalonModel.SOLICITUD">
+        <MappingFragment StoreEntitySet="SOLICITUD">
+          <ScalarProperty Name="detalleordencompras" ColumnName="detalleordencompras" />
+          <ScalarProperty Name="borrar" ColumnName="estadoordencompraid" />
+          <ScalarProperty Name="noorden" ColumnName="noorden" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="valortotal" ColumnName="valortotal" />
+          <ScalarProperty Name="fechavencimiento" ColumnName="fechavencimiento" />
+          <ScalarProperty Name="fechacreacion" ColumnName="fechacreacion" />
+          <ScalarProperty Name="numerosolicitud" ColumnName="numerosolicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOPRODUCTO">
+      <EntityTypeMapping TypeName="touresbalonModel.TIPOPRODUCTO">
+        <MappingFragment StoreEntitySet="TIPOPRODUCTO">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Idtipoproducto" ColumnName="Idtipoproducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="touresbalonModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLESOLICITUD">
+      <EntityTypeMapping TypeName="touresbalonModel.DETALLESOLICITUD">
+        <MappingFragment StoreEntitySet="DETALLESOLICITUD">
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="productoid" ColumnName="productoid" />
+          <ScalarProperty Name="Iddetallesolicitd" ColumnName="Iddetallesolicitd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADOSOLICITUD">
+      <EntityTypeMapping TypeName="touresbalonModel.ESTADOSOLICITUD">
+        <MappingFragment StoreEntitySet="ESTADOSOLICITUD">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="Idestadosolicitud" ColumnName="Idestadosolicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="touresbalonModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="imagenproductos" ColumnName="imagenproductos" />
+          <ScalarProperty Name="fechallegada" ColumnName="fechallegada" />
+          <ScalarProperty Name="fechasalida" ColumnName="fechasalida" />
+          <ScalarProperty Name="nombreproducto" ColumnName="nombreproducto" />
+          <ScalarProperty Name="tipoproductoid" ColumnName="tipoproductoid" />
+          <ScalarProperty Name="Idproducto" ColumnName="Idproducto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

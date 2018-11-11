@@ -4,8 +4,13 @@
     <div class="region region-content">
         <div id="block-system-main" class="block block-system">
             <div class="panel-body">
+
                 <div class="panel panelPrincipal animated fadeIn fast" *ngIf="!panelEditar">
-                    <div class="btn-group col-sm-2 pull-right m-3">
+                    <div class="btn-group col-sm-10  m-3">
+                        <input type="text" placeholder="Buscar" class="form-control form-control-sm" id="comodin" name="comodin" [(ngModel)]="comodin" required>
+                        <a href="#" (click)="loadData()" class="btn btn-sm  btn-outline-primary">Buscar</a>
+                    </div>
+                    <div class="btn-group col-sm-2 pull-right m-2">
                         <a href="#" (click)="agregar()" class="btn btn-sm  btn-outline-primary">Agregar</a>
                     </div>
 
@@ -31,7 +36,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage($event)"></ngb-pagination>
+                    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage($event)" [boundaryLinks]="true"></ngb-pagination>
 
 
 
@@ -153,9 +158,7 @@
                                 </div>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-                                        craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        <app-boleteria [datosFormulario]="datosFormulario"></app-boleteria>
                                     </div>
                                 </div>
                             </div>

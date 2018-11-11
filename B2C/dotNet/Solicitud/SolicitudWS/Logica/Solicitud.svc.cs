@@ -13,6 +13,10 @@ namespace SolicitudWS
             return this.solDAO.listarSolicitudesPorUsuario(idUsuario);
         }
 
+        public ResponseData consultarSolicitudPorId(String idSolicitud) {
+            return this.solDAO.lconsultarSolicitudPorId(idSolicitud);
+        }
+
         public void CancelarSolicitud(String idSolicitud)
         {
             this.solDAO.cancelarSolicitud(idSolicitud);
@@ -21,10 +25,9 @@ namespace SolicitudWS
         public ResponseData CrearSolicitud(SOLICITUD solicitud)
         {
             solicitud.fechacreacion = DateTime.Now;
-            ESTADOORDENCOMPRA estadoOrden = new ESTADOORDENCOMPRA();
-            estadoOrden.Idestadoordencompra = 0;
+            ESTADOSOLICITUD estadoOrden = new ESTADOSOLICITUD();
             estadoOrden.estado = "ABIERTA";
-            solicitud.estadoordencompraid = estadoOrden.Idestadoordencompra;
+            solicitud.ESTADOSOLICITUD = estadoOrden;
             return this.solDAO.crearSolicitud(solicitud); ;
         }
     }

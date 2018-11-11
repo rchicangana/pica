@@ -16,7 +16,6 @@ namespace SolicitudWS.DAO
             if (solicitud != null)
             {
                 solicitud.fechacreacion = DateTime.Now;
-                solicitud.noorden = "";
                 solicitud.numerosolicitud = 0;
                 this.context.SOLICITUD.Add(solicitud);
                 this.context.SaveChanges();
@@ -43,6 +42,28 @@ namespace SolicitudWS.DAO
 
                 listadoSolicitudes = this.context.SOLICITUD.ToList();
                 respuesta.mensaje = "Solicitudes consultadas";
+                respuesta.resultado = "OK";
+                respuesta.objeto = listadoSolicitudes;
+            }
+            catch (Exception ex)
+            {
+            }
+            return respuesta;
+        }
+
+        
+        public ResponseData lconsultarSolicitudPorId(string idSolicitud)
+        {
+            ResponseData respuesta = new ResponseData();
+            List<SOLICITUD> listadoSolicitudes = new List<SOLICITUD>();
+            try
+            {
+                listadoSolicitudes = (from sol in this.context.SOLICITUD
+                                      where sol.numerosolicitud == Int32.Parse(idSolicitud)
+                                      select sol).ToList();
+
+                listadoSolicitudes = this.context.SOLICITUD.ToList();
+                respuesta.mensaje = "Solicitudes consultada con exito";
                 respuesta.resultado = "OK";
                 respuesta.objeto = listadoSolicitudes;
             }

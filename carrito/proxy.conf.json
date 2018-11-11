@@ -1,9 +1,4 @@
 {
-    "/login/Logica/Usuario.svc/*": {
-        "target": "http://10.39.1.99:9090",
-        "secure": false,
-        "loglevel": "debug"
-    },
     "/ProductService/services/*": {
         "target": "http://10.39.1.140:8080",
         "secure": false,
@@ -14,22 +9,12 @@
         "secure": false,
         "loglevel": "debug"
     },
-    "/ServiciosESB/Productos/*": {
-        "target": "http://10.39.1.144:8081",
+    "/login/Logica/Usuario.svc/*": {
+        "target": "http://10.39.1.99:9090",
         "secure": false,
         "loglevel": "debug"
     },
-    "/ServiciosESB/Tarifas/*": {
-        "target": "http://10.39.1.144:8081",
-        "secure": false,
-        "loglevel": "debug"
-    },
-    "/ServiciosESB/Clientes/*": {
-        "target": "http://10.39.1.140:8081",
-        "secure": false,
-        "loglevel": "debug"
-    },
-    "/ServiciosESB/Util/*": {
+    "/ServiciosESB/*": {
         "target": "http://10.39.1.144:8081",
         "secure": false,
         "loglevel": "debug"
@@ -39,7 +24,4 @@
         "secure": false,
         "loglevel": "debug"
     }
-
-
-
 }

@@ -1,0 +1,114 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Servicios utilitarios para consultar el listado de paises y ciudades\n",
+    "version" : "1.0.0",
+    "title" : "Localizacion",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "paises",
+    "description" : "Consulta de paises"
+  }, {
+    "name" : "ciudades",
+    "description" : "Consulta de ciudades"
+  } ],
+  "paths" : {
+    "/paises/consultar" : {
+      "get" : {
+        "tags" : [ "paises" ],
+        "summary" : "consulta la lista de paises",
+        "description" : "Permite consultar el listado de paises",
+        "operationId" : "consultar",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/PaisDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      }
+    },
+    "/ciudad/consultar/{idPais}" : {
+      "get" : {
+        "tags" : [ "ciudad" ],
+        "summary" : "busca las ciudades de un pais determinado",
+        "description" : "Permite buscar ciudades segun pais enviado.",
+        "operationId" : "consultarCiudad",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idPais",
+          "in" : "path",
+          "description" : "id del pais",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CiudadDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid tag value"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "PaisDTO" : {
+      "type" : "object",
+      "required" : [ "idPais", "nombre" ],
+      "properties" : {
+        "idPais" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nombre" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "PaisDTO"
+      }
+    },
+    "CiudadDTO" : {
+      "type" : "object",
+      "properties" : {
+        "idCiudad" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nombre" : {
+          "type" : "string"
+        },
+        "PaisDTO" : {
+          "$ref" : "#/definitions/PaisDTO"
+        }
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Find out more about Swagger",
+    "url" : "http://swagger.io"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/PublicPaid/PaisesCiudades/1.0.0",
+  "schemes" : [ "https", "http" ]
+}

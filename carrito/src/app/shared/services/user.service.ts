@@ -7,7 +7,8 @@ import { Usuario } from "../models/user";
 export class UserService {
   selectedUser: Usuario;
   users: Usuario[];
-  apiUrl :string = "login/Logica/Usuario.svc/Usuario";
+  apiUrl :string = "http://10.39.1.99:9090/login/Logica/Usuario.svc/Usuario";
+  //apiUrl :string = "login/Logica/Usuario.svc/Usuario";
 
   location = {
     lat: null,

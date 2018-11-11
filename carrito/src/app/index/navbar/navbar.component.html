@@ -31,7 +31,7 @@
         <a class="nav-link" href="#">Pricing</a>
       </li> -->
 
-      </ul>
+        </ul>
         <!-- Links -->
 
         <ul class="navbar-nav ml-auto">
@@ -64,21 +64,16 @@
             </li>
         </ul>
 
-
-
         <form class="form-inline my-2 my-sm-0">
-            <input class="form-control-sm" type="text" placeholder="Buscar" (keyup.enter)="buscarProducto(buscarTexto.value)" #buscarTexto>
+            <input class="form-control-sm" type="text" placeholder="Buscar" #buscarTexto>
 
-             <button (click)="buscarProductoN(buscarTexto.value)"
-            class="btn btn-outline-success btn-sm" type="button" >Por Nombre</button>
+            <button (click)="buscarProductoN(buscarTexto.value)" class="btn btn-primary btn-sm" type="button">Por Nombre</button>
 
-            <button (click)="buscarProductoD(buscarTexto.value)"
-            class="btn btn-outline-success btn-sm" type="button" >Por Descripción</button>
+            <button (click)="buscarProductoD(buscarTexto.value)" class="btn btn-primary btn-sm" type="button">Por Descripción</button>
 
-            <button (click)="buscarProductoC(buscarTexto.value)"
-            class="btn btn-outline-success btn-sm" type="button" >Por Codigo</button>
+            <button (click)="buscarProductoC(buscarTexto.value)" class="btn btn-primary btn-sm" type="button">Por Codigo</button>
 
-        <!-- <select class="custom-select form-control-sm" id="inputGroupSelect01">
+            <!-- <select class="custom-select form-control-sm" id="inputGroupSelect01">
           <option value="0" selected>Por Nombre</option>
           <option value="1">Por Descripción</option>
           <option value="2">Por Codigo</option>

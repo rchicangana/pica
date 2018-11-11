@@ -8,6 +8,7 @@ import { Ciudad } from "../models/ciudad";
 export class UtilService {
   paises: Pais[];
   ciudades: Ciudad[];
+  //apiUrl :string = "http://10.39.1.144:8081/ServiciosESB/Util";
   apiUrl :string = "ServiciosESB/Util";
 
   constructor(private http: HttpClient) {

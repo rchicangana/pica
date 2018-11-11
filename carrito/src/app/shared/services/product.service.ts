@@ -10,13 +10,12 @@ export class ProductService {
   products: Product[];
   product: Product;
 
-  //apiUrl :string = "ProductService/services/producto";
-  //apiUrl2 :string = "ProductService/services/tarifa";
   apiUrl :string = "ServiciosESB/Productos";
   apiUrl2 :string = "ServiciosESB/Tarifas";
   apiUrl3 :string = "ProductService/services/producto";
-  //apiUrl :string = "http://10.39.1.140/ProductService/services/producto";
-  //apiUrl2 :string = "http://10.39.1.140/ProductService/services/tarifa";
+  //apiUrl :string = "http://10.39.1.144:8081/ServiciosESB/Productos";
+  //apiUrl2 :string = "http://10.39.1.144:8081/ServiciosESB/Tarifas";
+  //apiUrl3 :string = "http://10.39.1.140:8080/ProductService/services/producto";
 
   // NavbarCounts
   navbarCartCount = 0;
@@ -186,11 +185,9 @@ export class ProductService {
 
   // Fetching Cart Products based on userId
   getUsersCartProducts() {
-    const user = this.authService.getLoggedInUser();
-    //this.cartProducts = this.db.list("cartProducts", ref =>
-    //  ref.orderByChild("userId").equalTo(user.$key)
-    //)
-    //return this.cartProducts;
+    //const user = this.authService.getLoggedInUser();
+    const products: Tarifa[] = JSON.parse(localStorage.getItem("avct_item")) || [];
+    return products;
   }
 
   // Adding new Product to cart db if  else localStorage

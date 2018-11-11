@@ -20,7 +20,7 @@ namespace SolicitudWS
         public Nullable<decimal> valortotal { get; set; }
         public Nullable<int> idusuario { get; set; }
         public string noorden { get; set; }
-        public int estadoordencompraid { get; set; }
+        public int borrar { get; set; }
         public Nullable<int> detalleordencompras { get; set; }
     
         public virtual usuarios usuarios { get; set; }

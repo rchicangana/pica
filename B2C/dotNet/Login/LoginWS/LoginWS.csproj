@@ -78,9 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\UsuarioDAO.cs" />
-    <Compile Include="DTO\Product.cs" />
     <Compile Include="DTO\ResponseData.cs" />
-    <Compile Include="DTO\RequestData.cs" />
     <Compile Include="TouresBalonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

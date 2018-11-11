@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { FileSelectDirective } from 'ng2-file-upload';
+
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -15,14 +15,17 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { ROUTES } from './app.routes';
 import { CargarimagenesComponent } from './components/cargarimagenes/cargarimagenes.component';
 import { ItinerarioComponent } from './components/itinerario/itinerario.component';
+import { BoleteriaComponent } from './components/boleteria/boleteria.component';
+import { ConsultaComponent } from './components/consulta/consulta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductoComponent,
-    FileSelectDirective,
     CargarimagenesComponent,
-    ItinerarioComponent
+    ItinerarioComponent,
+    BoleteriaComponent,
+    ConsultaComponent
   ],
   imports: [
     BrowserModule,

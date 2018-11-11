@@ -8,11 +8,8 @@
             <ng-container *ngFor="let solicitud of solicitudes">
                 <tr>
                     <td>
-                        <h2>{{solicitud.nombre}}</h2>
+                        <h2>{{solicitud}}</h2>
                     </td>
-                </tr>
-                <tr *ngFor="let item of solicitud.items">
-                    <td>{{item}}</td>
                 </tr>
             </ng-container>
         </table>

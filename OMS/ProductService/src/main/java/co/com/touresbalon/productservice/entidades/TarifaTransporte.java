@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,7 +44,8 @@ public class TarifaTransporte implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="SEQ_TARIFA_TRANSPORTE_ID_GET", sequenceName="SEQ_RUTA_ID", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_TARIFA_TRANSPORTE_ID_GET")
     @Column(name = "ID_TARIFA_TRANSPORTE")
     private Long idTarifaTransporte;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation

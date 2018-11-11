@@ -37,12 +37,9 @@
             <div class="row">
                 <div class="col-md-5 mb-3">
                     <label for="country">Pa&iacute;s</label>
-                    <div class="col-sm-4 mb-2" *ngFor="let pais of paises">
-                        <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.pais" name="country">
-                            <option value="">Seleccione...</option>
-                            <option>{{pais.nombre}}</option>
-                        </select>
-                    </div>
+                    <select [(ngModel)]="idPais" (ngModelChange)="listarciudades($event)" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let pais of paises" [value]="pais.idPais">{{pais.nombre}}</option>
+                      </select>
                 </div>
             </div>
             <div class="invalid-feedback">
@@ -50,10 +47,9 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="state">Ciudad</label>
-                <select class="custom-select d-block w-100" id="state" [(ngModel)]="userDetail.ciudad" name="state" required>
-                        <option value="">Seleccione...</option>
-                        <option>Bogota</option>
-                    </select>
+                <select [(ngModel)]="userDetail.ciudad" required>
+                    <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ciudad.nombre}}</option>
+                </select>
                 <div class="invalid-feedback">
                     Por favor seleccione una ciudad v&acute;lido.
                 </div>

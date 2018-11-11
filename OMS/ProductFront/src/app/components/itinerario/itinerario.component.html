@@ -1,3 +1,169 @@
-<p>
-  itinerario works!
-</p>
+<div *ngIf="!panelEditar">
+    <div class="btn-group col-sm-2 pull-right m-3">
+        <a href="#" (click)="agregar()" class="btn btn-sm  btn-outline-primary">Agregar</a>
+    </div>
+    <table class="table table-md table-bordered table-hover small">
+        <thead class="badge-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Hospedaje</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Destino</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of itinerarios">
+                <th scope="row">{{item.idItinerario}}</th>
+                <td>{{item.idHospedaje.nombre}}</td>
+                <td>{{item.descripcion}}</td>
+                <td>{{item.idCiudad.nombre}} / {{item.idCiudad.idPais.nombre}}</td>
+                <td><i class="fa fa-search" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="editar(item)"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="panel panelPrincipal animated fadeIn fast" *ngIf="panelEditar">
+    <form id="formreg" class="m-4" role="form" novalidate>
+        <div class="form-group row small">
+
+            <label for="idItinerario" class="col-sm-4 col-form-label col-form-label-sm">Identificador</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.idItinerario }">
+                    <input type="text" class="form-control form-control-sm" disabled id="idItinerario" name="idItinerario" [(ngModel)]="datosItinerario.idItinerario" required>
+                    <span class="control-label" ng-show="errores.idItinerario">{{errores.idItinerario}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="descripcion" class="col-sm-4 col-form-label col-form-label-sm">Descripcion</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.descripcion }">
+                    <textarea class="form-control form-control-sm" id="descripcion" name="descripcion" *ngIf="nuevoRegistro" [(ngModel)]="datosItinerario.descripcion" required></textarea>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.descripcion}}</span>
+                    <span class="control-label" ng-show="errores.descripcion">{{errores.descripcion}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="idPaisOrigen" class="col-sm-4 col-form-label col-form-label-sm">Pais Origen</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.idPais }">
+                    <select class="form-control" id="idPaisOrigen" name="idPaisOrigen" [(ngModel)]="datosItinerario.idPaisOrigen" (change)="getCiudadesOrigen(datosItinerario.idPaisOrigen.idPais)" *ngIf="nuevoRegistro" required>
+                                        <option [ngValue]="item" *ngFor="let item of paises"> 
+                                                {{item.nombre}}</option>
+                                      </select>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.idCiudadOrigen.idPais.nombre}}</span>
+                    <span class="control-label" ng-show="errores.idPaisOrigen">{{errores.idPaisOrigen}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="idCiudadOrigen" class="col-sm-4 col-form-label col-form-label-sm">Ciudad Origen</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.idCiudadOrigen }">
+                    <select class="form-control" id="idCiudadOrigen" name="idCiudadOrigen" [(ngModel)]="datosItinerario.idCiudadOrigen" *ngIf="nuevoRegistro" required>
+                                    <option [ngValue]="item" *ngFor="let item of ciudadesOrigen"> 
+                                            {{item.nombre}}</option>
+                                    
+                                  </select>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.idCiudadOrigen.nombre}}</span>
+                    <span class="control-label" ng-show="errores.idCiudadOrigen">{{errores.idCiudadOrigen}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="idPais" class="col-sm-4 col-form-label col-form-label-sm">Pais destino</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.idPais }">
+                    <select class="form-control" id="idPais" name="idPais" [(ngModel)]="datosItinerario.idPais" (change)="getCiudades(datosItinerario.idPais.idPais)" *ngIf="nuevoRegistro" required>
+                                    <option [ngValue]="item" *ngFor="let item of paises"> 
+                                            {{item.nombre}}</option>
+                                  </select>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.idCiudad.idPais.nombre}}</span>
+                    <span class="control-label" ng-show="errores.idPais">{{errores.idPais}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="idCiudad" class="col-sm-4 col-form-label col-form-label-sm">Ciudad Destino</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.idCiudad }">
+                    <select class="form-control" id="idCiudad" name="idCiudad" [(ngModel)]="datosItinerario.idCiudad" *ngIf="nuevoRegistro" required>
+                                <option [ngValue]="item" *ngFor="let item of ciudades"> 
+                                        {{item.nombre}}</option>
+                                
+                              </select>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.idCiudad.nombre}}</span>
+                    <span class="control-label" ng-show="errores.idCiudad">{{errores.idCiudad}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="idHospedaje" class="col-sm-4 col-form-label col-form-label-sm">Hospedaje</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.idHospedaje }">
+                    <select class="form-control" id="idHospedaje" name="idHospedaje" [(ngModel)]="datosItinerario.idHospedaje" *ngIf="nuevoRegistro" required>
+                                    <option [ngValue]="item" *ngFor="let item of hospedajes"> 
+                                            {{item.nombre}}</option>
+                                    
+                                  </select>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.idHospedaje.nombre}}</span>
+                    <span class="control-label" ng-show="errores.idHospedaje">{{errores.idHospedaje}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+
+            <label for="idEmpresa" class="col-sm-4 col-form-label col-form-label-sm">Empresa de Transporte</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.idEmpresa }">
+                    <select class="form-control" id="idEmpresa" name="idEmpresa" [(ngModel)]="datosItinerario.idEmpresa" *ngIf="nuevoRegistro" required>
+                                    <option [ngValue]="item" *ngFor="let item of empresas"> 
+                                            {{item.nombre}}</option>
+                                    
+                                  </select>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.idEmpresa.nombre}}</span>
+                    <span class="control-label" ng-show="errores.idEmpresa">{{errores.idEmpresa}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row small">
+
+            <label for="tarifaTransporte" class="col-sm-4 col-form-label col-form-label-sm">Tarifa Transporte</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.tarifaTransporte }">
+                    <input type="text" class="form-control form-control-sm" id="tarifaTransporte" name="tarifaTransporte" *ngIf="nuevoRegistro" [(ngModel)]="datosItinerario.tarifaTransporte" required>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.tarifaTransporte | number}}</span>
+                    <span class="control-label" ng-show="errores.tarifaTransporte">{{errores.tarifaTransporte}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row small">
+            <label for="tarifaHospedaje" class="col-sm-4 col-form-label col-form-label-sm">Tarifa Hospedaje</label>
+            <div class="col-sm-8">
+                <div [ngClass]="{'has-error': errores.tarifaHospedaje }">
+                    <input type="text" class="form-control form-control-sm" id="tarifaHospedaje" name="tarifaHospedaje" *ngIf="nuevoRegistro" [(ngModel)]="datosItinerario.tarifaHospedaje" required>
+                    <span *ngIf="!nuevoRegistro">{{datosItinerario.tarifaHospedaje | number}}</span>
+                    <span class="control-label" ng-show="errores.tarifaHospedaje">{{errores.tarifaHospedaje}}</span>
+                </div>
+            </div>
+
+            <div class="form-group row small right">
+                <br><br>
+                <div class="btn-group float-lg-right m-1" role="group">
+                    <button class="btn btn-md btn btn-outline-success " *ngIf="nuevoRegistro" type="button" (click)="guardar()">Guardar</button>
+                    <button class="btn btn-md btn btn-outline-danger " type="button" (click)="cancelar()">{{nuevoRegistro ? 'Cancelar' : 'Volver'}}</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
