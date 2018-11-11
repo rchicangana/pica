@@ -1,0 +1,290 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Servicios de Ordenes\n",
+    "version" : "1.0.0",
+    "title" : "Ordenes",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "Ordenes",
+    "description" : "Expone todos las operaciones necesarias para consultar, crear y cancelar una orden"
+  } ],
+  "paths" : {
+    "/Ordenes/Crear" : {
+      "post" : {
+        "tags" : [ "Ordenes" ],
+        "summary" : "Agrega una nueva orden",
+        "operationId" : "crearOrden",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objeto Orden",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/OrdenDTO"
+          }
+        } ],
+        "responses" : {
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/Ordenes/obtenerOrden/idPedido/{id}" : {
+      "get" : {
+        "tags" : [ "Ordenes" ],
+        "summary" : "permite consultar una orden por su id",
+        "description" : "retorna un objeto orden",
+        "operationId" : "findOrdenByID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "id de la orden a consultar",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/OrdenDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      }
+    },
+    "/Ordenes/obtenerOrden/NoOrden/{nroOrden}" : {
+      "get" : {
+        "tags" : [ "Ordenes" ],
+        "summary" : "permite consultar una orden por su numero",
+        "description" : "retorna un objeto orden",
+        "operationId" : "findOrdenByNro",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "nroOrden",
+          "in" : "path",
+          "description" : "nro de la orden a consultar",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/OrdenDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      }
+    },
+    "/Ordenes/obtenerOrdenesPorEstado/{idEstado}/{pagina}/{tamanoPagina}" : {
+      "get" : {
+        "tags" : [ "Ordenes" ],
+        "summary" : "Consulta las ordens por estado paginadas",
+        "description" : "retorna un array de objetos orden",
+        "operationId" : "findOrderByStatus",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idEstado",
+          "in" : "path",
+          "description" : "identificador del estado a consultar",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "pagina",
+          "in" : "path",
+          "description" : "numero de la pagina",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "tamanoPagina",
+          "in" : "path",
+          "description" : "tamanio de la pagina",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/OrdenDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/Ordenes/obtenerOrdenesPorCliente/{idCliente}/{pagina}/{tamanoPagina}" : {
+      "get" : {
+        "tags" : [ "Ordenes" ],
+        "summary" : "Consulta las ordenesde un cliente paginadas",
+        "description" : "retorna un array de objetos orden",
+        "operationId" : "findOrderByClient",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCliente",
+          "in" : "path",
+          "description" : "identificador del cliente",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "pagina",
+          "in" : "path",
+          "description" : "numero de la pagina",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "tamanoPagina",
+          "in" : "path",
+          "description" : "tamanio de la pagina",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/OrdenDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/Ordenes/ActualizarEstado/{idOrden}/{idEstado}" : {
+      "get" : {
+        "tags" : [ "Ordenes" ],
+        "summary" : "permite actualizar el estado de una orden",
+        "description" : "retorna un array de objetos orden",
+        "operationId" : "updateOrder",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idOrden",
+          "in" : "path",
+          "description" : "identificador de la orden",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "idEstado",
+          "in" : "path",
+          "description" : "id del nuevo estado",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/OrdenDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid tag value"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "EstadoOrdenCompra" : {
+      "type" : "object",
+      "properties" : {
+        "idEstadoOrdenCompra" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "estado" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "EstadoOrdenCompra"
+      }
+    },
+    "Producto" : {
+      "type" : "object",
+      "properties" : {
+        "idProducto" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      },
+      "xml" : {
+        "name" : "Producto"
+      }
+    },
+    "OrdenDTO" : {
+      "type" : "object",
+      "required" : [ "detalleOrdenCompras", "estadoOrdenCompra", "idCliente", "numeroSolicitud", "valorTotal" ],
+      "properties" : {
+        "detalleOrdenCompras" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Producto"
+          }
+        },
+        "estadoOrdenCompra" : {
+          "$ref" : "#/definitions/EstadoOrdenCompra"
+        },
+        "fechaCreacion" : {
+          "type" : "string"
+        },
+        "fechaVencimiento" : {
+          "type" : "string"
+        },
+        "idCliente" : {
+          "type" : "integer"
+        },
+        "numeroSolicitud" : {
+          "type" : "integer"
+        },
+        "valorTotal" : {
+          "type" : "integer"
+        }
+      },
+      "xml" : {
+        "name" : "OrdenDTO"
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "mas info en",
+    "url" : "https://github.com/rchicangana/pica"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/PublicPaid/Ordenes/1.0.0",
+  "schemes" : [ "https", "http" ]
+}

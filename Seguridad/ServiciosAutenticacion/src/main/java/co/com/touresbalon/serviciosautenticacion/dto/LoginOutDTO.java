@@ -5,6 +5,8 @@
  */
 package co.com.touresbalon.serviciosautenticacion.dto;
 
+import java.util.List;
+
 /**
  *
  * @author rchic
@@ -13,6 +15,7 @@ public class LoginOutDTO {
     
     private UsuarioDTO usuario;
     private String tokenJwt;
+    private List<UsuarioRoleDTO> roles;
 
     public UsuarioDTO getUsuario() {
         return usuario;
@@ -28,6 +31,14 @@ public class LoginOutDTO {
 
     public void setTokenJwt(String tokenJwt) {
         this.tokenJwt = tokenJwt;
+    }
+
+    public List<UsuarioRoleDTO> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UsuarioRoleDTO> roles) {
+        this.roles = roles;
     }
     
     

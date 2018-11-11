@@ -1,0 +1,155 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Servicios de Campañas, expone todas las operaciones para consultar campañas.\n",
+    "version" : "1.0.0",
+    "title" : "Campañas",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "Campanias",
+    "description" : "Servicios de campañas"
+  } ],
+  "paths" : {
+    "/Campanias/Consultar/idCampania/{idCamapana}" : {
+      "get" : {
+        "tags" : [ "Campanias" ],
+        "summary" : "Permite consultar una campania por su id",
+        "description" : "retorna un objeto campania",
+        "operationId" : "findCampaniaByID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCamapana",
+          "in" : "path",
+          "description" : "identificador de la campania a consultar",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CampaniaDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      }
+    },
+    "/Campanias/Listar/{pagina}/{tamanoPagina}" : {
+      "get" : {
+        "tags" : [ "Campanias" ],
+        "summary" : "permite consultar todas las campañas de forma paginada",
+        "description" : "retorna una array de campanias",
+        "operationId" : "findCampaniasPaginado",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "pagina",
+          "in" : "path",
+          "description" : "numero de pagina",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "tamanoPagina",
+          "in" : "path",
+          "description" : "tamaño de pagina",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CampaniaDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid tag value"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "tipoProducto" : {
+      "type" : "object",
+      "properties" : {
+        "idTipoProducto" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nombre" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "tipoProducto"
+      }
+    },
+    "producto" : {
+      "type" : "object",
+      "properties" : {
+        "tipoProducto" : {
+          "$ref" : "#/definitions/tipoProducto"
+        },
+        "fechaLlegada" : {
+          "type" : "string"
+        },
+        "fechaSalida" : {
+          "type" : "string"
+        },
+        "idProducto" : {
+          "type" : "integer"
+        },
+        "nombreProducto" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "producto"
+      }
+    },
+    "CampaniaDTO" : {
+      "type" : "object",
+      "required" : [ "producto", "idCampanna", "fechaCampanna", "nombreCampanna", "fechaVencimeinto" ],
+      "properties" : {
+        "producto" : {
+          "$ref" : "#/definitions/producto"
+        },
+        "idCampanna" : {
+          "type" : "integer"
+        },
+        "fechaCampanna" : {
+          "type" : "string"
+        },
+        "nombreCampanna" : {
+          "type" : "string"
+        },
+        "fechaVencimeinto" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "CampaniaDTO"
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "encontrar mas info en",
+    "url" : "https://github.com/rchicangana/pica"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/PublicPaid/Campanias/1.0.0",
+  "schemes" : [ "https", "http" ]
+}
