@@ -11,6 +11,7 @@ import co.com.touresbalon.jwtgenerator.exception.ErrorJWTException;
 import co.com.touresbalon.jwtgenerator.impl.ClienteJWTBuilder;
 import co.com.touresbalon.serviciosautenticacion.comun.ConstantesComunes;
 import co.com.touresbalon.serviciosautenticacion.dao.ConstantesDAO;
+import co.com.touresbalon.serviciosautenticacion.dao.RolesDAO;
 import co.com.touresbalon.serviciosautenticacion.dao.UsuarioDAO;
 import co.com.touresbalon.serviciosautenticacion.dto.LoginDTO;
 import co.com.touresbalon.serviciosautenticacion.dto.LoginOutDTO;
@@ -42,6 +43,9 @@ public class AutenticacionLogica {
 
     @EJB
     private ConstantesDAO constantesDAO;
+    
+    @EJB
+    private RolesDAO rolesDAO;
 
     public MensajeDTO autenticarUsuario(LoginDTO entrada) {
         MensajeDTO salida = new MensajeDTO();
@@ -71,6 +75,8 @@ public class AutenticacionLogica {
                         LoginOutDTO loginOutDTO = new LoginOutDTO();
                         loginOutDTO.setTokenJwt(clienteJwt.generarToken());
                         loginOutDTO.setUsuario(TransformacionDozer.transformar(usuario, UsuarioDTO.class));
+                        //llenamos los roles
+                        loginOutDTO.setRoles(rolesDAO.getRolesUsuario(usuario.getIdUsuario()));
                         salida.setObject(loginOutDTO);
                     } catch (ErrorJWTException | NumberFormatException e) {
                         salida.setCodigo(ConstantesComunes.Resultado.ERROR.name());

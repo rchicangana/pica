@@ -1,0 +1,476 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Servicios de Clientes de Toures Balon\n",
+    "version" : "1.0.0",
+    "title" : "ClientesWS",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "Categoria",
+    "description" : "Permite consultar los tipos de clientes Platino, Dorado, Silver"
+  }, {
+    "name" : "Clientes",
+    "description" : "Proporciona las operaciones requeridas para la creacion modificiacion y consulta de clientes"
+  }, {
+    "name" : "Contactos",
+    "description" : "Proporciona las operaciones necesarias para consultas de contactos"
+  } ],
+  "paths" : {
+    "/CategoriasTx/Crear" : {
+      "post" : {
+        "tags" : [ "Categoria" ],
+        "summary" : "Crea una nueva categoria",
+        "operationId" : "crearCategoria",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objeto categoria",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CategoriaDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RespuestaRs"
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/CategoriasTx/Actualizar" : {
+      "post" : {
+        "tags" : [ "Categoria" ],
+        "summary" : "actualiza una categoria",
+        "operationId" : "ActualizarCategoria",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "objeto categoria",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CategoriaDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RespuestaRs"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Pet not found"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        }
+      }
+    },
+    "/CategoriasTx/Consultar/{nombre}" : {
+      "get" : {
+        "tags" : [ "Categoria" ],
+        "summary" : "permite buscar una categoria por nombre",
+        "description" : "retorna una categoria",
+        "operationId" : "ConsultarCategoria",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "nombre",
+          "in" : "path",
+          "description" : "nombre de la categoria a buscar",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CategoriaDTO"
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      }
+    },
+    "/CategoriasTx/Listar" : {
+      "get" : {
+        "tags" : [ "Categoria" ],
+        "summary" : "lista todas las categorias",
+        "description" : "permite la consulta de todas las categorias.",
+        "operationId" : "ListarCategoria",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CategoriaDTO"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/CategoriasTx/ConsultarID/{id}" : {
+      "get" : {
+        "tags" : [ "Categoria" ],
+        "summary" : "Busca una categoria por id",
+        "description" : "Returns un objeto categoria",
+        "operationId" : "ConsultarCategoriaId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID de la categoria a buscar",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CategoriaDTO"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "categoria not found"
+          }
+        }
+      }
+    },
+    "/ClientesTx/Crear" : {
+      "post" : {
+        "tags" : [ "Clientes" ],
+        "summary" : "Crea un nuevo cliente en el modulo de clientes",
+        "operationId" : "CrearCliente",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objeto cliente",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ClienteDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RespuestaRs"
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/ClientesTx/Actualizar" : {
+      "post" : {
+        "tags" : [ "Clientes" ],
+        "summary" : "actualiza los datos de un cliente en el modulo de clientes",
+        "operationId" : "ActualizarCliente",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objeto cliente",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ClienteDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RespuestaRs"
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/ClientesTx/Consultar/{tipoid}/{noid}" : {
+      "get" : {
+        "tags" : [ "Clientes" ],
+        "summary" : "Retorna la consulta de un cliente por tipo y numero de documento",
+        "description" : "Retorna un objeto cliente",
+        "operationId" : "ConsultarCliente",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "tipoid",
+          "in" : "path",
+          "description" : "tipo de identificacion",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "noid",
+          "in" : "path",
+          "description" : "nro de identificacion",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ClienteDTO"
+            }
+          }
+        }
+      }
+    },
+    "/ContactosTx/Crear" : {
+      "post" : {
+        "tags" : [ "Contactos" ],
+        "summary" : "permite crear un contacto",
+        "operationId" : "CrearContacto",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objeto contacto",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ContactoDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RespuestaRs"
+            }
+          },
+          "400" : {
+            "description" : "Invalid Order"
+          }
+        }
+      }
+    },
+    "/ContactosTx/Actualizar" : {
+      "post" : {
+        "tags" : [ "Contactos" ],
+        "summary" : "permite actualizar un contacto",
+        "operationId" : "ActualizarContacto",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Objeto contacto",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ContactoDTO"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RespuestaRs"
+            }
+          },
+          "400" : {
+            "description" : "Invalid Order"
+          }
+        }
+      }
+    },
+    "/ContactosTx/ConsultarPorCliente/{id}" : {
+      "get" : {
+        "tags" : [ "Contactos" ],
+        "summary" : "Consulta un contacto por id de cliente",
+        "description" : "Retorna un objeto contacto",
+        "operationId" : "ConsultarContactosCliente",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID del cliente padre del contacto",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ContactoDTO"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Cliente not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "RespuestaRs" : {
+      "type" : "object",
+      "properties" : {
+        "estado" : {
+          "type" : "string"
+        },
+        "descripcion" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "RespuestaRs"
+      }
+    },
+    "ContactoDTO" : {
+      "type" : "object",
+      "properties" : {
+        "idContacto" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "destinatario" : {
+          "type" : "string"
+        },
+        "tipoDireccion" : {
+          "type" : "string"
+        },
+        "direccion" : {
+          "type" : "string"
+        },
+        "telefono" : {
+          "type" : "string"
+        },
+        "celular" : {
+          "type" : "string"
+        },
+        "idCiudad" : {
+          "type" : "integer"
+        },
+        "fechaCreacion" : {
+          "type" : "string"
+        },
+        "fechaUltModificacion" : {
+          "type" : "string"
+        },
+        "idCliente" : {
+          "type" : "integer"
+        }
+      },
+      "xml" : {
+        "name" : "User"
+      }
+    },
+    "ClienteDTO" : {
+      "type" : "object",
+      "properties" : {
+        "idCliente" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "tipoDocumento" : {
+          "type" : "string"
+        },
+        "noDocumento" : {
+          "type" : "string"
+        },
+        "nombres" : {
+          "type" : "string"
+        },
+        "apellido1" : {
+          "type" : "string"
+        },
+        "apellido2" : {
+          "type" : "string"
+        },
+        "razonSocial" : {
+          "type" : "string"
+        },
+        "estado" : {
+          "type" : "string"
+        },
+        "idContactoDef" : {
+          "type" : "integer"
+        },
+        "fechaCreacion" : {
+          "type" : "string"
+        },
+        "fechaUltModificacion" : {
+          "type" : "string"
+        },
+        "idCategoria" : {
+          "type" : "integer"
+        }
+      },
+      "xml" : {
+        "name" : "ClienteDTO"
+      }
+    },
+    "CategoriaDTO" : {
+      "type" : "object",
+      "required" : [ "idCategoria", "nombre" ],
+      "properties" : {
+        "idCategoria" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "fechaCreacion" : {
+          "type" : "string"
+        },
+        "nombre" : {
+          "type" : "string"
+        },
+        "estado" : {
+          "type" : "string"
+        },
+        "fechaUltModificacion" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "CategoriaDTO"
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Mas info",
+    "url" : "https://github.com/rchicangana/pica"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/PublicPaid/Clientes/1.0.0",
+  "schemes" : [ "https", "http" ]
+}
