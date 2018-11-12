@@ -9,6 +9,7 @@ import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { AppRoutes } from "./app.routing";
 import {ConsultarcampanaComponent} from './campanas/campanas.component';
+// import {NgxPaginationModule} from 'ngx-pagination';
 
 
 

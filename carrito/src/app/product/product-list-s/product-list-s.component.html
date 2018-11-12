@@ -36,7 +36,8 @@
 
 
                     <!-- List of Products -->
-                    <div class="col-sm-4 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
+                                        <!-- <div class="col-sm-4 mb-2"  *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }"> -->
+                    <div class="col-sm-4 mb-2"  *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
                         <div class="item">
                             <div class=" mb-r">
                                 <!--Card-->
@@ -92,7 +93,7 @@
 
 
                     <!-- List of Products -->
-                    <div class="col-sm-4 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
+                    <div class="col-sm-4 mb-2"  *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
                         <div class="item">
                             <div class=" mb-r">
                                 <!--Card-->
@@ -147,7 +148,7 @@
                 <div class="row" *ngIf="tipo == 'C'">
 
                     <!-- List of Products -->
-                    <div class="col-sm-4 mb-2">
+                    <div class="col-sm-4 mb-2"  >
                         <div class="item">
                             <div class=" mb-r">
                                 <!--Card-->
@@ -166,7 +167,7 @@
                                     <div class="card-body text-center no-padding">
                                         <!--Category & Title-->
                                         <a class="text-muted">
-                                            <h5>{{ producto.nombreProducto}}</h5>
+                                            <h5>{{ producto.idProducto.nombre}}</h5>
                                         </a>
                                         <p class="card-title">
                                             <strong>
@@ -202,6 +203,9 @@
                 <!-- Pagination -->
                 <div class="text-center mt-3">
                     <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                    <!-- <p>Restricted size, no rotation:</p>
+                    <ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination> -->
+
                 </div>
             </div>
             <!--/.Card-->

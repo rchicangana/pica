@@ -7,4 +7,5 @@ export class Respuesta{
   export class Respuesta2{
     codigo: string;
     object: object;
+    cantidad:number;
   }
