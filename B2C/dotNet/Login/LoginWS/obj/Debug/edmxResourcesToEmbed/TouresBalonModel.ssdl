@@ -17,5 +17,8 @@
     <Property Name="pais" Type="varchar" MaxLength="50" />
     <Property Name="departamento" Type="varchar" MaxLength="50" />
     <Property Name="ciudad" Type="varchar" MaxLength="50" />
+    <Property Name="tipodoc" Type="varbinary" MaxLength="10" />
+    <Property Name="identificacion" Type="varchar" MaxLength="30" />
+    <Property Name="idcliente" Type="int" />
   </EntityType>
 </Schema>

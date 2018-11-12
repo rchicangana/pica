@@ -25,7 +25,10 @@ export class Usuario {
   pais: String;
   departamento: String;
   ciudad: String;
-  constructor(login: string, password: string, nombres: string, apellidos: string) {
+  tipodoc: String;
+  identificacion: String;
+  idcliente: number;
+  constructor(login: string, password: string, nombres: string, apellidos: string, tipodoc: String, identificacion : String) {
     this.login = login;
     this.password = password;
     this.nombres = nombres;
@@ -34,5 +37,7 @@ export class Usuario {
     this.pais = "";
     this.departamento = "";
     this.ciudad = "";
+    this.tipodoc = tipodoc;
+    this.identificacion = identificacion;
   }
 }
