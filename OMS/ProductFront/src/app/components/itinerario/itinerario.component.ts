@@ -13,6 +13,7 @@ import { EmpresaService } from '../../services/empresa.service';
 export class ItinerarioComponent implements OnInit {
 
   @Input() public datosFormulario: any;
+  @Input() public modoConsulta = false;
   itinerarios: any = [];
   registro: any = {};
   panelEditar = false;
@@ -169,3 +170,4 @@ export class ItinerarioComponent implements OnInit {
 
 
 }
+

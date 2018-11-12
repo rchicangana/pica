@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
     , @NamedQuery(name = "Producto.countAll", query = "SELECT count(p) FROM Producto p")
+    , @NamedQuery(name = "Producto.countAllByComodin", query = "SELECT count(p) FROM Producto p WHERE upper(p.nombreProducto) like upper(:nombreProducto)")
     , @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto order by p.idProducto asc")
     , @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE upper(p.nombreProducto) like upper(:nombreProducto)")
     , @NamedQuery(name = "Producto.findByFechaSalida", query = "SELECT p FROM Producto p WHERE p.fechaSalida = :fechaSalida")

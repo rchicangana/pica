@@ -10,6 +10,7 @@ import { NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 export class BoleteriaComponent implements OnInit {
 
   @Input() public datosFormulario: any;
+  @Input() public modoConsulta = false;
   datosBoleta: any = {};
   nuevoRegistro = true;
   errores: any = {};

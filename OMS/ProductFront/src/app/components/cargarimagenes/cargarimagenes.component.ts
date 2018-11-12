@@ -11,6 +11,7 @@ import { ImagenesService } from '../../services/imagenes.service';
 export class CargarimagenesComponent implements OnInit {
 
   @Input() public datosFormulario: any;
+  @Input() public modoConsulta = false;
   inputFile: any;
   imagenes: any[] = [];
   datosImagenProducto: any = {};

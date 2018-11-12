@@ -6,151 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "PicaBPM",
-			"item": [
-				{
-					"name": "Bonita Login Rest",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "username",
-									"value": "walter.bates",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
-									"type": "text"
-								},
-								{
-									"key": "redirect",
-									"value": "false",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8080/bonita/loginservice",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"bonita",
-								"loginservice"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Bonita Consulta de procesos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "http://localhost:8080/bonita/API/bpm/process?p=0&c=10",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"bonita",
-								"API",
-								"bpm",
-								"process"
-							],
-							"query": [
-								{
-									"key": "p",
-									"value": "0"
-								},
-								{
-									"key": "c",
-									"value": "10"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Bonita Consulta de contrato por proceso",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "http://localhost:8080/bonita/API/bpm/process/7051154151321140737/contract",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"bonita",
-								"API",
-								"bpm",
-								"process",
-								"7051154151321140737",
-								"contract"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Bonita Instanciar proceso",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-Bonita-API-Token",
-								"value": "04b0b0ca-0a4f-4316-9949-6380381d0faa"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \r\n  \"solicitudInput\": {\r\n  \t\"id\":1,\r\n  \t\"nombre\":\"Ricardo Chicangana\"\r\n  }\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/bonita/API/bpm/process/5443924790056970281/instantiation",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"bonita",
-								"API",
-								"bpm",
-								"process",
-								"5443924790056970281",
-								"instantiation"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Prodcutos",
 			"item": [
 				{
@@ -158,12 +13,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:8080/ProductService/services/producto/buscarProducto/1",
+							"raw": "http://10.39.1.140:8080/ProductService/services/producto/buscarProducto/1",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"10",
+								"39",
+								"1",
+								"140"
 							],
 							"port": "8080",
 							"path": [
@@ -174,6 +35,228 @@
 								"1"
 							]
 						}
+					},
+					"response": [
+						{
+							"name": "Consulta de producto por codigo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://10.39.1.140:8080/ProductService/services/producto/buscarProducto/1",
+									"protocol": "http",
+									"host": [
+										"10",
+										"39",
+										"1",
+										"140"
+									],
+									"port": "8080",
+									"path": [
+										"ProductService",
+										"services",
+										"producto",
+										"buscarProducto",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1198"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Nov 2018 16:43:14 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"codigo\": \"OK\",\n    \"object\": {\n        \"idProducto\": 1,\n        \"nombreProducto\": \"MUNDIAL DE PATINAJE DIC 2018\",\n        \"fechaSalida\": \"06/10/2018\",\n        \"fechaLlegada\": \"22/11/2018\",\n        \"descripcion\": \"Mundial de patinaje\",\n        \"idTipoProducto\": {\n            \"idTipoProducto\": 1,\n            \"nombre\": \"EVENTOS DEPORTIVOS\",\n            \"idEstadoTipoProducto\": {\n                \"idEstadoTipoProducto\": 1,\n                \"estado\": \"ACTIVO\"\n            }\n        },\n        \"imagenProductoList\": [\n            {\n                \"idImagenProducto\": 1,\n                \"imagen\": \"producto.jpg\",\n                \"esprincipal\": 1,\n                \"idProducto\": 1\n            },\n            {\n                \"idImagenProducto\": 66,\n                \"imagen\": \"8c4edeac-13b1-46ff-a065-d0b72e1f16ed.jpg\",\n                \"esprincipal\": 1,\n                \"idProducto\": 1\n            }\n        ],\n        \"itinerarioList\": [\n            {\n                \"idItinerario\": 1,\n                \"idProducto\": 1,\n                \"idHospedaje\": {\n                    \"idHospedaje\": 1,\n                    \"nombre\": \"HOTEL DAN CARLTON MIAMI\",\n                    \"estrellas\": 5,\n                    \"idCiudad\": {\n                        \"idCiudad\": 1,\n                        \"nombre\": \"MIAMI - FLORIDA\",\n                        \"idPais\": {\n                            \"idPais\": 1,\n                            \"nombre\": \"Estados Unidos\"\n                        }\n                    },\n                    \"imagenHospedajeList\": [\n                        {\n                            \"idImagenHospedaje\": 1,\n                            \"imagen\": \"hospedaje.jpg\",\n                            \"esprincipal\": 1,\n                            \"idHospedaje\": 1\n                        }\n                    ],\n                    \"habitacionList\": [\n                        {\n                            \"idHabitacion\": 1,\n                            \"idHospedaje\": 1,\n                            \"numero\": 510,\n                            \"imagenHabitacionList\": [\n                                {\n                                    \"idImagenHabitacion\": 1,\n                                    \"imagen\": \"habitacion.jpg\",\n                                    \"esprincipal\": 1,\n                                    \"idHabitacion\": 1\n                                }\n                            ],\n                            \"idTipoHabitacion\": {\n                                \"idTipoHabitacion\": 3,\n                                \"tipo\": \"SUITE\"\n                            }\n                        }\n                    ]\n                },\n                \"idCiudad\": {\n                    \"idCiudad\": 1,\n                    \"nombre\": \"MIAMI - FLORIDA\",\n                    \"idPais\": {\n                        \"idPais\": 1,\n                        \"nombre\": \"Estados Unidos\"\n                    }\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Consulta por Descripion y comodin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/ProductService/services/producto/buscarDescripcion/0/5/M*",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"producto",
+								"buscarDescripcion",
+								"0",
+								"5",
+								"M*"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta de Producntos Con paginacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/ProductService/services/producto/buscar/0/1",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"producto",
+								"buscar",
+								"0",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generar Top Five",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/ProductService/services/jobs/topFive",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"jobs",
+								"topFive"
+							]
+						},
+						"description": "Ejecuta la tarea programada para guardar el top five en el cache\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Top Five",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/ProductService/services/producto/topFive",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"producto",
+								"topFive"
+							]
+						},
+						"description": "Permite recuperar el topFive desde el cache"
+					},
+					"response": []
+				},
+				{
+					"name": "Top 5 de productos que acompañan en compras a otros productos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/ProductService/services/producto/topFiveProducto/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"producto",
+								"topFiveProducto",
+								"1"
+							]
+						},
+						"description": "\"Mostrar listado del “Top 5” de las imágenes de los productos (con sus respectivos\r\nvínculos al detalle) que han acompañado al producto seleccionado en otras\r\nórdenes de compra. El listado debe estar ordenado desde el que más ha tenido\r\nórdenes en común con ese producto.\""
 					},
 					"response": []
 				}
@@ -194,7 +277,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n \n    \"nombre\": \"Ricardo Alonso Chicangana Vidal\",\n    \"email\": \"rchicangana@gmail.com\",\n    \"login\":  \"rchicangana\",\n    \"idEstadoUser\": {\n    \t\"idEstadoUser\": 1,\n    \t\"estado\":\"Activo\"\n    \t\n    }\n}"
+							"raw": "{\n \n    \"nombre\": \"Ricardo Alonso Chicangana Vidal\",\n    \"email\": \"rchicangana@gmail.com\",\n    \"login\":  \"admin\",\n    \"idEstadoUser\": {\n    \t\"idEstadoUser\": 1,\n    \t\"estado\":\"Activo\"\n    \t\n    }\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/Autenticacion/services/usuario/registrar",
@@ -225,7 +308,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"login\":\"rchicangana\",\n\t\"passwordAnterior\":\"rchicangana\",\n\t\"nuevoPassword\":\"admin123\"\n\t\n}\n"
+							"raw": "{\n\t\"login\":\"admin\",\n\t\"passwordAnterior\":\"admin\",\n\t\"nuevoPassword\":\"admin123\"\n\t\n}\n"
 						},
 						"url": {
 							"raw": "http://localhost:8080/Autenticacion/services/usuario/cambiarPassword",
@@ -287,16 +370,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"login\":\"rchicangana\",\n\t\"password\":\"admin123\"\n}"
+							"raw": "{\n\t\"login\":\"adminclientes\",\n\t\"password\":\"adminclientes\"\n}"
 						},
 						"url": {
-							"raw": "http://35.203.15.183:8080/Autenticacion/services/autenticacion",
+							"raw": "http://10.39.1.140:8080/Autenticacion/services/autenticacion",
 							"protocol": "http",
 							"host": [
-								"35",
-								"203",
-								"15",
-								"183"
+								"10",
+								"39",
+								"1",
+								"140"
 							],
 							"port": "8080",
 							"path": [
@@ -305,6 +388,357 @@
 								"autenticacion"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://10.39.1.140:8080/Autenticacion/services/autenticacion/validar",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"Autenticacion",
+								"services",
+								"autenticacion",
+								"validar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tarifas",
+			"item": [
+				{
+					"name": "Tarifa por producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/ProductService/services/tarifa/consultar/1",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"tarifa",
+								"consultar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Redis Cache",
+			"item": [
+				{
+					"name": "Crear Lista de elemetnos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"datos\":[\"1\",\"2\",\"3\",\"4\",\"5\"]\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/RedisServices/listas/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RedisServices",
+								"listas",
+								"test"
+							]
+						},
+						"description": "Permite crear una lista en el cache"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Lista en Cache",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/RedisServices/listas/test/0/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RedisServices",
+								"listas",
+								"test",
+								"0",
+								"5"
+							]
+						},
+						"description": "Perimte consulta una lista en el cache con paginacion, tener en cuenta el orden inverso"
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Lista de datos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/RedisServices/listas/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RedisServices",
+								"listas",
+								"test"
+							]
+						},
+						"description": "Permite eliminar por completo una lista"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Llave Valor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"valor\":\"HOLA MUNDO\"\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/RedisServices/kv/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RedisServices",
+								"kv",
+								"info"
+							]
+						},
+						"description": "Permite registra un dato llave valor en el cache\n\nhttp://localhost:8080/RedisServices/kv/{llave}"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener valor a partir de la clave",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/RedisServices/kv/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RedisServices",
+								"kv",
+								"info"
+							]
+						},
+						"description": "http://localhost:8080/RedisServices/{key}\n\nretorna el valor de una llave desde el cache"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaisesCiudades",
+			"item": [
+				{
+					"name": "Pais",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/ProductService/services/pais/consultar",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"pais",
+								"consultar"
+							]
+						},
+						"description": "Permite consultar los paises"
+					},
+					"response": []
+				},
+				{
+					"name": "Ciudad ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/ProductService/services/ciudad/consultar/41",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"ProductService",
+								"services",
+								"ciudad",
+								"consultar",
+								"41"
+							]
+						},
+						"description": "Ciudades http://10.39.1.140:8080/ProductService/services/ciudad/consultar/{idPais}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DanCarlton",
+			"item": [
+				{
+					"name": "Reservar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cliente\":\"79883927\",\n\t\"fechadesde\": \"12/12/2018\",\n\t\"fechahasta\":\"12/01/2019\",\n\t\"destino\":\"miami\"\n}"
+						},
+						"url": {
+							"raw": "http://10.39.1.140:8080/DanCarlton/services/reserva/reservar",
+							"protocol": "http",
+							"host": [
+								"10",
+								"39",
+								"1",
+								"140"
+							],
+							"port": "8080",
+							"path": [
+								"DanCarlton",
+								"services",
+								"reserva",
+								"reservar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar Reserva",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						},
+						"description": "/reserva/cancelar/{idReserva}"
 					},
 					"response": []
 				}

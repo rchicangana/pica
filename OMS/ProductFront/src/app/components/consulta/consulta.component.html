@@ -4,9 +4,11 @@
     <div class="region region-content">
         <div id="block-system-main" class="block block-system">
             <div class="panel-body">
-                <div class="panel panelPrincipal animated fadeIn fast">
-                    <div class="btn-group col-sm-10 m-3">
 
+                <div class="panel panelPrincipal animated fadeIn fast" *ngIf="!panelEditar">
+                    <div class="btn-group col-sm-10  m-3">
+                        <input type="text" placeholder="Buscar por nombre o descripcion" class="form-control form-control-sm" id="comodin" name="comodin" [(ngModel)]="comodin" required>
+                        <a href="#" (click)="loadData()" class="btn btn-sm  btn-outline-primary">Buscar</a>
                     </div>
 
                     <table class="table table-md table-bordered table-hover small">
@@ -17,7 +19,7 @@
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">Fecha salida</th>
                                 <th scope="col">Fecha regreso</th>
-                                <th scope="col">Editar</th>
+                                <th scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,16 +29,109 @@
                                 <td>{{item.descripcion}}</td>
                                 <td>{{item.fechaSalida}}</td>
                                 <td>{{item.fechaLlegada}}</td>
-                                <td><i class="fa fa-pencil-square-o"></i></td>
+                                <td><i class="fa fa-search" (click)="verDetalle(item)"></i></td>
                             </tr>
                         </tbody>
                     </table>
-
-
-
+                    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage($event)" [boundaryLinks]="true"></ngb-pagination>
 
                 </div>
+                <div class="panel panelPrincipal animated fadeIn fast" *ngIf="panelEditar">
+                    <form id="formreg" class="m-4" role="form" novalidate>
+                        <div class="form-group row small">
 
+                            <label for="idProducto" class="col-sm-4 col-form-label col-form-label-sm">Identificador</label>
+                            <div class="col-sm-8">
+                                {{datosFormulario.idProducto}}
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
+                            <label for="idTipoProducto" class="col-sm-4 col-form-label col-form-label-sm">Tipo de Producto</label>
+                            <div class="col-sm-8">
+                                {{datosFormulario.idTipoProducto.nombre}}
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
+                            <label for="nombreProducto" class="col-sm-4 col-form-label col-form-label-sm">Nombre</label>
+                            <div class="col-sm-8">
+                                {{datosFormulario.nombreProducto}}
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
+                            <label for="descripcion" class="col-sm-4 col-form-label col-form-label-sm">Descripcion</label>
+                            <div class="col-sm-8">
+                                {{datosFormulario.descripcion}}
+                            </div>
+                        </div>
+                        <div class="form-group row small">
+
+                            <label for="fechas" class="col-sm-4 col-form-label col-form-label-sm">Fechas de viaje</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        Desde: {{datosFormulario.fechaSalida}} Hasta: {{datosFormulario.fechaLlegada}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group float-lg-right m-1" role="group">
+                                <button class="btn btn-md btn btn-outline-danger " type="button" (click)="cancelar()">Volver</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                    <div class="panel panelPrincipal animated fadeIn fast" *ngIf="panelAdicional">
+                        <div id="accordion">
+                            <div class="card bg-light mb-3">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            Imagenes
+                                          </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <app-cargarimagenes [datosFormulario]="datosFormulario" [modoConsulta]="true"></app-cargarimagenes>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3 ">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                          Itineraro
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <app-itinerario [datosFormulario]="datosFormulario" [modoConsulta]="true"></app-itinerario>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                          Boleteria
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <app-boleteria [datosFormulario]="datosFormulario" [modoConsulta]="true"></app-boleteria>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <div *ngIf="!panelEditar">
-    <div class="btn-group col-sm-2 pull-right m-3">
+    <div class="btn-group col-sm-2 pull-right m-3" *ngIf="!modoConsulta">
         <a href="#" (click)="agregar()" class="btn btn-sm  btn-outline-primary">Agregar</a>
     </div>
     <table class="table table-md table-bordered table-hover small">
@@ -9,7 +9,7 @@
                 <th scope="col">Hospedaje</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Destino</th>
-                <th scope="col">Opciones</th>
+                <th scope="col" *ngIf="!modoConsulta">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
                 <td>{{item.idHospedaje.nombre}}</td>
                 <td>{{item.descripcion}}</td>
                 <td>{{item.idCiudad.nombre}} / {{item.idCiudad.idPais.nombre}}</td>
-                <td><i class="fa fa-search" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="editar(item)"></i></td>
+                <td *ngIf="!modoConsulta"><i class="fa fa-search" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="editar(item)"></i></td>
             </tr>
         </tbody>
     </table>

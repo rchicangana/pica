@@ -64,6 +64,12 @@ public class ProductoDAO {
                 .getSingleResult();
     }
     
+    public Long countAllComodin(String nombre) {
+        return (Long)em.createNamedQuery("Producto.countAllByComodin")
+                .setParameter("nombreProducto", nombre)
+                .getSingleResult();
+    }
+    
     /**
      * 
      * @param entidad

@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewChecked } 
 import { ProductosService } from '../../services/productos.service';
 import { NgbDate, NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { TipoproductoService } from '../../services/tipoproducto.service';
-import { CargarimagenesComponent } from '../cargarimagenes/cargarimagenes.component';
+
 
 @Component({
   selector: 'app-producto',
