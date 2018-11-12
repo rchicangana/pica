@@ -24,5 +24,8 @@ namespace LoginWS
         public string pais { get; set; }
         public string departamento { get; set; }
         public string ciudad { get; set; }
+        public byte[] tipodoc { get; set; }
+        public string identificacion { get; set; }
+        public Nullable<int> idcliente { get; set; }
     }
 }

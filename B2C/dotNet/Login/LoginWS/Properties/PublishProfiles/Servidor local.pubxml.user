@@ -14,7 +14,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/28/2018 21:29:07</publishTime>
     </File>
     <File Include="bin/LoginWS.dll">
-      <publishTime>11/10/2018 19:04:56</publishTime>
+      <publishTime>11/12/2018 10:34:59</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.Net20.dll">
       <publishTime>09/12/2018 23:54:54</publishTime>
@@ -56,7 +56,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/19/2018 20:23:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/10/2018 19:04:56</publishTime>
+      <publishTime>11/12/2018 10:35:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

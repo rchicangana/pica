@@ -4,6 +4,20 @@
         <form class="needs-validation" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
             <div class="row">
                 <div class="col-md-6 mb-3">
+                    <label for="firstName">Tipo Documento</label>
+                    <input type="text" class="form-control" id="tipodoc" [(ngModel)]="userDetail.tipodoc" name="tipodoc" required>
+                    <div class="invalid-feedback">
+                        Se requiere el tipo de identificacion.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Numero Identificacion</label>
+                    <input type="text" class="form-control" id="identificacion" [(ngModel)]="userDetail.identificacion" name="identificacion" required>
+                    <div class="invalid-feedback">
+                        Se requiere poner el numero de identificacion.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
                     <label for="firstName">Nombres</label>
                     <input type="text" class="form-control" id="firstName" [(ngModel)]="userDetail.nombres" name="firstName" required>
                     <div class="invalid-feedback">
