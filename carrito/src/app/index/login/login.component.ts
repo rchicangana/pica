@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   addUser(userForm: NgForm) {
     userForm.value["isAdmin"] = false;
-    var usuario = new Usuario(userForm.value["emailId"], userForm.value["password"], userForm.value["nombres"],userForm.value["apellidos"] );
+    var usuario = new Usuario(btoa(userForm.value["emailId"]), btoa(userForm.value["password"]), userForm.value["nombres"],userForm.value["apellidos"] );
     this.userService
       .createUser(usuario)
       .subscribe(res => {
