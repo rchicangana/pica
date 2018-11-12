@@ -70,9 +70,28 @@ public class ProductoServicio {
     }
     
     @GET
+    @Path("topFiveProductos")
+    public MensajeDTO getTopFiveProductos(){
+        return productoLogica.getTopFiveProductos();
+    }
+    
+    @GET
     @Path("topFiveProducto/{producto}")
     public MensajeDTO getTopFiveProducto(@PathParam("producto") Long idProducto){
         return productoLogica.getTopFiveProducto(idProducto);
+    }
+    
+    
+    @GET
+    @Path("topCategorias/{fechaini}/{fechafin}")
+    public MensajeDTO getTTopCategorias(@PathParam("fechaini") String fechaini, @PathParam("fechafin") String fechafin){
+        return productoLogica.getTopFiveCategoria(fechaini, fechafin);
+    }
+    
+    @GET
+    @Path("topProductos/{fechaini}/{fechafin}")
+    public MensajeDTO getTTopProductos(@PathParam("fechaini") String fechaini, @PathParam("fechafin") String fechafin){
+        return productoLogica.getTopProdcutos(fechaini, fechafin);
     }
     
     @POST

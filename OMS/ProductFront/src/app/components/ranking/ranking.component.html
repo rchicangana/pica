@@ -1,0 +1,181 @@
+<div class="contenido col-md-12 panelServicio">
+    <h3 id="tituloPaginaActual" class="titulo-linea">RANKINGS</h3>
+    <!--Fomulario para agregar una nueva empresa-->
+    <div class="region region-content">
+        <div id="block-system-main" class="block block-system">
+            <div class="panel-body" *ngIf="verPrincipal">
+                <form id="formreg" class="m-4" role="form" novalidate>
+                    <div class="form-group row small">
+                        <label for="tipo" class="col-sm-4 col-form-label col-form-label-sm">Tipo de ranking</label>
+                        <div class="col-sm-8">
+                            <div [ngClass]="{'has-error': errores.tipo }">
+                                <select class="form-control" id="tipo" name="tipo" [(ngModel)]="parametros.tipo" required (change)="mostrarDetalle=false">
+                                <option value="P" selected>Ranking de los productos más vendidos</option>
+                                <option value="C">Ranking de las categorías más vendidas</option>
+                                
+                              </select>
+                                <span class="control-label" ng-show="errores.tipo">{{errores.tipo}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row small">
+
+                        <label for="fechas" class="col-sm-4 col-form-label col-form-label-sm">Fechas de viaje</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div [ngClass]="{'has-error': errores.fechas }">
+                                        <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+                                        </ngb-datepicker>
+                                        <span class="control-label" ng-show="errores.fechas">{{errores.fechas}}</span>
+                                        <ng-template #t let-date let-focused="focused">
+                                            <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                                        {{ date.day }}
+                                      </span>
+                                        </ng-template>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="btn-group float-lg-right m-1" role="group">
+                            <button class="btn btn-md btn btn-outline-danger " type="button" (click)="buscarRanking()">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="panel panelPrincipal animated fadeIn fast m-3" *ngIf="mostrarDetalle">
+                    <table class="table table-md table-bordered table-hover small" *ngIf="parametros.tipo==='C'">
+                        <thead class="badge-dark">
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of elementos">
+                                <td>{{item.cantidad}}</td>
+                                <td>{{item.nombre}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <table class="table table-md table-bordered table-hover small" *ngIf="parametros.tipo==='P'">
+                        <thead class="badge-dark">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Ver detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of elementos">
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.cantidad}}</td>
+                                <td><i class="fa fa-search" (click)="detalle(item)"></i></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+            <div class="panel panelPrincipal animated fadeIn fast m-3" *ngIf="!verPrincipal">
+                <form id="formreg" class="m-4" role="form" novalidate>
+                    <div class="form-group row small">
+
+                        <label for="idProducto" class="col-sm-4 col-form-label col-form-label-sm">Identificador</label>
+                        <div class="col-sm-8">
+                            {{datosFormulario.idProducto}}
+                        </div>
+                    </div>
+                    <div class="form-group row small">
+
+                        <label for="idTipoProducto" class="col-sm-4 col-form-label col-form-label-sm">Tipo de Producto</label>
+                        <div class="col-sm-8">
+                            {{datosFormulario.idTipoProducto.nombre}}
+                        </div>
+                    </div>
+                    <div class="form-group row small">
+
+                        <label for="nombreProducto" class="col-sm-4 col-form-label col-form-label-sm">Nombre</label>
+                        <div class="col-sm-8">
+                            {{datosFormulario.nombreProducto}}
+                        </div>
+                    </div>
+                    <div class="form-group row small">
+
+                        <label for="descripcion" class="col-sm-4 col-form-label col-form-label-sm">Descripcion</label>
+                        <div class="col-sm-8">
+                            {{datosFormulario.descripcion}}
+                        </div>
+                    </div>
+                    <div class="form-group row small">
+
+                        <label for="fechas" class="col-sm-4 col-form-label col-form-label-sm">Fechas de viaje</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    Desde: {{datosFormulario.fechaSalida}} Hasta: {{datosFormulario.fechaLlegada}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group float-lg-right m-1" role="group">
+                            <button class="btn btn-md btn btn-outline-danger " type="button" (click)="verPrincipal=true">Volver</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+                <div class="panel panelPrincipal animated fadeIn fast">
+                    <div id="accordion">
+                        <div class="card bg-light mb-3">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Imagenes
+                                      </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <app-cargarimagenes [datosFormulario]="datosFormulario" [modoConsulta]="true"></app-cargarimagenes>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-light mb-3 ">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                      Itineraro
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <app-itinerario [datosFormulario]="datosFormulario" [modoConsulta]="true"></app-itinerario>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-light mb-3">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                      Boleteria
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <app-boleteria [datosFormulario]="datosFormulario" [modoConsulta]="true"></app-boleteria>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

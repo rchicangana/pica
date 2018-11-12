@@ -21,6 +21,7 @@ export class ConsultaComponent implements OnInit {
   previousPage: any;
   tiposProducto: any[];
   comodin: string;
+  codigo: number;
 
 
   constructor(private productosService: ProductosService) { }
@@ -45,8 +46,17 @@ export class ConsultaComponent implements OnInit {
   }
 
   loadData() {
-    this.productosService.getProductos((this.page - 1) * this.itemsPerPage, this.comodin).subscribe((data: any) => {
+    this.productosService.getProductos((this.page - 1) * this.itemsPerPage,
+     (this.comodin === '' ? '*' : this.comodin)).subscribe((data: any) => {
       this.elementos = data.object;
+    });
+  }
+
+  loadDataCodigo() {
+    this.productosService.getProductoCodigo(this.codigo).subscribe((data: any) => {
+      this.totalItems = 1;
+      this.elementos = [];
+      this.elementos.push(data.object);
     });
   }
 

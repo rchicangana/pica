@@ -7,14 +7,17 @@
 
                 <div class="panel panelPrincipal animated fadeIn fast" *ngIf="!panelEditar">
                     <div class="btn-group col-sm-10  m-3">
-                        <input type="text" placeholder="Buscar por nombre o descripcion" class="form-control form-control-sm" id="comodin" name="comodin" [(ngModel)]="comodin" required>
-                        <a href="#" (click)="loadData()" class="btn btn-sm  btn-outline-primary">Buscar</a>
+                        <input type="text" placeholder="Buscar por nombre o descripcion o espectaculo" class="form-control form-control-sm" id="comodin" name="comodin" [(ngModel)]="comodin" required>
+                        <button (click)="loadData()" class="btn btn-sm  btn-outline-primary">Buscar</button> &nbsp;
+                        <input type="text" placeholder="Buscar codigo" class="form-control form-control-sm" id="codigo" name="codigo" [(ngModel)]="codigo" required>
+                        <button (click)="loadDataCodigo()" class="btn btn-sm  btn-outline-primary">Buscar</button>
                     </div>
 
-                    <table class="table table-md table-bordered table-hover small">
+                    <table class="table table-md table-bordered table-hover small m-2">
                         <thead class="badge-dark">
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Tipo</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">Fecha salida</th>
@@ -25,6 +28,7 @@
                         <tbody>
                             <tr *ngFor="let item of elementos">
                                 <th scope="row">{{item.idProducto}}</th>
+                                <td>{{item.idTipoProducto.nombre}}</td>
                                 <td>{{item.nombreProducto}}</td>
                                 <td>{{item.descripcion}}</td>
                                 <td>{{item.fechaSalida}}</td>

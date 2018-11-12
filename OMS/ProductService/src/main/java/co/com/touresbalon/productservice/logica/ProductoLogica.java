@@ -32,12 +32,12 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ProductoLogica {
-    
+
     private static final Logger LOG = Logger.getLogger(ProductoLogica.class.getName());
-    
+
     @EJB
     private ProductoDAO productoDAO;
-    
+
     @EJB
     private NativeDAO nativeDAO;
 
@@ -47,10 +47,10 @@ public class ProductoLogica {
      * @return
      */
     public MensajeDTO buscarProdcutoporCodigo(final Long codigo) {
-        
+
         MensajeDTO salida = new MensajeDTO();
         try {
-            
+
             Producto producto = productoDAO.findByCodigo(codigo);
             if (producto == null) {
                 salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
@@ -59,13 +59,13 @@ public class ProductoLogica {
                 salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
                 salida.setObject(TransformacionDozer.transformar(producto, ProductoDTO.class));
             }
-            
+
         } catch (Exception e) {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
             salida.setMensaje(e.getLocalizedMessage());
         }
         return salida;
-        
+
     }
 
     /**
@@ -76,46 +76,46 @@ public class ProductoLogica {
      * @return
      */
     public MensajeDTO buscarProdcutoporDescripcion(final String nombre, final Integer inicio, final Integer fin) {
-        
+
         MensajeDTO salida = new MensajeDTO();
         try {
-            
+
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
             salida.setObject(TransformacionDozer.transformar(productoDAO.finByDesProductos(nombre.replaceAll("\\*", "%"), inicio, fin), ProductoDTO.class));
-            if(inicio==0){
+            if (inicio == 0) {
                 salida.setCantidad(productoDAO.countAllComodin(nombre.replaceAll("\\*", "%")));
             }
-            
+
         } catch (Exception e) {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
             salida.setMensaje(e.getLocalizedMessage());
         }
         return salida;
-        
+
     }
-    
+
     public MensajeDTO buscarProdcuto(final Integer inicio, final Integer fin) {
-        
+
         MensajeDTO salida = new MensajeDTO();
         try {
-            
+
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
             salida.setObject(TransformacionDozer.transformar(productoDAO.finByProductos(inicio, fin), ProductoDTO.class));
-            if(inicio==0){
+            if (inicio == 0) {
                 salida.setCantidad(productoDAO.countAll());
             }
-            
+
         } catch (Exception e) {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
             salida.setMensaje(e.getLocalizedMessage());
         }
         return salida;
-        
+
     }
-    
+
     public MensajeDTO guardarProducto(ProductoDTO entrada) {
         MensajeDTO salida = new MensajeDTO();
-        
+
         try {
             Producto producto = TransformacionDozer.transformar(entrada, Producto.class);
             producto.setItinerarioList(null);
@@ -126,14 +126,14 @@ public class ProductoLogica {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
             salida.setMensaje(e.getLocalizedMessage());
         }
-        
+
         return salida;
-        
+
     }
-    
+
     public MensajeDTO actualizarProducto(ProductoDTO entrada) {
         MensajeDTO salida = new MensajeDTO();
-        
+
         try {
             Producto producto = productoDAO.findByCodigo(entrada.getIdProducto());
             producto.setFechaLlegada(FechaUtil.stringToDate(entrada.getFechaLlegada(), ConstantesComunes.FORMATO_FECHA));
@@ -148,9 +148,9 @@ public class ProductoLogica {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
             salida.setMensaje(e.getLocalizedMessage());
         }
-        
+
         return salida;
-        
+
     }
 
     /**
@@ -160,7 +160,7 @@ public class ProductoLogica {
      */
     public MensajeDTO delete(ProductoDTO entrada) {
         MensajeDTO salida = new MensajeDTO();
-        
+
         try {
             Producto producto = productoDAO.findByCodigo(entrada.getIdProducto());
             productoDAO.borrar(producto);
@@ -169,11 +169,36 @@ public class ProductoLogica {
             salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
             salida.setMensaje(e.getLocalizedMessage());
         }
-        
+
         return salida;
-        
+
     }
-    
+
+    public MensajeDTO getTopFiveProductos() {
+        MensajeDTO salida = new MensajeDTO();
+        try {
+            Gson g = new Gson();
+            final ClienteRedisServiceBuilder builder = new ClienteRedisServiceBuilder();
+            ClienteRedisService cliente = builder.servidor("localhost").puerto(8080).build();
+            ListDTO datos = cliente.getList("TOPFIVE", 0, 4);
+            List<TopFiveDTO> topFives = new ArrayList<>();
+            for (String dato : datos.getDatos()) {
+                topFives.add(g.fromJson(dato, TopFiveDTO.class));
+            }
+            List<ProductoDTO> productos = new ArrayList<>();
+            for (TopFiveDTO top : topFives) {
+                productos.add(TransformacionDozer.transformar(productoDAO.findByCodigo(top.getIdProducto()), ProductoDTO.class));
+            }
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+            salida.setObject(productos);
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, "Error al recuperar Top Five", e);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        return salida;
+    }
+
     public MensajeDTO getTopFive() {
         MensajeDTO salida = new MensajeDTO();
         try {
@@ -185,6 +210,7 @@ public class ProductoLogica {
             for (String dato : datos.getDatos()) {
                 productos.add(g.fromJson(dato, TopFiveDTO.class));
             }
+
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
             salida.setObject(productos);
         } catch (Exception e) {
@@ -194,11 +220,11 @@ public class ProductoLogica {
         }
         return salida;
     }
-    
+
     public MensajeDTO getTopFiveProducto(Long idProducto) {
         MensajeDTO salida = new MensajeDTO();
         try {
-            
+
             List<TopFiveDTO> productos = nativeDAO.consultarTopFiveProducto(idProducto);
             salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
             salida.setObject(productos);
@@ -209,6 +235,35 @@ public class ProductoLogica {
         }
         return salida;
     }
-    
-    
+
+    public MensajeDTO getTopFiveCategoria(String fechaini, String fechaFin) {
+        MensajeDTO salida = new MensajeDTO();
+        try {
+
+            List<TopFiveDTO> productos = nativeDAO.consultarRankingCategorias(fechaini, fechaFin);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+            salida.setObject(productos);
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, "Error al recuperar Top Five por categoria", e);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        return salida;
+    }
+
+    public MensajeDTO getTopProdcutos(String fechaini, String fechaFin) {
+        MensajeDTO salida = new MensajeDTO();
+        try {
+
+            List<TopFiveDTO> productos = nativeDAO.consultarRankingProductos(fechaini, fechaFin);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.OK.name());
+            salida.setObject(productos);
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, "Error al recuperar Top Five por categoria", e);
+            salida.setCodigo(ConstantesComunes.CodigoResultado.ERROR.name());
+            salida.setMensaje(e.getLocalizedMessage());
+        }
+        return salida;
+    }
+
 }

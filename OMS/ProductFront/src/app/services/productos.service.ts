@@ -15,6 +15,18 @@ export class ProductosService {
     return this.http.get('ProductService/services/producto/buscarDescripcion/' + (paginas) + '/5/' + comodin);
   }
 
+  public getProductoCodigo(codigo: number) {
+    return this.http.get('ProductService/services/producto/buscarProducto/' + codigo);
+  }
+
+  public getTopProducto(fechaini: string, fechafin: string) {
+    return this.http.get('ProductService/services/producto/topProductos/' + fechaini + '/' + fechafin);
+  }
+
+  public getTopCategoria(fechaini: string, fechafin: string) {
+    return this.http.get('ProductService/services/producto/topCategorias/' + fechaini + '/' + fechafin);
+  }
+
   public guardarProducto(datos: any) {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post('ProductService/services/producto/guardar', datos, { headers });
