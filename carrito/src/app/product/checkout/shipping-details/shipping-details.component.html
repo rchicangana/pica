@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-5 mb-3">
                     <label for="country">Pa&iacute;s</label>
-                    <select [(ngModel)]="idPais" (ngModelChange)="listarciudades($event)" [ngModelOptions]="{standalone: true}">
+                    <select [(ngModel)]="idPais" (ngModelChange)="listarciudades()" [ngModelOptions]="{standalone: true}">
                         <option *ngFor="let pais of paises" [value]="pais.idPais">{{pais.nombre}}</option>
                       </select>
                 </div>
@@ -47,8 +47,8 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="state">Ciudad</label>
-                <select [(ngModel)]="userDetail.ciudad" required>
-                    <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ciudad.nombre}}</option>
+                <select [(ngModel)]="ciudad" required>
+                    <option *ngFor="let city of ciudades" [value]="city.idCiudad">{{city.nombre}}</option>
                 </select>
                 <div class="invalid-feedback">
                     Por favor seleccione una ciudad v&acute;lido.

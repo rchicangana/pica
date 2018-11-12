@@ -13,7 +13,7 @@
                             <div>
                                 <h6 class="my-0">Costo total del paquete</h6>
                             </div>
-                            <span class="text-muted" style="color:crimson !important">{{product.total | currency:'COP $':true:'1.0-2'}}</span>
+                            <span class="text-muted" style="color:crimson !important">{{[product.total != undefined ? (product.total| currency:'COP $':true:'1.0-2') : 0.0] }}</span>
                         </li>
                     </ul>
                     <button class="btn btn-primary fa fa-shopping-cart" container="body" (click)="addToCart(product)">  Agregar al carrito</button>

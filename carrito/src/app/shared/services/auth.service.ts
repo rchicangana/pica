@@ -40,7 +40,7 @@ export class AuthService {
       }
     } 
     else {
-      this.userDetails = null;
+      this.userDetails = new Usuario("","","","");
     }
 
     return loggedUser;

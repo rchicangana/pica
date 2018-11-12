@@ -10,9 +10,10 @@ import { ProductService } from "../../shared/services/product.service";
 @Injectable()
 export class SolicitudService {
   solicitud: Solicitud;
+  solicitudes: Solicitud[];
   respuesta : Respuesta; 
-  apiUrl :string = "http://10.39.1.99:9090/solicitud/Logica/Solicitud.svc/Solicitud";
-  //apiUrl :string = "solicitud/Logica/Solicitud.svc/Solicitud";
+  //apiUrl :string = "http://10.39.1.99:9090/solicitud/Logica/Solicitud.svc/Solicitud";
+  apiUrl :string = "solicitud/Logica/Solicitud.svc/Solicitud";
   userDetail: Usuario;
   cartProducts: Tarifa[];
 
@@ -22,6 +23,18 @@ export class SolicitudService {
       private productService: ProductService) {
       this.userDetail = authService.getLoggedInUser();
   }
+
+ buscarSolicitud(idUsuario: number){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    const x = this.http.get(this.apiUrl+'/buscarUsuario/'+idUsuario, { headers })
+    .subscribe(
+        data => {
+            this.solicitudes = <Solicitud[]>(<Respuesta>data).objeto;
+        },
+        error => {
+        });
+    return this.solicitudes;
+ }
 
   crearSolicitud(): Respuesta{ 
     let solicitud: Solicitud;

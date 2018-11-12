@@ -19,7 +19,7 @@ namespace SolicitudWS
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "buscar/{idUsuario}")]
+            UriTemplate = "buscarUsuario/{idUsuario}")]
         ResponseData ListarSolicitudesPorUsuario(string idUsuario);
 
         [OperationContract]
@@ -27,7 +27,7 @@ namespace SolicitudWS
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "buscar/{idSolicitud}")]
+            UriTemplate = "buscarId/{idSolicitud}")]
         ResponseData consultarSolicitudPorId(string idSolicitud);
 
         [OperationContract]

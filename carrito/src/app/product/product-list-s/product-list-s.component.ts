@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { Mensaje } from '../../shared/models/mensaje';
-import { Respuesta } from '../../shared/models/respuesta';
+import { Respuesta, Respuesta2 } from '../../shared/models/respuesta';
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
 import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
@@ -22,6 +22,7 @@ export class ProductListComponentS implements OnInit {
 
   selectedBrand: "All";
   tipo:string;
+  numeroProductos:number;
 
 
   page = 1;
@@ -47,6 +48,12 @@ export class ProductListComponentS implements OnInit {
         this.activatedRoute.params.subscribe( params => {
         this.tipo= params['tipo'];
         console.log('este es el tipo del tipo'+this.tipo);
+        let cantidad = this.CountProductsS();
+        console.log(cantidad);
+
+
+
+
     if ( params['tipo'] == 'D' )
     {
               if (typeof params['termino'] === 'undefined' )
@@ -92,9 +99,12 @@ export class ProductListComponentS implements OnInit {
       data => {
 
           this.productList = [];
-          if((<Respuesta>data).resultado=="OK"){
-            let productos = <Product[]> (<Respuesta>data).objeto;
+          if((<Respuesta2>data).codigo=="OK"){
+            let productos = <Product[]> (<Respuesta2>data).object;
             productos.forEach(elemento => {
+              if(elemento.imagenProductoList.length <= 0){
+                elemento.imagenProductoList = [{idImagenProducto: 1, imagen: "sinimagen.jpg", esprincipal: 1, idProducto: 1} ];
+              }
               this.productList.push(elemento);
             });
           }
@@ -113,6 +123,25 @@ export class ProductListComponentS implements OnInit {
     });*/
   }
 
+
+CountProductsS() {
+
+  const x = this.productService.CountProducts()
+  .subscribe(
+    data => {
+
+        this.numeroProductos = 0;
+        if((<Respuesta>data).codigo=="OK"){
+          let cantidad  =   <number> (<Respuesta>data).cantidad;
+          this.numeroProductos = cantidad;
+          console.log(this.numeroProductos );
+        }
+    },
+    error => {
+    });
+
+}
+
   getAProductsS(t1:String, t2:String) {
     this.spinnerService.show();
     const x = this.productService.getProductsS(t1 ,t2)
@@ -120,9 +149,13 @@ export class ProductListComponentS implements OnInit {
       data => {
 
           this.productList = [];
-          if((<Respuesta>data).resultado=="OK"){
-            let productos = <Product> (<Respuesta>data).objeto;
+          if((<Respuesta2>data).codigo=="OK"){
+            let productos = <Product> (<Respuesta2>data).object;
+            if(productos.imagenProductoList.length <= 0){
+              productos.imagenProductoList = [{idImagenProducto: 1, imagen: "sinimagen.jpg", esprincipal: 1, idProducto: 1} ];
+            }
             this.producto = productos;
+
             console.log(this.producto);
           }
       },
