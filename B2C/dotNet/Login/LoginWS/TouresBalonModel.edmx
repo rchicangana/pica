@@ -22,9 +22,9 @@
           <Property Name="pais" Type="varchar" MaxLength="50" />
           <Property Name="departamento" Type="varchar" MaxLength="50" />
           <Property Name="ciudad" Type="varchar" MaxLength="50" />
-          <Property Name="tipodoc" Type="varbinary" MaxLength="10" />
+          <Property Name="tipodoc" Type="varchar" MaxLength="20" />
           <Property Name="identificacion" Type="varchar" MaxLength="30" />
-          <Property Name="idcliente" Type="int" />
+          <Property Name="idcliente" Type="varchar" MaxLength="10" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -32,24 +32,24 @@
       <Schema Namespace="touresbalonModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="touresbalonEntities2" p1:LazyLoadingEnabled="true">
           <EntitySet Name="usuarios" EntityType="touresbalonModel.usuarios" />
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombres" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="login" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="activo" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" Precision="0" />
           <Property Type="String" Name="pais" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="departamento" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ciudad" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Binary" Name="tipodoc" MaxLength="10" FixedLength="false" />
+          <Property Type="String" Name="tipodoc" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="identificacion" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idcliente" />
+          <Property Type="String" Name="idcliente" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -66,17 +66,17 @@
                 <ScalarProperty Name="ciudad" ColumnName="ciudad" />
                 <ScalarProperty Name="departamento" ColumnName="departamento" />
                 <ScalarProperty Name="pais" ColumnName="pais" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombres" ColumnName="nombres" />
-                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="activo" ColumnName="activo" />
                 <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

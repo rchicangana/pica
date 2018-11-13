@@ -42,7 +42,7 @@ namespace LoginWS
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "actualizarusuario")]
-        void actualizarUsuario(usuarios usuario);
+        ResponseData actualizarUsuario(usuarios usuario);
     }
 
     public class SampleContentTypeMapper : WebContentTypeMapper

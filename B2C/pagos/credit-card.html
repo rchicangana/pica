@@ -1,0 +1,1294 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" class="__meteor-css__" href="/ee1cfaf437ce24cdcf98bf733fc3a453b9723f25.css?meteor_css_resource=true">
+<title>Pasarela de pagos | ePayco</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+		<link rel="apple-touch-icon" sizes="57x57" href="/img/meta/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/img/meta/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/img/meta/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/img/meta/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/img/meta/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/img/meta/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/img/meta/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/img/meta/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/img/meta/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/img/meta/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/img/meta/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/img/meta/manifest.json">
+
+</head>
+<body>
+  <script type="text/javascript">__meteor_runtime_config__ = JSON.parse(decodeURIComponent("%7B%22meteorRelease%22%3A%22METEOR%401.7.1-beta.15%22%2C%22meteorEnv%22%3A%7B%22NODE_ENV%22%3A%22production%22%2C%22TEST_METADATA%22%3A%22%7B%7D%22%7D%2C%22PUBLIC_SETTINGS%22%3A%7B%22end_point_secure%22%3A%22https%3A%2F%2Fsecure.payco.co%22%2C%22route_response%22%3A%22%2Frestpagos%2Ftransaction%2Fresponse.json%22%2C%22route_upload%22%3A%22%2Frackspace%2Fupload_2.php%22%2C%22user_upload%22%3A%22admin%40payco.co%22%2C%22password_upload%22%3A%221b87d6e7ee5b431a9402a6bf6361eb9a%22%2C%22inactivity_time%22%3A1200000%2C%22key_pass_gtm%22%3A%5B%22479f29cc87cb26bdea89e873b5287784%22%2C%225d826960a9d14d019f70284f55ef639b%22%5D%7D%2C%22ROOT_URL%22%3A%22https%3A%2F%2Fsecure.epayco.co%22%2C%22ROOT_URL_PATH_PREFIX%22%3A%22%22%2C%22appId%22%3A%221xo19j21yd37du1kpknwl%22%2C%22autoupdateVersion%22%3A%22243213656b692f541df01513562ee5de88b49c17%22%2C%22autoupdateVersionRefreshable%22%3A%225343e27ea3a143107cd7b208d3527af088b0e917%22%2C%22autoupdateVersionCordova%22%3A%22none%22%2C%22isModern%22%3Atrue%7D"))</script>
+
+  <script type="text/javascript" src="/f71510638d9a38d46c747304de8e421ba6d3a3c5.js?meteor_js_resource=true"></script>
+
+
+
+<div id="__blaze-root"><div class="modal-cvv">
+		<div class="box-cvv">
+			<div class="col-sm-12">
+				<h3>¿Que es el CVV?</h3>
+			</div>
+			<div class="col-sm-12">
+				<p>Codigo de seguridad de 3 ó 4 Digitos encontrado en la parte de atras de tu tarjeta.</p>
+				<div class="img_card"></div>
+				<div class="col-sm-12">
+					<a class="btn btn-primary  btn-login" id="close-cvv">Ok</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="background-white standardcheckout">
+		
+  
+    
+    
+    
+    <div class="hidden-print">
+		
+    <div class="visible-print">
+      <div class="container">
+        <div class="col-sm-12">
+          <img class="img-logo" alt="" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/logos_clientes/11736_1482267755.png">
+       </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="col-sm-12">
+							<div class="navbar-header">
+								
+									
+									<img class="img-logo" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/logos_clientes/11736_1482267755.png" alt="">
+								
+							</div>
+							<div class="pull-right" style="position:relative">
+								<p class="pull-right selloheader hidden-xs">Pago seguro by <img src="/img/standard/logo_epayco_gris.png" alt=""></p>
+								<br>
+								<ul class="pull-right" style="margin-top: -5px">
+									<a class="languaje-set color pointer" data-language="es" style="font-weight: bold">ES</a> /
+									<a class="languaje-set color pointer" data-language="en">EN</a>
+									
+        
+            <div class="dropdown flagstandar fill-options-country">
+                <div data-toggle="dropdown">
+                    <!-- <img src="{{location.country_flag}}" width="20px"> -->
+                    <img src="/flags/4x3/co.svg" width="20px">
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </div>
+                <ul class="dropdown-menu country-list">
+                    
+                        <li class="load">
+                            <i class="fa fa-circle-o-notch fa-spin"></i>
+                        </li>
+                    
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+        
+    
+								</ul>
+							</div>
+            </div>
+        </div>
+    </nav>
+    </div>
+  
+  
+		
+			
+			
+			
+				<div class="container hidden-print">
+					<div class="row row-normalice">
+						<div class="col-xs-12">
+							<div class="card padding2">
+								<div class="pointer method col-xs-4 item inactiveitem activeitem">
+									<p class="margin50 center hidden-xs">
+										
+											<span class="number-cumbread checkstep">
+												<i class="fa fa-check" aria-hidden="true"></i>
+											</span>
+										
+										Selecciona el medio de pago
+									</p>
+									<p class="margin50 center visible-xs">
+										<span class="number-cumbread active">1</span>
+									</p>
+								</div>
+								<div class="col-xs-4 item activeitem">
+									<p class="margin50 center inactive hidden-xs">
+										
+											<span class="number-cumbread">2</span>
+										
+										Completa la información
+									</p>
+									<p class="margin50 center inactive visible-xs">
+										<span class="number-cumbread">2</span>
+									</p>
+								</div>
+								<div class="col-xs-4 item inactiveitem">
+									<p class="margin50 center hidden-xs">
+										
+											<span class="number-cumbread">3</span>
+										
+										 Confirmación
+									</p>
+									<p class="margin50 center inactive visible-xs">
+										<span class="number-cumbread">3</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			<div class="container">
+				<div class="row row-normalice">
+					<div class="col-lg-7 col-xs-12">
+						
+  
+    
+    
+    <div class="card">
+		
+
+		
+			<a class="pull-right pointer" id="home-methods">
+		<i class="fa fa-refresh" aria-hidden="true"></i> Cambiar medio de pago</a> <h3 class="principal-title">Información de la tarjeta</h3>
+	<hr>
+	<div class="col-sm-8 col-xs-12" style="padding:0">
+		<div id="alert-content" style="display:none">
+        
+    </div>
+		<form class="form-standar" id="credit-form">
+			<div class="input-form full-width">
+				
+        <span class="icon-person color icon-input"></span>
+        <input type="text" class="binding-input" placeholder="Nombre como aparece en la tarjeta" name="name" autocomplete="off">
+	
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="input-form normalinput graybgcards">
+				<img class="franqu" src="/img/standard/franquicias/visa.png" alt="">
+				<img class="franqu active" src="/img/standard/franquicias/master.png" alt="">
+				<img class="franqu" src="/img/standard/franquicias/american.png" alt="">
+				<img class="franqu" src="/img/standard/franquicias/diners.png" alt="">
+				<img class="franqu" src="/img/standard/franquicias/credencial.png" alt="">
+			</div>
+			<div class="clearfix"></div>
+			<div class="input-form full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+        <span class="icon-credit-card color icon-input"></span>
+        <input type="tel" class="binding-input" placeholder="Número de la tarjeta" name="card_number" id="card_number" autocomplete="off">
+        
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			
+
+
+	
+
+    
+
+    
+
+    
+
+    
+      
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			<div class="container visible-xs">
+			<div class="datelabel marp">
+				<p>Fecha de vencimiento</p>
+			</div>
+			<div class="cvvlabel marp">
+				<p>CVV/CVC</p>
+			</div>
+			<div class="cuotaslabel marp">
+				<p>Cuotas</p>
+			</div>
+			</div>
+			<div class="hidden-xs">
+			<div class="datelabel marp">
+				<p>Fecha de vencimiento</p>
+			</div>
+			<div class="cvvlabel marp">
+				<p>CVV/CVC</p>
+			</div>
+			<div class="cuotaslabel marp">
+				<p>Cuotas</p>
+			</div>
+			</div>
+			<div class="select-option bordergray date">
+				<div class="input-form full-width noborder monthcredit">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+    <span class="icon-date_range color icon-select"></span>
+    <!-- <select class="margin32 select binding-select" name="month">
+       <option value="">MM</option>
+       <option value="01">01</option>
+       <option value="02">02</option>
+       <option value="03">03</option>
+       <option value="04">04</option>
+       <option value="05">05</option>
+       <option value="06">06</option>
+       <option value="07">07</option>
+       <option value="08">08</option>
+       <option value="09">09</option>
+       <option value="10">10</option>
+       <option value="11">11</option>
+       <option value="12">12</option>
+   </select> -->
+    <input class="binding-input" id="month-value" name="month" placeholder="MM" maxlength="2" autocomplete="off">
+    
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+				</div>
+				<div class="" style="line-height:40px;float:left; width:10%; text-align:center">/</div>
+					<div class="input-form full-width normalinput noborder yearcredit">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+    <!-- <select class="binding-select select" name="year">
+	     <option value="">AAAA</option>
+	     <option value="2017">2017</option>
+	     <option value="2018">2018</option>
+	     <option value="2019">2019</option>
+	     <option value="2020">2020</option>
+	     <option value="2021">2021</option>
+	     <option value="2022">2022</option>
+	     <option value="2023">2023</option>
+	     <option value="2024">2024</option>
+	     <option value="2025">2025</option>
+	     <option value="2026">2026</option>
+	 </select> -->
+    <input class="binding-input" name="year" id="year-value" placeholder="AAAA" maxlength="4" autocomplete="off">
+    
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			</div>
+			<div class="input-form normalinput cvv full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+    <input type="password" placeholder="CVC" class="nomargin cvv_style binding-input" name="cvc" id="card_cvc" autocomplete="off">
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+				<i class="fa color fa-question-circle pointer" aria-hidden="true" style="right: 5px; padding: 0; top: 0;" id="look-cvv"></i>
+			</div>
+			<div class="select-option bordergray cuotas nomargin full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+    <select class="select binding-select" name="dues" style="width: 100%;">
+        <option value="">Cuotas</option>
+        <option value="01">1</option>
+        <option value="02">2</option>
+        <option value="03">3</option>
+        <option value="04">4</option>
+        <option value="05">5</option>
+        <option value="06">6</option>
+        <option value="07">7</option>
+        <option value="08">8</option>
+        <option value="09">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+    </select>
+    
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="clearfix"></div>
+			<div class="select-option selectdoc bordergray full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+        <select class="select selectdoc binding-input" name="type">
+        
+        <option value="CC">CC</option>
+        
+        <option value="NIT">NIT</option>
+        
+        <option value="CE">CE</option>
+        
+        <option value="TI">TI</option>
+        
+        <option value="PPN">PPN</option>
+        
+        <option value="SSN">SSN</option>
+        
+        <option value="LIC">LIC</option>
+        
+        <option value="DNI">DNI</option>
+        
+            </select>
+        
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="input-form normalinput inputdocs full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+        <input type="text" pattern="\d*" maxlength="20" placeholder="Número de Documento" class="nomargin inputdoc binding-input" name="number" autocomplete="off">
+        
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="clearfix"></div>
+			<div class="input-form normalinput full-width">
+				
+
+
+	
+
+    
+
+    
+        <input placeholder="Correo electrónico" class="binding-input" name="email" id="email_user" autocomplete="off">
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="input-form">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+    
+    
+        <div class="indicative pointer dropdown fill-options-country">
+            <div data-toggle="dropdown">
+                
+                    <div class="hide-ie flag flaginputphone flag-icon-background flag-icon-co"></div>
+                    <div class="indicative-user">+57</div>
+                
+            </div>
+            <ul class="dropdown-menu countryphone">
+                
+                    <li class="load">
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                    </li>
+                
+            </ul>
+        </div>
+    
+		<!-- <input type="tel" maxlength="{{maxLengthPhone}}" pattern="\d*" class="binding-input phonenter" name="telephone" x-autocompletetype="tel" value="{{infoInput this}}" placeholder="{{_ "phone"}}"> -->
+		<input type="tel" pattern="\d*" class="binding-input phonenter" name="telephone" x-autocompletetype="tel" placeholder="Número de móvil">
+		<div class="clearfix"></div>
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="input-form normalinput country full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+		
+        <select id="select-country" class="binding-input selectized" name="country" tabindex="-1" style="display: none;"><option value="CO" selected="selected">Colombia</option></select><div class="selectize-control binding-input single"><div class="selectize-input items has-options full has-items"><div data-value="CO" class="item">Colombia</div><input type="text" autocomplete="off" tabindex="" style="width: 4px; opacity: 0; position: absolute; left: -10000px;"></div><div class="selectize-dropdown single binding-input" style="display: none; width: 203px; top: 40px; left: 0px;"><div class="selectize-dropdown-content"><div data-value="AF" data-selectable="" class="option">Afghanistan</div><div data-value="AX" data-selectable="" class="option">Aringland Islands</div><div data-value="AL" data-selectable="" class="option">Albania</div><div data-value="DZ" data-selectable="" class="option">Algeria</div><div data-value="AS" data-selectable="" class="option">American Samoa</div><div data-value="AD" data-selectable="" class="option">Andorra</div><div data-value="AO" data-selectable="" class="option">Angola</div><div data-value="AI" data-selectable="" class="option">Anguilla</div><div data-value="AQ" data-selectable="" class="option">Antarctica</div><div data-value="AG" data-selectable="" class="option">Antigua and Barbuda</div><div data-value="AR" data-selectable="" class="option">Argentina</div><div data-value="AM" data-selectable="" class="option">Armenia</div><div data-value="AW" data-selectable="" class="option">Aruba</div><div data-value="AU" data-selectable="" class="option">Australia</div><div data-value="AT" data-selectable="" class="option">Austria</div><div data-value="AZ" data-selectable="" class="option">Azerbaijan</div><div data-value="BS" data-selectable="" class="option">Bahamas</div><div data-value="BH" data-selectable="" class="option">Bahrain</div><div data-value="BD" data-selectable="" class="option">Bangladesh</div><div data-value="BB" data-selectable="" class="option">Barbados</div><div data-value="BY" data-selectable="" class="option">Belarus</div><div data-value="BE" data-selectable="" class="option">Belgium</div><div data-value="BZ" data-selectable="" class="option">Belize</div><div data-value="BJ" data-selectable="" class="option">Benin</div><div data-value="BM" data-selectable="" class="option">Bermuda</div><div data-value="BT" data-selectable="" class="option">Bhutan</div><div data-value="BO" data-selectable="" class="option">Bolivia, Plurinational State of</div><div data-value="BA" data-selectable="" class="option">Bosnia and Herzegovina</div><div data-value="BW" data-selectable="" class="option">Botswana</div><div data-value="BV" data-selectable="" class="option">Bouvet Island</div><div data-value="BR" data-selectable="" class="option">Brazil</div><div data-value="IO" data-selectable="" class="option">British Indian Ocean Territory</div><div data-value="BN" data-selectable="" class="option">Brunei Darussalam</div><div data-value="BG" data-selectable="" class="option">Bulgaria</div><div data-value="BF" data-selectable="" class="option">Burkina Faso</div><div data-value="BI" data-selectable="" class="option">Burundi</div><div data-value="KH" data-selectable="" class="option">Cambodia</div><div data-value="CM" data-selectable="" class="option">Cameroon</div><div data-value="CA" data-selectable="" class="option">Canada</div><div data-value="CV" data-selectable="" class="option">Cape Verde</div><div data-value="KY" data-selectable="" class="option">Cayman Islands</div><div data-value="CF" data-selectable="" class="option">Central African Republic</div><div data-value="TD" data-selectable="" class="option">Chad</div><div data-value="CL" data-selectable="" class="option">Chile</div><div data-value="CN" data-selectable="" class="option">China</div><div data-value="CX" data-selectable="" class="option">Christmas Island</div><div data-value="CC" data-selectable="" class="option">Cocos (Keeling) Islands</div><div data-value="CO" data-selectable="" class="option selected">Colombia</div><div data-value="KM" data-selectable="" class="option">Comoros</div><div data-value="CG" data-selectable="" class="option">Congo</div><div data-value="CD" data-selectable="" class="option">Congo, the Democratic Republic of the</div><div data-value="CK" data-selectable="" class="option">Cook Islands</div><div data-value="CR" data-selectable="" class="option">Costa Rica</div><div data-value="CI" data-selectable="" class="option">C&amp;ocirc;te d'Ivoire</div><div data-value="HR" data-selectable="" class="option">Croatia</div><div data-value="CU" data-selectable="" class="option">Cuba</div><div data-value="CY" data-selectable="" class="option">Cyprus</div><div data-value="CZ" data-selectable="" class="option">Czech Republic</div><div data-value="DK" data-selectable="" class="option">Denmark</div><div data-value="DJ" data-selectable="" class="option">Djibouti</div><div data-value="DM" data-selectable="" class="option">Dominica</div><div data-value="DO" data-selectable="" class="option">Dominican Republic</div><div data-value="EC" data-selectable="" class="option">Ecuador</div><div data-value="EG" data-selectable="" class="option">Egypt</div><div data-value="SV" data-selectable="" class="option">El Salvador</div><div data-value="GQ" data-selectable="" class="option">Equatorial Guinea</div><div data-value="ER" data-selectable="" class="option">Eritrea</div><div data-value="EE" data-selectable="" class="option">Estonia</div><div data-value="ET" data-selectable="" class="option">Ethiopia</div><div data-value="FK" data-selectable="" class="option">Falkland Islands (Malvinas)</div><div data-value="FO" data-selectable="" class="option">Faroe Islands</div><div data-value="FJ" data-selectable="" class="option">Fiji</div><div data-value="FI" data-selectable="" class="option">Finland</div><div data-value="FR" data-selectable="" class="option">France</div><div data-value="GF" data-selectable="" class="option">French Guiana</div><div data-value="PF" data-selectable="" class="option">French Polynesia</div><div data-value="TF" data-selectable="" class="option">French Southern Territories</div><div data-value="GA" data-selectable="" class="option">Gabon</div><div data-value="GM" data-selectable="" class="option">Gambia</div><div data-value="GE" data-selectable="" class="option">Georgia</div><div data-value="DE" data-selectable="" class="option">Germany</div><div data-value="GH" data-selectable="" class="option">Ghana</div><div data-value="GI" data-selectable="" class="option">Gibraltar</div><div data-value="GR" data-selectable="" class="option">Greece</div><div data-value="GL" data-selectable="" class="option">Greenland</div><div data-value="GD" data-selectable="" class="option">Grenada</div><div data-value="GP" data-selectable="" class="option">Guadeloupe</div><div data-value="GU" data-selectable="" class="option">Guam</div><div data-value="GT" data-selectable="" class="option">Guatemala</div><div data-value="GG" data-selectable="" class="option">Guernsey</div><div data-value="GN" data-selectable="" class="option">Guinea</div><div data-value="GW" data-selectable="" class="option">Guinea-Bissau</div><div data-value="GY" data-selectable="" class="option">Guyana</div><div data-value="HT" data-selectable="" class="option">Haiti</div><div data-value="HM" data-selectable="" class="option">Heard Island and McDonald Islands</div><div data-value="VA" data-selectable="" class="option">Holy See (Vatican City State)</div><div data-value="HN" data-selectable="" class="option">Honduras</div><div data-value="HK" data-selectable="" class="option">Hong Kong</div><div data-value="HU" data-selectable="" class="option">Hungary</div><div data-value="IS" data-selectable="" class="option">Iceland</div><div data-value="IN" data-selectable="" class="option">India</div><div data-value="code" data-selectable="" class="option">Indonesia</div><div data-value="IR" data-selectable="" class="option">Iran, Islamic Republic of</div><div data-value="IQ" data-selectable="" class="option">Iraq</div><div data-value="IE" data-selectable="" class="option">Ireland</div><div data-value="IM" data-selectable="" class="option">Isle of Man</div><div data-value="IL" data-selectable="" class="option">Israel</div><div data-value="IT" data-selectable="" class="option">Italy</div><div data-value="JM" data-selectable="" class="option">Jamaica</div><div data-value="JP" data-selectable="" class="option">Japan</div><div data-value="JE" data-selectable="" class="option">Jersey</div><div data-value="JO" data-selectable="" class="option">Jordan</div><div data-value="KZ" data-selectable="" class="option">Kazakhstan</div><div data-value="KE" data-selectable="" class="option">Kenya</div><div data-value="KI" data-selectable="" class="option">Kiribati</div><div data-value="KP" data-selectable="" class="option">Korea, Democratic People's Republic of</div><div data-value="KR" data-selectable="" class="option">Korea, Republic of</div><div data-value="KW" data-selectable="" class="option">Kuwait</div><div data-value="KG" data-selectable="" class="option">Kyrgyzstan</div><div data-value="LA" data-selectable="" class="option">Lao People's Democratic Republic</div><div data-value="LV" data-selectable="" class="option">Latvia</div><div data-value="LB" data-selectable="" class="option">Lebanon</div><div data-value="LS" data-selectable="" class="option">Lesotho</div><div data-value="LR" data-selectable="" class="option">Liberia</div><div data-value="LY" data-selectable="" class="option">Libyan Arab Jamahiriya</div><div data-value="LI" data-selectable="" class="option">Liechtenstein</div><div data-value="LT" data-selectable="" class="option">Lithuania</div><div data-value="LU" data-selectable="" class="option">Luxembourg</div><div data-value="MO" data-selectable="" class="option">Macao</div><div data-value="MK" data-selectable="" class="option">Macedonia, the former Yugoslav Republic of</div><div data-value="MG" data-selectable="" class="option">Madagascar</div><div data-value="MW" data-selectable="" class="option">Malawi</div><div data-value="MY" data-selectable="" class="option">Malaysia</div><div data-value="MV" data-selectable="" class="option">Maldives</div><div data-value="ML" data-selectable="" class="option">Mali</div><div data-value="MT" data-selectable="" class="option">Malta</div><div data-value="MH" data-selectable="" class="option">Marshall Islands</div><div data-value="MQ" data-selectable="" class="option">Martinique</div><div data-value="MR" data-selectable="" class="option">Mauritania</div><div data-value="MU" data-selectable="" class="option">Mauritius</div><div data-value="YT" data-selectable="" class="option">Mayotte</div><div data-value="MX" data-selectable="" class="option">Mexico</div><div data-value="FM" data-selectable="" class="option">Micronesia, Federated States of</div><div data-value="MD" data-selectable="" class="option">Moldova, Republic of</div><div data-value="MC" data-selectable="" class="option">Monaco</div><div data-value="MN" data-selectable="" class="option">Mongolia</div><div data-value="ME" data-selectable="" class="option">Montenegro</div><div data-value="MS" data-selectable="" class="option">Montserrat</div><div data-value="MA" data-selectable="" class="option">Morocco</div><div data-value="MZ" data-selectable="" class="option">Mozambique</div><div data-value="MM" data-selectable="" class="option">Myanmar</div><div data-value="NA" data-selectable="" class="option">Namibia</div><div data-value="NR" data-selectable="" class="option">Nauru</div><div data-value="NP" data-selectable="" class="option">Nepal</div><div data-value="NL" data-selectable="" class="option">Netherlands</div><div data-value="AN" data-selectable="" class="option">Netherlands Antilles</div><div data-value="NC" data-selectable="" class="option">New Caledonia</div><div data-value="NZ" data-selectable="" class="option">New Zealand</div><div data-value="NI" data-selectable="" class="option">Nicaragua</div><div data-value="NE" data-selectable="" class="option">Niger</div><div data-value="NG" data-selectable="" class="option">Nigeria</div><div data-value="NU" data-selectable="" class="option">Niue</div><div data-value="NF" data-selectable="" class="option">Norfolk Island</div><div data-value="MP" data-selectable="" class="option">Northern Mariana Islands</div><div data-value="NO" data-selectable="" class="option">Norway</div><div data-value="OM" data-selectable="" class="option">Oman</div><div data-value="PK" data-selectable="" class="option">Pakistan</div><div data-value="PW" data-selectable="" class="option">Palau</div><div data-value="PS" data-selectable="" class="option">Palestinian Territory, Occupied</div><div data-value="PA" data-selectable="" class="option">Panama</div><div data-value="PG" data-selectable="" class="option">Papua New Guinea</div><div data-value="PY" data-selectable="" class="option">Paraguay</div><div data-value="PE" data-selectable="" class="option">Peru</div><div data-value="PH" data-selectable="" class="option">Philippines</div><div data-value="PN" data-selectable="" class="option">Pitcairn</div><div data-value="PL" data-selectable="" class="option">Poland</div><div data-value="PT" data-selectable="" class="option">Portugal</div><div data-value="PR" data-selectable="" class="option">Puerto Rico</div><div data-value="QA" data-selectable="" class="option">Qatar</div><div data-value="RE" data-selectable="" class="option">R&amp;eacute;union</div><div data-value="RO" data-selectable="" class="option">Romania</div><div data-value="RU" data-selectable="" class="option">Russian Federation</div><div data-value="RW" data-selectable="" class="option">Rwanda</div><div data-value="BL" data-selectable="" class="option">Saint Barth&amp;eacute;lemy</div><div data-value="SH" data-selectable="" class="option">Saint Helena, Ascension and Tristan da Cunha</div><div data-value="KN" data-selectable="" class="option">Saint Kitts and Nevis</div><div data-value="LC" data-selectable="" class="option">Saint Lucia</div><div data-value="MF" data-selectable="" class="option">Saint Martin (French part)</div><div data-value="PM" data-selectable="" class="option">Saint Pierre and Miquelon</div><div data-value="VC" data-selectable="" class="option">Saint Vincent and the Grenadines</div><div data-value="WS" data-selectable="" class="option">Samoa</div><div data-value="SM" data-selectable="" class="option">San Marino</div><div data-value="ST" data-selectable="" class="option">Sao Tome and Principe</div><div data-value="SA" data-selectable="" class="option">Saudi Arabia</div><div data-value="SN" data-selectable="" class="option">Senegal</div><div data-value="RS" data-selectable="" class="option">Serbia</div><div data-value="SC" data-selectable="" class="option">Seychelles</div><div data-value="SL" data-selectable="" class="option">Sierra Leone</div><div data-value="SG" data-selectable="" class="option">Singapore</div><div data-value="SK" data-selectable="" class="option">Slovakia</div><div data-value="SI" data-selectable="" class="option">Slovenia</div><div data-value="SB" data-selectable="" class="option">Solomon Islands</div><div data-value="SO" data-selectable="" class="option">Somalia</div><div data-value="ZA" data-selectable="" class="option">South Africa</div><div data-value="GS" data-selectable="" class="option">South Georgia and the South Sandwich Islands</div><div data-value="ES" data-selectable="" class="option">Spain</div><div data-value="LK" data-selectable="" class="option">Sri Lanka</div><div data-value="SD" data-selectable="" class="option">Sudan</div><div data-value="SR" data-selectable="" class="option">Suriname</div><div data-value="SJ" data-selectable="" class="option">Svalbard and Jan Mayen</div><div data-value="SZ" data-selectable="" class="option">Swaziland</div><div data-value="SE" data-selectable="" class="option">Sweden</div><div data-value="CH" data-selectable="" class="option">Switzerland</div><div data-value="SY" data-selectable="" class="option">Syrian Arab Republic</div><div data-value="TW" data-selectable="" class="option">Taiwan, Province of China</div><div data-value="TJ" data-selectable="" class="option">Tajikistan</div><div data-value="TZ" data-selectable="" class="option">Tanzania, United Republic of</div><div data-value="TH" data-selectable="" class="option">Thailand</div><div data-value="TL" data-selectable="" class="option">Timor-Leste</div><div data-value="TG" data-selectable="" class="option">Togo</div><div data-value="TK" data-selectable="" class="option">Tokelau</div><div data-value="TO" data-selectable="" class="option">Tonga</div><div data-value="TT" data-selectable="" class="option">Trincodead and Tobago</div><div data-value="TN" data-selectable="" class="option">Tunisia</div><div data-value="TR" data-selectable="" class="option">Turkey</div><div data-value="TM" data-selectable="" class="option">Turkmenistan</div><div data-value="TC" data-selectable="" class="option">Turks and Caicos Islands</div><div data-value="TV" data-selectable="" class="option">Tuvalu</div><div data-value="UG" data-selectable="" class="option">Uganda</div><div data-value="UA" data-selectable="" class="option">Ukraine</div><div data-value="AE" data-selectable="" class="option">United Arab Emirates</div><div data-value="GB" data-selectable="" class="option">United Kingdom</div><div data-value="US" data-selectable="" class="option">United States</div><div data-value="UM" data-selectable="" class="option">United States Minor Outlying Islands</div><div data-value="UY" data-selectable="" class="option">Uruguay</div><div data-value="UZ" data-selectable="" class="option">Uzbekistan</div><div data-value="VU" data-selectable="" class="option">Vanuatu</div><div data-value="VE" data-selectable="" class="option">Venezuela, Bolivarian Republic of</div><div data-value="VN" data-selectable="" class="option">Viet Nam</div><div data-value="VG" data-selectable="" class="option">Virgin Islands, British</div><div data-value="VI" data-selectable="" class="option">Virgin Islands, U.S.</div><div data-value="WF" data-selectable="" class="option">Wallis and Futuna</div><div data-value="EH" data-selectable="" class="option">Western Sahara</div><div data-value="YE" data-selectable="" class="option">Yemen</div><div data-value="ZM" data-selectable="" class="option">Zambia</div><div data-value="ZW" data-selectable="" class="option">Zimbabwe</div></div></div></div>
+        
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="input-form normalinput city full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+    <input class="binding-input" placeholder="Ciudad" name="city" autocomplete="off">
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="clearfix"></div>
+			<div class="input-form normalinput full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+    <input class="binding-input" placeholder="Dirección" name="address" autocomplete="off">
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+    
+			</div>
+			<div class="full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+		    <input type="checkbox" name="save_card" id="save_card">
+		    <label for="save_card">Guardar mis datos para futuros pagos a un clic</label>
+		
+
+		
+
+    
+			</div>
+			<div class="clearfix"></div>
+			<div class="full-width">
+				
+
+
+	
+
+    
+
+    
+
+    
+
+    
+
+		<!-- {{#if $eq type 'span_franc'}}
+    <span id="display-frans" class="carderror" style="display: none">Franquicia <b>{{name}}</b> no aceptada por el comercio</span>
+		{{/if}} -->
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+    
+
+		
+
+		
+
+		
+
+		
+
+		
+            <input type="checkbox" name="terms" id="terms">
+            <label for="terms">Acepto los</label> <a class="view-modal pointer" data-modal="terms"> Términos y condiciones </a>
+        
+
+		
+
+		
+
+    
+			</div>
+			<div class="clearfix"></div>
+			<div class="call_action bgcolor white_font pointer load hidden-print" id="send-form">
+		
+			
+				<h2>Continuar </h2>
+			
+		
+	</div>
+		</form>
+	</div>
+	
+		<div class="col-sm-4 hidden-xs center">
+				
+						<img src="/img/standard/shield.svg" width="100px" alt="">
+				
+				
+				
+				
+				
+				<p class="graytext"> <br>Paga de forma segura, tu información esta protegida por ePayco </p>
+		</div>
+	
+			<script type="text/javascript">
+				$('input[name=name]').focus();
+			</script>
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+	</div>
+
+	
+
+	
+  
+  
+						
+							
+								
+									<a class="pointer redirect-to-commerce" data-redirect="epayco.co">Cancelar
+										 Regresar THE BEST ECOMMERCE S.A.S
+									</a>
+								
+							
+						
+					</div>
+					
+						
+							<div class="col-lg-offset-1 col-xs-12 col-lg-4 hidden-print">
+								<div class="card-nopadding resumen">
+									<div class="card-padding">
+										<h2>TU COMPRA</h2>
+										<p>Vestido Mujer Primavera</p>
+										<hr class="dotted">
+										<p class="gray">Subtotal
+											<span class="pull-right text-right"> $50,000.00 COP
+												</span>
+										</p>
+										<p class="gray">Impuestos
+											<span class="pull-right text-right"> $0.00 COP </span>
+										</p>
+										<p>Total
+											<span class="pull-right text-right">$50,000.00 COP </span>
+										</p>
+									</div>
+									<div class="graybg">
+										<div class="card-padding">
+											<h2>¿PREGUNTAS AL COMERCIO?</h2>
+											
+												<p>Comercio
+													<span class="pull-right text-right">THE BEST ECOMMERCE S.A.S</span>
+												</p>
+											
+											
+												<p>Llámanos
+													<span class="pull-right text-right"> +57-4484952 </span>
+												</p>
+											
+											
+												<p>Escríbenos
+													<span class="pull-right text-right"> logs@payco.co </span>
+												</p>
+											
+											
+												<p>epayco.co</p>
+											
+										</div>
+									</div>
+								</div>
+								<div class="card resumen seals hidden-print">
+									<h2>PAGO SEGURO</h2>
+									<a class="pointer" onclick="window.open('https://www.sitelock.com/verify.php?site=secure.epayco.co','SiteLock','width=600,height=600,left=160,top=170');">
+										<img class="img-responsive" alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/secure.epayco.co">
+									</a>
+									<a class="pointer" tabindex="-1" href="https://smarticon.geotrust.com/smarticonprofile?Referer=https://secure.epayco.co" onclick="return gt__md();" target="GT__SIP">
+										<img name="uiecexqo" height="55" width="115" border="0" src="//smarticon.geotrust.com/smarticon?ref=secure.epayco.co" alt="Haga clic para ver el perfil de empresa" oncontextmenu="return false;">
+									</a>
+								</div>
+							</div>
+						
+					
+				</div>
+			</div>
+		
+		
+  
+    
+    
+    
+    <footer class="hidden-print">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<p>Todos los derechos reservados © ePayco 2011 - 2018</p>
+				</div>
+				<div class="col-lg-6">
+					<a class="view-modal pointer pull-right left15" data-modal="terms">Términos y condiciones</a>
+					<a class="view-modal pointer pull-right" data-modal="privacy">Políticas de Privacidad</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+        
+    
+
+    
+  
+  
+	</div></div></body>
+	</html>

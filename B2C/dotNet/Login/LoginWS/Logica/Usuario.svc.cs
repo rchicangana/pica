@@ -45,9 +45,9 @@ namespace LoginWS
             return this.usuDAO.crearUsuario(usuario);
         }
 
-        public void actualizarUsuario(usuarios usuario)
+        public ResponseData actualizarUsuario(usuarios usuario)
         {
-            this.usuDAO.actualizarUsuario(usuario);
+            return this.usuDAO.actualizarUsuario(usuario);
         }
      }
 }

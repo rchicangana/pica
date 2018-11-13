@@ -13,4 +13,3 @@ D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\bin\Newtonsoft
 D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\bin\EntityFramework.xml
 D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\obj\Debug\LoginWS.dll
 D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\obj\Debug\LoginWS.pdb
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Login\LoginWS\obj\Debug\LoginWS.csprojResolveAssemblyReference.cache

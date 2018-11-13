@@ -34,7 +34,7 @@ export class UserService {
   updateUser(usuario: Usuario) {
     let usuarioJson = JSON.stringify(usuario);   
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.put(this.apiUrl+'/actualizarusuario', usuarioJson, { headers });
+    return this.http.post(this.apiUrl+'/actualizarusuario', usuarioJson, { headers });
   }
 
   setLocation(lat, lon) {

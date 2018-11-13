@@ -54,6 +54,7 @@ namespace LoginWS.DAO
                     {
                         usuario.ciudad = "";
                     }
+
                     this.context.usuarios.Add(usuario);
                     this.context.SaveChanges();
                     respuesta.mensaje = "Usuario creado con exito";
@@ -72,15 +73,33 @@ namespace LoginWS.DAO
             return respuesta;
         }
 
-        public void actualizarUsuario(usuarios usuario) { 
-            var consulta = (from usu in this.context.usuarios
+        public ResponseData actualizarUsuario(usuarios usuario)
+        { 
+            ResponseData respuesta = new ResponseData();
+            try {  
+                var consulta = (from usu in this.context.usuarios
                             where usu.id == usuario.id
                             select usu).First();
-            consulta.nombres = usuario.nombres;
-            consulta.apellidos = usuario.apellidos;
-            consulta.login = usuario.login;
-            consulta.password = usuario.password;
-            this.context.SaveChanges();
+                consulta.nombres = usuario.nombres;
+                consulta.apellidos = usuario.apellidos;
+                consulta.login = usuario.login;
+                consulta.password = usuario.password;
+                consulta.idcliente = usuario.idcliente;
+                consulta.pais = usuario.pais;
+                consulta.ciudad = usuario.ciudad;
+                consulta.tipodoc = usuario.tipodoc;
+                consulta.identificacion = usuario.identificacion;
+
+                this.context.SaveChanges();
+                respuesta.mensaje = "Usuario actualizado con exito";
+                respuesta.resultado = "OK";
+            }
+            catch (Exception ex)
+            {
+                respuesta.mensaje = ex.ToString();
+                respuesta.resultado = "Fallido";
+            }
+            return respuesta;
         }
 
         public ResponseData consulta(string loginUsuario, string password)

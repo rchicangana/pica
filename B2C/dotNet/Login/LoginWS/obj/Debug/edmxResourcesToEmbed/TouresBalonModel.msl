@@ -10,13 +10,13 @@
           <ScalarProperty Name="ciudad" ColumnName="ciudad" />
           <ScalarProperty Name="departamento" ColumnName="departamento" />
           <ScalarProperty Name="pais" ColumnName="pais" />
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="nombres" ColumnName="nombres" />
-          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-          <ScalarProperty Name="login" ColumnName="login" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="activo" ColumnName="activo" />
           <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
