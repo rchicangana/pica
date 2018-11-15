@@ -19,6 +19,8 @@ export class ProductListComponent implements OnInit {
   brands = ["Todos", "Futbol", "Ciclisto", "Olimpicos", "Boxeo", "Tenis"];
 
   selectedBrand: "All";
+  numeroProductos:number;
+
 
   page = 1;
   constructor(
@@ -28,12 +30,25 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAllProducts();
+
+    this.numeroProductos = 1000000 //this.CountProductsS();
+
+this.getPage(1);
+    // this.getAllProducts();
   }
 
-  getAllProducts() {
+  getPage(p:number) {
+    this.page=p;
+    console.log(p);
+
+    let cantidad = this.CountProducts();
+
+    console.log("CountProducts()"+this.CountProducts());
+    console.log(this.numeroProductos);
+
+
     this.spinnerService.show();
-    const x = this.productService.getProducts()
+    const x = this.productService.getProducts(p)
     .subscribe(
       data => {
           this.productList = [];
@@ -60,5 +75,25 @@ export class ProductListComponent implements OnInit {
     this.productService.addToCart(product);
   }
 
-  
+
+  CountProducts() {
+
+    const x = this.productService.CountProducts()
+    .subscribe(
+      data => {
+
+          this.numeroProductos = 0;
+          if((<Respuesta2>data).codigo=="OK"){
+            let cantidad  =   <number> (<Respuesta2>data).cantidad;
+            this.numeroProductos = cantidad;
+            console.log("numeroproductos"+this.numeroProductos );
+          }
+      },
+      error => {
+      });
+
+  }
+
+
+
 }

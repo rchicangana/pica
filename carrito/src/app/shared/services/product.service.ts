@@ -44,28 +44,49 @@ export class ProductService {
 
  CountProducts(){
   const headers = new HttpHeaders({'Content-Type': 'application/json'});
-  return this.http.get(this.apiUrl+'/Buscar/0/0', { headers });
+console.log("CountProducts URL:"+this.apiUrl3+'/Buscar/0/0');
+  return this.http.get(this.apiUrl3+'/buscar/0/0', { headers });
 }
 
 
+CountProductsS( termino?:String){
 
-  getProducts() {
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  const perPage = 10;
+  const start = 0;
+  const end = start + perPage;
+  console.log(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino+'******');
+  return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
+
+}
+
+
+  getProducts(pagina?:number) {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.get(this.apiUrl+'/Buscar/0/100', { headers });
+    const perPage = 10;
+    const start = (pagina - 1) * perPage;
+    const end = start + perPage;
+    return this.http.get(this.apiUrl+'/Buscar/'+start+'/'+perPage+'/', { headers });
+
+
   }
 
-  getProductsS( tipo?:String, termino?:String ) {
+  getProductsS( tipo?:String, termino?:String, pagina?:number ) {
+        const perPage = 10;
+        const start = (pagina - 1) * perPage;
+        const end = start + perPage;
+
    const headers = new HttpHeaders({'Content-Type': 'application/json'});
    //return this.http.get(this.apiUrl+'/productos', { headers });
  console.log ('captura del tipo:'+tipo+' y termino'+termino)
  if (tipo == 'D'){
  if ( termino == '*'){
-     console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
-   return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/*', { headers });
+     console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*');
+   return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*', { headers });
    }
    else {
-     console.log (this.apiUrl+'/ConsultarDesc/0/100/'+termino);
-   return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
+     console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino);
+   return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
    }
  }
  else if (tipo == 'C'){
@@ -82,12 +103,12 @@ export class ProductService {
  }
  if (tipo == 'P'){
  if ( termino == '*'){
-       console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
-     return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/*', { headers });
+       console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*');
+     return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*', { headers });
      }
      else {
-       console.log (this.apiUrl+'/ConsultarDesc/0/100/'+termino);
-     return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
+       console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+end+'/'+termino);
+     return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
      }
    }
 

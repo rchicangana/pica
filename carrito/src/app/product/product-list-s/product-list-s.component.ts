@@ -8,6 +8,8 @@ import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner
 //dj router para capturar el parametro
 import { ActivatedRoute } from '@angular/router';
 
+
+
 @Component({
   selector: "app-product-list-s",
   templateUrl: "./product-list-s.component.html",
@@ -23,6 +25,7 @@ export class ProductListComponentS implements OnInit {
   selectedBrand: "All";
   tipo:string;
   numeroProductos:number;
+  numeroProductosS:number;
 
 
   page = 1;
@@ -39,16 +42,22 @@ export class ProductListComponentS implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit(){
+    this.getPage(1);
+    this.numeroProductosS = 10 //this.CountProductsS();
+    console.log('CANTIDAD EN EL ONINIT SSS:'+ this.numeroProductosS);
+  }
+
+  getPage(p:number){
     //this.getAllProducts();
-
+this.page=p;
     //DJ Inicio
-
+console.log(p);
 
         this.activatedRoute.params.subscribe( params => {
         this.tipo= params['tipo'];
-        console.log('este es el tipo del tipo'+this.tipo);
-        let cantidad = this.CountProductsS();
+        console.log('este es el tipo del tipo sss'+this.tipo);
+        let cantidad = this.CountProductsS(params['termino']);
         console.log(cantidad);
 
 
@@ -58,10 +67,10 @@ export class ProductListComponentS implements OnInit {
     {
               if (typeof params['termino'] === 'undefined' )
               {
-                this.getAllProductsS("D","*");
+                this.getAllProductsS("D","*",this.page);
                 }
                 else{
-                  this.getAllProductsS( params['tipo'], params['termino']);
+                  this.getAllProductsS( params['tipo'], params['termino'],this.page);
                 }
     }
     else if ( params['tipo'] == 'C' ){
@@ -80,10 +89,10 @@ export class ProductListComponentS implements OnInit {
 
       if (typeof params['termino'] === 'undefined' )
       {
-        this.getAllProductsS("P","*");
+        this.getAllProductsS("P","*",this.page);
         }
         else{
-          this.getAllProductsS( params['tipo'], params['termino']);
+          this.getAllProductsS( params['tipo'], params['termino'],this.page);
         }
     }
 
@@ -92,9 +101,9 @@ export class ProductListComponentS implements OnInit {
 
   }
 
-  getAllProductsS(t1:String, t2:String) {
+  getAllProductsS(t1:String, t2:String, p:number ) {
     this.spinnerService.show();
-    const x = this.productService.getProductsS(t1 ,t2)
+    const x = this.productService.getProductsS(t1 ,t2, p)
     .subscribe(
       data => {
 
@@ -124,23 +133,24 @@ export class ProductListComponentS implements OnInit {
   }
 
 
-CountProductsS() {
+  CountProductsS(t?:string) {
 
-  const x = this.productService.CountProducts()
-  .subscribe(
-    data => {
+    const x = this.productService.CountProductsS(t)
+    .subscribe(
+      data => {
 
-        this.numeroProductos = 0;
-        if((<Respuesta>data).codigo=="OK"){
-          let cantidad  =   <number> (<Respuesta>data).cantidad;
-          this.numeroProductos = cantidad;
-          console.log(this.numeroProductos );
-        }
-    },
-    error => {
-    });
+          this.numeroProductosS = 0;
+          if((<Respuesta2>data).codigo=="OK"){
+            let cantidad  =   <number> (<Respuesta2>data).cantidad;
+            this.numeroProductosS = cantidad;
+            console.log("numeroproductosS"+this.numeroProductosS );
+          }
+      },
+      error => {
+      });
 
-}
+  }
+
 
   getAProductsS(t1:String, t2:String) {
     this.spinnerService.show();
@@ -172,6 +182,7 @@ CountProductsS() {
       });
     });*/
   }
+
 
 
 
