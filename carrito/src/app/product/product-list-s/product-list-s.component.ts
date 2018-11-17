@@ -5,7 +5,6 @@ import { Respuesta, Respuesta2 } from '../../shared/models/respuesta';
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
 import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
-//dj router para capturar el parametro
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -21,25 +20,18 @@ export class ProductListComponentS implements OnInit {
   mensaje : Mensaje;
   respuesta : Respuesta;
   brands = ["Todos", "Futbol", "Ciclisto", "Olimpicos", "Boxeo", "Tenis"];
-
   selectedBrand: "All";
   tipo:string;
   numeroProductos:number;
   numeroProductosS:number;
 
-
   page = 1;
   constructor(
-    //dj Inicio
     private activatedRoute:ActivatedRoute,
-    //dj fin
-
     public authService: AuthService,
     private productService: ProductService,
     private spinnerService: LoaderSpinnerService
   ) {
-
-
   }
 
   ngOnInit(){
@@ -60,9 +52,6 @@ console.log(p);
         let cantidad = this.CountProductsS(params['termino']);
         console.log(cantidad);
 
-
-
-
     if ( params['tipo'] == 'D' )
     {
               if (typeof params['termino'] === 'undefined' )
@@ -82,8 +71,6 @@ console.log(p);
         else{
           this.getAProductsS( params['tipo'], params['termino']);
         }
-
-
     }
     else if ( params['tipo'] == 'P' ){
 
@@ -95,10 +82,7 @@ console.log(p);
           this.getAllProductsS( params['tipo'], params['termino'],this.page);
         }
     }
-
-            })
-        //dj fin
-
+    })
   }
 
   getAllProductsS(t1:String, t2:String, p:number ) {
@@ -120,16 +104,6 @@ console.log(p);
       },
       error => {
       });
-    /*x.snapshotChanges()
-    .subscribe(product => {
-      this.spinnerService.hide();
-      this.productList = [];
-      product.forEach(element => {
-        const y = element.payload.toJSON();
-        y["$key"] = element.key;
-        this.productList.push(y as Product);
-      });
-    });*/
   }
 
 
@@ -171,16 +145,6 @@ console.log(p);
       },
       error => {
       });
-    /*x.snapshotChanges()
-    .subscribe(product => {
-      this.spinnerService.hide();
-      this.productList = [];
-      product.forEach(element => {
-        const y = element.payload.toJSON();
-        y["$key"] = element.key;
-        this.productList.push(y as Product);
-      });
-    });*/
   }
 
 

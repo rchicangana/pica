@@ -16,25 +16,10 @@
         </div>
     </div>
     <div class="row">
-        <!-- <div class="col-md-3">
-            <div class="form-group">
-                <label for="brand_select">Por Categor&iacute;as:</label>
-                <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
-          <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
-        </select>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item">Mundiales</li>
-                <li class="list-group-item">ol&iacute;mpicos</li>
-                <li class="list-group-item">Torneos Locales</li>
-            </ul>
-        </div> -->
         <div class="col-md-9">
 
             <div class="container">
                 <div class="row" *ngIf="tipo == 'D'">
-
-
                     <!-- List of Products -->
                                         <!-- <div class="col-sm-4 mb-2"  *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }"> -->
                     <div class="col-sm-4 mb-2"  *ngFor="let product of productList | paginate: { itemsPerPage: 10, currentPage: page , totalItems: numeroProductosS}">
@@ -60,8 +45,8 @@
                                         </a>
                                         <p class="card-title">
                                             <strong>
-                        <a [routerLink]="['/products/product', product.idProducto]" routerLinkActive="router-link-active">{{ product.nombreProducto}}</a>
-                      </strong>
+                                        <a [routerLink]="['/products/product', product.idProducto]" routerLinkActive="router-link-active">{{ product.nombreProducto}}</a>
+                                        </strong>
                                         </p>
                                         <!--Description-->
                                         <p class="card-text">{{ product.descripcion }}
@@ -70,13 +55,7 @@
                                         <div class="card-footer">
                                             <!--<span class="left">{{ product.productPrice }} $</span>-->
                                             <span class="right">
-                        <!--<a placement="top" mdbTooltip="Agregar a Carrito" container="body" (click)="addToCart(product)">
-                          <i class="fa fa-shopping-cart"></i>
-                        </a>
-                        <a placement="top" mdbTooltip="Quitar Producto" container="body" *ngIf="authService.isAdmin()" (click)="removeProduct(product.$key)">
-                          <i class="fa fa-trash"></i>
-                        </a>-->
-                      </span>
+                                            </span>
                                         </div>
 
                                     </div>
@@ -90,8 +69,6 @@
                     </div>
                 </div>
                 <div class="row" *ngIf="tipo == 'P'">
-
-
                     <!-- List of Products -->
                     <div class="col-sm-4 mb-2"  *ngFor="let product of productList | paginate: { itemsPerPage: 10, currentPage: page , totalItems: numeroProductosS}">
                         <div class="item">
@@ -116,8 +93,8 @@
                                         </a>
                                         <p class="card-title">
                                             <strong>
-                        <a [routerLink]="['/products/product', product.idProducto]" routerLinkActive="router-link-active">{{ product.nombreProducto}}</a>
-                      </strong>
+                                            <a [routerLink]="['/products/product', product.idProducto]" routerLinkActive="router-link-active">{{ product.nombreProducto}}</a>
+                                        </strong>
                                         </p>
                                         <!--Description-->
                                         <p class="card-text">{{ product.descripcion }}
@@ -126,21 +103,12 @@
                                         <div class="card-footer">
                                             <!--<span class="left">{{ product.productPrice }} $</span>-->
                                             <span class="right">
-                        <!--<a placement="top" mdbTooltip="Agregar a Carrito" container="body" (click)="addToCart(product)">
-                          <i class="fa fa-shopping-cart"></i>
-                        </a>
-                        <a placement="top" mdbTooltip="Quitar Producto" container="body" *ngIf="authService.isAdmin()" (click)="removeProduct(product.$key)">
-                          <i class="fa fa-trash"></i>
-                        </a>-->
-                      </span>
+                                            </span>
                                         </div>
-
                                     </div>
                                     <!--/.Card content-->
-
                                 </div>
-                                <!--/.Card-->
-
+                                <!--/Card-->
                             </div>
                         </div>
                     </div>
@@ -148,7 +116,7 @@
                 <div class="row" *ngIf="tipo == 'C'">
 
                     <!-- List of Products -->
-                    <div class="col-sm-4 mb-2"  >
+                    <div class="col-sm-4 mb-2">
                         <div class="item">
                             <div class=" mb-r">
                                 <!--Card-->
@@ -167,35 +135,23 @@
                                     <div class="card-body text-center no-padding">
                                         <!--Category & Title-->
                                         <a class="text-muted">
-                                            <h5>{{ producto.idProducto.nombre}}</h5>
+                                            <h5>{{ producto.nombreProducto}}</h5>
                                         </a>
                                         <p class="card-title">
                                             <strong>
-                        <a [routerLink]="['/products/product', producto.idProducto]" routerLinkActive="router-link-active">{{ producto.nombreProducto}}</a>
-                      </strong>
+                                        <a [routerLink]="['/products/product', producto.idProducto]" routerLinkActive="router-link-active">{{ producto.nombreProducto}}</a>
+                                        </strong>
                                         </p>
                                         <!--Description-->
                                         <p class="card-text">{{ producto.descripcion }}
                                         </p>
                                         <!--Card footer-->
                                         <div class="card-footer">
-                                            <!--<span class="left">{{ product.productPrice }} $</span>-->
                                             <span class="right">
-                        <!--<a placement="top" mdbTooltip="Agregar a Carrito" container="body" (click)="addToCart(product)">
-                          <i class="fa fa-shopping-cart"></i>
-                        </a>
-                        <a placement="top" mdbTooltip="Quitar Producto" container="body" *ngIf="authService.isAdmin()" (click)="removeProduct(product.$key)">
-                          <i class="fa fa-trash"></i>
-                        </a>-->
-                      </span>
+                                            </span>
                                         </div>
-
                                     </div>
-                                    <!--/.Card content-->
-
                                 </div>
-                                <!--/.Card-->
-
                             </div>
                         </div>
                     </div>
@@ -211,7 +167,6 @@
 
                 </div>
             </div>
-            <!--/.Card-->
         </div>
     </div>
 </div>
