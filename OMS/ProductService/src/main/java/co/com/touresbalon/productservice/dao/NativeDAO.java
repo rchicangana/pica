@@ -54,6 +54,7 @@ public class NativeDAO {
             + ") where rownum <= 5\n"
             + "order by cantidad";
 
+<<<<<<< HEAD
     public static final String SQL_NATIVO_RANKING_TIPO_PRODCUTOS = "select count(1) as cantidad, tipo.nombre\n"
             + "from detalle_orden_compra det\n"
             + "inner join orden_compra ord on ord.no_orden = det.no_orden\n"
@@ -107,6 +108,8 @@ public class NativeDAO {
         return salida;
     }
 
+=======
+>>>>>>> 5312c2d1818cf9da75f10c83a6038565246fdadb
     public List<TopFiveDTO> consultarTopFive() {
         List<Object[]> datos = em.createNativeQuery(SQL_NATIVO_TOP_5_PRODUCTOS_VENDIDOS)
                 .getResultList();
@@ -125,7 +128,7 @@ public class NativeDAO {
         }
         return salida;
     }
-
+    
     public List<TopFiveDTO> consultarTopFiveProducto(Long idProducto) {
         List<Object[]> datos = em.createNativeQuery(SQL_NATIVO_TOP_5_VENTAS_POR_PRODUCTO)
                 .setParameter(1, idProducto)

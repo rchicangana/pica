@@ -17,7 +17,6 @@ import { CargarimagenesComponent } from './components/cargarimagenes/cargarimage
 import { ItinerarioComponent } from './components/itinerario/itinerario.component';
 import { BoleteriaComponent } from './components/boleteria/boleteria.component';
 import { ConsultaComponent } from './components/consulta/consulta.component';
-import { RankingComponent } from './components/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { RankingComponent } from './components/ranking/ranking.component';
     CargarimagenesComponent,
     ItinerarioComponent,
     BoleteriaComponent,
-    ConsultaComponent,
-    RankingComponent
+    ConsultaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<table class="table table-md table-bordered table-hover small" *ngIf="!modoConsulta">
+<table class="table table-md table-bordered table-hover small">
     <thead>
         <tr>
             <th>Agregar Imagen</th>
@@ -24,7 +24,7 @@
 <div class="card-columns">
     <div class="card" *ngFor="let item of imagenes">
         <img class="card-img-top" src="http://10.39.1.140/Imagenes/{{item.imagen}}" alt="">
-        <div class="card-footer" *ngIf="!modoConsulta">
+        <div class="card-footer">
             <small class="text-muted"><button class="btn btn-danger btn-sm" (click)="borrarImagen(item)">Borrar</button></small>
         </div>
     </div>
