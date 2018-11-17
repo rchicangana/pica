@@ -256,8 +256,7 @@ CountProductsS( termino?:String){
 
   // Fetching Locat CartsProducts
   getLocalCartProducts(): Tarifa[] {
-    const products: Tarifa[] =
-      JSON.parse(localStorage.getItem("avct_item")) || [];
+    const products: Tarifa[] = JSON.parse(localStorage.getItem("avct_item")) || [];
     return products;
   }
 
@@ -268,6 +267,7 @@ CountProductsS( termino?:String){
 
   // Calculating Cart products count and assigning to variable
   calculateCartProductCounts() {
+    this.navbarCartCount = this.getLocalCartProducts().length;
     //const x = this.getUsersCartProducts()
     //  .subscribe(data => {
     //    this.navbarCartCount = data.length;

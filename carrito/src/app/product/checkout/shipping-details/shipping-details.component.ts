@@ -15,7 +15,6 @@ export class ShippingDetailsComponent implements OnInit {
   userDetail: Usuario;
   ciudades: Ciudad[];
   public paises: Pais[];
-  public paises2: Pais[];
   utilService2: UtilService;
   idPais : Number=0;
 
@@ -24,12 +23,12 @@ export class ShippingDetailsComponent implements OnInit {
     private utilService: UtilService
   ) {
     this.userDetail = authService.getLoggedInUser();
-    this.paises2 = utilService.getPaises();
+    this.paises = utilService.getPaises();
   }
 
   ngOnInit() { 
-    this.paises = this.paises2;
     this.utilService2 = this.utilService;
+    this.userDetail.login = atob(this.userDetail.login);
   }
 
   updateUserDetails(form: NgForm) {
@@ -42,7 +41,7 @@ export class ShippingDetailsComponent implements OnInit {
     this.utilService2.getCiudades(idPais)
     .subscribe(
       data => {
-        this.ciudades.push(<Ciudad> data);
+        this.ciudades = <Ciudad[]> data;
       },
       error => {
       });
