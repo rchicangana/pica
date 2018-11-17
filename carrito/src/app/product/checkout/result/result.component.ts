@@ -17,6 +17,6 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit() {
-    window.open("http://10.39.1.99:9090/credit-card.html");
+
   }
 }

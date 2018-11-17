@@ -20,10 +20,10 @@ export class UtilService {
     .subscribe(
         data => {
             this.paises = [];
-            this.paises = <Pais[]>data;
-              //productos.forEach(elemento => {
-             //   this.paises.push(elemento);
-           // });
+              let productos = <Pais[]>data;
+              productos.forEach(elemento => {
+                this.paises.push(elemento);
+            });
         },
         error => {
         });
