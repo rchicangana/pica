@@ -13,3 +13,13 @@ C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debu
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.dll.config
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.dll
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.dll.config
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudTest.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudWS.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\EntityFramework.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\SolicitudWS.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\bin\Debug\EntityFramework.xml
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.csprojResolveAssemblyReference.cache
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudTest\obj\Debug\SolicitudTest.pdb

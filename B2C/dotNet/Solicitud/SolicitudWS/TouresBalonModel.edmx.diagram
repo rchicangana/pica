@@ -18,6 +18,7 @@
         <AssociationConnector Association="touresbalonModel.FK_detalle_producto" />
         <AssociationConnector Association="touresbalonModel.FK_producto_imagen" />
         <AssociationConnector Association="touresbalonModel.FK_producto_tipo" />
+        <EntityTypeShape EntityType="touresbalonModel.productoscliente" Width="1.5" PointX="9.027764773474896" PointY="15.221105716759855" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

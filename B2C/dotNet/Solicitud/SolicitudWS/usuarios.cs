@@ -29,6 +29,9 @@ namespace SolicitudWS
         public string pais { get; set; }
         public string departamento { get; set; }
         public string ciudad { get; set; }
+        public string tipodoc { get; set; }
+        public string identificacion { get; set; }
+        public string idcliente { get; set; }
     
         public virtual ICollection<SOLICITUD> SOLICITUD { get; set; }
     }

@@ -12,6 +12,7 @@ export class SolicitudService {
   solicitud: Solicitud;
   solicitudes: Solicitud[];
   respuesta : Respuesta; 
+  resultado: String;
   //apiUrl :string = "http://10.39.1.99:9090/solicitud/Logica/Solicitud.svc/Solicitud";
   apiUrl :string = "solicitud/Logica/Solicitud.svc/Solicitud";
   userDetail: Usuario;
@@ -34,6 +35,30 @@ export class SolicitudService {
         error => {
         });
     return this.solicitudes;
+ }
+
+ insertProductoUsuario(idProducto: number, idUsuario: number){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    const x = this.http.post(this.apiUrl+'/ productousuario/'+idProducto+'/'+idUsuario, { headers })
+    .subscribe(
+        data => {
+            this.resultado = <String>data;
+        },
+        error => {
+        });
+    return this.resultado;
+ }
+
+ updateProductoUsuario(idUsuario: number, idOrden: number){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    const x = this.http.post(this.apiUrl+'/ productousuarioupdate/'+idUsuario+'/'+idOrden, { headers })
+    .subscribe(
+        data => {
+            this.resultado = <String>data;
+        },
+        error => {
+        });
+    return this.resultado;
  }
 
   crearSolicitud(): Respuesta{ 

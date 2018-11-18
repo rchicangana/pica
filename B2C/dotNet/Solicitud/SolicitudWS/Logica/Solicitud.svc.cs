@@ -28,7 +28,17 @@ namespace SolicitudWS
             ESTADOSOLICITUD estadoOrden = new ESTADOSOLICITUD();
             estadoOrden.estado = "ABIERTA";
             solicitud.ESTADOSOLICITUD = estadoOrden;
-            return this.solDAO.crearSolicitud(solicitud); ;
+            return this.solDAO.crearSolicitud(solicitud);
+        }
+
+        public ResponseData ProductoUsuario(string producto, string usuario)
+        {
+            return this.solDAO.ProductoUsuario(producto, usuario);   
+        }
+
+        public ResponseData ProductoUsuarioUpdate(string usuario, string orden)
+        {
+            return this.solDAO.ProductoUsuarioUpdate(usuario, orden);
         }
     }
 }

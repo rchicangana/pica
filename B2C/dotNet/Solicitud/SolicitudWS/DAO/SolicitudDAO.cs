@@ -30,6 +30,71 @@ namespace SolicitudWS.DAO
             return respuesta;
         }
 
+        public ResponseData ProductoUsuario(string producto, string usuario)
+        {
+            ResponseData respuesta = new ResponseData();
+            if (producto!= "" && usuario != "")
+            {
+                try
+                {
+                    string consulta = "insert into productoscliente(idproducto,idusuario) values(" + producto + "," + usuario + ")";
+                    this.context.productoscliente.SqlQuery(consulta).ToList();
+
+                    respuesta.mensaje = "datos insertados";
+                    respuesta.resultado = "OK";
+                }
+                catch (Exception ex)
+                {
+                    respuesta.mensaje = "Ocurrio un error interno";
+                    respuesta.resultado = "Fallo";
+                }
+            }
+            else
+            {
+                respuesta.mensaje = "Llegaron datos nulos";
+                respuesta.resultado = "Fallo";
+            }
+            return respuesta;
+        }
+
+        public ResponseData ProductoUsuarioUpdate(string usuario, string orden)
+        {
+            ResponseData respuesta = new ResponseData();
+            if (orden != "" && usuario != "")
+            {
+                try
+                {
+                    string consulta = "update productoscliente " +
+                    " set idorden = " + orden +
+                    " where idusuario = " + usuario;
+                    this.context.productoscliente.SqlQuery(consulta).ToList();
+
+                    respuesta.mensaje = "datos actualizados";
+                    respuesta.resultado = "OK";
+                }
+                catch (Exception ex)
+                {
+                    respuesta.mensaje = "Ocurrio un error interno";
+                    respuesta.resultado = "Fallo";
+                }
+            }
+            else
+            {
+                respuesta.mensaje = "Llegaron datos nulos";
+                respuesta.resultado = "Fallo";
+            }
+            return respuesta;
+        }
+
+        public void ProductoUsuarioDelete(int id)
+        {
+            var consulta = (from sol in this.context.productoscliente
+                            where sol.id == id
+                            select sol).First();
+            this.context.productoscliente.Remove(consulta);
+            this.context.SaveChanges();
+        }
+
         public ResponseData listarSolicitudesPorUsuario(string idUsuario)
         {
             ResponseData respuesta = new ResponseData();

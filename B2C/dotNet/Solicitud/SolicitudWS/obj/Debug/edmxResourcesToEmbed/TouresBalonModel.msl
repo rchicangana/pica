@@ -35,6 +35,9 @@
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="touresbalonModel.usuarios">
         <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="tipodoc" ColumnName="tipodoc" />
           <ScalarProperty Name="ciudad" ColumnName="ciudad" />
           <ScalarProperty Name="departamento" ColumnName="departamento" />
           <ScalarProperty Name="pais" ColumnName="pais" />
@@ -74,6 +77,16 @@
           <ScalarProperty Name="nombreproducto" ColumnName="nombreproducto" />
           <ScalarProperty Name="tipoproductoid" ColumnName="tipoproductoid" />
           <ScalarProperty Name="Idproducto" ColumnName="Idproducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productoscliente">
+      <EntityTypeMapping TypeName="touresbalonModel.productoscliente">
+        <MappingFragment StoreEntitySet="productoscliente">
+          <ScalarProperty Name="idorden" ColumnName="idorden" />
+          <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -61,7 +61,7 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="state">Ciudad</label>
-                <select [(ngModel)]="ciudad" required>
+                <select [(ngModel)]="ciudad" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let city of ciudades" [value]="city.idCiudad">{{city.nombre}}</option>
                 </select>
                 <div class="invalid-feedback">

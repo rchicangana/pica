@@ -10,6 +10,14 @@
           <EntitySet Name="ESTADOSOLICITUD" EntityType="touresbalonModel.Store.ESTADOSOLICITUD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="IMAGENPRODUCTO" EntityType="touresbalonModel.Store.IMAGENPRODUCTO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PRODUCTO" EntityType="touresbalonModel.Store.PRODUCTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="productoscliente" EntityType="touresbalonModel.Store.productoscliente" store:Type="Tables" store:Schema="dbo" store:Name="productoscliente">
+            <DefiningQuery>SELECT 
+      [productoscliente].[id] AS [id], 
+      [productoscliente].[idusuario] AS [idusuario], 
+      [productoscliente].[idproducto] AS [idproducto], 
+      [productoscliente].[idorden] AS [idorden]
+      FROM [dbo].[productoscliente] AS [productoscliente]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TIPOPRODUCTO" EntityType="touresbalonModel.Store.TIPOPRODUCTO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="usuarios" EntityType="touresbalonModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
@@ -72,6 +80,20 @@
           <Property Name="fechallegada" Type="date" Nullable="false" />
           <Property Name="imagenproductos" Type="int" />
         </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'touresbalon.dbo.productoscliente' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="productoscliente">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idusuario" />
+            <PropertyRef Name="idproducto" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idusuario" Type="int" Nullable="false" />
+          <Property Name="idproducto" Type="int" Nullable="false" />
+          <Property Name="idorden" Type="int" />
+        </EntityType>
         <EntityType Name="SOLICITUD">
           <Key>
             <PropertyRef Name="numerosolicitud" />
@@ -106,6 +128,9 @@
           <Property Name="pais" Type="varchar" MaxLength="50" />
           <Property Name="departamento" Type="varchar" MaxLength="50" />
           <Property Name="ciudad" Type="varchar" MaxLength="50" />
+          <Property Name="tipodoc" Type="varchar" MaxLength="20" />
+          <Property Name="identificacion" Type="varchar" MaxLength="30" />
+          <Property Name="idcliente" Type="varchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_detalle_producto">
           <End Role="PRODUCTO" Type="touresbalonModel.Store.PRODUCTO" Multiplicity="1" />
@@ -215,6 +240,7 @@
             <End Role="TIPOPRODUCTO" EntitySet="TIPOPRODUCTO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <EntitySet Name="productoscliente" EntityType="touresbalonModel.productoscliente" />
         </EntityContainer>
         <EntityType Name="IMAGENPRODUCTO">
           <Key>
@@ -264,6 +290,9 @@
           <Property Type="String" Name="departamento" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ciudad" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SOLICITUD" Relationship="touresbalonModel.FK_solicitud_usuario" FromRole="usuarios" ToRole="SOLICITUD" />
+          <Property Type="String" Name="tipodoc" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="identificacion" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="idcliente" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_solicitud_usuario">
           <End Type="touresbalonModel.usuarios" Role="usuarios" Multiplicity="0..1" />
@@ -369,6 +398,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="productoscliente">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idusuario" />
+            <PropertyRef Name="idproducto" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idusuario" Nullable="false" />
+          <Property Type="Int32" Name="idproducto" Nullable="false" />
+          <Property Type="Int32" Name="idorden" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -409,6 +449,9 @@
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="touresbalonModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="tipodoc" ColumnName="tipodoc" />
                 <ScalarProperty Name="ciudad" ColumnName="ciudad" />
                 <ScalarProperty Name="departamento" ColumnName="departamento" />
                 <ScalarProperty Name="pais" ColumnName="pais" />
@@ -448,6 +491,16 @@
                 <ScalarProperty Name="nombreproducto" ColumnName="nombreproducto" />
                 <ScalarProperty Name="tipoproductoid" ColumnName="tipoproductoid" />
                 <ScalarProperty Name="Idproducto" ColumnName="Idproducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productoscliente">
+            <EntityTypeMapping TypeName="touresbalonModel.productoscliente">
+              <MappingFragment StoreEntitySet="productoscliente">
+                <ScalarProperty Name="idorden" ColumnName="idorden" />
+                <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

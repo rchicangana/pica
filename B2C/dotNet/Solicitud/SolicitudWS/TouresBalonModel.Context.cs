@@ -32,5 +32,6 @@ namespace SolicitudWS
         public DbSet<DETALLESOLICITUD> DETALLESOLICITUD { get; set; }
         public DbSet<ESTADOSOLICITUD> ESTADOSOLICITUD { get; set; }
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public DbSet<productoscliente> productoscliente { get; set; }
     }
 }

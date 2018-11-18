@@ -32,6 +32,7 @@
       <End Role="TIPOPRODUCTO" EntitySet="TIPOPRODUCTO" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
+    <EntitySet Name="productoscliente" EntityType="touresbalonModel.productoscliente" />
   </EntityContainer>
   <EntityType Name="IMAGENPRODUCTO">
     <Key>
@@ -81,6 +82,9 @@
     <Property Type="String" Name="departamento" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="ciudad" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="SOLICITUD" Relationship="touresbalonModel.FK_solicitud_usuario" FromRole="usuarios" ToRole="SOLICITUD" />
+    <Property Type="String" Name="tipodoc" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="identificacion" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="idcliente" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_solicitud_usuario">
     <End Type="touresbalonModel.usuarios" Role="usuarios" Multiplicity="0..1" />
@@ -186,4 +190,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="productoscliente">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idusuario" />
+      <PropertyRef Name="idproducto" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="idusuario" Nullable="false" />
+    <Property Type="Int32" Name="idproducto" Nullable="false" />
+    <Property Type="Int32" Name="idorden" />
+  </EntityType>
 </Schema>

@@ -2,9 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { Usuario } from "../../../shared/models/user";
 import { Respuesta3,Respuesta } from "../../../shared/models/respuesta";
 import { Cliente, ClienteResponse } from "../../../shared/models/cliente";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../../shared/services/auth.service";
 import { UserService } from "../../../shared/services/user.service";
+import { OrdenService } from "../../../shared/services/orden.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 
@@ -21,6 +22,8 @@ export class ResultComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private ordenService:OrdenService,
+    private route: ActivatedRoute,
     private toastyService: ToastyService,
     private userService: UserService,
     private http: HttpClient) {
@@ -70,25 +73,27 @@ export class ResultComponent implements OnInit {
                     theme: "material"
                   };
                   this.toastyService.wait(toastOption);
-                  //setTimeout((router: Router) => {
-                  //  $("#createUserForm").modal("hide");
-                  //}, 1500);
                 }
                 else{
                   console.log("Error al actualizar usuario");
                 }
               })
-            
-              /*this.http.post(this.apiUrl+'/Actualizar', clienteJson, { headers })
-              .subscribe(data => {
-                      if((<Respuesta3>data).estado.toUpperCase() == "OK"){
-                        console.log("Cliente actualizado con exito");               
-                      }
-                });*/
             });            
           }
-      }); 
-      this.goPayment();
+      });
+      let param1 = this.route.snapshot.queryParams["pagado"]; 
+      if(param1 == 0){
+        this.goPayment();
+      }
+      else{
+        let idSolicitud : Number = 12345;
+        let resultado: String = "";
+        resultado = this.ordenService.crearOrden(idSolicitud);
+        
+        if(resultado == "OrdenCompra creada exitosamente : true"){
+          this.ordenService.consultarIdOrdenPorSolicitud(idSolicitud);
+        }
+      }
   }
 
   goPayment() {

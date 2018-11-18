@@ -37,6 +37,7 @@ namespace SolicitudWS
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "cancelar/{idSolicitud}")]
         void CancelarSolicitud(string idSolicitud);    
+
         [OperationContract]
         [WebInvoke(Method = "POST",
             RequestFormat = WebMessageFormat.Json,
@@ -44,6 +45,22 @@ namespace SolicitudWS
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "crear")]
         ResponseData CrearSolicitud(SOLICITUD solicitud);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "productousuario/{producto}/{usuario}")]
+        ResponseData ProductoUsuario(string producto, string usuario);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "productousuarioupdate/{usuario}/{orden}")]
+        ResponseData ProductoUsuarioUpdate(string usuario, string orden);
     }
 
     public class SampleContentTypeMapper : WebContentTypeMapper

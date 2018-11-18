@@ -1,3 +1,24 @@
+export class EnviarOrden{
+    estadoOrdenCompra: {
+        idEstadoOrdenCompra: Number;
+        estado: String;//ABIERTA
+    };
+    fechaCreacion: Date;
+    fechaVencimiento: Date;
+    numeroSolicitud: Number;
+    valorTotal: Number;
+    idCliente: Number;
+    detalleOrdenCompras: [
+        {
+            producto: {
+                idProducto: Number;
+                imagenProductos: [{}];
+            },
+            valor: Number;
+        }
+    ];
+}
+
 export class Orden
 {  
     noOrden:Number;
