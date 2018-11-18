@@ -24,9 +24,6 @@ export class Usuario {
     this.ciudad = "";
     this.tipodoc = tipodoc;
     this.identificacion = identificacion;
-<<<<<<< HEAD
     this.idcliente = idcliente;
-=======
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
   }
 }

@@ -61,7 +61,6 @@ export class ProductListComponent implements OnInit {
         });
   }
 
-<<<<<<< HEAD
   CountProducts() {
     const x = this.productService.CountProducts()
     .subscribe(
@@ -97,8 +96,6 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-=======
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
   addFavourite(product: Product) {
     this.productService.addFavouriteProduct(product);
   }
