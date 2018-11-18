@@ -28,6 +28,7 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
     let cliente = new Cliente(
       this.userDetail.tipodoc,
       this.userDetail.identificacion,
@@ -96,5 +97,34 @@ export class ResultComponent implements OnInit {
     width=0,height=0,left=-1000,top=-1000`;
     var winRef = window.open('http://10.39.1.99:9090/credit-card.html', 'Product Category', params);
     winRef.focus();
+=======
+
+  }
+
+  goSetting() {
+    /*var win = new BrowserWindow({
+      width: 800,
+      height: 600,
+      center: true,
+      resizable: false,
+      frame: true,
+      transparent: false
+    });
+
+    win.loadURL(url.format({
+      pathname: path.join(__dirname, './index.html'),
+      protocol: 'file:',
+      slashes: true,
+      hash: 'setting'
+    }));*/
+
+    var params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+width=0,height=0,left=-1000,top=-1000`;
+var winRef = window.open('http://10.39.1.99/', 'Product Category', params);
+winRef.focus();
+    // // Load the page + route
+    // win.loadURL('file://' + __dirname + '/index.html#/setting');
+    // this.router.navigateByUrl('setting');
+>>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
   }
 }

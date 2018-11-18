@@ -33,7 +33,7 @@ public class NativeDAO {
             + "from detalle_orden_compra det\n"
             + "inner join orden_compra ord on ord.no_orden = det.no_orden\n"
             + "inner join producto prod on prod.id_producto = det.id_producto\n"
-            + "where ord.id_estado_orden_compra=3\n"
+            + "where ord.id_estado_orden_compra=4\n"
             + "and prod.estado = 1\n"
             + "GROUP BY det.id_producto, prod.nombre_producto\n"
             + "order by cantidad desc\n"
@@ -45,7 +45,7 @@ public class NativeDAO {
             + "from detalle_orden_compra det\n"
             + "inner join orden_compra ord on ord.no_orden = det.no_orden\n"
             + "inner join producto prod on prod.id_producto = det.id_producto\n"
-            + "where ord.id_estado_orden_compra=3\n"
+            + "where ord.id_estado_orden_compra=4\n"
             + "and prod.estado = 1\n"
             + "and exists (select 1 from detalle_orden_compra det2 where det2.no_orden=det.no_orden and det2.id_producto=?)\n"
             + "and prod.id_producto<>?\n"
@@ -54,6 +54,62 @@ public class NativeDAO {
             + ") where rownum <= 5\n"
             + "order by cantidad";
 
+<<<<<<< HEAD
+    public static final String SQL_NATIVO_RANKING_TIPO_PRODCUTOS = "select count(1) as cantidad, tipo.nombre\n"
+            + "from detalle_orden_compra det\n"
+            + "inner join orden_compra ord on ord.no_orden = det.no_orden\n"
+            + "inner join producto prod on prod.id_producto = det.id_producto\n"
+            + "inner join tipo_producto tipo on tipo.ID_TIPO_PRODUCTO = prod.ID_TIPO_PRODUCTO\n"
+            + "where ord.id_estado_orden_compra=4\n"
+            + "and ord.fecha_creacion between to_date( ? ,'ddmmyyyy') and to_date( ? ,'ddmmyyyy')\n"
+            + "and prod.estado = 1\n"
+            + "GROUP BY tipo.nombre\n"
+            + "order by cantidad desc";
+
+    public static final String SQL_NATIVO_RANKING_PRODUCTOS= "select count(1) as cantidad, prod.id_producto, prod.nombre_producto\n"
+            + "from detalle_orden_compra det\n"
+            + "inner join orden_compra ord on ord.no_orden = det.no_orden\n"
+            + "inner join producto prod on prod.id_producto = det.id_producto\n"
+            + "inner join tipo_producto tipo on tipo.ID_TIPO_PRODUCTO = prod.ID_TIPO_PRODUCTO\n"
+            + "where ord.id_estado_orden_compra=4\n"
+            + "and ord.fecha_creacion between to_date(?,'ddmmyyyy') and to_date(?,'ddmmyyyy')\n"
+            + "and prod.estado = 1\n"
+            + "GROUP BY prod.id_producto, prod.nombre_producto\n"
+            + "order by cantidad desc";
+    
+    public List<TopFiveDTO> consultarRankingCategorias(String fechaIni, String fechaFin) {
+        List<Object[]> datos = em.createNativeQuery(SQL_NATIVO_RANKING_TIPO_PRODCUTOS)
+                .setParameter(1, fechaIni)
+                .setParameter(2, fechaFin)
+                .getResultList();
+        List<TopFiveDTO> salida = new ArrayList<>();
+        for (Object[] o : datos) {
+            TopFiveDTO top = new TopFiveDTO();
+            top.setCantidad(((BigDecimal) o[0]).longValue());
+            top.setNombre((String) o[1]);
+            salida.add(top);
+        }
+        return salida;
+    }
+    
+     public List<TopFiveDTO> consultarRankingProductos(String fechaIni, String fechaFin) {
+        List<Object[]> datos = em.createNativeQuery(SQL_NATIVO_RANKING_PRODUCTOS)
+                .setParameter(1, fechaIni)
+                .setParameter(2, fechaFin)
+                .getResultList();
+        List<TopFiveDTO> salida = new ArrayList<>();
+        for (Object[] o : datos) {
+            TopFiveDTO top = new TopFiveDTO();
+            top.setCantidad(((BigDecimal) o[0]).longValue());
+            top.setIdProducto(((BigDecimal) o[1]).longValue());
+            top.setNombre((String) o[2]);
+            salida.add(top);
+        }
+        return salida;
+    }
+
+=======
+>>>>>>> 5312c2d1818cf9da75f10c83a6038565246fdadb
     public List<TopFiveDTO> consultarTopFive() {
         List<Object[]> datos = em.createNativeQuery(SQL_NATIVO_TOP_5_PRODUCTOS_VENDIDOS)
                 .getResultList();

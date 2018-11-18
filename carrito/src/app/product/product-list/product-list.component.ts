@@ -29,6 +29,7 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+<<<<<<< HEAD
     //this.getAllProducts();
     this.numeroProductos = 1000000 //this.CountProductsS();
     this.getPage(1);
@@ -41,8 +42,14 @@ export class ProductListComponent implements OnInit {
     let cantidad = this.CountProducts();
     console.log("CountProducts()"+this.CountProducts());
     console.log(this.numeroProductos);
+=======
+    this.getAllProducts();
+  }
+
+  getAllProducts() {
+>>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
     this.spinnerService.show();
-    const x = this.productService.getProducts(p)
+    const x = this.productService.getProducts()
     .subscribe(
       data => {
           this.productList = [];
@@ -61,6 +68,7 @@ export class ProductListComponent implements OnInit {
         });
   }
 
+<<<<<<< HEAD
   CountProducts() {
     const x = this.productService.CountProducts()
     .subscribe(
@@ -96,6 +104,8 @@ export class ProductListComponent implements OnInit {
       });
   }
 
+=======
+>>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
   addFavourite(product: Product) {
     this.productService.addFavouriteProduct(product);
   }

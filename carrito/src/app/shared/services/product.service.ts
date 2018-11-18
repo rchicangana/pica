@@ -45,6 +45,7 @@ export class ProductService {
  CountProducts(){
   const headers = new HttpHeaders({'Content-Type': 'application/json'});
   return this.http.get(this.apiUrl+'/Buscar/0/0', { headers });
+<<<<<<< HEAD
  //return this.http.get(this.apiUrl3+'/buscar/0/0', { headers }); // esta es la version de diego que le esta pegando directamente al servicio sin pasar por el bus
 }
 
@@ -83,6 +84,29 @@ getProductsS( tipo?:String, termino?:String, pagina?:number ) {
        //return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
        return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
      }
+=======
+}
+
+
+
+  getProducts() {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get(this.apiUrl+'/Buscar/0/100', { headers });
+  }
+
+  getProductsS( tipo?:String, termino?:String ) {
+   const headers = new HttpHeaders({'Content-Type': 'application/json'});
+   //return this.http.get(this.apiUrl+'/productos', { headers });
+ console.log ('captura del tipo:'+tipo+' y termino'+termino)
+ if (tipo == 'D'){
+ if ( termino == '*'){
+     console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
+   return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/*', { headers });
+   }
+   else {
+     console.log (this.apiUrl+'/ConsultarDesc/0/100/'+termino);
+   return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
+>>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
    }
   else if (tipo == 'C'){
     if ( termino == '0'){
@@ -97,7 +121,11 @@ getProductsS( tipo?:String, termino?:String, pagina?:number ) {
     }
   }
  if (tipo == 'P'){
+<<<<<<< HEAD
     if ( termino == '*'){
+=======
+ if ( termino == '*'){
+>>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
        console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
      return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/*', { headers });
      }
@@ -268,7 +296,6 @@ getProductsS( tipo?:String, termino?:String, pagina?:number ) {
 
   // Calculating Cart products count and assigning to variable
   calculateCartProductCounts() {
-    this.navbarCartCount = this.getLocalCartProducts().length;
     //const x = this.getUsersCartProducts()
     //  .subscribe(data => {
     //    this.navbarCartCount = data.length;

@@ -8,8 +8,6 @@ import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner
 //dj router para capturar el parametro
 import { ActivatedRoute } from '@angular/router';
 
-
-
 @Component({
   selector: "app-product-list-s",
   templateUrl: "./product-list-s.component.html",
@@ -25,7 +23,6 @@ export class ProductListComponentS implements OnInit {
   selectedBrand: "All";
   tipo:string;
   numeroProductos:number;
-  numeroProductosS:number;
 
 
   page = 1;
@@ -42,22 +39,11 @@ export class ProductListComponentS implements OnInit {
 
   }
 
-  ngOnInit(){
-    this.getPage(1);
-    this.numeroProductosS = 10 //this.CountProductsS();
-    console.log('CANTIDAD EN EL ONINIT SSS:'+ this.numeroProductosS);
-  }
-
-  getPage(p:number){
-    //this.getAllProducts();
-this.page=p;
-    //DJ Inicio
-console.log(p);
-
+  ngOnInit() {
         this.activatedRoute.params.subscribe( params => {
         this.tipo= params['tipo'];
-        console.log('este es el tipo del tipo sss'+this.tipo);
-        let cantidad = this.CountProductsS(params['termino']);
+        console.log('este es el tipo del tipo'+this.tipo);
+        let cantidad = this.CountProductsS();
         console.log(cantidad);
 
 
@@ -65,13 +51,13 @@ console.log(p);
 
     if ( params['tipo'] == 'D' )
     {
-              if (typeof params['termino'] === 'undefined' )
-              {
-                this.getAllProductsS("D","*",this.page);
-                }
-                else{
-                  this.getAllProductsS( params['tipo'], params['termino'],this.page);
-                }
+      if (typeof params['termino'] === 'undefined' )
+      {
+      this.getAllProductsS("D","*");
+      }
+      else{
+        this.getAllProductsS( params['tipo'], params['termino']);
+      }
     }
     else if ( params['tipo'] == 'C' ){
 
@@ -89,10 +75,10 @@ console.log(p);
 
       if (typeof params['termino'] === 'undefined' )
       {
-        this.getAllProductsS("P","*",this.page);
+        this.getAllProductsS("P","*");
         }
         else{
-          this.getAllProductsS( params['tipo'], params['termino'],this.page);
+          this.getAllProductsS( params['tipo'], params['termino']);
         }
     }
 
@@ -101,9 +87,9 @@ console.log(p);
 
   }
 
-  getAllProductsS(t1:String, t2:String, p:number ) {
+  getAllProductsS(t1:String, t2:String) {
     this.spinnerService.show();
-    const x = this.productService.getProductsS(t1 ,t2, p)
+    const x = this.productService.getProductsS(t1 ,t2)
     .subscribe(
       data => {
 
@@ -133,24 +119,23 @@ console.log(p);
   }
 
 
-  CountProductsS(t?:string) {
+CountProductsS() {
 
-    const x = this.productService.CountProductsS(t)
-    .subscribe(
-      data => {
+  const x = this.productService.CountProducts()
+  .subscribe(
+    data => {
 
-          this.numeroProductosS = 0;
-          if((<Respuesta2>data).codigo=="OK"){
-            let cantidad  =   <number> (<Respuesta2>data).cantidad;
-            this.numeroProductosS = cantidad;
-            console.log("numeroproductosS"+this.numeroProductosS );
-          }
-      },
-      error => {
-      });
+        this.numeroProductos = 0;
+        if((<Respuesta2>data).codigo=="OK"){
+          let cantidad  =   <number> (<Respuesta2>data).cantidad;
+          this.numeroProductos = cantidad;
+          console.log(this.numeroProductos );
+        }
+    },
+    error => {
+    });
 
-  }
-
+}
 
   getAProductsS(t1:String, t2:String) {
     this.spinnerService.show();
@@ -182,8 +167,11 @@ console.log(p);
       });
     });*/
   }
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
 }

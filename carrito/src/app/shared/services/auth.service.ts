@@ -40,7 +40,11 @@ export class AuthService {
       }
     } 
     else {
+<<<<<<< HEAD
       this.userDetails = new Usuario("","","","","","",0);
+=======
+      this.userDetails = new Usuario("","","","","","");
+>>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
     }
 
     return loggedUser;

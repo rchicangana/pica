@@ -17,5 +17,8 @@
     <Property Type="String" Name="pais" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="departamento" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="ciudad" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Binary" Name="tipodoc" MaxLength="10" FixedLength="false" />
+    <Property Type="String" Name="identificacion" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="idcliente" />
   </EntityType>
 </Schema>
