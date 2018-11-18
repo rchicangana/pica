@@ -29,7 +29,6 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-<<<<<<< HEAD
     //this.getAllProducts();
     this.numeroProductos = 1000000 //this.CountProductsS();
     this.getPage(1);
@@ -42,12 +41,6 @@ export class ProductListComponent implements OnInit {
     let cantidad = this.CountProducts();
     console.log("CountProducts()"+this.CountProducts());
     console.log(this.numeroProductos);
-=======
-    this.getAllProducts();
-  }
-
-  getAllProducts() {
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
     this.spinnerService.show();
     const x = this.productService.getProducts()
     .subscribe(

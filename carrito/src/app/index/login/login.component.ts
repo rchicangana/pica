@@ -36,19 +36,11 @@ export class LoginComponent implements OnInit {
   ) {
     this.toastyConfig.position = "top-right";
     this.toastyConfig.theme = "material";
-<<<<<<< HEAD
     this.createUser = new Usuario("","","","","","",0);
   }
 
   ngOnInit() {
     this.usuario = new Usuario("","","","","","",0);
-=======
-    this.createUser = new Usuario("","","","","","");
-  }
-
-  ngOnInit() {
-    this.usuario = new Usuario("","","","","","");
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
   }
 
   addUser(userForm: NgForm) {
@@ -60,10 +52,7 @@ export class LoginComponent implements OnInit {
       userForm.value["apellidos"],
       userForm.value["tipodoc"],
       userForm.value["identificacion"],
-<<<<<<< HEAD
       0
-=======
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
      );
     this.userService
       .createUser(usuario)

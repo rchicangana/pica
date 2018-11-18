@@ -23,19 +23,11 @@ export class ShippingDetailsComponent implements OnInit {
     private utilService: UtilService
   ) {
     this.userDetail = authService.getLoggedInUser();
-<<<<<<< HEAD
-=======
-    this.userDetail.login = atob(this.userDetail.login);
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
   }
 
   ngOnInit() { 
     this.paises = this.utilService.getPaises();
-<<<<<<< HEAD
     this.userDetail.login = atob(this.userDetail.login);
-=======
-    //this.ciudades = this.utilService.getCiudades(this.idPais);
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
   }
 
   updateUserDetails(form: NgForm) {

@@ -46,14 +46,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           //this.product = <Product> data.productoPorIdResult;
           if((<Respuesta2>data).codigo=="OK"){
             this.product = <Tarifa> (<Respuesta2>data).object;
-<<<<<<< HEAD
             
             //if (this.product.boleteriaDTO == undefined){
 
             //}
 
-=======
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
             for (let item of this.product.itinerarioDTOlist[0].idHospedaje.habitacionList[0].imagenHabitacionList){
               this.imageSources.push("http://10.39.1.140/imagenes/"+item.imagen);
             }
