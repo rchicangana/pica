@@ -42,7 +42,7 @@ export class ProductListComponent implements OnInit {
     console.log("CountProducts()"+this.CountProducts());
     console.log(this.numeroProductos);
     this.spinnerService.show();
-    const x = this.productService.getProducts()
+    const x = this.productService.getProducts(p)
     .subscribe(
       data => {
           this.productList = [];

@@ -37,11 +37,7 @@
 
                     <!-- List of Products -->
                     <!-- <div class="col-sm-4 mb-2"  *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }"> -->
-<<<<<<< HEAD
                     <div class="col-sm-4 mb-2" *ngFor="let product of productList | paginate: { itemsPerPage: 10, currentPage: page , totalItems: numeroProductosS}">
-=======
-                    <div class="col-sm-4 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
                         <div class="item">
                             <div class=" mb-r">
                                 <!--Card-->
@@ -97,11 +93,7 @@
 
 
                     <!-- List of Products -->
-<<<<<<< HEAD
                     <div class="col-sm-4 mb-2" *ngFor="let product of productList | paginate: { itemsPerPage: 10, currentPage: page , totalItems: numeroProductosS}">
-=======
-                    <div class="col-sm-4 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
->>>>>>> c850cb9c67b078b76792d3effd6430a8a71a5fe4
                         <div class="item">
                             <div class=" mb-r">
                                 <!--Card-->
@@ -211,7 +203,13 @@
                 </div>
                 <!-- Pagination -->
                 <div class="text-center mt-3">
-                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                    <pagination-controls (pageChange)="getPage($event) "></pagination-controls>
+
+                    <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+
+                    <!-- <p>Restricted size, no rotation:</p>
+                    <ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination> -->
+
                 </div>
             </div>
             <!--/.Card-->
