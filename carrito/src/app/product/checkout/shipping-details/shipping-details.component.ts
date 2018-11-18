@@ -13,10 +13,9 @@ import { UtilService } from "../../../shared/services/util.service";
 })
 export class ShippingDetailsComponent implements OnInit {
   userDetail: Usuario;
-  ciudades: Ciudad[];
-  public paises: Pais[];
-  public paises2: Pais[];
-  utilService2: UtilService;
+  ciudad : String;
+  ciudades: Ciudad[]=[];
+  public paises: Pais[]=[];
   idPais : Number=0;
 
   constructor(
@@ -24,12 +23,11 @@ export class ShippingDetailsComponent implements OnInit {
     private utilService: UtilService
   ) {
     this.userDetail = authService.getLoggedInUser();
-    this.paises2 = utilService.getPaises();
   }
 
   ngOnInit() { 
-    this.paises = this.paises2;
-    this.utilService2 = this.utilService;
+    this.paises = this.utilService.getPaises();
+    this.userDetail.login = atob(this.userDetail.login);
   }
 
   updateUserDetails(form: NgForm) {
@@ -38,13 +36,22 @@ export class ShippingDetailsComponent implements OnInit {
     console.log("Data: ", data);
   }
 
-  listarciudades(idPais){
-    this.utilService2.getCiudades(idPais)
+  listarciudades(){
+    this.utilService.getCiudades(this.idPais)
     .subscribe(
       data => {
-        this.ciudades.push(<Ciudad> data);
+          this.ciudades = [];
+          this.ciudades = <Ciudad[]>data;
       },
       error => {
       });
+    //return this.ciudades;
+  }
+
+  goSetting() {
+    var params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+    width=0,height=0,left=-1000,top=-1000`;
+    var winRef = window.open('http://10.39.1.99/', 'Product Category', params);
+    winRef.focus();
   }
 }

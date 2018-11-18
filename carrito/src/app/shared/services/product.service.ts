@@ -44,77 +44,72 @@ export class ProductService {
 
  CountProducts(){
   const headers = new HttpHeaders({'Content-Type': 'application/json'});
-console.log("CountProducts URL:"+this.apiUrl3+'/Buscar/0/0');
-  return this.http.get(this.apiUrl3+'/buscar/0/0', { headers });
+  return this.http.get(this.apiUrl+'/Buscar/0/0', { headers });
+ //return this.http.get(this.apiUrl3+'/buscar/0/0', { headers }); // esta es la version de diego que le esta pegando directamente al servicio sin pasar por el bus
 }
 
-
 CountProductsS( termino?:String){
-
   const headers = new HttpHeaders({'Content-Type': 'application/json'});
   const perPage = 10;
   const start = 0;
   const end = start + perPage;
   console.log(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino+'******');
   return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
-
 }
 
+getProducts(pagina?:number) {
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  const perPage = 10;
+  const start = (pagina - 1) * perPage;
+  const end = start + perPage;
+  return this.http.get(this.apiUrl+'/Buscar/'+start+'/'+perPage+'/', { headers });
+}
 
-  getProducts(pagina?:number) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const perPage = 10;
-    const start = (pagina - 1) * perPage;
-    const end = start + perPage;
-    return this.http.get(this.apiUrl+'/Buscar/'+start+'/'+perPage+'/', { headers });
-
-
-  }
-
-  getProductsS( tipo?:String, termino?:String, pagina?:number ) {
-        const perPage = 10;
-        const start = (pagina - 1) * perPage;
-        const end = start + perPage;
-
+getProductsS( tipo?:String, termino?:String, pagina?:number ) {
+   const perPage = 10;
+   const start = (pagina - 1) * perPage;
+   const end = start + perPage;
    const headers = new HttpHeaders({'Content-Type': 'application/json'});
    //return this.http.get(this.apiUrl+'/productos', { headers });
- console.log ('captura del tipo:'+tipo+' y termino'+termino)
- if (tipo == 'D'){
- if ( termino == '*'){
-     console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*');
-   return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*', { headers });
-   }
-   else {
-     console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino);
-   return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
-   }
- }
- else if (tipo == 'C'){
-   if ( termino == '0'){
- console.log (this.apiUrl+'/Consultar/0');
-       return this.http.get(this.apiUrl+'/Consultar/1', { headers });
-       }
-       else {
-         console.log (this.apiUrl+'/Consultar/'+termino);
-       return this.http.get(this.apiUrl+'/Consultar/'+termino, { headers });
-
-
-       }
- }
- if (tipo == 'P'){
- if ( termino == '*'){
-       console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*');
-     return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*', { headers });
+   console.log ('captura del tipo:'+tipo+' y termino'+termino)
+   if (tipo == 'D'){
+     if ( termino == '*'){
+       console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
+      // return this.http.get(this.apiUrl+'/ConsultarDesc/0/10/*', { headers });
+       return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*', { headers });
      }
      else {
-       console.log (this.apiUrl+'/ConsultarDesc/'+start+'/'+end+'/'+termino);
-     return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
+       console.log (this.apiUrl+'/ConsultarDesc/0/100/'+termino);
+       //return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
+       return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
      }
    }
-
-
- else {console.log("Busqueda sin parametro valido")}
- }
+  else if (tipo == 'C'){
+    if ( termino == '0'){
+      console.log (this.apiUrl+'/Consultar/0');
+      //return this.http.get(this.apiUrl+'/Consultar/1', { headers });
+      return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/*', { headers });
+    }
+    else {
+      console.log (this.apiUrl+'/Consultar/'+termino);
+    //return this.http.get(this.apiUrl+'/Consultar/'+termino, { headers });
+      return this.http.get(this.apiUrl+'/ConsultarDesc/'+start+'/'+perPage+'/'+termino, { headers });
+    }
+  }
+ if (tipo == 'P'){
+    if ( termino == '*'){
+       console.log (this.apiUrl+'/ConsultarDesc/0/100/*');
+     return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/*', { headers });
+     }
+     else {
+       console.log (this.apiUrl+'/ConsultarDesc/0/100/'+termino);
+     return this.http.get(this.apiUrl+'/ConsultarDesc/0/100/'+termino, { headers });
+     }
+   }
+  else {
+    console.log("Busqueda sin parametro valido")
+  }
+}
 
   createProduct(data: Product) {
     this.products.push(data);
@@ -128,6 +123,11 @@ CountProductsS( termino?:String){
   getTopFive(){
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get(this.apiUrl3+'/topFive', { headers });
+  }
+
+  getTopFive2(producto : number){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get(this.apiUrl3+'/topFiveProducto/'+producto, { headers });
   }
   /*
    ----------  Favourite Product Function  ----------
@@ -268,6 +268,7 @@ CountProductsS( termino?:String){
 
   // Calculating Cart products count and assigning to variable
   calculateCartProductCounts() {
+    this.navbarCartCount = this.getLocalCartProducts().length;
     //const x = this.getUsersCartProducts()
     //  .subscribe(data => {
     //    this.navbarCartCount = data.length;

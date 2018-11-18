@@ -7,8 +7,8 @@ import { Usuario } from "../models/user";
 export class UserService {
   selectedUser: Usuario;
   users: Usuario[];
-  apiUrl :string = "http://10.39.1.99:9090/login/Logica/Usuario.svc/Usuario";
-  //apiUrl :string = "login/Logica/Usuario.svc/Usuario";
+  //apiUrl :string = "http://10.39.1.99:9090/login/Logica/Usuario.svc/Usuario";
+  apiUrl :string = "login/Logica/Usuario.svc/Usuario";
 
   location = {
     lat: null,
@@ -34,7 +34,7 @@ export class UserService {
   updateUser(usuario: Usuario) {
     let usuarioJson = JSON.stringify(usuario);   
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    return this.http.put(this.apiUrl+'/actualizarusuario', usuarioJson, { headers });
+    return this.http.post(this.apiUrl+'/actualizarusuario', usuarioJson, { headers });
   }
 
   setLocation(lat, lon) {

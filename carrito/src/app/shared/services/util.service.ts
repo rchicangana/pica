@@ -20,10 +20,7 @@ export class UtilService {
     .subscribe(
         data => {
             this.paises = [];
-              let productos = <Pais[]>data;
-              productos.forEach(elemento => {
-                this.paises.push(elemento);
-            });
+            this.paises = <Pais[]>data;
         },
         error => {
         });
@@ -31,7 +28,7 @@ export class UtilService {
     return this.paises;
   }
 
-  getCiudades(idPais: Number) { 
+  getCiudades(idPais: Number){ 
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
     return this.http.get(this.apiUrl+'/Ciudades/'+idPais, { headers });
   }

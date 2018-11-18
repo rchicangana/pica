@@ -75,6 +75,20 @@
                             <input mdbActive type="text" id="apellidos" class="form-control" name="apellidos" [(ngModel)]="createUser.apellidos">
                             <label for="apellidos">Tu Apellido</label>
                         </div>
+                        <div class="md-form form-sm">
+                            <i class="fa fa-id-card  prefix"></i>
+                            <select id="tipodoc" [(ngModel)]="createUser.tipodoc" class="form-control" name="tipodoc">
+                                <option value="CC">Cedula de Ciudadania</option>
+                                <option value="CE">Cedula de Extranjeria</option>
+                                <option value="NIT">NIT</option>
+                            </select>
+                            <label for="tipodoc">Tipo de Identificacion</label>
+                        </div>
+                        <div class="md-form form-sm">
+                            <i class="fa fa-id-card prefix"></i>
+                            <input mdbActive type="text" id="identificacion" class="form-control" name="identificacion" [(ngModel)]="createUser.identificacion">
+                            <label for="identificacion">Tu Identificacion</label>
+                        </div>
                         <div class="text-center mt-2">
                             <button class="btn btn-info waves-light" id="signUpButton" mdbRippleRadius>Registrar
                 <i class="fa fa-sign-in ml-1"></i>

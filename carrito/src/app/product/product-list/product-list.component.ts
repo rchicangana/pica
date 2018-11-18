@@ -19,10 +19,9 @@ export class ProductListComponent implements OnInit {
   brands = ["Todos", "Futbol", "Ciclisto", "Olimpicos", "Boxeo", "Tenis"];
 
   selectedBrand: "All";
-  numeroProductos:number;
-
 
   page = 1;
+  numeroProductos:number;
   constructor(
     public authService: AuthService,
     private productService: ProductService,
@@ -30,11 +29,9 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
+    //this.getAllProducts();
     this.numeroProductos = 1000000 //this.CountProductsS();
-
-this.getPage(1);
-    // this.getAllProducts();
+    this.getPage(1);
   }
 
   getPage(p:number) {
@@ -42,11 +39,8 @@ this.getPage(1);
     console.log(p);
 
     let cantidad = this.CountProducts();
-
     console.log("CountProducts()"+this.CountProducts());
     console.log(this.numeroProductos);
-
-
     this.spinnerService.show();
     const x = this.productService.getProducts(p)
     .subscribe(
@@ -59,7 +53,42 @@ this.getPage(1);
                 elemento.imagenProductoList = [{idImagenProducto: 1, imagen: "sinimagen.jpg", esprincipal: 1, idProducto: 1} ];
               }
               this.productList.push(elemento);
-              console.log(elemento);
+              //console.log(elemento);
+            })
+          }
+        },
+        error => {
+        });
+  }
+
+  CountProducts() {
+    const x = this.productService.CountProducts()
+    .subscribe(
+      data => {
+          this.numeroProductos = 0;
+          if((<Respuesta2>data).codigo=="OK"){
+            let cantidad  =   <number> (<Respuesta2>data).cantidad;
+            this.numeroProductos = cantidad;
+            console.log("numeroproductos"+this.numeroProductos );
+          }
+      },
+      error => {
+      });
+  }
+  getAllProducts() {
+    this.spinnerService.show();
+    const x = this.productService.getProducts()
+    .subscribe(
+      data => {
+          this.productList = [];
+          if((<Respuesta2>data).codigo=="OK"){
+            let productos = <Product[]> (<Respuesta2>data).object;
+            productos.forEach(elemento => {
+              if(elemento.imagenProductoList.length <= 0){
+                elemento.imagenProductoList = [{idImagenProducto: 1, imagen: "sinimagen.jpg", esprincipal: 1, idProducto: 1} ];
+              }
+              this.productList.push(elemento);
+              //console.log(elemento);
             });
           }
       },
@@ -75,25 +104,5 @@ this.getPage(1);
     this.productService.addToCart(product);
   }
 
-
-  CountProducts() {
-
-    const x = this.productService.CountProducts()
-    .subscribe(
-      data => {
-
-          this.numeroProductos = 0;
-          if((<Respuesta2>data).codigo=="OK"){
-            let cantidad  =   <number> (<Respuesta2>data).cantidad;
-            this.numeroProductos = cantidad;
-            console.log("numeroproductos"+this.numeroProductos );
-          }
-      },
-      error => {
-      });
-
-  }
-
-
-
+  
 }

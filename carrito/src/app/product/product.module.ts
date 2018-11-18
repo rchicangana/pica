@@ -11,6 +11,7 @@ import { CheckoutModule } from "./checkout/checkout.module";
 
 import { ProductComponent } from "./product.component";
 import { BestProductComponent } from "./best-product/best-product.component";
+import { BestProductComponent2 } from "./best-product2/best-product.component2";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { ProductListComponentS } from "./product-list-s/product-list-s.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
@@ -31,6 +32,7 @@ import {SlideshowModule} from 'ng-simple-slideshow';
   declarations: [
     ProductComponent,
     BestProductComponent,
+    BestProductComponent2,
     ProductListComponent,
     ProductListComponentS,
     ProductDetailComponent,
@@ -38,6 +40,6 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     CartProductsComponent,
     CartCalculatorComponent
   ],
-  exports: [BestProductComponent]
+  exports: [BestProductComponent,BestProductComponent2]
 })
 export class ProductModule {}

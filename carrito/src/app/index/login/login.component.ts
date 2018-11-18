@@ -36,16 +36,24 @@ export class LoginComponent implements OnInit {
   ) {
     this.toastyConfig.position = "top-right";
     this.toastyConfig.theme = "material";
-    this.createUser = new Usuario("","","","");
+    this.createUser = new Usuario("","","","","","",0);
   }
 
   ngOnInit() {
-    this.usuario = new Usuario("","","","");
+    this.usuario = new Usuario("","","","","","",0);
   }
 
   addUser(userForm: NgForm) {
     userForm.value["isAdmin"] = false;
-    var usuario = new Usuario(userForm.value["emailId"], userForm.value["password"], userForm.value["nombres"],userForm.value["apellidos"] );
+    var usuario = new Usuario(
+      btoa(userForm.value["emailId"]), 
+      btoa(userForm.value["password"]), 
+      userForm.value["nombres"],
+      userForm.value["apellidos"],
+      userForm.value["tipodoc"],
+      userForm.value["identificacion"],
+      0
+     );
     this.userService
       .createUser(usuario)
       .subscribe(res => {
@@ -102,14 +110,12 @@ export class LoginComponent implements OnInit {
           else{
             this.errorInLoginUser = true;
             this.errorMessage = "Credenciales incorrectas";
-            //this.router.navigate(["/"]); 
           }
         }
       },
       error => {
         this.errorInLoginUser = true;
         this.errorMessage = "Credenciales incorrectas";
-        //this.router.navigate(["/"]);
       });
   }
 }
