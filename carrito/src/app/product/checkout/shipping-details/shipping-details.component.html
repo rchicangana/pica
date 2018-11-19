@@ -69,7 +69,7 @@
                 </div>
             </div>
             <hr class="mb-4">
-            <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['result']}}]" routerLinkActive="active">Continuar al pago</a>
+            <a class="btn btn-default " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['result']}}]" [queryParams]="{ pagado: 0 }" routerLinkActive="active">Continuar al pago</a>
         </form>
     </div>
 </div>

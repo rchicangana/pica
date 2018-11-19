@@ -10,6 +10,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 import { SolicitudService } from "../../../shared/services/solicitud.service";
 import { Orden } from "../../../shared/models/Orden";
+import { Tarifa } from "../../../shared/models/tarifa";
+import { ProductService } from "../../../shared/services/product.service";
 
 @Component({
   selector: "app-result",
@@ -20,8 +22,12 @@ export class ResultComponent implements OnInit {
   userDetail: Usuario;
   apiUrl :string = "ServiciosESB/Clientes";
   apiUrl2 :string = "ServiciosESB/CLientes";
+  mensaje: String;
+  cartProducts : Tarifa[];
+  
+  private parametersObservable: any;
 
-  constructor(
+  constructor( 
     private authService: AuthService,
     private router: Router,
     private ordenService:OrdenService,
@@ -29,11 +35,16 @@ export class ResultComponent implements OnInit {
     private toastyService: ToastyService,
     private userService: UserService,
     private solicitudService:SolicitudService,
+    private productService:ProductService,
     private http: HttpClient) {
     this.userDetail = authService.getLoggedInUser();
   }
 
   ngOnInit() {
+    this.parametersObservable = this.route.params.subscribe(params => {
+      //"product" is obtained from 'ProductResolver'
+      let parametro = this.route.snapshot.data['pagado'];
+    });
     let cliente = new Cliente(
       this.userDetail.tipodoc,
       this.userDetail.identificacion,
@@ -86,9 +97,12 @@ export class ResultComponent implements OnInit {
       });
       let param1 = this.route.snapshot.queryParams["pagado"]; 
       if(param1 == 0){
-        this.goPayment();
+        this.mensaje = "Redirigiendo a pagina de pago...";
+        this.cartProducts = this.productService.getLocalCartProducts();
+        this.goPayment(this.cartProducts[0].nombre, this.cartProducts[0].total);
       }
-      else{
+      else if(param1 == 1){
+        this.mensaje = "Pago realizado con exito!";
         let idSolicitud : Number = 12346;
         let resultado: String = "";
         let ordenResultado:Number;
@@ -119,10 +133,9 @@ export class ResultComponent implements OnInit {
       }
   }
 
-  goPayment() {
-    var params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
-    width=0,height=0,left=-1000,top=-1000`;
-    var winRef = window.open('http://10.39.1.99:9090/credit-card.html', 'Product Category', params);
-    winRef.focus();
+  goPayment(producto:String, total:Number) {
+    window.location.href = 'http://10.39.1.99:9090/credit-card.html?producto='+producto+'&total='+total.toString();
+    //var winRef = window.open('http://10.39.1.99:9090/credit-card.html');
+    //winRef.focus();
   }
 }
