@@ -6,13 +6,15 @@ import { AuthService } from "../services/auth.service";
 import { Usuario } from "../models/user";
 import { Tarifa } from "../../shared/models/tarifa";
 import { ProductService } from "../../shared/services/product.service";
+import { ProductosCliente } from "../models/solicitud";
 
 @Injectable()
 export class SolicitudService {
   solicitud: Solicitud;
   solicitudes: Solicitud[];
   respuesta : Respuesta; 
-  resultado: String;
+  productosCliente : ProductosCliente[];
+  resultado: String;;
   //apiUrl :string = "http://10.39.1.99:9090/solicitud/Logica/Solicitud.svc/Solicitud";
   apiUrl :string = "solicitud/Logica/Solicitud.svc/Solicitud";
   userDetail: Usuario;
@@ -35,9 +37,21 @@ export class SolicitudService {
         error => {
         });
     return this.solicitudes;
+ } 
+
+ solicitudPorUsuario(idUsuario: number){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    const x = this.http.get(this.apiUrl+'/productousuarioget/'+idUsuario, { headers })
+    .subscribe(
+        data => {
+            this.productosCliente = <ProductosCliente[]>(<Respuesta>data).objeto;
+        },
+        error => {
+        });
+    return this.productosCliente;
  }
 
- insertProductoUsuario(idProducto: number, idUsuario: number){
+ insertProductoUsuario(idProducto: Number, idUsuario: number){
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
     const x = this.http.post(this.apiUrl+'/ productousuario/'+idProducto+'/'+idUsuario, { headers })
     .subscribe(
@@ -49,15 +63,19 @@ export class SolicitudService {
     return this.resultado;
  }
 
- updateProductoUsuario(idUsuario: number, idOrden: number){
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    const x = this.http.post(this.apiUrl+'/ productousuarioupdate/'+idUsuario+'/'+idOrden, { headers })
-    .subscribe(
+ updateProductoUsuario(idUsuario: Number, idOrden: Number){
+    if(idUsuario != undefined && idOrden != undefined){ 
+        const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+        const x = this.http.post(this.apiUrl+'/productousuarioupdate/'+idUsuario+'/'+idOrden, { headers })
+        .subscribe(
         data => {
             this.resultado = <String>data;
         },
         error => {
         });
+    }else{
+        return "usuario y/o orden vacios";   
+    }
     return this.resultado;
  }
 

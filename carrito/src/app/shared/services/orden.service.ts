@@ -3,21 +3,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Solicitud } from "../models/solicitud";
 import { Respuesta } from "../models/respuesta";
 import { AuthService } from "../services/auth.service";
-import { EnviarOrden, Orden } from "../models/Orden";
+import { EnviarOrden, Orden, DetalleOrdenCompras } from "../models/Orden";
 import { Usuario } from "../models/user";
 import { Tarifa } from "../../shared/models/tarifa";
 import { ProductService } from "../../shared/services/product.service";
+import { DatePipe } from "../../../../node_modules/@angular/common";
 
 @Injectable()
 export class OrdenService {
   enviarOrden: EnviarOrden;
   ordenes: Orden[];
-  orden:Orden;
+  resultadoN:Number;
   respuesta : Respuesta; 
   apiUrl :string = "ServiciosESB/Ordenes";
   userDetail: Usuario;
   cartProducts: Tarifa[];
   resultado: String;
+  numero:Number;
 
   constructor(
       private http: HttpClient,
@@ -52,46 +54,44 @@ export class OrdenService {
 
  consultarIdOrdenPorSolicitud(idSolicitud: Number){
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    const x = this.http.get(this.apiUrl+'/obtenerOrden/idPedido/'+idSolicitud, { headers })
-    .subscribe(
-        data => {
-            this.orden = <Orden>data;
-        },
-        error => {
-        });
-    return this.orden;
+    return this.http.get(this.apiUrl+'/obtenerOrden/idPedido/'+idSolicitud, { headers });
  }
 
   crearOrden(nroSolicitud: Number){ 
     let solicitud: Solicitud;
-    this.cartProducts = this.productService.getLocalCartProducts();
+    let detalle:DetalleOrdenCompras[];
 
+    this.cartProducts = this.productService.getLocalCartProducts();
+    this.enviarOrden = new EnviarOrden(null, null, null,null,null,null,null);
     this.enviarOrden.estadoOrdenCompra = {idEstadoOrdenCompra:0,estado:"ABIERTA"};
-    this.enviarOrden.fechaCreacion = new Date();
-    this.enviarOrden.fechaVencimiento = new Date();
+    let fecha = new Date();
+
+    let fechaString = fecha.getFullYear().toString()+'-'+(fecha.getMonth()+1).toString()+'-'+fecha.getDate().toString();
+    
+    this.enviarOrden.fechaCreacion = fechaString;
+    this.enviarOrden.fechaVencimiento = fechaString;
     this.enviarOrden.idCliente = this.userDetail.idcliente;
     this.enviarOrden.numeroSolicitud = nroSolicitud;
-     
+
+    let contador:number=0;
+
     this.cartProducts.forEach((nos) => { 
         this.enviarOrden.valorTotal = nos.total;
-        let prod = {
-            producto: {
-                idProducto: nos.boleteriaDTO.id,
-                imagenProductos: {}[0]
-            },
-            valor: nos.boleteriaDTO.valor
-        };
-        this.enviarOrden.detalleOrdenCompras.push(prod);  
-    })  
-
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    const x = this.http.post(this.apiUrl+'/Crear/', this.enviarOrden, { headers })
-    .subscribe(
-        data => {
-            this.resultado = <String>data;
-        },
-        error => {
-        });
-    return this.resultado;
+        this.numero = nos.boleteriaDTO.id;
+  
+        this.enviarOrden.detalleOrdenCompras = 
+        [
+            {
+                producto: {
+                    idProducto: this.numero,
+                    imagenProductos: [{}]
+                },
+                valor: nos.boleteriaDTO.valor
+            }
+        ];
+        contador = contador+1;
+    });  
+      
+    return this.http.post(this.apiUrl+'/Crear', this.enviarOrden,{responseType: 'text'});
   }
 }

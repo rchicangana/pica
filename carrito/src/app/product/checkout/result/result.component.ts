@@ -8,6 +8,8 @@ import { UserService } from "../../../shared/services/user.service";
 import { OrdenService } from "../../../shared/services/orden.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
+import { SolicitudService } from "../../../shared/services/solicitud.service";
+import { Orden } from "../../../shared/models/Orden";
 
 @Component({
   selector: "app-result",
@@ -26,6 +28,7 @@ export class ResultComponent implements OnInit {
     private route: ActivatedRoute,
     private toastyService: ToastyService,
     private userService: UserService,
+    private solicitudService:SolicitudService,
     private http: HttpClient) {
     this.userDetail = authService.getLoggedInUser();
   }
@@ -86,13 +89,33 @@ export class ResultComponent implements OnInit {
         this.goPayment();
       }
       else{
-        let idSolicitud : Number = 12345;
+        let idSolicitud : Number = 12346;
         let resultado: String = "";
-        resultado = this.ordenService.crearOrden(idSolicitud);
-        
-        if(resultado == "OrdenCompra creada exitosamente : true"){
-          this.ordenService.consultarIdOrdenPorSolicitud(idSolicitud);
-        }
+        let ordenResultado:Number;
+        let idUsuario = this.userDetail.id;
+        //creamos la orden
+        this.ordenService.crearOrden(idSolicitud).subscribe(
+          (data:any) => {
+              resultado = data;
+              if(resultado == "OrdenCompra creada exitosamente : true"){
+                //obtenemos el id con el que se creo la orden
+                this.ordenService.consultarIdOrdenPorSolicitud(idSolicitud)
+                .subscribe(
+                  data => {
+                    ordenResultado = (<Orden>data).noOrden;
+                    //actualizamos el numero de orden en la tabla de solicitud
+                    this.solicitudService.updateProductoUsuario(idUsuario,ordenResultado);
+                  },
+                  error => {
+                    console.log(error);
+                });
+              }
+          },
+          error => {
+            if(error.statusText.toUpperCase == "OK"){
+              resultado = "OrdenCompra creada exitosamente : true";
+            }
+          });
       }
   }
 

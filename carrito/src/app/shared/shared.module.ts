@@ -19,6 +19,8 @@ import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
 import { UtilService } from "./services/util.service";
+import { OrdenService } from "./services/orden.service";
+import { SolicitudService } from "./services/solicitud.service";
 
 @NgModule({
   imports: [
@@ -59,6 +61,8 @@ import { UtilService } from "./services/util.service";
     AuthGuard,
     AdminGaurd,
     ProductService,
+    OrdenService,
+    SolicitudService,
     UserService,
     FormBuilder,
     LoaderSpinnerService,

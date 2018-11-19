@@ -61,6 +61,14 @@ namespace SolicitudWS
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "productousuarioupdate/{usuario}/{orden}")]
         ResponseData ProductoUsuarioUpdate(string usuario, string orden);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "productousuarioget/{usuario}")]
+        ResponseData ProductoUsuarioget(string usuario);
     }
 
     public class SampleContentTypeMapper : WebContentTypeMapper

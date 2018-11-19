@@ -1,3 +1,10 @@
+export class ProductosCliente{
+  id: Number;
+  idusuario:Number;
+  idproducto:Number;
+  idorden:Number;
+}
+
 export class Solicitud{
   descripcion: String;
    fechaLlegada: Date;

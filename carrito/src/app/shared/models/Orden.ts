@@ -3,8 +3,8 @@ export class EnviarOrden{
         idEstadoOrdenCompra: Number;
         estado: String;//ABIERTA
     };
-    fechaCreacion: Date;
-    fechaVencimiento: Date;
+    fechaCreacion: String;
+    fechaVencimiento: String;
     numeroSolicitud: Number;
     valorTotal: Number;
     idCliente: Number;
@@ -17,6 +17,34 @@ export class EnviarOrden{
             valor: Number;
         }
     ];
+    constructor(estadoOrdenCompra: any,    
+        fechaCreacion: String,
+        fechaVencimiento: String,
+        numeroSolicitud: Number,
+        valorTotal: Number,
+        idCliente: Number,
+        detalleOrdenCompras: any){
+            this.estadoOrdenCompra = estadoOrdenCompra, 
+            this.fechaCreacion = fechaCreacion,
+            this.fechaVencimiento = fechaVencimiento,
+            this.numeroSolicitud = numeroSolicitud,
+            this.valorTotal = valorTotal,
+            this.idCliente = idCliente,
+            this.detalleOrdenCompras = detalleOrdenCompras
+    }
+}
+
+export class DetalleOrdenCompras
+{
+    producto: {
+        idProducto: Number;
+        imagenProductos: [{}];
+    };
+    valor: Number;
+    constructor(producto : any, valor : Number){
+        this.producto = producto;
+        this.valor = valor;
+    }
 }
 
 export class Orden

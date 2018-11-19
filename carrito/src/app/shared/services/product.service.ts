@@ -4,11 +4,17 @@ import { Product } from "../models/product";
 import { Tarifa } from "../models/tarifa";
 import { AuthService } from "./auth.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Usuario } from "../models/user";
+import { ProductosCliente } from "../models/solicitud";
+import { Respuesta } from "../models/respuesta";
 
 @Injectable()
 export class ProductService {
   products: Product[];
+  productosCliente : ProductosCliente[];
   product: Product;
+  currentUser: Usuario;
+  resultado: String;
 
   apiUrl :string = "ServiciosESB/Productos";
   apiUrl2 :string = "ServiciosESB/Tarifas";
@@ -35,6 +41,7 @@ export class ProductService {
     this.toastyConfig.theme = "material";
 
     if (this.authService.isLoggedIn()) {
+      this.currentUser = this.authService.getLoggedInUser();
       this.calculateCartProductCounts();
     } else {
       this.calculateLocalCartProdCounts();
@@ -228,11 +235,41 @@ getProductsS( tipo?:String, termino?:String, pagina?:number ) {
     };
     this.toastyService.wait(toastOption);
     setTimeout(() => {
-      localStorage.setItem("avct_item", JSON.stringify(a));
-      this.calculateLocalCartProdCounts();
+      
+      if(this.authService.isLoggedIn()){
+        this.insertProductoUsuario(data.boleteriaDTO.id,this.currentUser.id);
+        this.calculateCartProductCounts();
+      }
+      else{
+        localStorage.setItem("avct_item", JSON.stringify(a));
+        this.calculateLocalCartProdCounts();
+      }
     }, 500);
   }
 
+  insertProductoUsuario(idProducto: Number, idUsuario: number){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    const x = this.http.post(this.apiUrl+'/ productousuario/'+idProducto+'/'+idUsuario, { headers })
+    .subscribe(
+        data => {
+            this.resultado = <String>data;
+        },
+        error => {
+        });
+    return this.resultado;
+ }
+
+ solicitudPorUsuario(idUsuario: number){
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+  const x = this.http.get(this.apiUrl+'/productousuarioget/'+idUsuario, { headers })
+  .subscribe(
+      data => {
+          this.productosCliente = <ProductosCliente[]>(<Respuesta>data).objeto;
+      },
+      error => {
+      });
+  return this.productosCliente;
+}
   // Removing Cart product from db
   removeCart(key: string) {
     //this.cartProducts.remove(key);
@@ -269,10 +306,7 @@ getProductsS( tipo?:String, termino?:String, pagina?:number ) {
   // Calculating Cart products count and assigning to variable
   calculateCartProductCounts() {
     this.navbarCartCount = this.getLocalCartProducts().length;
-    //const x = this.getUsersCartProducts()
-    //  .subscribe(data => {
-    //    this.navbarCartCount = data.length;
-    //  });
+   // this.navbarCartCount = this.solicitudPorUsuario(this.currentUser.id).length;
   }
 }
 
