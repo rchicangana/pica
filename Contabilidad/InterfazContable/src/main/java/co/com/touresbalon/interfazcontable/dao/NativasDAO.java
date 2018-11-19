@@ -28,7 +28,7 @@ public class NativasDAO {
             + "inner join orden_compra ord on ord.no_orden = det.no_orden\n"
             + "inner join producto prod on prod.id_producto = det.id_producto\n"
             + "inner join tipo_producto tipo on tipo.ID_TIPO_PRODUCTO = prod.ID_TIPO_PRODUCTO\n"
-            + "where ord.id_estado_orden_compra=3\n"
+            + "where ord.id_estado_orden_compra=4\n"
             + "and ord.fecha_creacion = to_date(?,'ddmmyyyy')\n"
             + "and prod.estado = 1";
     
