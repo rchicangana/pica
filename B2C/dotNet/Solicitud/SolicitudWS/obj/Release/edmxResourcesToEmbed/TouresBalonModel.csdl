@@ -193,8 +193,6 @@
   <EntityType Name="productoscliente">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="idusuario" />
-      <PropertyRef Name="idproducto" />
     </Key>
     <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int32" Name="idusuario" Nullable="false" />

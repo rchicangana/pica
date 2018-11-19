@@ -66,8 +66,8 @@ namespace SolicitudWS
         [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "productousuarioget/{usuario}")]
+             BodyStyle = WebMessageBodyStyle.WrappedResponse,
+            UriTemplate = "getproductousuario/{usuario}")]
         ResponseData ProductoUsuarioget(string usuario);
     }
 

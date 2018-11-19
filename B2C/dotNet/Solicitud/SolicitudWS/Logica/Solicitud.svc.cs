@@ -41,7 +41,7 @@ namespace SolicitudWS
             return this.solDAO.ProductoUsuarioUpdate(usuario, orden);
         }
 
-        public ResponseData ProductoUsuarioGet(string usuario)
+        public ResponseData ProductoUsuarioget(string usuario)
         {
             return this.solDAO.ProductoUsuarioGet(usuario);
         }

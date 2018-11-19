@@ -14,9 +14,9 @@ namespace SolicitudWS
     
     public partial class productoscliente
     {
-        public int? id { get; set; }
+        public int id { get; set; }
         public int idusuario { get; set; }
         public int idproducto { get; set; }
-        public Nullable<int> idorden { get; set; }
+        public int? idorden { get; set; }
     }
 }

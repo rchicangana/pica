@@ -10,14 +10,7 @@
           <EntitySet Name="ESTADOSOLICITUD" EntityType="touresbalonModel.Store.ESTADOSOLICITUD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="IMAGENPRODUCTO" EntityType="touresbalonModel.Store.IMAGENPRODUCTO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PRODUCTO" EntityType="touresbalonModel.Store.PRODUCTO" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="productoscliente" EntityType="touresbalonModel.Store.productoscliente" store:Type="Tables" store:Schema="dbo" store:Name="productoscliente">
-            <DefiningQuery>SELECT 
-      [productoscliente].[id] AS [id], 
-      [productoscliente].[idusuario] AS [idusuario], 
-      [productoscliente].[idproducto] AS [idproducto], 
-      [productoscliente].[idorden] AS [idorden]
-      FROM [dbo].[productoscliente] AS [productoscliente]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="productoscliente" EntityType="touresbalonModel.Store.productoscliente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SOLICITUD" EntityType="touresbalonModel.Store.SOLICITUD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TIPOPRODUCTO" EntityType="touresbalonModel.Store.TIPOPRODUCTO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="usuarios" EntityType="touresbalonModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
@@ -80,14 +73,9 @@
           <Property Name="fechallegada" Type="date" Nullable="false" />
           <Property Name="imagenproductos" Type="int" />
         </EntityType>
-        <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'touresbalon.dbo.productoscliente' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
         <EntityType Name="productoscliente">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idusuario" />
-            <PropertyRef Name="idproducto" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idusuario" Type="int" Nullable="false" />
@@ -401,8 +389,6 @@
         <EntityType Name="productoscliente">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idusuario" />
-            <PropertyRef Name="idproducto" />
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="idusuario" Nullable="false" />

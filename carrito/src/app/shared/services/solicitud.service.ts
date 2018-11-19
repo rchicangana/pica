@@ -41,56 +41,25 @@ export class SolicitudService {
 
  solicitudPorUsuario(idUsuario: number){
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    const x = this.http.get(this.apiUrl+'/productousuarioget/'+idUsuario, { headers })
-    .subscribe(
-        data => {
-            this.productosCliente = <ProductosCliente[]>(<Respuesta>data).objeto;
-        },
-        error => {
-        });
-    return this.productosCliente;
+    return this.http.get(this.apiUrl+'/productousuarioget/'+idUsuario, { headers });
  }
 
  insertProductoUsuario(idProducto: Number, idUsuario: number){
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    const x = this.http.post(this.apiUrl+'/ productousuario/'+idProducto+'/'+idUsuario, { headers })
-    .subscribe(
-        data => {
-            this.resultado = <String>data;
-        },
-        error => {
-        });
-    return this.resultado;
+    return this.http.post(this.apiUrl+'/ productousuario/'+idProducto+'/'+idUsuario, { headers });
  }
 
  updateProductoUsuario(idUsuario: Number, idOrden: Number){
-    if(idUsuario != undefined && idOrden != undefined){ 
-        const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-        const x = this.http.post(this.apiUrl+'/productousuarioupdate/'+idUsuario+'/'+idOrden, { headers })
-        .subscribe(
-        data => {
-            this.resultado = <String>data;
-        },
-        error => {
-        });
-    }else{
-        return "usuario y/o orden vacios";   
-    }
-    return this.resultado;
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});         
+    return this.http.post(this.apiUrl+'/productousuarioupdate/'+idUsuario+'/'+idOrden, { headers });
  }
 
   crearSolicitud(): Respuesta{ 
     let solicitud: Solicitud;
     this.cartProducts = this.productService.getLocalCartProducts();
 
-    //for(let i :number = 10; i < this.cartProducts.length; i++){
-    //    solicitud.nombreProducto  = this.cartProducts[i].nombre;
-    //    solicitud.itinerarioList = this.cartProducts[i].itinerarioDTOlist;
-    //}
-
-
     const headers = new HttpHeaders({'Content-Type': 'application/json'});         
-    const x = this.http.post(this.apiUrl+'/crear/', solicitud, { headers })
+    this.http.post(this.apiUrl+'/crear/', solicitud, { headers })
     .subscribe(
         data => {
             this.respuesta = <Respuesta>data;

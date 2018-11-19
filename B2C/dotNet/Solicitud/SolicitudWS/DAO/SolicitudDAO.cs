@@ -98,31 +98,25 @@ namespace SolicitudWS.DAO
         public ResponseData ProductoUsuarioGet(string usuario)
         {
             ResponseData respuesta = new ResponseData();
-            if (usuario != "")
-            {
-                try
-                {
-                    List<productoscliente> items = new List<productoscliente>();
-                    string consulta = "select * from productoscliente " +
-                    " where idusuario = " + usuario+
-                    " and idorden is null";
-                    items = this.context.productoscliente.SqlQuery(consulta).ToList();
 
-                    respuesta.objeto = items;
-                    respuesta.mensaje = "datos encontrados";
-                    respuesta.resultado = "OK";
-                }
-                catch (Exception ex)
-                {
-                    respuesta.mensaje = "Ocurrio un error interno";
-                    respuesta.resultado = "Fallo";
-                }
-            }
-            else
+            try
             {
-                respuesta.mensaje = "Llegaron datos nulos";
+                List<productoscliente> items = new List<productoscliente>();
+                string consulta = "select * from productoscliente " +
+                " where idusuario = " + usuario+
+                " and idorden is null";
+                items = this.context.productoscliente.SqlQuery(consulta).ToList();
+
+                respuesta.objeto = items;
+                respuesta.mensaje = "datos encontrados";
+                respuesta.resultado = "OK";
+            }
+            catch (Exception ex)
+            {
+                respuesta.mensaje = "Ocurrio un error interno";
                 respuesta.resultado = "Fallo";
             }
+
             return respuesta;
         }
 

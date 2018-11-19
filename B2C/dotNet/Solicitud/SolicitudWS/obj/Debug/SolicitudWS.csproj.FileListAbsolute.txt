@@ -1,10 +1,3 @@
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.pdb
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\Newtonsoft.Json.Net20.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.xml
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.dll
-D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.pdb
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.dll.config
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.dll
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.pdb
@@ -15,3 +8,10 @@ C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.csproj.CopyComplete
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.dll
 C:\Users\Jruiz\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\SolicitudWS.pdb
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\Newtonsoft.Json.Net20.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\bin\EntityFramework.xml
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.dll
+D:\Users\RuizAyala\Documents\GitHub\pica\B2C\dotNet\Solicitud\SolicitudWS\obj\Debug\SolicitudWS.pdb

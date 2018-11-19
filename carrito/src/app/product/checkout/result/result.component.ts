@@ -118,7 +118,13 @@ export class ResultComponent implements OnInit {
                   data => {
                     ordenResultado = (<Orden>data).noOrden;
                     //actualizamos el numero de orden en la tabla de solicitud
-                    this.solicitudService.updateProductoUsuario(idUsuario,ordenResultado);
+                    this.solicitudService.updateProductoUsuario(idUsuario,ordenResultado)
+                    .subscribe(
+                      data => {
+                          console.log(<String>data);
+                      },
+                      error => {
+                      });
                   },
                   error => {
                     console.log(error);
@@ -126,16 +132,12 @@ export class ResultComponent implements OnInit {
               }
           },
           error => {
-            if(error.statusText.toUpperCase == "OK"){
-              resultado = "OrdenCompra creada exitosamente : true";
-            }
+            console.log(error);
           });
       }
   }
 
   goPayment(producto:String, total:Number) {
     window.location.href = 'http://10.39.1.99:9090/credit-card.html?producto='+producto+'&total='+total.toString();
-    //var winRef = window.open('http://10.39.1.99:9090/credit-card.html');
-    //winRef.focus();
   }
 }
